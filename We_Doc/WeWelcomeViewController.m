@@ -104,16 +104,6 @@ UITextField * user_password_input;
     [user_register setTintColor:UIColorFromRGB(255, 255, 255, 1)];
     [user_register addTarget:self action:@selector(send_register:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:user_register];
-    
-    /*
-    CGRect frame = CGRectMake(100, 900, 40, 40);
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = frame;
-    [button setTitle:@"!!!" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    button.tag = 2000;
-    //[button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];*/
 }
 
 - (void)didReceiveMemoryWarning

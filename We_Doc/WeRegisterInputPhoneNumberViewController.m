@@ -16,18 +16,20 @@
 @end
 
 @implementation WeRegisterInputPhoneNumberViewController
-
+{
+    UITextField * user_phone_input;
+    UITextField * user_veriCode_input;
+    UIImage * sys_veriCode_image;
+    UIButton * sys_nextStep_button;
+    UIView * sys_userAgreement_demo;
+    UITableView * sys_tableView;
+}
 
 /*
     [AREA]
         Variables
 */
-UITextField * user_phone_input;
-UITextField * user_veriCode_input;
-UIImage * sys_veriCode_image;
-UIButton * sys_nextStep_button;
-UIView * sys_userAgreement_demo;
-UITableView * tableView;
+
 
 /*
     [AREA] 
@@ -78,7 +80,7 @@ UITableView * tableView;
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    UITableViewCell *cell = [sys_tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
@@ -111,6 +113,10 @@ UITableView * tableView;
     [AREA]
         Actions of all views
 */
+- (void)send_login:(id)sender {
+    NSLog(@"beybey!");
+    
+}
 - (void)user_phone_input_return:(id)sender {
     NSLog(@"user_phone_input_return:");
     [user_veriCode_input becomeFirstResponder];
@@ -175,7 +181,7 @@ UITableView * tableView;
     user_veriCode_input.text = @"";
     
     // refresh table
-    [tableView reloadData];
+    [sys_tableView reloadData];
     return NO;
 }
 - (BOOL) sendVeriCode
@@ -278,12 +284,12 @@ UITableView * tableView;
     [sys_userAgreement_demo addSubview:sys_userAgreement_demo_button];
     
     // tableView
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 700) style:UITableViewStyleGrouped];
-    tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.backgroundColor = We_background_general;
-    [self.view addSubview:tableView];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 700) style:UITableViewStyleGrouped];
+    sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    sys_tableView.delegate = self;
+    sys_tableView.dataSource = self;
+    sys_tableView.backgroundColor = We_background_general;
+    [self.view addSubview:sys_tableView];
 }
 - (void)didReceiveMemoryWarning
 {

@@ -85,13 +85,13 @@ int sys_countDown_time;
             cell.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"验证码";
             cell.textLabel.font = We_font_textfield_en_us;
-            [cell addSubview:user_veriCode_input];
+            //[cell addSubview:user_veriCode_input];
         }
         if (indexPath.row == 1) {
             cell.backgroundColor = We_background_cell_general;
-            cell.imageView.image = sys_veriCode_image;
+            //cell.imageView.image = sys_veriCode_image;
             cell.imageView.transform = CGAffineTransformMakeScale(0.3, 0.3);
-            [cell addSubview:user_veriCode_input];
+            //[cell addSubview:user_veriCode_input];
         }
     }
     if (indexPath.section == 1) {
