@@ -12,7 +12,9 @@
 @interface WePecIdxViewController ()
 @end
 
-@implementation WePecIdxViewController
+@implementation WePecIdxViewController {
+    UITableView * sys_tableView;
+}
 
 /*
  [AREA]
@@ -36,6 +38,13 @@
         [self segue_to_PmpIdx:nil];
     }*/
 }
+// 询问每个cell的高度
+- (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        return 85;
+    }
+    return tv.rowHeight;
+}
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
     return 20;
@@ -47,7 +56,8 @@
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    return 0;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 100;
+    return 10;
 }
 // 询问每个段落的尾部标题
 - (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
@@ -104,11 +114,113 @@
                     cell.textLabel.text = @"职业信息";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    break;
+                case 2:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"从医经历";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    break;
                 default:
                     break;
             }
             break;
-            
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"业务设置";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                case 1:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"公告";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                case 2:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"我的众筹";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"我的余额";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 3:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"我的加号";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                case 1:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"交易记录";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 4:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"设置";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 5:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"关于";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                default:
+                    break;
+            }
+            break;
         default:
             break;
     }
@@ -164,6 +276,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (!we_logined) [self segue_to_RegWlc:nil];
+    
+    // sys_tableView
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    sys_tableView.delegate = self;
+    sys_tableView.dataSource = self;
+    sys_tableView.backgroundColor = We_background_general;
+    [self.view addSubview:sys_tableView];
 }
 
 - (void)didReceiveMemoryWarning
