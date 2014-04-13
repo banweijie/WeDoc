@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeRegisterInputPersonalInfoViewController : UIViewController
+@interface WeRegisterInputPersonalInfoViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 - (IBAction)Submit:(id)sender;
 
 @end
