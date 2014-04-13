@@ -23,6 +23,7 @@
     UIButton * sys_nextStep_button;
     UIView * sys_userAgreement_demo;
     UITableView * sys_tableView;
+    int count;
 }
 
 /*
@@ -47,6 +48,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 1 && path.row == 0) {
+        count ++;
         if (!self.checkVeriCode) return;
         if (!self.sendVeriCode) return;
         [self push_to_ivc:nil];
@@ -68,38 +70,40 @@
     return nil;
 }
 // 询问共有多少个段落
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
     return 2;
 }
 // 询问每个段落有多少条目
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 2;
     if (section == 1) return 1;
     return 0;
 }
 // 询问每个具体条目的内容
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
-    UITableViewCell *cell = [sys_tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
+    NSLog(@"%d, %d",indexPath.section, indexPath.row);
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.backgroundColor = We_background_cell_general;
+            cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"手机号";
             cell.textLabel.font = [UIFont fontWithName:@"Heiti SC" size:16];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell addSubview:user_phone_input];
         }
         if (indexPath.row == 1) {
-            cell.backgroundColor = We_background_cell_general;
+            cell.contentView.backgroundColor = We_background_cell_general;
             cell.imageView.image = sys_veriCode_image;
             cell.imageView.transform = CGAffineTransformMakeScale(0.3, 0.3);
             [cell addSubview:user_veriCode_input];
         }
     }
     if (indexPath.section == 1) {
-        cell.backgroundColor = We_background_red_tableviewcell;
+        cell.contentView.backgroundColor = We_background_red_tableviewcell;
         cell.textLabel.text = @"下一步";
         cell.textLabel.font = We_font_button_zh_cn;
         cell.textLabel.textColor = We_foreground_white_general;
@@ -113,10 +117,6 @@
     [AREA]
         Actions of all views
 */
-- (void)send_login:(id)sender {
-    NSLog(@"beybey!");
-    
-}
 - (void)user_phone_input_return:(id)sender {
     NSLog(@"user_phone_input_return:");
     [user_veriCode_input becomeFirstResponder];
@@ -216,7 +216,7 @@
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
     [notPermitted show];
-    return YES;
+    return NO;
 }
 /*
     [AREA]
@@ -234,6 +234,7 @@
 {
     [super viewDidLoad];
     
+    count = 0;
     // navigation return button init
     _navi.backBarButtonItem.title = @"!!!";
     self.navigationController.navigationBar.TintColor = We_foreground_white_general;

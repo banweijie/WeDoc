@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeRegisterInputVeriCodeViewController : UIViewController
+@interface WeRegisterInputVeriCodeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

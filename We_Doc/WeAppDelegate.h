@@ -39,4 +39,5 @@
 #define We_foreground_white_general UIColorFromRGB(255, 255, 255, 1)
 #define We_foreground_gray_general UIColorFromRGB(146, 146, 146, 1)
 #define We_foreground_black_general UIColorFromRGB(51, 51, 51, 1)
+#define We_foreground_red_general UIColorFromRGB(134, 11, 38, 1)
 
