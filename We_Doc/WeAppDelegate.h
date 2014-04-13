@@ -16,6 +16,9 @@
 + (void)resignFirstResponder:(id)sender;
 @end
 
+BOOL we_logined;
+int we_targetTabId;
+
 @interface NSString (WeDelegate)
 - (NSString *)md5;
 @end

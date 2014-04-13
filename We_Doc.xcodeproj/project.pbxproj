@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0CB24654A3894C74B50B7DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C83D077ED634B6A9726A5B2 /* libPods.a */; };
-		9013553D18F6626900436A24 /* WeWelcomeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeWelcomeNavigationViewController.m */; };
+		9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeRegNavViewController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3418F0F146000CB41B /* CoreGraphics.framework */; };
 		904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
@@ -16,17 +16,19 @@
 		904F7A3F18F0F146000CB41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A3E18F0F146000CB41B /* main.m */; };
 		904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A4218F0F146000CB41B /* WeAppDelegate.m */; };
 		904F7A4618F0F146000CB41B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 904F7A4418F0F146000CB41B /* Main.storyboard */; };
-		904F7A4918F0F146000CB41B /* WeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A4818F0F146000CB41B /* WeViewController.m */; };
 		904F7A4B18F0F146000CB41B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904F7A4A18F0F146000CB41B /* Images.xcassets */; };
 		904F7A5218F0F146000CB41B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A5118F0F146000CB41B /* XCTest.framework */; };
 		904F7A5318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A5418F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
 		904F7A5C18F0F146000CB41B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 904F7A5A18F0F146000CB41B /* InfoPlist.strings */; };
 		904F7A5E18F0F146000CB41B /* We_DocTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A5D18F0F146000CB41B /* We_DocTests.m */; };
-		904F7A6918F0F9CA000CB41B /* WeWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6818F0F9CA000CB41B /* WeWelcomeViewController.m */; };
-		904F7A6C18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6B18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.m */; };
-		904F7A7018F133C4000CB41B /* WeRegisterInputVeriCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6F18F133C4000CB41B /* WeRegisterInputVeriCodeViewController.m */; };
-		904F7A7318F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A7218F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.m */; };
+		904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6818F0F9CA000CB41B /* WeRegWlcViewController.m */; };
+		904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6B18F11603000CB41B /* WeRegIpnViewController.m */; };
+		904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A6F18F133C4000CB41B /* WeRegIvcViewController.m */; };
+		904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A7218F13C68000CB41B /* WeRegIrpViewController.m */; };
+		9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */; };
+		9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */; };
+		9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808318FAA23300CE8172 /* WeTabBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +44,8 @@
 /* Begin PBXFileReference section */
 		2C4C0E4422684F3590DC7997 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9013553B18F6626900436A24 /* WeWelcomeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeWelcomeNavigationViewController.h; sourceTree = "<group>"; };
-		9013553C18F6626900436A24 /* WeWelcomeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeWelcomeNavigationViewController.m; sourceTree = "<group>"; };
+		9013553B18F6626900436A24 /* WeRegNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegNavViewController.h; sourceTree = "<group>"; };
+		9013553C18F6626900436A24 /* WeRegNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegNavViewController.m; sourceTree = "<group>"; };
 		904F7A2F18F0F146000CB41B /* We_Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = We_Doc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A3218F0F146000CB41B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		904F7A3418F0F146000CB41B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,22 +57,26 @@
 		904F7A4118F0F146000CB41B /* WeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeAppDelegate.h; sourceTree = "<group>"; };
 		904F7A4218F0F146000CB41B /* WeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeAppDelegate.m; sourceTree = "<group>"; };
 		904F7A4518F0F146000CB41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		904F7A4718F0F146000CB41B /* WeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeViewController.h; sourceTree = "<group>"; };
-		904F7A4818F0F146000CB41B /* WeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeViewController.m; sourceTree = "<group>"; };
 		904F7A4A18F0F146000CB41B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		904F7A5018F0F146000CB41B /* We_DocTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = We_DocTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A5118F0F146000CB41B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		904F7A5918F0F146000CB41B /* We_DocTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "We_DocTests-Info.plist"; sourceTree = "<group>"; };
 		904F7A5B18F0F146000CB41B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		904F7A5D18F0F146000CB41B /* We_DocTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = We_DocTests.m; sourceTree = "<group>"; };
-		904F7A6718F0F9CA000CB41B /* WeWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeWelcomeViewController.h; sourceTree = "<group>"; };
-		904F7A6818F0F9CA000CB41B /* WeWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeWelcomeViewController.m; sourceTree = "<group>"; };
-		904F7A6A18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegisterInputPhoneNumberViewController.h; sourceTree = "<group>"; };
-		904F7A6B18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegisterInputPhoneNumberViewController.m; sourceTree = "<group>"; };
-		904F7A6E18F133C4000CB41B /* WeRegisterInputVeriCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegisterInputVeriCodeViewController.h; sourceTree = "<group>"; };
-		904F7A6F18F133C4000CB41B /* WeRegisterInputVeriCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegisterInputVeriCodeViewController.m; sourceTree = "<group>"; };
-		904F7A7118F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegisterInputPersonalInfoViewController.h; sourceTree = "<group>"; };
-		904F7A7218F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegisterInputPersonalInfoViewController.m; sourceTree = "<group>"; };
+		904F7A6718F0F9CA000CB41B /* WeRegWlcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegWlcViewController.h; sourceTree = "<group>"; };
+		904F7A6818F0F9CA000CB41B /* WeRegWlcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegWlcViewController.m; sourceTree = "<group>"; };
+		904F7A6A18F11603000CB41B /* WeRegIpnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegIpnViewController.h; sourceTree = "<group>"; };
+		904F7A6B18F11603000CB41B /* WeRegIpnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegIpnViewController.m; sourceTree = "<group>"; };
+		904F7A6E18F133C4000CB41B /* WeRegIvcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegIvcViewController.h; sourceTree = "<group>"; };
+		904F7A6F18F133C4000CB41B /* WeRegIvcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegIvcViewController.m; sourceTree = "<group>"; };
+		904F7A7118F13C68000CB41B /* WeRegIrpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegIrpViewController.h; sourceTree = "<group>"; };
+		904F7A7218F13C68000CB41B /* WeRegIrpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegIrpViewController.m; sourceTree = "<group>"; };
+		9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecIdxViewController.h; sourceTree = "<group>"; };
+		9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecIdxViewController.m; sourceTree = "<group>"; };
+		9054807E18FA6A5A00CE8172 /* WePecNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNavViewController.h; sourceTree = "<group>"; };
+		9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecNavViewController.m; sourceTree = "<group>"; };
+		9054808218FAA23300CE8172 /* WeTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTabBarViewController.h; sourceTree = "<group>"; };
+		9054808318FAA23300CE8172 /* WeTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTabBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +139,15 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
+				9054808618FAA57000CE8172 /* New Group1 */,
+				9054808518FAA56D00CE8172 /* New Group */,
+				9054807A18FA68D600CE8172 /* PersonalCenter */,
 				9054807918FA606900CE8172 /* Register */,
 				904F7A4118F0F146000CB41B /* WeAppDelegate.h */,
 				904F7A4218F0F146000CB41B /* WeAppDelegate.m */,
+				9054808218FAA23300CE8172 /* WeTabBarViewController.h */,
+				9054808318FAA23300CE8172 /* WeTabBarViewController.m */,
 				904F7A4418F0F146000CB41B /* Main.storyboard */,
-				904F7A4718F0F146000CB41B /* WeViewController.h */,
-				904F7A4818F0F146000CB41B /* WeViewController.m */,
 				904F7A4A18F0F146000CB41B /* Images.xcassets */,
 				904F7A3918F0F146000CB41B /* Supporting Files */,
 			);
@@ -177,18 +186,43 @@
 		9054807918FA606900CE8172 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				904F7A6718F0F9CA000CB41B /* WeWelcomeViewController.h */,
-				904F7A6818F0F9CA000CB41B /* WeWelcomeViewController.m */,
-				904F7A6A18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.h */,
-				904F7A6B18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.m */,
-				904F7A6E18F133C4000CB41B /* WeRegisterInputVeriCodeViewController.h */,
-				904F7A6F18F133C4000CB41B /* WeRegisterInputVeriCodeViewController.m */,
-				904F7A7118F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.h */,
-				904F7A7218F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.m */,
-				9013553B18F6626900436A24 /* WeWelcomeNavigationViewController.h */,
-				9013553C18F6626900436A24 /* WeWelcomeNavigationViewController.m */,
+				9013553B18F6626900436A24 /* WeRegNavViewController.h */,
+				9013553C18F6626900436A24 /* WeRegNavViewController.m */,
+				904F7A6718F0F9CA000CB41B /* WeRegWlcViewController.h */,
+				904F7A6818F0F9CA000CB41B /* WeRegWlcViewController.m */,
+				904F7A6A18F11603000CB41B /* WeRegIpnViewController.h */,
+				904F7A6B18F11603000CB41B /* WeRegIpnViewController.m */,
+				904F7A6E18F133C4000CB41B /* WeRegIvcViewController.h */,
+				904F7A6F18F133C4000CB41B /* WeRegIvcViewController.m */,
+				904F7A7118F13C68000CB41B /* WeRegIrpViewController.h */,
+				904F7A7218F13C68000CB41B /* WeRegIrpViewController.m */,
 			);
 			name = Register;
+			sourceTree = "<group>";
+		};
+		9054807A18FA68D600CE8172 /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				9054807E18FA6A5A00CE8172 /* WePecNavViewController.h */,
+				9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */,
+				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
+				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
+			);
+			name = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		9054808518FAA56D00CE8172 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		9054808618FAA57000CE8172 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group1";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,14 +358,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				904F7A6C18F11603000CB41B /* WeRegisterInputPhoneNumberViewController.m in Sources */,
-				904F7A7318F13C68000CB41B /* WeRegisterInputPersonalInfoViewController.m in Sources */,
+				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
+				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
+				904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
+				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
-				904F7A4918F0F146000CB41B /* WeViewController.m in Sources */,
-				9013553D18F6626900436A24 /* WeWelcomeNavigationViewController.m in Sources */,
-				904F7A6918F0F9CA000CB41B /* WeWelcomeViewController.m in Sources */,
-				904F7A7018F133C4000CB41B /* WeRegisterInputVeriCodeViewController.m in Sources */,
+				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
+				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
+				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
+				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +496,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -474,7 +512,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

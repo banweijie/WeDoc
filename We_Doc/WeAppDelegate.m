@@ -8,14 +8,15 @@
 
 #import "WeAppDelegate.h"
 
-@implementation WeAppDelegate
+@implementation WeAppDelegate {
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:134.0/255 green:11.0/255 blue:38.0/255 alpha:1]];
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(134, 11, 38, 0.9)];
-    //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB0x(0x067AB5)];
+    we_logined = NO;
+    we_targetTabId = 0;
     return YES;
 }
 							

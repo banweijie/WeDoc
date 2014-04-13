@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ZGO-u0-7yk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mjn-6U-QSO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--We Welcome View Controller - 欢迎使用-->
+        <!--We Reg Wlc View Controller - 欢迎使用-->
         <scene sceneID="53c-5s-x4b">
             <objects>
-                <viewController id="hMN-Hz-55v" customClass="WeWelcomeViewController" sceneMemberID="viewController">
+                <viewController id="hMN-Hz-55v" customClass="WeRegWlcViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t08-st-SVP"/>
                         <viewControllerLayoutGuide type="bottom" id="CcO-zv-dSN"/>
@@ -19,16 +19,17 @@
                     <navigationItem key="navigationItem" title="欢迎使用" id="Of2-q0-SFL"/>
                     <connections>
                         <segue destination="sgm-FN-ZO0" kind="push" identifier="wlc2ipn" id="3eU-C4-1BU"/>
+                        <segue destination="mjn-6U-QSO" kind="modal" identifier="RegWlc2TabBar" id="kLE-V0-Wfx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ta-4I-aln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1073" y="73"/>
         </scene>
-        <!--We Register Input Phone Number View Controller - 输入手机号-->
+        <!--We Reg Ipn View Controller - 输入手机号-->
         <scene sceneID="lC5-zv-JwL">
             <objects>
-                <viewController id="sgm-FN-ZO0" customClass="WeRegisterInputPhoneNumberViewController" sceneMemberID="viewController">
+                <viewController id="sgm-FN-ZO0" customClass="WeRegIpnViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YuZ-uq-J38"/>
                         <viewControllerLayoutGuide type="bottom" id="R3w-Po-zeP"/>
@@ -48,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="1533" y="73"/>
         </scene>
-        <!--We Register Input Veri Code View Controller - 输入验证码-->
+        <!--We Reg Ivc View Controller - 输入验证码-->
         <scene sceneID="Oho-73-3q7">
             <objects>
-                <viewController id="djG-Ww-epg" customClass="WeRegisterInputVeriCodeViewController" sceneMemberID="viewController">
+                <viewController id="djG-Ww-epg" customClass="WeRegIvcViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QRv-HI-uxc"/>
                         <viewControllerLayoutGuide type="bottom" id="crw-r5-7ka"/>
@@ -70,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1999" y="73"/>
         </scene>
-        <!--We Register Input Personal Info View Controller - 填写信息-->
+        <!--We Reg Irp View Controller - 填写信息-->
         <scene sceneID="0kG-a1-oj5">
             <objects>
-                <viewController id="u8p-13-Gi8" customClass="WeRegisterInputPersonalInfoViewController" sceneMemberID="viewController">
+                <viewController id="u8p-13-Gi8" customClass="WeRegIrpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7GF-4d-A1L"/>
                         <viewControllerLayoutGuide type="bottom" id="shY-cN-Odw"/>
@@ -81,50 +82,21 @@
                     <view key="view" contentMode="scaleToFill" id="5Fs-11-FGK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x6A-Jq-wSu">
-                                <rect key="frame" x="-7" y="103" width="334" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="u8p-13-Gi8" id="Toh-Qe-gNI"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="重复密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sri-0u-iCC">
-                                <rect key="frame" x="-7" y="156" width="334" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AU5-3J-tDI">
-                                <rect key="frame" x="-7" y="320" width="334" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="提交">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="Submit:" destination="u8p-13-Gi8" eventType="touchUpInside" id="eFC-Z1-1gt"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="填写信息" id="wnK-bB-1vm"/>
                     <connections>
-                        <outlet property="submitRegister" destination="AU5-3J-tDI" id="pe7-SD-Zmq"/>
-                        <outlet property="userPassword" destination="x6A-Jq-wSu" id="Idj-pF-b6V"/>
-                        <segue destination="bHV-1f-jWO" kind="modal" identifier="irp2pmp" id="0e0-dv-Y4c"/>
+                        <segue destination="mjn-6U-QSO" kind="modal" identifier="irp2pec" id="hkM-lK-GgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jk-cW-ebQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2463" y="73"/>
         </scene>
-        <!--We Welcome Navigation View Controller - 个人中心-->
+        <!--We Reg Nav View Controller - 个人中心-->
         <scene sceneID="yJP-YU-QJC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZGO-u0-7yk" customClass="WeWelcomeNavigationViewController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZGO-u0-7yk" customClass="WeRegNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="个人中心" id="LPG-iS-jMc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MGc-fZ-t97">
@@ -140,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="623" y="73"/>
         </scene>
-        <!--View Controller-->
+        <!--We Pec Idx View Controller - 个人中心-->
         <scene sceneID="SIs-AE-DWJ">
             <objects>
-                <viewController id="7aO-pA-Dc3" sceneMemberID="viewController">
+                <viewController id="7aO-pA-Dc3" customClass="WePecIdxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WKi-rI-GTu"/>
                         <viewControllerLayoutGuide type="bottom" id="bk3-I5-hQ0"/>
@@ -153,16 +125,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nGE-68-ckl"/>
+                    <navigationItem key="navigationItem" title="个人中心" id="nGE-68-ckl"/>
+                    <connections>
+                        <segue destination="ZGO-u0-7yk" kind="modal" identifier="PecIdx2RegWlc" id="NZg-3l-cVs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJo-MC-UXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1073" y="784"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--We Tab Bar View Controller-->
         <scene sceneID="6bn-lv-vZB">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="mjn-6U-QSO" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="mjn-6U-QSO" customClass="WeTabBarViewController" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LJb-df-MLK">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -170,18 +145,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="bni-Ri-avn" kind="relationship" relationship="viewControllers" id="rex-yh-AU6"/>
+                        <segue destination="FbH-Go-jOX" kind="relationship" relationship="viewControllers" id="gV7-Zh-poc"/>
                         <segue destination="bHV-1f-jWO" kind="relationship" relationship="viewControllers" id="Pfd-v9-efB"/>
-                        <segue destination="yKF-Kn-GeX" kind="relationship" relationship="viewControllers" id="gV7-Zh-poc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbq-rB-hT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-168" y="1496"/>
         </scene>
-        <!--Navigation Controller - 个人中心-->
+        <!--We Pec Nav View Controller - 个人中心-->
         <scene sceneID="ZFO-BM-93v">
             <objects>
-                <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" sceneMemberID="viewController">
+                <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" customClass="WePecNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="个人中心" id="f8O-K2-dEM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s11-tv-Fsj">
@@ -210,11 +186,68 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="众筹项目" id="NTT-Jw-ARP"/>
+                    <navigationItem key="navigationItem" title="众筹项目" id="rfW-kE-F9P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSR-D4-aq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1152" y="1504"/>
+        </scene>
+        <!--View Controller - 首页-->
+        <scene sceneID="W7F-be-9tS">
+            <objects>
+                <viewController id="ae2-c6-YeX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Siw-kl-HU3"/>
+                        <viewControllerLayoutGuide type="bottom" id="ure-ov-wEf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D0c-uU-7Xp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="首页" id="Bfm-mW-1KY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCp-4c-zUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1149" y="2216"/>
+        </scene>
+        <!--Navigation Controller - 众筹项目-->
+        <scene sceneID="grl-Bt-DYQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FbH-Go-jOX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="众筹项目" id="NTT-Jw-ARP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7cq-9M-Xhb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yKF-Kn-GeX" kind="relationship" relationship="rootViewController" id="rZg-tr-yju"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkE-uu-cDt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="626" y="1504"/>
+        </scene>
+        <!--Navigation Controller - 首页-->
+        <scene sceneID="uc0-Nf-QG3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bni-Ri-avn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" id="cEs-2e-fmZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WtN-4z-h99">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ae2-c6-YeX" kind="relationship" relationship="rootViewController" id="Jju-lf-vTr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3YG-Oc-SAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="2216"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -223,6 +256,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Pfd-v9-efB"/>
+        <segue reference="kLE-V0-Wfx"/>
     </inferredMetricsTieBreakers>
 </document>
