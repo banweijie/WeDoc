@@ -86,9 +86,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="u8p-13-Gi8" kind="push" id="gZ4-t8-EDC"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -98,6 +95,7 @@
                         <outlet property="VeriCode" destination="nD7-Jg-nqJ" id="AAn-9l-6fR"/>
                         <outlet property="resendVeriCode" destination="KX3-35-llm" id="ZU0-fU-Bhs"/>
                         <outlet property="sysNextStep" destination="xan-Nt-D9y" id="h2e-BT-UyM"/>
+                        <segue destination="u8p-13-Gi8" kind="push" identifier="ivc2irp" id="Hfe-Je-yNu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIq-S4-Znf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.navigationBar.translucent = NO;
     self.navigationBar.translucent = NO;
     [self.navigationBar setTitleTextAttributes:
         [NSDictionary dictionaryWithObjectsAndKeys:
@@ -36,8 +35,7 @@
             nil
          ]
      ];
-    //[self.navigationBar setBarTintColor:UIColorFromRGB0x(0x777777)];
-
+    self.navigationBar.TintColor = We_foreground_white_general;
     // Do any additional setup after loading the view.
 }
 

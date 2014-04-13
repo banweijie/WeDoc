@@ -120,8 +120,7 @@ UITextField * user_password_input;
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    //[_navi.leftBarButtonItem.title setTextColor:We_foreground_white_general];
+
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 

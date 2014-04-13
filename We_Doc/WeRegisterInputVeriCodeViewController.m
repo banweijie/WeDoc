@@ -33,19 +33,27 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.section == 0) {
-        return nil;
+    if (path.section == 1) {
+        if (sys_countDown_time == 0) return path;
+        else return nil;
     }
     return path;
 }
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    if (path.section == 0) {
+        [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
+    }
     if (path.section == 1) {
-        //[self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
+        [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
+        sys_countDown_time = 60;
+        sys_countDown_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(sys_countDown_passTime) userInfo:nil repeats:YES];
     }
     if (path.section == 2) {
-        //[self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
+        [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
+        if (!self.checkVeriCode) return;
+        [self push_to_irp:nil];
     }
 }
 // 询问每个段落的头部高度
@@ -62,26 +70,26 @@
     return 0;
 }
 // 询问每个段落的尾部标题
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
     return @"";
 }
 // 询问每个段落的尾部
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+-(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
     //if (section == 1) return sys_countDown_demo;
     return nil;
 }
 // 询问共有多少个段落
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
     return 3;
 }
 // 询问每个段落有多少条目
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 // 询问每个具体条目的内容
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
@@ -112,6 +120,7 @@
         cell.textLabel.font = We_font_button_zh_cn;
         cell.textLabel.textColor = We_foreground_white_general;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        
     }
     return cell;
 }
@@ -121,15 +130,18 @@
  [AREA]
  Actions of all views
  */
-
-/*
- [AREA]
- Functional
- */
 - (void)resignFirstResponder:(id)sender {
     NSLog(@"resignFirstResponder:");
     [sender resignFirstResponder];
 }
+- (void)push_to_irp:(id)sender {
+    NSLog(@"segue:ivc2irp~~:");
+    [self performSegueWithIdentifier:@"ivc2irp" sender:self];
+}
+/*
+ [AREA]
+ Functional
+ */
 - (NSString *)sys_countDown_string {
     if (sys_countDown_time == 0) return @"";
     else return [NSString stringWithFormat:@"还有%d秒", sys_countDown_time];
@@ -137,17 +149,51 @@
 // 取消Table的当前选中行
 - (void) unselectCurrentRow
 {
-    [sys_tableView deselectRowAtIndexPath: [sys_tableView indexPathForSelectedRow] animated:YES];
+    [sys_tableView deselectRowAtIndexPath: [sys_tableView indexPathForSelectedRow] animated:NO];
 }
 - (void) sys_countDown_passTime {
     sys_countDown_time --;
     sys_countDown_demo_text.text = [self sys_countDown_string];
-    //[sys_tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:<#(id), ...#>, nil withRowAnimation:YES];
-     [sys_tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:[NSIndexPath indexPathForRow:0 inSection:1], nil] withRowAnimation:UITableViewRowAnimationNone];
-    //[sys_tableView reloadSections:[[NSIndexSet alloc] initWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    [sys_tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:[NSIndexPath indexPathForRow:0 inSection:1], nil] withRowAnimation:UITableViewRowAnimationNone];
     if (sys_countDown_time == 0) {
         [sys_countDown_timer invalidate];
     }
+}
+- (BOOL) checkVeriCode {
+    NSLog(@"checkVeriCode");
+    NSString *errorMessege = @"无法连接网络，请重试";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/user/checkVerificationCode.action";
+    NSString *paraString = [NSString stringWithFormat:@"verificationCode=%@", user_veriCode_input.text];
+    NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            return YES;
+        }
+        else {
+            if ([result isEqualToString:@"2"]) {
+                NSString *fields = [HTTPResponse objectForKey:@"fields"];
+                if (fields != NULL) errorMessege = [[HTTPResponse objectForKey:@"fields"] objectForKey:@"phone"];
+            }
+            if ([result isEqualToString:@"3"]) {
+                errorMessege = [HTTPResponse objectForKey:@"info"];
+            }
+            if ([result isEqualToString:@"4"]) {
+                errorMessege = [HTTPResponse objectForKey:@"info"];
+            }
+        }
+    }
+    // alert error messege
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"验证手机验证码失败"
+                                 message:errorMessege
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+    return NO;
 }
 /*
  [AREA]

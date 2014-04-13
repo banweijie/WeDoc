@@ -236,8 +236,8 @@
     
     count = 0;
     // navigation return button init
-    _navi.backBarButtonItem.title = @"!!!";
-    self.navigationController.navigationBar.TintColor = We_foreground_white_general;
+    //self.navigationController.navigationBar.TintColor = We_foreground_white_general;
+    
     // user_phone_input init
     user_phone_input = [[UITextField alloc] initWithFrame:CGRectMake(100, 9, 220, 30)];
     user_phone_input.placeholder = @"请输入您的手机号码";
@@ -298,7 +298,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -306,6 +305,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
-*/
 @end
