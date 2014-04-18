@@ -19,7 +19,6 @@
                     <navigationItem key="navigationItem" title="欢迎使用" id="Of2-q0-SFL"/>
                     <connections>
                         <segue destination="sgm-FN-ZO0" kind="push" identifier="wlc2ipn" id="3eU-C4-1BU"/>
-                        <segue destination="mjn-6U-QSO" kind="modal" identifier="RegWlc2TabBar" id="kLE-V0-Wfx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ta-4I-aln" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,9 +84,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="填写信息" id="wnK-bB-1vm"/>
-                    <connections>
-                        <segue destination="mjn-6U-QSO" kind="modal" identifier="irp2pec" id="hkM-lK-GgM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jk-cW-ebQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,6 +125,7 @@
                     <connections>
                         <segue destination="ZGO-u0-7yk" kind="modal" identifier="PecIdx2RegWlc" id="NZg-3l-cVs"/>
                         <segue destination="2wj-qs-N0e" kind="push" identifier="PecIdx2PecCai" id="IyT-w9-o82"/>
+                        <segue destination="Z5F-6t-W6C" kind="push" identifier="PecIdx2PecDcl" id="syw-Rf-Kb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJo-MC-UXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,6 +173,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYf-af-Obn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4476" y="784"/>
+        </scene>
+        <!--We Pec Exp View Controller - 从医经历-->
+        <scene sceneID="1wZ-3y-BJj">
+            <objects>
+                <viewController id="Z5F-6t-W6C" customClass="WePecExpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7EA-TU-75S"/>
+                        <viewControllerLayoutGuide type="bottom" id="4my-YK-ShW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z0T-GP-Llp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="从医经历" id="w7q-c0-eK7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yx6-sk-Vmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3965" y="2271"/>
         </scene>
         <!--We Pec Vctf View Controller - 职业证书-->
         <scene sceneID="ybT-oe-khw">
@@ -317,7 +333,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="kLE-V0-Wfx"/>
-    </inferredMetricsTieBreakers>
 </document>

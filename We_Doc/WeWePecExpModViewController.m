@@ -1,22 +1,18 @@
 //
-//  WeTabBarViewController.m
+//  WeWePecExpModViewController.m
 //  We_Doc
 //
-//  Created by WeDoctor on 14-4-13.
+//  Created by WeDoctor on 14-4-19.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WeTabBarViewController.h"
-#import "WeAppDelegate.h"
+#import "WeWePecExpModViewController.h"
 
-@interface WeTabBarViewController ()
+@interface WeWePecExpModViewController ()
 
 @end
 
-@implementation WeTabBarViewController
-
-
-extern int we_targetTabId;
+@implementation WeWePecExpModViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,14 +27,8 @@ extern int we_targetTabId;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"tab bar view did load at index %d", we_targetTabId);
-    //[self setSelectedIndex:we_targetTabId];
 }
-- (void)viewDidAppear:(BOOL)animated {
-    // Other code...
-    //[self setSelectedIndex:1];
-    [super viewDidAppear:animated];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

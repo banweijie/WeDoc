@@ -33,6 +33,9 @@
 		9054808C18FAEDD600CE8172 /* WeMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808B18FAEDD600CE8172 /* WeMyViewController.m */; };
 		909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C621901661400ADC2E9 /* WePecCtfViewController.m */; };
 		909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */; };
+		909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C681901A89900ADC2E9 /* WePecExpViewController.m */; };
+		909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */; };
+		909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,12 @@
 		909E3C621901661400ADC2E9 /* WePecCtfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCtfViewController.m; sourceTree = "<group>"; };
 		909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecVctfViewController.h; sourceTree = "<group>"; };
 		909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecVctfViewController.m; sourceTree = "<group>"; };
+		909E3C671901A89900ADC2E9 /* WePecExpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecExpViewController.h; sourceTree = "<group>"; };
+		909E3C681901A89900ADC2E9 /* WePecExpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpViewController.m; sourceTree = "<group>"; };
+		909E3C6F1901B05E00ADC2E9 /* WePecExpAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecExpAddViewController.h; sourceTree = "<group>"; };
+		909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpAddViewController.m; sourceTree = "<group>"; };
+		909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecExpModViewController.h; sourceTree = "<group>"; };
+		909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpModViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,16 +226,12 @@
 		9054807A18FA68D600CE8172 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				909E3C6E1901AF4300ADC2E9 /* Experience */,
+				909E3C6D1901AF0C00ADC2E9 /* CareerInformation */,
 				9054807E18FA6A5A00CE8172 /* WePecNavViewController.h */,
 				9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */,
 				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
-				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
-				9054808818FAC28700CE8172 /* WePecCaiViewController.m */,
-				909E3C611901661400ADC2E9 /* WePecCtfViewController.h */,
-				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
-				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
-				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -243,6 +248,32 @@
 			children = (
 			);
 			name = "New Group1";
+			sourceTree = "<group>";
+		};
+		909E3C6D1901AF0C00ADC2E9 /* CareerInformation */ = {
+			isa = PBXGroup;
+			children = (
+				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
+				9054808818FAC28700CE8172 /* WePecCaiViewController.m */,
+				909E3C611901661400ADC2E9 /* WePecCtfViewController.h */,
+				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
+				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
+				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
+			);
+			name = CareerInformation;
+			sourceTree = "<group>";
+		};
+		909E3C6E1901AF4300ADC2E9 /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				909E3C671901A89900ADC2E9 /* WePecExpViewController.h */,
+				909E3C681901A89900ADC2E9 /* WePecExpViewController.m */,
+				909E3C6F1901B05E00ADC2E9 /* WePecExpAddViewController.h */,
+				909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */,
+				909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */,
+				909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */,
+			);
+			name = Experience;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,8 +421,11 @@
 				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
+				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
+				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
+				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

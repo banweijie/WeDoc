@@ -23,26 +23,28 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    return path;
-}
-// 选中某个Cell触发的事件
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
-{
     switch (path.section) {
         case 0:
             switch (path.row) {
                 case 1:
                     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
                     break;
-                    
+                case 2:
+                    [self performSegueWithIdentifier:@"PecIdx2PecDcl" sender:self];
                 default:
                     break;
             }
+            return nil;
             break;
             
         default:
             break;
     }
+    return path;
+}
+// 选中某个Cell触发的事件
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
+{
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {

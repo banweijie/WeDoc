@@ -133,7 +133,8 @@ UITextField * user_password_input;
     if (![self checkUserRights]) return;
     we_logined = YES;
     we_targetTabId = 2;
-    [self performSegueWithIdentifier:@"RegWlc2TabBar" sender:self];
+    //[self performSegueWithIdentifier:@"RegWlc2TabBar" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL) checkUserRights {
@@ -191,7 +192,8 @@ UITextField * user_password_input;
 - (void)segue_to_MapIdx:(id)sender {
     NSLog(@"segue~~:");
     we_targetTabId = 0;
-    [self performSegueWithIdentifier:@"RegWlc2TabBar" sender:self];
+    //[self performSegueWithIdentifier:@"RegWlc2TabBar" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)user_phone_input_return:(id)sender {

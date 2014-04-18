@@ -42,7 +42,8 @@ extern int we_targetTabId;
         if (![self submitPassword]) return;
         we_logined = YES;
         we_targetTabId = 2;
-        [self segue_to_PmpIdx:nil];
+        //[self segue_to_PmpIdx:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 // 询问每个段落的头部高度
