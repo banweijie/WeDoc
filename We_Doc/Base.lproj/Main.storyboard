@@ -128,17 +128,37 @@
                     <navigationItem key="navigationItem" title="个人中心" id="nGE-68-ckl"/>
                     <connections>
                         <segue destination="ZGO-u0-7yk" kind="modal" identifier="PecIdx2RegWlc" id="NZg-3l-cVs"/>
+                        <segue destination="2wj-qs-N0e" kind="push" identifier="PecIdx2PecCai" id="IyT-w9-o82"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJo-MC-UXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="784"/>
+            <point key="canvasLocation" x="3441" y="784"/>
+        </scene>
+        <!--We Pec Cai View Controller - 职业信息-->
+        <scene sceneID="d25-MW-h1J">
+            <objects>
+                <viewController title="职业信息" id="2wj-qs-N0e" customClass="WePecCaiViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MpN-1z-TbX"/>
+                        <viewControllerLayoutGuide type="bottom" id="MWU-cg-AsX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tbD-cG-AAF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="职业信息" id="5fE-mg-fpV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqx-PR-fRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3961" y="784"/>
         </scene>
         <!--We Tab Bar View Controller-->
         <scene sceneID="6bn-lv-vZB">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="mjn-6U-QSO" customClass="WeTabBarViewController" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LJb-df-MLK">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

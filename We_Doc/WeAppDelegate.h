@@ -44,3 +44,4 @@ int we_targetTabId;
 #define We_foreground_black_general UIColorFromRGB(51, 51, 51, 1)
 #define We_foreground_red_general UIColorFromRGB(134, 11, 38, 1)
 
+#define We_frame_textFieldInCell_general CGRectMake(100, 9, 205, 30)

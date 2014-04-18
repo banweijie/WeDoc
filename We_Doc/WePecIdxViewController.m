@@ -28,15 +28,21 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    /*
-    if (path.section == 1) {
-        [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
-        if (![self checkRepeatPassword]) return;
-        if (![self submitPassword]) return;
-        we_logined = YES;
-        we_targetTabId = 2;
-        [self segue_to_PmpIdx:nil];
-    }*/
+    switch (path.section) {
+        case 0:
+            switch (path.row) {
+                case 1:
+                    [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
+                    break;
+                    
+                default:
+                    break;
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -115,6 +121,7 @@
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -122,6 +129,7 @@
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
                     break;
@@ -224,30 +232,6 @@
         default:
             break;
     }
-    /*
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = @"登录密码";
-            cell.textLabel.font = We_font_textfield_zh_cn;
-            cell.textLabel.textColor = We_foreground_black_general;
-            //[cell addSubview:user_loginPassword_input];
-        }
-        if (indexPath.row == 1) {
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = @"重复密码";
-            cell.textLabel.font = We_font_textfield_zh_cn;
-            cell.textLabel.textColor = We_foreground_black_general;
-            //[cell addSubview:user_repeatPassword_input];
-        }
-    }
-    if (indexPath.section == 1) {
-        cell.contentView.backgroundColor = We_background_red_tableviewcell;
-        cell.textLabel.text = @"完成注册";
-        cell.textLabel.font = We_font_button_zh_cn;
-        cell.textLabel.textColor = We_foreground_white_general;
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    }*/
     return cell;
 }
 
@@ -261,6 +245,10 @@
     [self performSegueWithIdentifier:@"PecIdx2RegWlc" sender:self];
 }
 
+- (void)segue_to_PecCai:(id)sender {
+    NSLog(@"segue:to_RegWlc~~:");
+    [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

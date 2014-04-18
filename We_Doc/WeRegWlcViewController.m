@@ -149,6 +149,8 @@ UITextField * user_password_input;
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
+            NSString * response = [HTTPResponse objectForKey:@"response"];
+            NSLog(@"%@", response);
             return YES;
         }
         if ([result isEqualToString:@"2"]) {
