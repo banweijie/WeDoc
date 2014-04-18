@@ -149,10 +149,52 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="职业信息" id="5fE-mg-fpV"/>
+                    <connections>
+                        <segue destination="urX-Ao-7ha" kind="push" identifier="PecCai2PecCtf" id="v7c-uv-b8q"/>
+                        <segue destination="UaX-Dt-IEk" kind="push" identifier="PecCai2PecVctf" id="Lh1-CZ-5xC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqx-PR-fRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3961" y="784"/>
+        </scene>
+        <!--We Pec Ctf View Controller - 资格证书-->
+        <scene sceneID="SWj-sp-XbZ">
+            <objects>
+                <viewController id="urX-Ao-7ha" customClass="WePecCtfViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rVq-Pu-s0s"/>
+                        <viewControllerLayoutGuide type="bottom" id="FWt-7w-Gur"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFW-0Z-EtT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="资格证书" id="EaP-8K-zQU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYf-af-Obn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="784"/>
+        </scene>
+        <!--We Pec Vctf View Controller - 职业证书-->
+        <scene sceneID="ybT-oe-khw">
+            <objects>
+                <viewController id="UaX-Dt-IEk" customClass="WePecVctfViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yqt-AE-JKH"/>
+                        <viewControllerLayoutGuide type="bottom" id="ran-qA-DIg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="U4t-wC-Row">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="职业证书" id="Vdv-mF-V8F"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdw-e6-z8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="1617"/>
         </scene>
         <!--We Tab Bar View Controller-->
         <scene sceneID="6bn-lv-vZB">

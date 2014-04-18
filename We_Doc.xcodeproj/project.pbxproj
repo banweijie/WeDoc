@@ -31,6 +31,8 @@
 		9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808318FAA23300CE8172 /* WeTabBarViewController.m */; };
 		9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808818FAC28700CE8172 /* WePecCaiViewController.m */; };
 		9054808C18FAEDD600CE8172 /* WeMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808B18FAEDD600CE8172 /* WeMyViewController.m */; };
+		909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C621901661400ADC2E9 /* WePecCtfViewController.m */; };
+		909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		9054808818FAC28700CE8172 /* WePecCaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiViewController.m; sourceTree = "<group>"; };
 		9054808A18FAEDD600CE8172 /* WeMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyViewController.h; sourceTree = "<group>"; };
 		9054808B18FAEDD600CE8172 /* WeMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyViewController.m; sourceTree = "<group>"; };
+		909E3C611901661400ADC2E9 /* WePecCtfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecCtfViewController.h; sourceTree = "<group>"; };
+		909E3C621901661400ADC2E9 /* WePecCtfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCtfViewController.m; sourceTree = "<group>"; };
+		909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecVctfViewController.h; sourceTree = "<group>"; };
+		909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecVctfViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +223,10 @@
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
 				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
 				9054808818FAC28700CE8172 /* WePecCaiViewController.m */,
+				909E3C611901661400ADC2E9 /* WePecCtfViewController.h */,
+				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
+				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
+				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -377,6 +387,8 @@
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
+				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
+				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,

@@ -58,6 +58,17 @@
             }
             return nil;
             break;
+        case 1:
+            switch (path.row) {
+                case 0:
+                    [self performSegueWithIdentifier:@"PecCai2PecCtf" sender:self];
+                    break;
+                case 1:
+                    [self performSegueWithIdentifier:@"PecCai2PecVctf" sender:self];
+                    break;
+                default:
+                    break;
+            }
         case 2:
             switch (path.row) {
                 case 0:
@@ -272,29 +283,6 @@
 - (void)segue_to_PecCai:(id)sender {
     NSLog(@"segue:to_RegWlc~~:");
     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
-}
-- (void)resignFirstResponder:(id)sender {
-    /*if (sender == user_hospital_input) {
-        [user_department_input becomeFirstResponder];
-    }
-    else if (sender == user_department_input) {
-        [user_minister_input becomeFirstResponder];
-    }
-    else if (sender == user_category_input) {
-        [user_speciality_input becomeFirstResponder];
-    }
-    else if (sender == user_speciality_input) {
-        [user_degree_input becomeFirstResponder];
-    }
-    else if (sender == user_degree_input) {
-        [user_workphone_input becomeFirstResponder];
-    }
-    else if (sender == user_workphone_input) {
-        [user_email_input becomeFirstResponder];
-    }
-    else */{
-        [sender resignFirstResponder];
-    }
 }
 
 /*
