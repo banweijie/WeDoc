@@ -36,6 +36,7 @@
 		909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C681901A89900ADC2E9 /* WePecExpViewController.m */; };
 		909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */; };
 		909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */; };
+		909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C7A1901B43B00ADC2E9 /* WePecExpAddNavController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpAddViewController.m; sourceTree = "<group>"; };
 		909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecExpModViewController.h; sourceTree = "<group>"; };
 		909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpModViewController.m; sourceTree = "<group>"; };
+		909E3C791901B43B00ADC2E9 /* WePecExpAddNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecExpAddNavController.h; sourceTree = "<group>"; };
+		909E3C7A1901B43B00ADC2E9 /* WePecExpAddNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecExpAddNavController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,8 @@
 			children = (
 				909E3C671901A89900ADC2E9 /* WePecExpViewController.h */,
 				909E3C681901A89900ADC2E9 /* WePecExpViewController.m */,
+				909E3C791901B43B00ADC2E9 /* WePecExpAddNavController.h */,
+				909E3C7A1901B43B00ADC2E9 /* WePecExpAddNavController.m */,
 				909E3C6F1901B05E00ADC2E9 /* WePecExpAddViewController.h */,
 				909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */,
 				909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */,
@@ -423,6 +428,7 @@
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
+				909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,

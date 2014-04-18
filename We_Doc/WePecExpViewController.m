@@ -24,7 +24,9 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    
+    if (path.section == 1 && path.row == 0) {
+        [self performSegueWithIdentifier:@"PecExpAdd" sender:self];
+    }
     return path;
 }
 // 选中某个Cell触发的事件

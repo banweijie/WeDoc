@@ -1,19 +1,19 @@
 //
-//  WePecNavViewController.m
+//  WePecExpAddNavController.m
 //  We_Doc
 //
-//  Created by WeDoctor on 14-4-13.
+//  Created by WeDoctor on 14-4-19.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WePecNavViewController.h"
+#import "WePecExpAddNavController.h"
 #import "WeAppDelegate.h"
 
-@interface WePecNavViewController ()
+@interface WePecExpAddNavController ()
 
 @end
 
-@implementation WePecNavViewController
+@implementation WePecExpAddNavController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +51,6 @@
 {
     return UIStatusBarStyleLightContent;
 }
-
 /*
 #pragma mark - Navigation
 

@@ -45,3 +45,6 @@ int we_targetTabId;
 #define We_foreground_red_general UIColorFromRGB(134, 11, 38, 1)
 
 #define We_frame_textFieldInCell_general CGRectMake(100, 9, 205, 30)
+
+#define We_init_textFieldInCell_general(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;[tf setClearButtonMode:UITextFieldViewModeWhileEditing];tf.delegate = self;
+#define We_init_textFieldInCell_pholder(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.placeholder = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;[tf setClearButtonMode:UITextFieldViewModeWhileEditing];tf.delegate = self;

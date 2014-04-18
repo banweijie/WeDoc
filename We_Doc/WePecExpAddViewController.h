@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WePecExpAddViewController : UIViewController
+@interface WePecExpAddViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+
 
 @end

@@ -188,10 +188,52 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="从医经历" id="w7q-c0-eK7"/>
+                    <connections>
+                        <segue destination="S9u-8T-ec5" kind="push" identifier="PecExpMod" id="8IN-Kb-oIY"/>
+                        <segue destination="Mph-Ay-TkF" kind="modal" identifier="PecExpAdd" id="CdH-Cj-Hw9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yx6-sk-Vmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3965" y="2271"/>
+            <point key="canvasLocation" x="3961" y="2332"/>
+        </scene>
+        <!--We Pec Exp Add View Controller - 添加从医经历-->
+        <scene sceneID="DkB-06-nZx">
+            <objects>
+                <viewController id="sIk-ey-OTS" customClass="WePecExpAddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="km5-50-gho"/>
+                        <viewControllerLayoutGuide type="bottom" id="DKe-yN-w6w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iai-PG-Ey8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加从医经历" id="pq5-Ue-NzF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTL-GK-OCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5003" y="2332"/>
+        </scene>
+        <!--We Pec Exp Mod View Controller - 修改从医经历-->
+        <scene sceneID="50c-Tl-o7h">
+            <objects>
+                <viewController id="S9u-8T-ec5" customClass="WePecExpModViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9xy-e6-qVq"/>
+                        <viewControllerLayoutGuide type="bottom" id="eAO-Zd-OFs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fNM-NZ-iYi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改从医经历" id="Win-EW-mss"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZ2-ey-syn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4485" y="3124"/>
         </scene>
         <!--We Pec Vctf View Controller - 职业证书-->
         <scene sceneID="ybT-oe-khw">
@@ -210,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdw-e6-z8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4476" y="1617"/>
+            <point key="canvasLocation" x="4476" y="1553"/>
         </scene>
         <!--We Tab Bar View Controller-->
         <scene sceneID="6bn-lv-vZB">
@@ -326,6 +368,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3YG-Oc-SAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="623" y="2216"/>
+        </scene>
+        <!--We Pec Exp Add Nav Controller-->
+        <scene sceneID="IeS-G0-bjm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mph-Ay-TkF" customClass="WePecExpAddNavController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M3i-Vv-kLM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sIk-ey-OTS" kind="relationship" relationship="rootViewController" id="TP2-ou-zmu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6En-OH-woS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4477" y="2332"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
