@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WePecExpModViewController : UIViewController
-@property
+@interface WePecExpModViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate> {
+    
+}
+
 @end

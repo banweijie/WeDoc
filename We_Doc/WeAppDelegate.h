@@ -14,11 +14,13 @@
 + (id)toArrayOrNSDictionary:(NSData *)jsonData;
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString;
 + (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras;
++ (NSString *)toString:(id)unkown;
 @end
 
 // Global Variables
 BOOL we_logined;
 int we_targetTabId;
+int we_expToModify_id;
 
 NSString * we_notice;
 NSMutableArray * user_exps;

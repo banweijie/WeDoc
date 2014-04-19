@@ -9,6 +9,7 @@
 #import "WePecExpViewController.h"
 #include "WeAppDelegate.h"
 #include "WeTableViewCell.h"
+#include "WePecExpModViewController.h"
 
 @interface WePecExpViewController () {
     UITableView *sys_tableView;
@@ -26,6 +27,11 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    if (path.section == 0) {
+        we_expToModify_id = path.row;
+        [self performSegueWithIdentifier:@"PecExpMod" sender:self];
+        return nil;
+    }
     if (path.section == 1 && path.row == 0) {
         [self performSegueWithIdentifier:@"PecExpAdd" sender:self];
         return nil;
@@ -283,7 +289,11 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    if (sys_pathSelected.section == 0) {
+        //[segue destinationViewController].user_ExpModified_id = sys_pathSelected.row;
+        //[[segue destinationViewController] setId:sys_pathSelected.row];
+    }
+}*/
+
 
 @end

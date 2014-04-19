@@ -87,7 +87,13 @@
     [request setHTTPBody:data];
     return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 }
+
+
++ (NSString *)toString:(id)unkown {
+    return [NSString stringWithFormat:@"%@", unkown];
+}
 @end
+
 
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 @implementation NSString (WeDelegate)
