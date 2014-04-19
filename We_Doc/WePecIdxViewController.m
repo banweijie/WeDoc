@@ -36,7 +36,18 @@
             }
             return nil;
             break;
-            
+        case 1:
+            switch (path.row) {
+                case 0:
+                    [self performSegueWithIdentifier:@"push_to_PecBus" sender:self];
+                    break;
+                case 1:
+                    [self performSegueWithIdentifier:@"push_to_PecNot" sender:self];
+                default:
+                    break;
+            }
+            return nil;
+            break;
         default:
             break;
     }

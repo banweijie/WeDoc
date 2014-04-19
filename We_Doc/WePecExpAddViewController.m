@@ -83,7 +83,7 @@
             return 4;
             break;
         case 1:
-            return 2;
+            return 3;
             break;
         default:
             return 0;
@@ -140,15 +140,14 @@
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_exp_hospital];
                     break;
-                    /*
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"科室";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_exp_department];
-                    break;*/
-                case 1:
+                    break;
+                case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"职称";
                     cell.textLabel.font = We_font_textfield_zh_cn;
@@ -176,15 +175,18 @@
 - (void) user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/addExperience.action";
-    NSString *parasString = [NSString stringWithFormat:@"startMonth=%@&startYear=%@&endMonth=%@&endYear=%@&hopital=%@&title=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text];
+    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text, user_exp_department.text];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
         NSString *result = [HTTPResponse objectForKey:@"result"];
+        NSLog(@"%@", HTTPResponse);
+        NSLog(@"%@", result);
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
+            return;
         }
         if ([result isEqualToString:@"2"]) {
             NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];

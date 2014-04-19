@@ -13,7 +13,7 @@
 @property (strong, nonatomic) UIWindow *window;
 + (id)toArrayOrNSDictionary:(NSData *)jsonData;
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString;
-+ (void)resignFirstResponder:(id)sender;
++ (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras;
 @end
 
 BOOL we_logined;
@@ -45,6 +45,8 @@ int we_targetTabId;
 #define We_foreground_red_general UIColorFromRGB(134, 11, 38, 1)
 
 #define We_frame_textFieldInCell_general CGRectMake(100, 9, 205, 30)
+#define We_frame_textView_huge CGRectMake(10, 10, 300, 180)
 
 #define We_init_textFieldInCell_general(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;[tf setClearButtonMode:UITextFieldViewModeWhileEditing];tf.delegate = self;
 #define We_init_textFieldInCell_pholder(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.placeholder = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;[tf setClearButtonMode:UITextFieldViewModeWhileEditing];tf.delegate = self;
+#define We_init_textView_huge(tf, _text, _font) tf = [[UITextView alloc] initWithFrame:We_frame_textView_huge];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentLeft;tf.delegate = self;tf.scrollEnabled = NO;

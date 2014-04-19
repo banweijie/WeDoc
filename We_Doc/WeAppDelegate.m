@@ -68,16 +68,24 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"IOS" forHTTPHeaderField:@"yijiaren"];
-    NSData *data = [parasString dataUsingEncoding:NSASCIIStringEncoding];
+    [request setValue:@"iOS" forHTTPHeaderField:@"yijiaren"];
+    NSData *data = [parasString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:data];
     NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     return received;
 }
 
-+ (void)resignFirstResponder:(id)sender {
-    NSLog(@"resignFirstResponder:");
-    [sender resignFirstResponder];
++ (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras
+{
+    NSLog(@"%@ %@", urlString, paras);
+    NSURL * url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"IOS" forHTTPHeaderField:@"yijiaren"];
+    //[request setValuesForKeysWithDictionary:paras];
+    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:paras];
+    [request setHTTPBody:data];
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 }
 @end
 

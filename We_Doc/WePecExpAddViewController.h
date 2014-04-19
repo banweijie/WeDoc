@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SRMonthPicker.h"
 
-@interface WePecExpAddViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SRMonthPickerDelegate>
+@interface WePecExpAddViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 
 @end
