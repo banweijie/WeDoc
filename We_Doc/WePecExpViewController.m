@@ -12,7 +12,6 @@
 
 @interface WePecExpViewController () {
     UITableView *sys_tableView;
-    NSMutableArray * user_exps;
     UIBarButtonItem * user_edit;
 }
 
@@ -269,6 +268,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [sys_tableView reloadData];
 }
 
 /*

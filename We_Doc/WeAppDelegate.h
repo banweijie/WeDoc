@@ -21,6 +21,7 @@ BOOL we_logined;
 int we_targetTabId;
 
 NSString * we_notice;
+NSMutableArray * user_exps;
 
 @interface NSString (WeDelegate)
 - (NSString *)md5;

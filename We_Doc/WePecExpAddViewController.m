@@ -183,6 +183,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
+            [user_exps addObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", user_exp_minister.text, @"title", user_exp_department.text, @"section", [NSString stringWithFormat:@"%@", [[HTTPResponse objectForKey:@"response"] objectForKey:@"id"]], @"id", nil]];
             [self dismissViewControllerAnimated:YES completion:nil];
             return;
         }
