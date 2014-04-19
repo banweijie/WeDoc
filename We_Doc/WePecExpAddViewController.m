@@ -8,16 +8,18 @@
 
 #import "WePecExpAddViewController.h"
 #import "WeAppDelegate.h"
+#import "SRMonthPicker.h"
 
 @interface WePecExpAddViewController () {
     UITableView * sys_tableView;
-    UITextField * user_exp_starttime;
-    UITextField * user_exp_endtime;
+    UITextField * user_exp_startyear;
+    UITextField * user_exp_startmonth;
+    UITextField * user_exp_endyear;
+    UITextField * user_exp_endmonth;
     UITextField * user_exp_hospital;
     UITextField * user_exp_department;
     UITextField * user_exp_minister;
 }
-
 @end
 
 @implementation WePecExpAddViewController
@@ -29,8 +31,10 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.section == 0 && path.row == 0) [user_exp_starttime becomeFirstResponder];
-    if (path.section == 0 && path.row == 1) [user_exp_endtime becomeFirstResponder];
+    if (path.section == 0 && path.row == 0) [user_exp_startyear becomeFirstResponder];
+    if (path.section == 0 && path.row == 1) [user_exp_startmonth becomeFirstResponder];
+    if (path.section == 0 && path.row == 2) [user_exp_endyear becomeFirstResponder];
+    if (path.section == 0 && path.row == 3) [user_exp_endmonth becomeFirstResponder];
     if (path.section == 1 && path.row == 0) [user_exp_hospital becomeFirstResponder];
     if (path.section == 1 && path.row == 1) [user_exp_department becomeFirstResponder];
     if (path.section == 1 && path.row == 2) [user_exp_minister becomeFirstResponder];
@@ -76,10 +80,10 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 2;
+            return 4;
             break;
         case 1:
-            return 3;
+            return 2;
             break;
         default:
             return 0;
@@ -97,17 +101,31 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"开始时间";
+                    cell.textLabel.text = @"开始年份";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_exp_starttime];
+                    [cell addSubview:user_exp_startyear];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"结束时间";
+                    cell.textLabel.text = @"开始月份";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_exp_endtime];
+                    [cell addSubview:user_exp_startmonth];
+                    break;
+                case 2:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"结束年份";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell addSubview:user_exp_endyear];
+                    break;
+                case 3:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"结束月份";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell addSubview:user_exp_endmonth];
                     break;
                 default:
                     break;
@@ -122,14 +140,15 @@
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_exp_hospital];
                     break;
+                    /*
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"科室";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_exp_department];
-                    break;
-                case 2:
+                    break;*/
+                case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"职称";
                     cell.textLabel.font = We_font_textfield_zh_cn;
@@ -155,27 +174,61 @@
     
 }
 - (void) user_save_onpress:(id)sender {
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/addExperience.action";
+    NSString *parasString = [NSString stringWithFormat:@"startMonth=%@&startYear=%@&endMonth=%@&endYear=%@&hopital=%@&title=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp = [fields objectForKey:key];
+                if (tmp != NULL) errorMessage = tmp;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
 }
-- (void) sys_save:(id)sender {
-    
+- (void)monthPickerDidChangeDate:(SRMonthPicker *)monthPicker {
+    NSLog(@"monthpicker~");
 }
-
 /*
  [AREA]
  Functions
 */
-- (BOOL) hasModified {
-    return NO;
-}
+
 /*
  [AREA]
  Overrided functions
  */
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)tf {
+    return YES;
+}
 // 任何文本框结束编辑后都会调用此方法
 -(void)textFieldDidEndEditing:(UITextField *)sender
 {
-    UIDatePicker
+    
 }
 
 // 点击键盘上的return后调用的方法
@@ -208,8 +261,10 @@
     self.navigationItem.rightBarButtonItem = user_save;
     
     // textFields
-    We_init_textFieldInCell_pholder(user_exp_starttime, @"如：2012年4月", We_font_textfield_zh_cn)
-    We_init_textFieldInCell_pholder(user_exp_endtime, @"如：2014年9月", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_startyear, @"", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_startmonth, @"", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_endyear, @"", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_endmonth, @"", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_hospital, @"如：北京三医", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_department, @"如：皮肤科", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_minister, @"如：主任", We_font_textfield_zh_cn)

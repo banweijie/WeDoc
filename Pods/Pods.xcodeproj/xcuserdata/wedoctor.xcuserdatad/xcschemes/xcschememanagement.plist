@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AFPopupView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SRMonthPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B3E7401D06043E5B0B0BF0B</key>
+		<key>6DFDF673EDBB4A449390783B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEFB11F74624441B802FECFA</key>
+		<key>CBACFA789CB4435390177632</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D441F5B87EF0479BA70CA8A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF3F372071074F4E92EAF5FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

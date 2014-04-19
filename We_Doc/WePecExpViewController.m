@@ -26,6 +26,7 @@
 {
     if (path.section == 1 && path.row == 0) {
         [self performSegueWithIdentifier:@"PecExpAdd" sender:self];
+        return nil;
     }
     return path;
 }
