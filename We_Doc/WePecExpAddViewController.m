@@ -29,8 +29,12 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    
-    return path;
+    if (path.section == 0 && path.row == 0) [user_exp_starttime becomeFirstResponder];
+    if (path.section == 0 && path.row == 1) [user_exp_endtime becomeFirstResponder];
+    if (path.section == 1 && path.row == 0) [user_exp_hospital becomeFirstResponder];
+    if (path.section == 1 && path.row == 1) [user_exp_department becomeFirstResponder];
+    if (path.section == 1 && path.row == 2) [user_exp_minister becomeFirstResponder];
+    return nil;
 }
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
@@ -146,14 +150,24 @@
  [AREA]
  Response functions
  */
-- (void) we_cancel:(id)sender {
+- (void) user_cancel_onpress:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
-- (void) we_save:(id)sender {
+- (void) user_save_onpress:(id)sender {
+    
+}
+- (void) sys_save:(id)sender {
     
 }
 
-
+/*
+ [AREA]
+ Functions
+*/
+- (BOOL) hasModified {
+    return NO;
+}
 /*
  [AREA]
  Overrided functions
@@ -161,7 +175,7 @@
 // 任何文本框结束编辑后都会调用此方法
 -(void)textFieldDidEndEditing:(UITextField *)sender
 {
-    
+    UIDatePicker
 }
 
 // 点击键盘上的return后调用的方法
@@ -186,16 +200,16 @@
     // Do any additional setup after loading the view.
     
     // cancel button
-    UIBarButtonItem * user_cancel = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(we_cancel:)];
+    UIBarButtonItem * user_cancel = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(user_cancel_onpress:)];
     self.navigationItem.leftBarButtonItem = user_cancel;
     
     // save button
-    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(we_save:)];
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
     
     // textFields
-    We_init_textFieldInCell_pholder(user_exp_starttime, @"如：2000年1月", We_font_textfield_zh_cn)
-    We_init_textFieldInCell_pholder(user_exp_endtime, @"如：2009年12月", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_starttime, @"如：2012年4月", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_pholder(user_exp_endtime, @"如：2014年9月", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_hospital, @"如：北京三医", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_department, @"如：皮肤科", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_minister, @"如：主任", We_font_textfield_zh_cn)
