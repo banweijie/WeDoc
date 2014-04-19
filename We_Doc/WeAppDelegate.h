@@ -16,8 +16,11 @@
 + (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras;
 @end
 
+// Global Variables
 BOOL we_logined;
 int we_targetTabId;
+
+NSString * we_notice;
 
 @interface NSString (WeDelegate)
 - (NSString *)md5;

@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "QQ20140410-2.png"
+      "filename" : "me-notifications-new.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "me-notifications-new@2x.png"
     }
   ],
   "info" : {

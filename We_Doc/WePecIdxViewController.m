@@ -133,7 +133,7 @@
                     cell.textLabel.text = @"职业信息";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-jobinfo"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
@@ -141,7 +141,7 @@
                     cell.textLabel.text = @"从医经历";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-experience"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -155,7 +155,7 @@
                     cell.textLabel.text = @"业务设置";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-worksetting"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 1:
@@ -163,7 +163,7 @@
                     cell.textLabel.text = @"公告";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-bulletinboard"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
@@ -171,7 +171,7 @@
                     cell.textLabel.text = @"我的众筹";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-crowdfunding"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -185,7 +185,7 @@
                     cell.textLabel.text = @"我的余额";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-balance"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -199,7 +199,7 @@
                     cell.textLabel.text = @"我的加号";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-appointment"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 1:
@@ -207,7 +207,7 @@
                     cell.textLabel.text = @"交易记录";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-moneyhistory"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -221,7 +221,7 @@
                     cell.textLabel.text = @"设置";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-setting"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -235,7 +235,7 @@
                     cell.textLabel.text = @"关于";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"phone.png"];
+                    cell.imageView.image = [UIImage imageNamed:@"me-info"];
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:

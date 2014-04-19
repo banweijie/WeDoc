@@ -181,8 +181,6 @@
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
         NSString *result = [HTTPResponse objectForKey:@"result"];
-        NSLog(@"%@", HTTPResponse);
-        NSLog(@"%@", result);
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];

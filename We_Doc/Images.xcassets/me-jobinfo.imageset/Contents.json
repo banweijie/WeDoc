@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "QQ20140410-2.png"
+      "filename" : "me-jobinfo.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "me-jobinfo@2x.png"
     }
   ],
   "info" : {

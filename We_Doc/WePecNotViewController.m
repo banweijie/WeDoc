@@ -86,7 +86,6 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"开始年份";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_notification_input];
@@ -106,7 +105,43 @@
  Response functions
  */
 - (void) user_save_onpress:(id)sender {
-    NSLog(@"%@", user_notification_input.text);
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
+    NSString *parasString = [NSString stringWithFormat:@"notice=%@", user_notification_input.text];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
+    
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            we_notice = user_notification_input.text;
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp = [fields objectForKey:key];
+                if (tmp != NULL) errorMessage = tmp;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -123,8 +158,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    We_init_textView_huge(user_notification_input, @"目前尚未有公告", We_font_textfield_zh_cn)
-    
+    we_notice = [NSString stringWithFormat:@"%@", we_notice];
+    //NSLog(@"%@ %@", we_notice, [NSString stringWithUTF8String:object_getClassName(we_notice)]);
+    if ([we_notice isEqualToString:@"<null>"]) {
+        We_init_textView_huge(user_notification_input, @"目前暂未有公告", We_font_textfield_zh_cn)
+    }
+    else {
+        We_init_textView_huge(user_notification_input, we_notice, We_font_textfield_zh_cn)
+    }
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;

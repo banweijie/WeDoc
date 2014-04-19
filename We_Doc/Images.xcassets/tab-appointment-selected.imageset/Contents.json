@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "QQ20140410-2.png"
+      "filename" : "tab-appointment-selected.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "tab-appointment-selected@2x.png"
     }
   ],
   "info" : {
