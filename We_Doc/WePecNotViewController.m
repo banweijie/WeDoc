@@ -117,6 +117,7 @@
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
             we_notice = user_notification_input.text;
+            [self.navigationController popViewControllerAnimated:YES];
             return;
         }
         if ([result isEqualToString:@"2"]) {

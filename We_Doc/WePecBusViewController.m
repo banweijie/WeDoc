@@ -33,39 +33,52 @@
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return tv.rowHeight;
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) return 40;
     return 20;
 }
 // 询问每个段落的头部标题
 - (NSString *)tableView:(UITableView *)tv titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) return @"出诊时间";
     return @"";
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
+    if (section == 1) return 30;
     if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
     return 10;
 }
 // 询问每个段落的尾部标题
 - (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
+    if (section == 2) return @"患者发出咨询请求后，若您未能在该时限内回复则取消咨询，并将咨询费返还至患者账户";
     return @"";
 }
 // 询问每个段落的尾部
--(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
+//-(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
     //if (section == 1) return sys_countDown_demo;
-    return nil;
-}
+   // return nil;
+//}
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 1;
+    return 4;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
+            return 2;
+            break;
+        case 1:
+            return 1;
+            break;
+        case 2:
+            return 2;
+            break;
+        case 3:
             return 1;
             break;
         default:
@@ -84,14 +97,48 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"开始年份";
+                    cell.textLabel.text = @"周三 下午";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    //[cell addSubview:user_notification_input];
+                    break;
+                case 1:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"周五 上午";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                default:
+                    break;
+            }
+            break;
+        case 1:
+            cell.contentView.backgroundColor = We_background_cell_general;
+            cell.textLabel.text = @"添加出诊时间";
+            cell.textLabel.font = We_font_textfield_zh_cn;
+            cell.textLabel.textColor = We_foreground_black_general;
+            break;
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"咨询价格";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    break;
+                case 1:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"加号预诊费";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
                     break;
                 default:
                     break;
             }
+            break;
+        case 3:
+            cell.contentView.backgroundColor = We_background_cell_general;
+            cell.textLabel.text = @"咨询回复时限";
+            cell.textLabel.font = We_font_textfield_zh_cn;
+            cell.textLabel.textColor = We_foreground_black_general;
             break;
         default:
             break;

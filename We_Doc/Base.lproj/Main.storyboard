@@ -273,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZ2-ey-syn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4485" y="3124"/>
+            <point key="canvasLocation" x="5011" y="3124"/>
         </scene>
         <!--We Pec Vctf View Controller - 职业证书-->
         <scene sceneID="ybT-oe-khw">
@@ -306,6 +306,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="bni-Ri-avn" kind="relationship" relationship="viewControllers" id="rex-yh-AU6"/>
+                        <segue destination="G9f-X1-J9c" kind="relationship" relationship="viewControllers" id="tXO-bP-Iow"/>
                         <segue destination="FbH-Go-jOX" kind="relationship" relationship="viewControllers" id="gV7-Zh-poc"/>
                         <segue destination="bHV-1f-jWO" kind="relationship" relationship="viewControllers" id="Pfd-v9-efB"/>
                     </connections>
@@ -318,7 +319,7 @@
         <scene sceneID="ZFO-BM-93v">
             <objects>
                 <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" customClass="WePecNavViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人中心" id="f8O-K2-dEM"/>
+                    <tabBarItem key="tabBarItem" title="个人中心" image="tab-me" id="f8O-K2-dEM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s11-tv-Fsj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -371,11 +372,30 @@
             </objects>
             <point key="canvasLocation" x="1149" y="2216"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="0Sn-tC-NUq">
+            <objects>
+                <viewController id="jlN-QD-fTq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QGX-h2-BhN"/>
+                        <viewControllerLayoutGuide type="bottom" id="J3N-EO-ur8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xNv-ul-6lW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JJT-vb-nXs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uad-bp-ueb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="2976"/>
+        </scene>
         <!--Navigation Controller - 众筹项目-->
         <scene sceneID="grl-Bt-DYQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FbH-Go-jOX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="众筹项目" id="NTT-Jw-ARP"/>
+                    <tabBarItem key="tabBarItem" title="众筹项目" image="tab-crowdfunding" id="NTT-Jw-ARP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7cq-9M-Xhb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -390,11 +410,11 @@
             </objects>
             <point key="canvasLocation" x="626" y="1504"/>
         </scene>
-        <!--Navigation Controller - 首页-->
+        <!--We Map Nav Controller - 首页-->
         <scene sceneID="uc0-Nf-QG3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bni-Ri-avn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" id="cEs-2e-fmZ"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bni-Ri-avn" customClass="WeMapNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="tab-home" id="cEs-2e-fmZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WtN-4z-h99">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -427,7 +447,32 @@
             </objects>
             <point key="canvasLocation" x="4477" y="2332"/>
         </scene>
+        <!--Navigation Controller - 咨询室-->
+        <scene sceneID="vRA-4K-jvF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G9f-X1-J9c" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="咨询室" image="tab-chatroom" id="1TI-ob-JSf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xeC-pU-Tq7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jlN-QD-fTq" kind="relationship" relationship="rootViewController" id="YYE-zf-DKc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nn3-y8-Ln6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613" y="2976"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="tab-chatroom" width="26" height="24"/>
+        <image name="tab-crowdfunding" width="33" height="24"/>
+        <image name="tab-home" width="24" height="24"/>
+        <image name="tab-me" width="25" height="24"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

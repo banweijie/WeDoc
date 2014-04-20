@@ -38,6 +38,17 @@ extern int we_targetTabId;
     // Other code...
     //[self setSelectedIndex:1];
     [super viewDidAppear:animated];
+    
+    self.tabBar.selectedImageTintColor = We_foreground_red_general;
+    
+    UITabBarItem * tmp0 = [self.tabBar.items objectAtIndex:0];
+    tmp0.selectedImage = [UIImage imageNamed:@"tab-home-selected"];
+    UITabBarItem * tmp1 = [self.tabBar.items objectAtIndex:1];
+    tmp1.selectedImage = [UIImage imageNamed:@"tab-chatroom-selected"];
+    UITabBarItem * tmp2 = [self.tabBar.items objectAtIndex:2];
+    tmp2.selectedImage = [UIImage imageNamed:@"tab-crowdfunding-selected"];
+    UITabBarItem * tmp3 = [self.tabBar.items objectAtIndex:3];
+    tmp3.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
 }
 - (void)didReceiveMemoryWarning
 {
