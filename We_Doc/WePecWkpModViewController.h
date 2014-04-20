@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WePecWkpModViewController : UIViewController
+@interface WePecWkpModViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @end

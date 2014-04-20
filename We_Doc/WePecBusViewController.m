@@ -119,7 +119,7 @@
     switch (indexPath.section) {
         case 0:
             cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = [NSString stringWithFormat:@"%@        %@        %@", [WeAppDelegate transitionDayOfWeekFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@                                %@", [WeAppDelegate transitionDayOfWeekFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             break;
@@ -220,13 +220,54 @@
 }
 
 - (void)user_save_onpress:(id)sender {
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
+    NSString *parasString = [NSString stringWithFormat:@"work_period=%@&plus_price=%@&consult_price=%@&max_response_gap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            we_workPeriod_save = we_workPeriod;
+            we_plusPrice = user_plusPrice_value;
+            we_consultPrice = user_consultPrice_value;
+            we_maxResponseGap = user_maxResponseGap_value;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    we_workPeriod = we_workPeriod_save;
     
     // save button
     user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];

@@ -337,9 +337,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="修改出诊时间" id="4dd-tg-2iS"/>
                     <connections>
-                        <segue destination="zrT-MJ-mcW" kind="push" id="p97-ix-W3p"/>
-                        <segue destination="iPk-9L-tYZ" kind="push" id="PNH-k3-thk"/>
-                        <segue destination="CbQ-YC-Gv4" kind="push" id="hf8-zt-DF2"/>
+                        <segue destination="zrT-MJ-mcW" kind="push" identifier="PecWkpMod_pushto_SelDay" id="p97-ix-W3p"/>
+                        <segue destination="iPk-9L-tYZ" kind="push" identifier="PecWkpMod_pushto_SelPer" id="PNH-k3-thk"/>
+                        <segue destination="CbQ-YC-Gv4" kind="push" identifier="PecWkpMod_pushto_SelTyp" id="hf8-zt-DF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rn5-XZ-j1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,8 +606,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RK1-WL-2Dy"/>
-        <segue reference="W2i-ad-uAW"/>
-        <segue reference="Qsg-UL-YJ4"/>
+        <segue reference="p97-ix-W3p"/>
+        <segue reference="hf8-zt-DF2"/>
+        <segue reference="PNH-k3-thk"/>
     </inferredMetricsTieBreakers>
 </document>

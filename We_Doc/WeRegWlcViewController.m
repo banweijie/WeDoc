@@ -157,6 +157,7 @@ UITextField * user_password_input;
             we_plusPrice = [WeAppDelegate toString:[response objectForKey:@"plusPrice"]];
             we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
             we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
+            we_workPeriod_save = [NSString stringWithString:we_workPeriod];
             return YES;
         }
         if ([result isEqualToString:@"2"]) {

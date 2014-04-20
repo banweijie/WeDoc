@@ -34,6 +34,7 @@ NSString * we_consultPrice;
 NSString * we_plusPrice;
 NSString * we_maxResponseGap;
 NSString * we_workPeriod;
+NSString * we_workPeriod_save;
 
 NSMutableArray * user_exps;
 
