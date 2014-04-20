@@ -158,6 +158,16 @@ UITextField * user_password_input;
             we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
             we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
             we_workPeriod_save = [NSString stringWithString:we_workPeriod];
+            we_hospital = [WeAppDelegate toString:[[response objectForKey:@"hospital"] objectForKey:@"name"]];
+            we_section = [WeAppDelegate toString:[[response objectForKey:@"section"] objectForKey:@"text"]];
+            we_title = [WeAppDelegate toString:[response objectForKey:@"title"]];
+            we_category = [WeAppDelegate toString:[response objectForKey:@"category"]];
+            we_skills = [WeAppDelegate toString:[response objectForKey:@"skills"]];
+            we_degree = [WeAppDelegate toString:[response objectForKey:@"degree"]];
+            we_email = [WeAppDelegate toString:[response objectForKey:@"email"]];
+            we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
+            we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
+            we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
             return YES;
         }
         if ([result isEqualToString:@"2"]) {

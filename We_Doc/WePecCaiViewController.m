@@ -23,14 +23,6 @@
     UITextField * user_workphone_input;
     UITextField * user_email_input;
     UITableView * sys_tableView;
-    NSString * we_cai_data_hospital;
-    NSString * we_cai_data_department;
-    NSString * we_cai_data_minister;
-    NSString * we_cai_data_category;
-    NSString * we_cai_data_specialiy;
-    NSString * we_cai_data_degree;
-    NSString * we_cai_data_workphone;
-    NSString * we_cai_data_email;
 }
 
 /*
@@ -149,16 +141,16 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 3;
+            return 4;
             break;
         case 1:
-            return 2;
+            return 3;
             break;
         case 2:
             return 3;
             break;
         case 3:
-            return 2;
+            return 1;
             break;
         default:
             return 0;
@@ -195,6 +187,12 @@
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_minister_input];
                     break;
+                case 3:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"团队介绍";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                 default:
                     break;
             }
@@ -211,6 +209,13 @@
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"职业证书";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                case 2:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"工作证照片";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -249,13 +254,6 @@
         case 3:
             switch (indexPath.row) {
                 case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"科室电话";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_workphone_input];
-                    break;
-                case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"邮箱";
                     cell.textLabel.font = We_font_textfield_zh_cn;
@@ -302,7 +300,7 @@
 -(void)textFieldDidEndEditing:(UITextField *)sender
 {
     if (sender == user_hospital_input) {
-        NSLog(@"%@ %@", user_hospital_input.text, we_cai_data_hospital);
+       // NSLog(@"%@ %@", user_hospital_input.text, we_cai_data_hospital);
     }
     //[super textFieldDidBeginEditing:sender];
 }
@@ -314,24 +312,59 @@
     return true;
 }
 
+- (void)user_save_onpress:(id)sender {
+    /*
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
+    NSString *parasString = [NSString stringWithFormat:@"hospital=%@&section=%@&consult_price=%@&max_response_gap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
+    
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            we_workPeriod_save = we_workPeriod;
+            we_plusPrice = user_plusPrice_value;
+            we_consultPrice = user_consultPrice_value;
+            we_maxResponseGap = user_maxResponseGap_value;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];*/
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // gather information from server
-    we_cai_data_hospital = @"北京大学第三医院";
-    we_cai_data_department = @"皮肤科";
-    we_cai_data_minister = @"主任";
-    we_cai_data_category = @"中医";
-    we_cai_data_specialiy = @"专治跌打损伤";
-    we_cai_data_degree = @"医学博士";
-    we_cai_data_workphone = @"18810521309";
-    we_cai_data_email = @"stevenhtx1993@163.com";
-    
     // user_hospital_input;
     user_hospital_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_hospital_input.text = @"北京大学第三医院";
+    user_hospital_input.placeholder = @"必填";
+    user_hospital_input.text = we_hospital;
     user_hospital_input.font = We_font_textfield_zh_cn;
     user_hospital_input.textAlignment = NSTextAlignmentRight;
     [user_hospital_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -339,7 +372,8 @@
     
     // user_department_input;
     user_department_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_department_input.text = @"皮肤科";
+    user_department_input.placeholder = @"必填";
+    user_department_input.text = we_section;
     user_department_input.font = We_font_textfield_zh_cn;
     user_department_input.textAlignment = NSTextAlignmentRight;
     [user_department_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -347,7 +381,8 @@
     
     // user_minister_input;
     user_minister_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_minister_input.text = @"主任";
+    user_minister_input.placeholder = @"必填";
+    user_minister_input.text = we_title;
     user_minister_input.font = We_font_textfield_zh_cn;
     user_minister_input.textAlignment = NSTextAlignmentRight;
     [user_minister_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -355,7 +390,8 @@
     
     // user_category_input;
     user_category_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_category_input.text = @"普通外科";
+    user_category_input.placeholder = @"选填";
+    user_category_input.text = we_category;
     user_category_input.font = We_font_textfield_zh_cn;
     user_category_input.textAlignment = NSTextAlignmentRight;
     [user_category_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -363,7 +399,8 @@
     
     // user_speciality_input;
     user_speciality_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_speciality_input.text = @"专治跌打损伤";
+    user_speciality_input.placeholder = @"选填";
+    user_speciality_input.text = we_skills;
     user_speciality_input.font = We_font_textfield_zh_cn;
     user_speciality_input.textAlignment = NSTextAlignmentRight;
     [user_speciality_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -371,24 +408,17 @@
     
     // user_degree_input;
     user_degree_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_degree_input.text = @"医学博士";
+    user_degree_input.placeholder = @"选填";
+    user_degree_input.text = we_degree;
     user_degree_input.font = We_font_textfield_zh_cn;
     user_degree_input.textAlignment = NSTextAlignmentRight;
     [user_degree_input setClearButtonMode:UITextFieldViewModeWhileEditing];
     user_degree_input.delegate = self;
     
-    // user_workphone_input;
-    user_workphone_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_workphone_input.text = @"18810521309";
-    user_workphone_input.font = We_font_textfield_zh_cn;
-    user_workphone_input.textAlignment = NSTextAlignmentRight;
-    [user_workphone_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_workphone_input.delegate = self;
-    
-    
     // user_email_input;
     user_email_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_email_input.text = @"stevenhtx1993@163.com";
+    user_email_input.placeholder = @"选填";
+    user_email_input.text = we_email;
     user_email_input.font = We_font_textfield_zh_cn;
     user_email_input.textAlignment = NSTextAlignmentRight;
     [user_email_input setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -401,6 +431,10 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = We_background_general;
     [self.view addSubview:sys_tableView];
+    
+    // save button
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
+    self.navigationItem.rightBarButtonItem = user_save;
 }
 
 - (void)didReceiveMemoryWarning

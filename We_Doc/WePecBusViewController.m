@@ -119,7 +119,7 @@
     switch (indexPath.section) {
         case 0:
             cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@                                %@", [WeAppDelegate transitionDayOfWeekFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@                                            %@", [WeAppDelegate transitionDayOfWeekFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             break;

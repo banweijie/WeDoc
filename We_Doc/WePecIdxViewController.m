@@ -26,6 +26,9 @@
     switch (path.section) {
         case 0:
             switch (path.row) {
+                case 0:
+                    [self performSegueWithIdentifier:@"PecIdx_pushto_PecPea" sender:self];
+                    break;
                 case 1:
                     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
                     break;
@@ -60,7 +63,7 @@
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) {
-        return 85;
+        return tv.rowHeight * 2;
     }
     return tv.rowHeight;
 }
@@ -123,10 +126,25 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
+    UILabel * l1;
+    UILabel * l2;
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
                 case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    l1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 240, 25)];
+                    l1.text = we_name;
+                    if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
+                    l1.font = We_font_textfield_zh_cn;
+                    l1.textColor = We_foreground_black_general;
+                    [cell.contentView addSubview:l1];
+                    l2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 45, 240, 25)];
+                    l2.text = we_phone;
+                    l2.textColor = We_foreground_gray_general;
+                    l2.font = We_font_textfield_zh_cn;
+                    [cell.contentView addSubview:l2];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -276,7 +294,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (!we_logined) [self segue_to_RegWlc:nil];
+    
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
@@ -287,6 +305,11 @@
     [self.view addSubview:sys_tableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!we_logined) [self segue_to_RegWlc:nil];
+    [sys_tableView reloadData];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

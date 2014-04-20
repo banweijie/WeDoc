@@ -18,16 +18,21 @@
 + (NSString *)transitionDayOfWeekFromChar:(NSString *)dayOfWeek;
 + (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay;
 + (NSString *)transitionTypeOfPeriodFromChar:(NSString *)TypeOfPeriod;
++ (NSString *)transitionTitleFromChar:(NSString *)TypeOfPeriod;
++ (NSString *)transitionGenderFromChar:(NSString *)TypeOfPeriod;
 @end
 
 // Global Variables
 BOOL we_logined;
 int we_targetTabId;
+NSString * we_vericode_type;
 int we_expToModify_id;
 int we_wkpTOModify_id;
+
 NSString * we_wkp_dayOfWeek;
 NSString * we_wkp_periodOfDay;
 NSString * we_wkp_typeOfPeriod;
+NSString * we_pea_gender;
 
 NSString * we_notice;
 NSString * we_consultPrice;
@@ -35,6 +40,16 @@ NSString * we_plusPrice;
 NSString * we_maxResponseGap;
 NSString * we_workPeriod;
 NSString * we_workPeriod_save;
+NSString * we_hospital;
+NSString * we_section;
+NSString * we_title;
+NSString * we_category;
+NSString * we_skills;
+NSString * we_degree;
+NSString * we_email;
+NSString * we_phone;
+NSString * we_name;
+NSString * we_gender;
 
 NSMutableArray * user_exps;
 

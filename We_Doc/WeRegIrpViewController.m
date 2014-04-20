@@ -39,9 +39,16 @@ extern int we_targetTabId;
     if (path.section == 1) {
         [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
         if (![self checkRepeatPassword]) return;
-        if (![self submitPassword]) return;
-        we_logined = YES;
-        we_targetTabId = 2;
+        if ([we_vericode_type isEqualToString:@"NewPassword"]) {
+            if (![self submitPassword]) return;
+            we_logined = YES;
+        }
+        else
+        if ([we_vericode_type isEqualToString:@"ModifyPassword"]) {
+            if (![self changePassword]) return;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else return;
         //[self segue_to_PmpIdx:nil];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -103,7 +110,13 @@ extern int we_targetTabId;
     }
     if (indexPath.section == 1) {
         cell.contentView.backgroundColor = We_background_red_tableviewcell;
-        cell.textLabel.text = @"完成注册";
+        if ([we_vericode_type isEqualToString:@"NewPassword"]) {
+            cell.textLabel.text = @"完成注册";
+        }
+        else
+            if ([we_vericode_type isEqualToString:@"ModifyPassword"]) {
+                cell.textLabel.text = @"修改密码";
+            }
         cell.textLabel.font = We_font_button_zh_cn;
         cell.textLabel.textColor = We_foreground_white_general;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -157,6 +170,46 @@ extern int we_targetTabId;
     [notPermitted show];
     return NO;
 }
+
+- (BOOL) changePassword {
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/user/updateInfo.action";
+    NSString *parasString = [NSString stringWithFormat:@"password=%@", [user_loginPassword_input.text md5]];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
+    
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            return YES;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"修改密码失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+    return NO;
+}
+
 - (BOOL) submitPassword {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = @"http://115.28.222.1/yijiaren/user/doRegister.action";

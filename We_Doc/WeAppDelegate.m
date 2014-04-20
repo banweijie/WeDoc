@@ -90,7 +90,9 @@
 
 
 + (NSString *)toString:(id)unkown {
-    return [NSString stringWithFormat:@"%@", unkown];
+    NSString * tmp = [NSString stringWithFormat:@"%@", unkown];
+    if ([tmp isEqualToString:@"<null>"]) return @"";
+    else return tmp;
 }
 
 + (NSString *)transitionDayOfWeekFromChar:(NSString *)dayOfWeek {
@@ -115,6 +117,20 @@
     if ([TypeOfPeriod isEqualToString:@"Z"]) return @"专家门诊";
     if ([TypeOfPeriod isEqualToString:@"T"]) return @"特殊门诊";
     if ([TypeOfPeriod isEqualToString:@"P"]) return @"普通门诊";
+    return @"出错啦！";
+}
+
++ (NSString *)transitionTitleFromChar:(NSString *)title {
+    if ([title isEqualToString:@"Z"]) return @"专家门诊";
+    if ([title isEqualToString:@"T"]) return @"特殊门诊";
+    if ([title isEqualToString:@"P"]) return @"普通门诊";
+    return @"出错啦！";
+}
+
++ (NSString *)transitionGenderFromChar:(NSString *)gender {
+    if ([gender isEqualToString:@"M"]) return @"男";
+    if ([gender isEqualToString:@"F"]) return @"女";
+    if ([gender isEqualToString:@"U"]) return @"未设置";
     return @"出错啦！";
 }
 @end
