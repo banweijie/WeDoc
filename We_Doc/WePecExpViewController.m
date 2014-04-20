@@ -254,7 +254,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // save button
+    // edit button
     user_edit = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(user_edit_onpress:)];
     self.navigationItem.rightBarButtonItem = user_edit;
     

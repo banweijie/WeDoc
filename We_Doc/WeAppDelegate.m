@@ -92,6 +92,31 @@
 + (NSString *)toString:(id)unkown {
     return [NSString stringWithFormat:@"%@", unkown];
 }
+
++ (NSString *)transitionDayOfWeekFromChar:(NSString *)dayOfWeek {
+    if ([dayOfWeek isEqualToString:@"1"]) return @"周一";
+    if ([dayOfWeek isEqualToString:@"2"]) return @"周二";
+    if ([dayOfWeek isEqualToString:@"3"]) return @"周三";
+    if ([dayOfWeek isEqualToString:@"4"]) return @"周四";
+    if ([dayOfWeek isEqualToString:@"5"]) return @"周五";
+    if ([dayOfWeek isEqualToString:@"6"]) return @"周六";
+    if ([dayOfWeek isEqualToString:@"7"]) return @"周日";
+    return @"出错啦！";
+}
+
+
++ (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay {
+    if ([PeriodOfDay isEqualToString:@"A"]) return @"上午";
+    if ([PeriodOfDay isEqualToString:@"B"]) return @"下午";
+    return @"出错啦！";
+}
+
++ (NSString *)transitionTypeOfPeriodFromChar:(NSString *)TypeOfPeriod {
+    if ([TypeOfPeriod isEqualToString:@"Z"]) return @"专家门诊";
+    if ([TypeOfPeriod isEqualToString:@"T"]) return @"特殊门诊";
+    if ([TypeOfPeriod isEqualToString:@"P"]) return @"普通门诊";
+    return @"出错啦！";
+}
 @end
 
 

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0CB24654A3894C74B50B7DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C83D077ED634B6A9726A5B2 /* libPods.a */; };
 		9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeRegNavViewController.m */; };
+		9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */; };
+		9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */; };
+		9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDF11903EEC800CE4A7A /* WePecWkpAddNavController.m */; };
+		9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDF41904051600CE4A7A /* WeSelDayViewController.m */; };
+		9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDF71904052D00CE4A7A /* WeSelPerViewController.m */; };
+		9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDFA1904053C00CE4A7A /* WeSelTypViewController.m */; };
 		9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */; };
 		9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC621902E32F00EA8310 /* WeMapNavController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
@@ -57,6 +63,18 @@
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9013553B18F6626900436A24 /* WeRegNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegNavViewController.h; sourceTree = "<group>"; };
 		9013553C18F6626900436A24 /* WeRegNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegNavViewController.m; sourceTree = "<group>"; };
+		9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpAddViewController.h; sourceTree = "<group>"; };
+		9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecWkpAddViewController.m; sourceTree = "<group>"; };
+		9026EDED1903EEAD00CE4A7A /* WePecWkpModViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpModViewController.h; sourceTree = "<group>"; };
+		9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecWkpModViewController.m; sourceTree = "<group>"; };
+		9026EDF01903EEC800CE4A7A /* WePecWkpAddNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpAddNavController.h; sourceTree = "<group>"; };
+		9026EDF11903EEC800CE4A7A /* WePecWkpAddNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecWkpAddNavController.m; sourceTree = "<group>"; };
+		9026EDF31904051600CE4A7A /* WeSelDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelDayViewController.h; sourceTree = "<group>"; };
+		9026EDF41904051600CE4A7A /* WeSelDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelDayViewController.m; sourceTree = "<group>"; };
+		9026EDF61904052D00CE4A7A /* WeSelPerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelPerViewController.h; sourceTree = "<group>"; };
+		9026EDF71904052D00CE4A7A /* WeSelPerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelPerViewController.m; sourceTree = "<group>"; };
+		9026EDF91904053C00CE4A7A /* WeSelTypViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelTypViewController.h; sourceTree = "<group>"; };
+		9026EDFA1904053C00CE4A7A /* WeSelTypViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelTypViewController.m; sourceTree = "<group>"; };
 		9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTableViewCell.h; sourceTree = "<group>"; };
 		9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTableViewCell.m; sourceTree = "<group>"; };
 		9039CC611902E32F00EA8310 /* WeMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMapNavController.h; sourceTree = "<group>"; };
@@ -288,6 +306,18 @@
 			children = (
 				907FE5A4190252580070DB3E /* WePecBusViewController.h */,
 				907FE5A5190252580070DB3E /* WePecBusViewController.m */,
+				9026EDF01903EEC800CE4A7A /* WePecWkpAddNavController.h */,
+				9026EDF11903EEC800CE4A7A /* WePecWkpAddNavController.m */,
+				9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */,
+				9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */,
+				9026EDED1903EEAD00CE4A7A /* WePecWkpModViewController.h */,
+				9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */,
+				9026EDF31904051600CE4A7A /* WeSelDayViewController.h */,
+				9026EDF41904051600CE4A7A /* WeSelDayViewController.m */,
+				9026EDF61904052D00CE4A7A /* WeSelPerViewController.h */,
+				9026EDF71904052D00CE4A7A /* WeSelPerViewController.m */,
+				9026EDF91904053C00CE4A7A /* WeSelTypViewController.h */,
+				9026EDFA1904053C00CE4A7A /* WeSelTypViewController.m */,
 			);
 			name = BusinessSetting;
 			sourceTree = "<group>";
@@ -456,15 +486,20 @@
 				9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */,
 				9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
+				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
 				9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */,
 				904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
+				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
+				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
 				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
+				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
+				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
@@ -472,6 +507,7 @@
 				909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */,
 				907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
+				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 			);

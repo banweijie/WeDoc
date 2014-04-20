@@ -15,14 +15,26 @@
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString;
 + (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras;
 + (NSString *)toString:(id)unkown;
++ (NSString *)transitionDayOfWeekFromChar:(NSString *)dayOfWeek;
++ (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay;
++ (NSString *)transitionTypeOfPeriodFromChar:(NSString *)TypeOfPeriod;
 @end
 
 // Global Variables
 BOOL we_logined;
 int we_targetTabId;
 int we_expToModify_id;
+int we_wkpTOModify_id;
+NSString * we_wkp_dayOfWeek;
+NSString * we_wkp_periodOfDay;
+NSString * we_wkp_typeOfPeriod;
 
 NSString * we_notice;
+NSString * we_consultPrice;
+NSString * we_plusPrice;
+NSString * we_maxResponseGap;
+NSString * we_workPeriod;
+
 NSMutableArray * user_exps;
 
 @interface NSString (WeDelegate)
@@ -51,8 +63,12 @@ NSMutableArray * user_exps;
 #define We_foreground_red_general UIColorFromRGB(134, 11, 38, 1)
 
 #define We_frame_textFieldInCell_general CGRectMake(100, 9, 205, 30)
+#define We_frame_labelInCell_general CGRectMake(100, 9, 180, 30)
 #define We_frame_textView_huge CGRectMake(10, 10, 300, 180)
 
 #define We_init_textFieldInCell_general(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;tf.delegate = self;
 #define We_init_textFieldInCell_pholder(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.placeholder = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;tf.delegate = self;
+
+#define We_init_labelInCell_general(lb, _text, _font) lb = [[UILabel alloc] initWithFrame:We_frame_labelInCell_general];lb.text = _text;lb.font = _font;lb.textAlignment = NSTextAlignmentRight;
+
 #define We_init_textView_huge(tf, _text, _font) tf = [[UITextView alloc] initWithFrame:We_frame_textView_huge];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentLeft;tf.delegate = self;tf.scrollEnabled = NO;

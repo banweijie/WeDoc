@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WePecBusViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface WePecBusViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @end

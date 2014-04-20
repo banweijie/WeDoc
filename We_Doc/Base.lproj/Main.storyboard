@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mjn-6U-QSO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mjn-6U-QSO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -232,10 +232,119 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="业务设置" id="REd-DD-8sB"/>
+                    <connections>
+                        <segue destination="q7S-26-qbd" kind="modal" identifier="Modal_to_PecWkpAdd" id="Wk3-WF-nXt"/>
+                        <segue destination="FKE-3L-8uZ" kind="push" identifier="Push_to_PecWkpMod" id="4VR-Zg-l27"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jgf-ld-jwe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4485" y="3897"/>
+        </scene>
+        <!--We Pec Wkp Add View Controller - 添加出诊时间-->
+        <scene sceneID="CoQ-qJ-KKS">
+            <objects>
+                <viewController id="szK-w4-xRR" customClass="WePecWkpAddViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GZe-hP-9C5"/>
+                        <viewControllerLayoutGuide type="bottom" id="0UL-cG-GVI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zSx-0L-hu6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加出诊时间" id="CsF-X8-cXE"/>
+                    <connections>
+                        <segue destination="zrT-MJ-mcW" kind="push" identifier="PecWkpAdd_pushto_SelDay" id="RK1-WL-2Dy"/>
+                        <segue destination="iPk-9L-tYZ" kind="push" identifier="PecWkpAdd_pushto_SelPer" id="W2i-ad-uAW"/>
+                        <segue destination="CbQ-YC-Gv4" kind="push" identifier="PecWkpAdd_pushto_SelTyp" id="Qsg-UL-YJ4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxg-NV-1US" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5531" y="3894"/>
+        </scene>
+        <!--We Sel Day View Controller - 选择日期-->
+        <scene sceneID="Y0D-sQ-Pjr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2a-5Y-gnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="zrT-MJ-mcW" customClass="WeSelDayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ggo-Zh-1Aw"/>
+                        <viewControllerLayoutGuide type="bottom" id="3sK-4q-msZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rrg-x1-yPW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择日期" id="T8j-2G-EDH"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="6117" y="3897"/>
+        </scene>
+        <!--We Sel Per View Controller - 选择时间段-->
+        <scene sceneID="a4O-TS-hR0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9jI-gX-0cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="iPk-9L-tYZ" customClass="WeSelPerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R2f-Qe-XYR"/>
+                        <viewControllerLayoutGuide type="bottom" id="VKE-eL-HBg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hT4-ur-2Xb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="选择时间段" id="bYc-SY-anR"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="6117" y="4662"/>
+        </scene>
+        <!--We Sel Typ View Controller-->
+        <scene sceneID="EDz-Bf-vCb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xf-u7-4KQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="CbQ-YC-Gv4" customClass="WeSelTypViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I88-rC-94C"/>
+                        <viewControllerLayoutGuide type="bottom" id="kys-rL-Cf3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LXj-Uo-b68">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U96-Zb-3zb"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="6117" y="5500"/>
+        </scene>
+        <!--We Pec Wkp Mod View Controller - 修改出诊时间-->
+        <scene sceneID="8Up-bm-oSN">
+            <objects>
+                <viewController id="FKE-3L-8uZ" customClass="WePecWkpModViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Q9-ah-g4a"/>
+                        <viewControllerLayoutGuide type="bottom" id="qqO-g1-5pA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zXx-Nc-7sV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改出诊时间" id="4dd-tg-2iS"/>
+                    <connections>
+                        <segue destination="zrT-MJ-mcW" kind="push" id="p97-ix-W3p"/>
+                        <segue destination="iPk-9L-tYZ" kind="push" id="PNH-k3-thk"/>
+                        <segue destination="CbQ-YC-Gv4" kind="push" id="hf8-zt-DF2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rn5-XZ-j1I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4997" y="4662"/>
         </scene>
         <!--We Pec Not View Controller - 公告-->
         <scene sceneID="eg7-uF-KPI">
@@ -466,6 +575,24 @@
             </objects>
             <point key="canvasLocation" x="613" y="2976"/>
         </scene>
+        <!--We Pec Wkp Add Nav Controller-->
+        <scene sceneID="Bge-aw-Uwv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q7S-26-qbd" customClass="WePecWkpAddNavController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cbG-cW-gKN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="szK-w4-xRR" kind="relationship" relationship="rootViewController" id="6rS-24-eH2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zuy-8d-b7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5005" y="3894"/>
+        </scene>
     </scenes>
     <resources>
         <image name="tab-chatroom" width="26" height="24"/>
@@ -478,4 +605,9 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="RK1-WL-2Dy"/>
+        <segue reference="W2i-ad-uAW"/>
+        <segue reference="Qsg-UL-YJ4"/>
+    </inferredMetricsTieBreakers>
 </document>

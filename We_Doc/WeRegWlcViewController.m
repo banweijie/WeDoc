@@ -152,7 +152,11 @@ UITextField * user_password_input;
         if ([result isEqualToString:@"1"]) {
             NSDictionary * response = [HTTPResponse objectForKey:@"response"];
             NSLog(@"%@", response);
-            we_notice = [response objectForKey:@"notice"];
+            we_notice = [WeAppDelegate toString:[response objectForKey:@"notice"]];
+            we_consultPrice = [WeAppDelegate toString:[response objectForKey:@"consultPrice"]];
+            we_plusPrice = [WeAppDelegate toString:[response objectForKey:@"plusPrice"]];
+            we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
+            we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
             return YES;
         }
         if ([result isEqualToString:@"2"]) {
