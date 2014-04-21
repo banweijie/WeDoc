@@ -26,7 +26,6 @@ extern int we_targetTabId;
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

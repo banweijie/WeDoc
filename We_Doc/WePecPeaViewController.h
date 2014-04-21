@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VPImageCropperViewController.h"
 
-@interface WePecPeaViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface WePecPeaViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, VPImageCropperDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

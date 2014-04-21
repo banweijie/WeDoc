@@ -15,12 +15,76 @@
     UITextField * user_name_input;
     UILabel * user_gender_label;
     UILabel * user_phone_label;
+    UIImageView * user_avatar_imageView;
 }
 
 @end
 
 @implementation WePecPeaViewController
 
+
+// callback when cropping finished
+- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage {
+    if (![self updateAvatar:editedImage]) return;
+    user_avatar_imageView.image = editedImage;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// callback when cropping cancelled
+- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // 拍照
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;//设置类型为相机
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
+            picker.delegate = self;//设置代理
+            picker.allowsEditing = YES;//设置照片可编辑
+            picker.sourceType = sourceType;
+            //picker.showsCameraControls = NO;//默认为YES
+            //创建叠加层
+            UIView *overLayView=[[UIView alloc]initWithFrame:CGRectMake(0, 120, 320, 254)];
+            //取景器的背景图片，该图片中间挖掉了一块变成透明，用来显示摄像头获取的图片；
+            UIImage *overLayImag=[UIImage imageNamed:@"zhaoxiangdingwei.png"];
+            UIImageView *bgImageView=[[UIImageView alloc]initWithImage:overLayImag];
+            [overLayView addSubview:bgImageView];
+            picker.cameraOverlayView=overLayView;
+            picker.cameraDevice=UIImagePickerControllerCameraDeviceFront;//选择前置摄像头或后置摄像头
+            [self presentViewController:picker animated:YES completion:^{
+            }];
+        }  
+        else {  
+            NSLog(@"该设备无相机");  
+        }
+        
+    } else if (buttonIndex == 1) {
+        // 从相册中选取
+        UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+            pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //pickerImage.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+        }
+        pickerImage.delegate = self;
+        pickerImage.allowsEditing = NO;
+        [self presentViewController:pickerImage animated:YES completion:^{
+        }];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        VPImageCropperViewController *imgCropperVC = [[VPImageCropperViewController alloc] initWithImage:image cropFrame:CGRectMake(0, 100.0f, self.view.frame.size.width, self.view.frame.size.width) limitScaleRatio:3.0];
+        imgCropperVC.delegate = self;
+        [self presentViewController:imgCropperVC animated:YES completion:^{
+        }];
+    }];
+}
 /*
  [AREA]
  UITableView dataSource & delegate interfaces
@@ -35,6 +99,18 @@
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 0) {
+        if (path.row == 0) {
+            /*
+            */
+            UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                          initWithTitle:nil
+                                          delegate:self
+                                          cancelButtonTitle:@"取消"
+                                          destructiveButtonTitle:nil
+                                          otherButtonTitles:@"拍照", @"选择本地图片",nil];
+            actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+            [actionSheet showInView:self.view];
+        }
         if (path.row == 2) {
             [self performSegueWithIdentifier:@"PecPea_pushto_SelGen" sender:self];
         }
@@ -116,6 +192,7 @@
                     cell.textLabel.text = @"头像";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    [cell.contentView addSubview:user_avatar_imageView];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -204,6 +281,49 @@
     if (![self updateDoctorInfo]) return;
     if (![self updateUserInfo]) return;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)updateAvatar:(UIImage *)image {
+    NSLog(@"%f",image.size.width * image.size.width / 4900);
+    NSData * imageData = UIImageJPEGRepresentation(image, 0.0);
+    //imageData = UIImageJPEGRepresentation(<#UIImage *image#>, <#CGFloat compressionQuality#>)
+    NSString * encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    
+    NSString *errorMessage = @"发送失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/user/updateAvatar.action";
+    NSString *parasString = [NSString stringWithFormat:@"dataString=%@&smallData=%@", encodedString, encodedString];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            return YES;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+    return NO;
 }
 
 - (BOOL)updateDoctorInfo {
@@ -339,6 +459,9 @@
     We_init_labelInCell_general(user_gender_label, [WeAppDelegate transitionGenderFromChar:we_pea_gender], We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_name_input, @"尚未设置姓名", We_font_textfield_zh_cn);
     user_name_input.text = we_name;
+    
+    user_avatar_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(238, 10, 70, 70)];
+    
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 570) style:UITableViewStyleGrouped];

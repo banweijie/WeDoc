@@ -86,7 +86,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
-    NSLog(@"%d, %d",indexPath.section, indexPath.row);
+    NSLog(@"%ld, %ld",(long)indexPath.section, (long)indexPath.row);
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.contentView.backgroundColor = We_background_cell_general;

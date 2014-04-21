@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbQ-1r-c28" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4105" y="4"/>
+            <point key="canvasLocation" x="4105" y="-956"/>
         </scene>
         <!--We Pec Cai View Controller - 职业信息-->
         <scene sceneID="d25-MW-h1J">
@@ -175,6 +175,8 @@
                     <connections>
                         <segue destination="urX-Ao-7ha" kind="push" identifier="PecCai2PecCtf" id="v7c-uv-b8q"/>
                         <segue destination="UaX-Dt-IEk" kind="push" identifier="PecCai2PecVctf" id="Lh1-CZ-5xC"/>
+                        <segue destination="SIO-co-FmI" kind="push" identifier="PecCai_pushto_PecCaiGri" id="oa3-YJ-9GT"/>
+                        <segue destination="EA4-MQ-Z1S" kind="push" identifier="PecCai_pushto_PecCaiWkp" id="Qhy-Pq-DQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqx-PR-fRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,6 +202,44 @@
             </objects>
             <point key="canvasLocation" x="4880" y="784"/>
         </scene>
+        <!--We Pec Cai Gri View Controller - 团队信息-->
+        <scene sceneID="MZe-sV-Gzj">
+            <objects>
+                <viewController id="SIO-co-FmI" customClass="WePecCaiGriViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u5d-wH-E13"/>
+                        <viewControllerLayoutGuide type="bottom" id="3QT-e9-K6v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hb8-ko-De9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="团队信息" id="cxP-aQ-KPE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VAh-L7-oLO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4880" y="47"/>
+        </scene>
+        <!--We Pec Cai Wkp View Controller - 工作证照片-->
+        <scene sceneID="UOt-OE-DaW">
+            <objects>
+                <viewController id="EA4-MQ-Z1S" customClass="WePecCaiWkpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xav-3e-QqW"/>
+                        <viewControllerLayoutGuide type="bottom" id="KAa-6F-lVt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C67-qc-DlF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="工作证照片" id="r8i-Vv-e9S"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3yx-Gd-WNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5669" y="47"/>
+        </scene>
         <!--We Sel Gen View Controller-->
         <scene sceneID="JKg-z8-5Nn">
             <objects>
@@ -217,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHD-d2-IhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4880" y="4"/>
+            <point key="canvasLocation" x="4880" y="-956"/>
         </scene>
         <!--We Pec Exp View Controller - 从医经历-->
         <scene sceneID="1wZ-3y-BJj">

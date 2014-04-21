@@ -17,6 +17,9 @@
 		9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDFA1904053C00CE4A7A /* WeSelTypViewController.m */; };
 		9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDFE19044B9000CE4A7A /* WePecPeaViewController.m */; };
 		9026EE021904536300CE4A7A /* WeSelGenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EE011904536300CE4A7A /* WeSelGenViewController.m */; };
+		9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */; };
+		9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */; };
+		9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EE0A1904A60700CE4A7A /* VPImageCropperViewController.m */; };
 		9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */; };
 		9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC621902E32F00EA8310 /* WeMapNavController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
@@ -81,6 +84,12 @@
 		9026EDFE19044B9000CE4A7A /* WePecPeaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecPeaViewController.m; sourceTree = "<group>"; };
 		9026EE001904536300CE4A7A /* WeSelGenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelGenViewController.h; sourceTree = "<group>"; };
 		9026EE011904536300CE4A7A /* WeSelGenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelGenViewController.m; sourceTree = "<group>"; };
+		9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecCaiGriViewController.h; sourceTree = "<group>"; };
+		9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiGriViewController.m; sourceTree = "<group>"; };
+		9026EE0619049E7400CE4A7A /* WePecCaiWkpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecCaiWkpViewController.h; sourceTree = "<group>"; };
+		9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiWkpViewController.m; sourceTree = "<group>"; };
+		9026EE091904A60700CE4A7A /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
+		9026EE0A1904A60700CE4A7A /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTableViewCell.h; sourceTree = "<group>"; };
 		9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTableViewCell.m; sourceTree = "<group>"; };
 		9039CC611902E32F00EA8310 /* WeMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMapNavController.h; sourceTree = "<group>"; };
@@ -172,6 +181,15 @@
 			name = PersonalAccount;
 			sourceTree = "<group>";
 		};
+		9026EE0C1904A61300CE4A7A /* VPImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				9026EE091904A60700CE4A7A /* VPImageCropperViewController.h */,
+				9026EE0A1904A60700CE4A7A /* VPImageCropperViewController.m */,
+			);
+			name = VPImageCropper;
+			sourceTree = "<group>";
+		};
 		9039CC5C1902B40800EA8310 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +243,7 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
+				9026EE0C1904A61300CE4A7A /* VPImageCropper */,
 				9039CC5C1902B40800EA8310 /* Customs */,
 				904F7A4118F0F146000CB41B /* WeAppDelegate.h */,
 				904F7A4218F0F146000CB41B /* WeAppDelegate.m */,
@@ -349,6 +368,10 @@
 				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
 				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
 				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
+				9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */,
+				9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */,
+				9026EE0619049E7400CE4A7A /* WePecCaiWkpViewController.h */,
+				9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */,
 			);
 			name = CareerInformation;
 			sourceTree = "<group>";
@@ -517,6 +540,7 @@
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
 				9026EE021904536300CE4A7A /* WeSelGenViewController.m in Sources */,
 				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
+				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
@@ -528,7 +552,9 @@
 				907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
+				9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
+				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,7 +684,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -674,7 +700,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

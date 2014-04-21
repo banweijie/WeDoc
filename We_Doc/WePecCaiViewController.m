@@ -45,6 +45,9 @@
                 case 2:
                     [user_minister_input becomeFirstResponder];
                     break;
+                case 3:
+                    [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiGri" sender:self];
+                    break;
                 default:
                     break;
             }
@@ -57,6 +60,9 @@
                     break;
                 case 1:
                     [self performSegueWithIdentifier:@"PecCai2PecVctf" sender:self];
+                    break;
+                case 2:
+                    [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiWkp" sender:self];
                     break;
                 default:
                     break;
@@ -80,9 +86,6 @@
         case 3:
             switch (path.row) {
                 case 0:
-                    [user_workphone_input becomeFirstResponder];
-                    break;
-                case 1:
                     [user_email_input becomeFirstResponder];
                     break;
                 default:
