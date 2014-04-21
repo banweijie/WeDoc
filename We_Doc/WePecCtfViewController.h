@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WePecCtfViewController : UIViewController
+@interface WePecCtfViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end

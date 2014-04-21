@@ -170,6 +170,28 @@ UITextField * user_password_input;
             we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
             we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
             we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
+            NSString *urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/avatar/%@",[response objectForKey:@"avatar"]];
+            NSString *paraString = @"";
+            NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_avatar = [UIImage imageWithData:DataResponse];
+            we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
+            we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"wcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_wcImage = [UIImage imageWithData:DataResponse];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"pcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_pcImage = [UIImage imageWithData:DataResponse];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"qcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_qcImage = [UIImage imageWithData:DataResponse];
+            
             return YES;
         }
         if ([result isEqualToString:@"2"]) {

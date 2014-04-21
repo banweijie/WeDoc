@@ -50,6 +50,12 @@ NSString * we_email;
 NSString * we_phone;
 NSString * we_name;
 NSString * we_gender;
+UIImage * we_avatar;
+NSString * we_qc;
+NSString * we_pc;
+UIImage * we_qcImage;
+UIImage * we_pcImage;
+UIImage * we_wcImage;
 
 NSMutableArray * user_exps;
 

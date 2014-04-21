@@ -128,6 +128,7 @@
     }
     UILabel * l1;
     UILabel * l2;
+    UIImageView * imageView;
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
@@ -145,6 +146,9 @@
                     l2.textColor = We_foreground_gray_general;
                     l2.font = We_font_textfield_zh_cn;
                     [cell.contentView addSubview:l2];
+                    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 70, 70)];
+                    imageView.image = we_avatar;
+                    [cell.contentView addSubview:imageView];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;

@@ -284,11 +284,11 @@
 }
 
 - (BOOL)updateAvatar:(UIImage *)image {
-    NSLog(@"%f",image.size.width * image.size.width / 4900);
-    NSData * imageData = UIImageJPEGRepresentation(image, 0.0);
-    //imageData = UIImageJPEGRepresentation(<#UIImage *image#>, <#CGFloat compressionQuality#>)
+    NSLog(@"%f",(image.size.width * image.size.width) / 4900);
+    NSData * imageData = UIImageJPEGRepresentation(image, 4900 / (image.size.width * image.size.width));
     NSString * encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    
+    encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+    //NSDataBase64Encoding64CharacterLineLength
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = @"http://115.28.222.1/yijiaren/user/updateAvatar.action";
     NSString *parasString = [NSString stringWithFormat:@"dataString=%@&smallData=%@", encodedString, encodedString];
@@ -298,6 +298,8 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
+            NSLog(@"%@", HTTPResponse);
+            we_avatar = image;
             return YES;
         }
         if ([result isEqualToString:@"2"]) {
@@ -460,8 +462,8 @@
     We_init_textFieldInCell_pholder(user_name_input, @"尚未设置姓名", We_font_textfield_zh_cn);
     user_name_input.text = we_name;
     
-    user_avatar_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(238, 10, 70, 70)];
-    
+    user_avatar_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
+    user_avatar_imageView.image = we_avatar;
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 570) style:UITableViewStyleGrouped];
@@ -474,9 +476,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     user_gender_label.text = [WeAppDelegate transitionGenderFromChar:we_pea_gender];
-    //user_dayOfWeek_label.text = [WeAppDelegate transitionDayOfWeekFromChar:we_wkp_dayOfWeek];
-    //user_periodOfDay_label.text = [WeAppDelegate transitionPeriodOfDayFromChar:we_wkp_periodOfDay];
-    //user_typeOfPeriod_label.text = [WeAppDelegate transitionTypeOfPeriodFromChar:we_wkp_typeOfPeriod];
     [sys_tableView reloadData];
     [super viewWillAppear:animated];
 }

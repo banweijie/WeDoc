@@ -48,7 +48,7 @@
 {
     if (path.section == 1 && path.row == 0) {
         count ++;
-        if (!self.checkVeriCode) return;
+        //if (!self.checkVeriCode) return;
         if (!self.sendVeriCode) return;
         we_vericode_type = @"NewPassword";
         [self push_to_ivc:nil];
@@ -75,7 +75,7 @@
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) return 2;
+    if (section == 0) return 1;
     if (section == 1) return 1;
     return 0;
 }
