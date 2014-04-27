@@ -18,6 +18,11 @@
 
 extern int we_targetTabId;
 
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    NSLog(@"!!!");
+    return NO;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,6 +44,8 @@ extern int we_targetTabId;
     [super viewDidAppear:animated];
     
     self.tabBar.selectedImageTintColor = We_foreground_red_general;
+    self.tabBarController.delegate = self;
+    //self.tabBarController.delegate = self;
     
     UITabBarItem * tmp0 = [self.tabBar.items objectAtIndex:0];
     tmp0.selectedImage = [UIImage imageNamed:@"tab-home-selected"];

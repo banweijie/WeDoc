@@ -51,6 +51,7 @@ NSString * we_phone;
 NSString * we_name;
 NSString * we_gender;
 UIImage * we_avatar;
+NSString * we_phone_onReg;
 NSString * we_qc;
 NSString * we_pc;
 UIImage * we_qcImage;

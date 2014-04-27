@@ -37,27 +37,27 @@ UITextField * user_password_input;
     
     // Title
     UILabel * title_en = [[UILabel alloc] initWithFrame:CGRectMake(90, 28, 150, 100)];
-    title_en.text = @"A+Dr!";
+    title_en.text = @"A+Dr";
     [title_en setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:57]];
     [title_en setTextColor:[UIColor colorWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0]];
     [title_en setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:title_en];
     
     UILabel * title_zh = [[UILabel alloc] initWithFrame:CGRectMake(90, 77, 150, 100)];
-    title_zh.text = @"医  家  人";
+    title_zh.text = @"医  家  仁";
     [title_zh setFont:[UIFont fontWithName:@"Heiti SC" size:16]];
     [title_zh setTextColor:[UIColor colorWithRed:134.0/255 green:11.0/255 blue:38.0/255 alpha:0.9]];
     [title_zh setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:title_zh];
     
     // user_phone_input
-    user_phone_input = [[UITextField alloc] initWithFrame:CGRectMake(-1, 206, 322, 45)];
+    user_phone_input = [[UITextField alloc] initWithFrame:CGRectMake(-1, 166, 322, 45)];
     user_phone_input.borderStyle = UITextBorderStyleRoundedRect;
     [user_phone_input setFont:[UIFont fontWithName:@"Heiti SC" size:16]];
     user_phone_input.layer.borderWidth = 0.2;
     user_phone_input.layer.borderColor=[[UIColor blackColor]CGColor];
     user_phone_input.placeholder = @"手机号码";
-    user_phone_input.text = @"18810521309";
+    //user_phone_input.text = @"18810521309";
     UIImageView * user_phone_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"phone.png"]];
     user_phone_input.leftView = user_phone_image;
     user_phone_input.leftViewMode = UITextFieldViewModeAlways;
@@ -65,13 +65,13 @@ UITextField * user_password_input;
     [self.view addSubview:user_phone_input];
     
     // user_password_input
-    user_password_input = [[UITextField alloc] initWithFrame:CGRectMake(-1, 250, 322, 45)];
+    user_password_input = [[UITextField alloc] initWithFrame:CGRectMake(-1, 210, 322, 45)];
     [user_password_input setSecureTextEntry:YES];
     user_password_input.borderStyle = UITextBorderStyleRoundedRect;
     user_password_input.layer.borderWidth = 0.2;
     user_password_input.layer.borderColor=[[UIColor blackColor]CGColor];
     user_password_input.placeholder = @"密码";
-    user_password_input.text = @"52yuqing";
+    //user_password_input.text = @"52yuqing";
     UIImageView * user_password_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password.png"]];
     user_password_input.leftView = user_password_image;
     user_password_input.leftViewMode = UITextFieldViewModeAlways;
@@ -80,7 +80,7 @@ UITextField * user_password_input;
     
     // user_login
     UIButton * user_login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [user_login setFrame:CGRectMake(-1, 314, 322, 45)];
+    [user_login setFrame:CGRectMake(-1, 274, 322, 45)];
     [user_login setTitle:@"登录" forState:UIControlStateNormal];
     [user_login setBackgroundColor:UIColorFromRGB(255, 255, 255, 1)];
     [user_login setTintColor:UIColorFromRGB(134, 11, 38, 1)];
@@ -90,7 +90,7 @@ UITextField * user_password_input;
     
     // user_forgetpass
     UIButton * user_forgetpass = [UIButton buttonWithType:UIButtonTypeSystem];
-    [user_forgetpass setFrame:CGRectMake(220, 354, 100, 45)];
+    [user_forgetpass setFrame:CGRectMake(220, 314, 100, 45)];
     [user_forgetpass setTitle:@"忘记密码" forState:UIControlStateNormal];
     [user_forgetpass setBackgroundColor:[UIColor clearColor]];
     [user_forgetpass setTintColor:UIColorFromRGB(51, 51, 51, 1)];
@@ -99,7 +99,7 @@ UITextField * user_password_input;
     
     // user_register
     UIButton * user_register = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [user_register.layer setFrame:CGRectMake(-1, 411, 322, 45)];
+    [user_register.layer setFrame:CGRectMake(-1, 371, 322, 45)];
     [user_register setTitle:@"初次使用？现在注册" forState:UIControlStateNormal];
     [user_register setBackgroundColor:UIColorFromRGB(134, 11, 38, 1)];
     [user_register setTintColor:UIColorFromRGB(255, 255, 255, 1)];

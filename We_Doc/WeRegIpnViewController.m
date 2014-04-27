@@ -51,6 +51,7 @@
         //if (!self.checkVeriCode) return;
         if (!self.sendVeriCode) return;
         we_vericode_type = @"NewPassword";
+        we_phone_onReg = user_phone_input.text;
         [self push_to_ivc:nil];
     }
 }

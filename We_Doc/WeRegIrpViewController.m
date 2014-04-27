@@ -41,6 +41,7 @@ extern int we_targetTabId;
         if (![self checkRepeatPassword]) return;
         if ([we_vericode_type isEqualToString:@"NewPassword"]) {
             if (![self submitPassword]) return;
+            if (![self checkUserRights]) return;
             we_logined = YES;
         }
         else
@@ -243,6 +244,64 @@ extern int we_targetTabId;
     }
     UIAlertView *notPermitted = [[UIAlertView alloc]
                                  initWithTitle:@"创建用户失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+    return NO;
+}
+- (BOOL) checkUserRights {
+    NSString *errorMessage = @"连接失败，请检查网络";
+    NSString *urlString = @"http://115.28.222.1/yijiaren/user/login.action";
+    NSString *md5pw = user_loginPassword_input.text;
+    md5pw = [md5pw md5];
+    NSString *parasString = [NSString stringWithFormat:@"phone=%@&password=%@", we_phone_onReg, md5pw];
+    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
+    
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            NSDictionary * response = [HTTPResponse objectForKey:@"response"];
+            NSLog(@"%@", response);
+            we_notice = [WeAppDelegate toString:[response objectForKey:@"notice"]];
+            we_consultPrice = [WeAppDelegate toString:[response objectForKey:@"consultPrice"]];
+            we_plusPrice = [WeAppDelegate toString:[response objectForKey:@"plusPrice"]];
+            we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
+            we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
+            we_workPeriod_save = [NSString stringWithString:we_workPeriod];
+            we_hospital = [WeAppDelegate toString:[[response objectForKey:@"hospital"] objectForKey:@"name"]];
+            we_section = [WeAppDelegate toString:[[response objectForKey:@"section"] objectForKey:@"text"]];
+            we_title = [WeAppDelegate toString:[response objectForKey:@"title"]];
+            we_category = [WeAppDelegate toString:[response objectForKey:@"category"]];
+            we_skills = [WeAppDelegate toString:[response objectForKey:@"skills"]];
+            we_degree = [WeAppDelegate toString:[response objectForKey:@"degree"]];
+            we_email = [WeAppDelegate toString:[response objectForKey:@"email"]];
+            we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
+            we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
+            we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
+            return YES;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp = [fields objectForKey:key];
+                if (tmp != NULL) errorMessage = tmp;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"登陆失败"
                                  message:errorMessage
                                  delegate:nil
                                  cancelButtonTitle:@"OK"
