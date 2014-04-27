@@ -20,6 +20,7 @@
 + (NSString *)transitionTypeOfPeriodFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transitionTitleFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transitionGenderFromChar:(NSString *)TypeOfPeriod;
++ (void)refreshUserData;
 @end
 
 // Global Variables
@@ -67,6 +68,10 @@ NSMutableArray * user_exps;
 @interface NSData (WeDelegate)
 - (NSString*)md5;
 @end
+
+#define yijiarenServer @"http://115.28.222.1/yijiaren"
+
+#define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
 
 #define UIColorFromRGB0x(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 

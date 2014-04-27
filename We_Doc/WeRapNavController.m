@@ -7,6 +7,7 @@
 //
 
 #import "WeRapNavController.h"
+#import "WeAppDelegate.h"
 
 @interface WeRapNavController ()
 
@@ -28,10 +29,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"!!!!!");
-    self.navigationController.navigationBar.tintColor = [UIColor redColor];
-    self.navigationController.navigationBar.alpha = 0.7f;
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationBar.translucent = YES;
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"texture"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setAlpha:0.9];
+    [self.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName,
+      [UIFont fontWithName:@"HeiTi SC-medium" size:18], NSFontAttributeName,
+      nil
+      ]
+     ];
+    self.navigationBar.TintColor = We_foreground_white_general;
+}
+
+// 调整状态栏显示风格
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning

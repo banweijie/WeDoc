@@ -29,15 +29,6 @@
     // Do any additional setup after loading the view.
     
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.translucent = YES;
-    
-    UIButton * user_register = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [user_register.layer setFrame:CGRectMake(-1, 1, 322, 45)];
-    [user_register setTitle:@"初次使用？现在注册" forState:UIControlStateNormal];
-    [user_register setBackgroundColor:UIColorFromRGB(134, 11, 38, 1)];
-    [user_register setTintColor:UIColorFromRGB(255, 255, 255, 1)];
-    [self.view addSubview:user_register];
 }
 
 - (void)didReceiveMemoryWarning

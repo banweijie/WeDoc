@@ -95,6 +95,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZGO-u0-7yk" customClass="WeRegNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="个人中心" id="LPG-iS-jMc"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="vHD-Dq-Rc0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MGc-fZ-t97">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -501,6 +502,7 @@
                         <segue destination="G9f-X1-J9c" kind="relationship" relationship="viewControllers" id="tXO-bP-Iow"/>
                         <segue destination="FbH-Go-jOX" kind="relationship" relationship="viewControllers" id="gV7-Zh-poc"/>
                         <segue destination="bHV-1f-jWO" kind="relationship" relationship="viewControllers" id="Pfd-v9-efB"/>
+                        <segue destination="ZGO-u0-7yk" kind="modal" identifier="TabBar_Modalto_RegWlc" id="pov-aw-V1X"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbq-rB-hT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -689,9 +691,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p97-ix-W3p"/>
-        <segue reference="gWA-BA-tfi"/>
+        <segue reference="pov-aw-V1X"/>
         <segue reference="hf8-zt-DF2"/>
+        <segue reference="p97-ix-W3p"/>
         <segue reference="PNH-k3-thk"/>
+        <segue reference="gWA-BA-tfi"/>
     </inferredMetricsTieBreakers>
 </document>

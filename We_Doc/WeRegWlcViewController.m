@@ -282,6 +282,8 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
+            [WeAppDelegate refreshUserData];
+            /*
             NSDictionary * response = [HTTPResponse objectForKey:@"response"];
             NSLog(@"%@", response);
             we_notice = [WeAppDelegate toString:[response objectForKey:@"notice"]];
@@ -320,7 +322,7 @@
             urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"qcPath"]];
             paraString = @"";
             DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_qcImage = [UIImage imageWithData:DataResponse];
+            we_qcImage = [UIImage imageWithData:DataResponse];*/
             
             return YES;
         }

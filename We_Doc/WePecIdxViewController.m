@@ -298,7 +298,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
+    [WeAppDelegate refreshUserData];
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
@@ -310,10 +311,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (!we_logined) [self segue_to_RegWlc:nil];
     [sys_tableView reloadData];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

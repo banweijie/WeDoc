@@ -14,17 +14,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(134, 11, 38, 0.0)];
-    //[[UINavigationBar appearance] setBackgroundColor:We_background_red_general];
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]];
-    //[[UINavigationBar appearance]setBackgroundImage: forBarMetrics:<#(UIBarMetrics)#>]
-    //[[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     we_logined = NO;
     we_targetTabId = 0;
+    UITabBarController<UITabBarControllerDelegate> * _tabBarController = (UITabBarController<UITabBarControllerDelegate> *)_window.rootViewController;
+    _tabBarController.delegate = _tabBarController;
     return YES;
 }
-							
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -68,6 +65,19 @@
 }
 
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString
+{
+    NSLog(@"%@ %@", urlString, parasString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"iOS" forHTTPHeaderField:@"yijiaren"];
+    NSData *data = [parasString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:data];
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    return received;
+}
+
++ (NSData *)postToServer:(NSString *)urlString withParas:(NSString *)parasString
 {
     NSLog(@"%@ %@", urlString, parasString);
     NSURL *url = [NSURL URLWithString:urlString];
@@ -137,6 +147,83 @@
     if ([gender isEqualToString:@"F"]) return @"女";
     if ([gender isEqualToString:@"U"]) return @"未设置";
     return @"出错啦！";
+}
+
++ (void)refreshUserData {
+    NSString * urlString = yijiarenUrl(@"user", @"refreshUser");
+    NSString * paraString = @"";
+    NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
+    
+    NSString * errorMessage = @"连接服务器失败，暂时使用本地缓存数据";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            NSDictionary * response = [HTTPResponse objectForKey:@"response"];
+            NSLog(@"%@", response);
+            we_notice = [WeAppDelegate toString:[response objectForKey:@"notice"]];
+            we_consultPrice = [WeAppDelegate toString:[response objectForKey:@"consultPrice"]];
+            we_plusPrice = [WeAppDelegate toString:[response objectForKey:@"plusPrice"]];
+            we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
+            we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
+            we_workPeriod_save = [NSString stringWithString:we_workPeriod];
+            we_hospital = [WeAppDelegate toString:[[response objectForKey:@"hospital"] objectForKey:@"name"]];
+            we_section = [WeAppDelegate toString:[[response objectForKey:@"section"] objectForKey:@"text"]];
+            we_title = [WeAppDelegate toString:[response objectForKey:@"title"]];
+            we_category = [WeAppDelegate toString:[response objectForKey:@"category"]];
+            we_skills = [WeAppDelegate toString:[response objectForKey:@"skills"]];
+            we_degree = [WeAppDelegate toString:[response objectForKey:@"degree"]];
+            we_email = [WeAppDelegate toString:[response objectForKey:@"email"]];
+            we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
+            we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
+            we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
+            NSString *urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/avatar/%@",[response objectForKey:@"avatar"]];
+            NSString *paraString = @"";
+            NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_avatar = [UIImage imageWithData:DataResponse];
+            we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
+            we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"wcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_wcImage = [UIImage imageWithData:DataResponse];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"pcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_pcImage = [UIImage imageWithData:DataResponse];
+            
+            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"qcPath"]];
+            paraString = @"";
+            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+            we_qcImage = [UIImage imageWithData:DataResponse];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"更新用户数据失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
 }
 @end
 

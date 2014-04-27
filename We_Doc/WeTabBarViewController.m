@@ -15,12 +15,12 @@
 
 @implementation WeTabBarViewController
 
-
-extern int we_targetTabId;
-
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    NSLog(@"!!!");
-    return NO;
+    if (viewController == [tabBarController.viewControllers objectAtIndex:3] && !we_logined) {
+        [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
+        return NO;
+    }
+    return YES;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,6 +36,7 @@ extern int we_targetTabId;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"tab bar view did load at index %d", we_targetTabId);
+    //self.tabBar.delegate = self;
     //[self setSelectedIndex:we_targetTabId];
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -44,8 +45,6 @@ extern int we_targetTabId;
     [super viewDidAppear:animated];
     
     self.tabBar.selectedImageTintColor = We_foreground_red_general;
-    self.tabBarController.delegate = self;
-    //self.tabBarController.delegate = self;
     
     UITabBarItem * tmp0 = [self.tabBar.items objectAtIndex:0];
     tmp0.selectedImage = [UIImage imageNamed:@"tab-home-selected"];
@@ -56,6 +55,7 @@ extern int we_targetTabId;
     UITabBarItem * tmp3 = [self.tabBar.items objectAtIndex:3];
     tmp3.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
