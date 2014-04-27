@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "login-phonenum.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Background-2.png"
+      "filename" : "login-phonenum@2x.png"
     }
   ],
   "info" : {

@@ -1,5 +1,5 @@
 //
-//  WeViewController.h
+//  WeRapNavController.h
 //  We_Doc
 //
 //  Created by WeDoctor on 14-4-27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeViewController : UIViewController<UITextFieldDelegate>
+@interface WeRapNavController : UINavigationController
 
 @end

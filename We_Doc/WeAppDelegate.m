@@ -14,7 +14,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(134, 11, 38, 0.9)];
+    //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(134, 11, 38, 0.0)];
+    //[[UINavigationBar appearance] setBackgroundColor:We_background_red_general];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor orangeColor]];
+    //[[UINavigationBar appearance]setBackgroundImage: forBarMetrics:<#(UIBarMetrics)#>]
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor clearColor]];
     we_logined = NO;
     we_targetTabId = 0;
     return YES;

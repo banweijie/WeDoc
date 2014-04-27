@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeViewController.h"
 
-@interface WeRegWlcViewController : UIViewController <UITextFieldDelegate>
+@interface WeRegWlcViewController : WeViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

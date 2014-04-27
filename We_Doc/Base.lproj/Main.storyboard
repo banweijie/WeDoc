@@ -526,10 +526,10 @@
             </objects>
             <point key="canvasLocation" x="623" y="784"/>
         </scene>
-        <!--View Controller - 众筹项目-->
+        <!--We Rap View Controller - 众筹项目-->
         <scene sceneID="nyi-4h-rrD">
             <objects>
-                <viewController title="众筹项目" id="yKF-Kn-GeX" sceneMemberID="viewController">
+                <viewController title="众筹项目" id="yKF-Kn-GeX" customClass="WeRapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kec-rA-iB5"/>
                         <viewControllerLayoutGuide type="bottom" id="fng-5h-VML"/>
@@ -583,10 +583,10 @@
             </objects>
             <point key="canvasLocation" x="1152" y="2976"/>
         </scene>
-        <!--Navigation Controller - 众筹项目-->
+        <!--We Rap Nav Controller - 众筹项目-->
         <scene sceneID="grl-Bt-DYQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FbH-Go-jOX" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FbH-Go-jOX" customClass="WeRapNavController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="众筹项目" image="tab-crowdfunding" id="NTT-Jw-ARP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7cq-9M-Xhb">
