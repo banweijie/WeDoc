@@ -13,13 +13,16 @@
 @property (strong, nonatomic) UIWindow *window;
 + (id)toArrayOrNSDictionary:(NSData *)jsonData;
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString;
-+ (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras;
+//+ (NSData *)post:(NSString *)urlString paras:(NSString *)parasString;
++ (NSData *)postToServer:(NSString *)urlString withParas:(NSString *)parasString;
++ (NSData *)postToServer:(NSString *)urlString withDictionaryParas:(NSDictionary *)paras;
 + (NSString *)toString:(id)unkown;
 + (NSString *)transitionDayOfWeekFromChar:(NSString *)dayOfWeek;
 + (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay;
 + (NSString *)transitionTypeOfPeriodFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transitionTitleFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transitionGenderFromChar:(NSString *)TypeOfPeriod;
++ (NSString *)transition:(NSString *)code asin:(NSString *)type;
 + (void)refreshUserData;
 @end
 
@@ -35,14 +38,19 @@ NSString * we_wkp_periodOfDay;
 NSString * we_wkp_typeOfPeriod;
 NSString * we_pea_gender;
 
+// app data
+NSDictionary * we_codings;
+NSDictionary * we_imagePaths;
+
+// user data
 NSString * we_notice;
 NSString * we_consultPrice;
 NSString * we_plusPrice;
 NSString * we_maxResponseGap;
 NSString * we_workPeriod;
 NSString * we_workPeriod_save;
-NSString * we_hospital;
-NSString * we_section;
+NSDictionary * we_hospital;
+NSDictionary * we_section;
 NSString * we_title;
 NSString * we_category;
 NSString * we_skills;
@@ -51,17 +59,23 @@ NSString * we_email;
 NSString * we_phone;
 NSString * we_name;
 NSString * we_gender;
-UIImage * we_avatar;
 NSString * we_phone_onReg;
 NSString * we_qc;
 NSString * we_pc;
+NSString * we_status;
+NSString * we_avatarPath;
+
+UIImage * we_avatar;
 UIImage * we_qcImage;
 UIImage * we_pcImage;
 UIImage * we_wcImage;
 
 NSMutableArray * user_exps;
+NSMutableDictionary * we_hospitalList;
+NSMutableDictionary * we_sectionList;
 
 @interface NSString (WeDelegate)
+- (NSString *)urlencode;
 - (NSString *)md5;
 @end
 
@@ -69,9 +83,11 @@ NSMutableArray * user_exps;
 - (NSString*)md5;
 @end
 
-#define yijiarenServer @"http://115.28.222.1/yijiaren"
 
+#define yijiarenServer @"http://115.28.222.1/yijiaren"
 #define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
+#define yijiarenImageServer we_imagePaths[@"imgServer"]
+#define yijiarenAvatarUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"avatarPath"], fileName]
 
 #define UIColorFromRGB0x(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -93,6 +109,8 @@ NSMutableArray * user_exps;
 #define We_frame_textFieldInCell_general CGRectMake(100, 9, 205, 30)
 #define We_frame_labelInCell_general CGRectMake(100, 9, 180, 30)
 #define We_frame_textView_huge CGRectMake(10, 10, 300, 180)
+
+#define We_alpha_cell_general 0.85
 
 #define We_init_textFieldInCell_general(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;tf.delegate = self;
 #define We_init_textFieldInCell_pholder(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.placeholder = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;tf.delegate = self;

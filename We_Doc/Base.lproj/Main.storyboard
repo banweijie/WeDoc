@@ -178,6 +178,9 @@
                         <segue destination="UaX-Dt-IEk" kind="push" identifier="PecCai2PecVctf" id="Lh1-CZ-5xC"/>
                         <segue destination="SIO-co-FmI" kind="push" identifier="PecCai_pushto_PecCaiGri" id="oa3-YJ-9GT"/>
                         <segue destination="EA4-MQ-Z1S" kind="push" identifier="PecCai_pushto_PecCaiWkp" id="Qhy-Pq-DQg"/>
+                        <segue destination="lVL-rt-H5n" kind="push" identifier="selectionOfHospitalInCareerInformation" id="4sd-6F-kZs"/>
+                        <segue destination="YPs-Ct-69b" kind="push" identifier="selectionOfSectionInCareerInformation" id="Lo9-7a-IkN"/>
+                        <segue destination="k5F-VR-Y9F" kind="push" identifier="selectionOfTitleInCareerInformation" id="R72-Ge-tzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqx-PR-fRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,6 +244,25 @@
             </objects>
             <point key="canvasLocation" x="5669" y="47"/>
         </scene>
+        <!--We Sel Til View Controller-->
+        <scene sceneID="MfN-e4-nOr">
+            <objects>
+                <viewController id="k5F-VR-Y9F" customClass="WeSelTilViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="edC-qw-UAm"/>
+                        <viewControllerLayoutGuide type="bottom" id="z7z-Ma-pJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IjV-61-KFD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Olu-sg-Bu7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pD-QS-HEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6669" y="-958"/>
+        </scene>
         <!--We Sel Gen View Controller-->
         <scene sceneID="JKg-z8-5Nn">
             <objects>
@@ -259,6 +281,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHD-d2-IhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4880" y="-956"/>
+        </scene>
+        <!--We Sel Hos View Controller-->
+        <scene sceneID="Tra-7R-rlj">
+            <objects>
+                <viewController id="lVL-rt-H5n" customClass="WeSelHosViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wu6-fZ-iYV"/>
+                        <viewControllerLayoutGuide type="bottom" id="15U-Ed-X4w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L3Y-l3-LRL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YiR-a4-a7S"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qQI-JW-NaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5637" y="-961"/>
+        </scene>
+        <!--We Sel Sec View Controller-->
+        <scene sceneID="o0A-c1-Efr">
+            <objects>
+                <viewController id="YPs-Ct-69b" customClass="WeSelSecViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CiH-oM-U96"/>
+                        <viewControllerLayoutGuide type="bottom" id="fgE-u7-lPn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pGR-XP-HzA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PYb-98-Xy3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cul-U6-wFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6149" y="-958"/>
         </scene>
         <!--We Pec Exp View Controller - 从医经历-->
         <scene sceneID="1wZ-3y-BJj">

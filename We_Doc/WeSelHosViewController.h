@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeSelHosViewController : UIViewController
+@interface WeSelHosViewController : UIViewController  <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+
 
 @end

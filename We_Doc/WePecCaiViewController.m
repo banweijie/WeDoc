@@ -14,9 +14,6 @@
 @end
 
 @implementation WePecCaiViewController {
-    UITextField * user_hospital_input;
-    UITextField * user_department_input;
-    UITextField * user_minister_input;
     UITextField * user_category_input;
     UITextField * user_speciality_input;
     UITextField * user_degree_input;
@@ -34,25 +31,6 @@
 {
     // 选中该行自动跳转到该行的文本框
     switch (path.section) {
-        case 0:
-            switch (path.row) {
-                case 0:
-                    [user_hospital_input becomeFirstResponder];
-                    break;
-                case 1:
-                    [user_department_input becomeFirstResponder];
-                    break;
-                case 2:
-                    [user_minister_input becomeFirstResponder];
-                    break;
-                case 3:
-                    [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiGri" sender:self];
-                    break;
-                default:
-                    break;
-            }
-            return nil;
-            break;
         case 1:
             switch (path.row) {
                 case 0:
@@ -99,15 +77,17 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    /*
-     if (path.section == 1) {
-     [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
-     if (![self checkRepeatPassword]) return;
-     if (![self submitPassword]) return;
-     we_logined = YES;
-     we_targetTabId = 2;
-     [self segue_to_PmpIdx:nil];
-     }*/
+    if (path.section == 0) {
+        if (path.row == 0) {
+            [self performSegueWithIdentifier:@"selectionOfHospitalInCareerInformation" sender:self];
+        }
+        if (path.row == 1) {
+            [self performSegueWithIdentifier:@"selectionOfSectionInCareerInformation" sender:self];
+        }
+        if (path.row == 2) {
+            [self performSegueWithIdentifier:@"selectionOfTitleInCareerInformation" sender:self];
+        }
+    }
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -115,6 +95,7 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) return 20 + 64;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -144,7 +125,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 4;
+            return 3;
             break;
         case 1:
             return 3;
@@ -159,43 +140,51 @@
             return 0;
     }
 }
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.alpha = 0.85;
+    cell.opaque = YES;
+}
+
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
                 case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.backgroundColor = We_background_cell_general;
+                    cell.detailTextLabel.text = [we_hospital objectForKey:@"name"];
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"医院";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_hospital_input];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 1:
-                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.backgroundColor = We_background_cell_general;
+                    cell.detailTextLabel.text = [we_section objectForKey:@"text"];
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"科室";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_department_input];
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
-                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.backgroundColor = We_background_cell_general;
+                    cell.detailTextLabel.text = we_codings[@"doctorCategory"][we_category][@"title"][we_title];
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"职称";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_minister_input];
-                    break;
-                case 3:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"团队介绍";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
                 default:
                     break;
             }
@@ -231,7 +220,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"类别";
+                    cell.textLabel.text = @"团队介绍";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_category_input];
@@ -299,15 +288,6 @@
     return self;
 }
 
-// 任何文本框结束编辑后都会调用此方法
--(void)textFieldDidEndEditing:(UITextField *)sender
-{
-    if (sender == user_hospital_input) {
-       // NSLog(@"%@ %@", user_hospital_input.text, we_cai_data_hospital);
-    }
-    //[super textFieldDidBeginEditing:sender];
-}
-
 // 点击键盘上的return后调用的方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -364,32 +344,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // user_hospital_input;
-    user_hospital_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_hospital_input.placeholder = @"必填";
-    user_hospital_input.text = we_hospital;
-    user_hospital_input.font = We_font_textfield_zh_cn;
-    user_hospital_input.textAlignment = NSTextAlignmentRight;
-    [user_hospital_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_hospital_input.delegate = self;
-    
-    // user_department_input;
-    user_department_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_department_input.placeholder = @"必填";
-    user_department_input.text = we_section;
-    user_department_input.font = We_font_textfield_zh_cn;
-    user_department_input.textAlignment = NSTextAlignmentRight;
-    [user_department_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_department_input.delegate = self;
-    
-    // user_minister_input;
-    user_minister_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_minister_input.placeholder = @"必填";
-    user_minister_input.text = we_title;
-    user_minister_input.font = We_font_textfield_zh_cn;
-    user_minister_input.textAlignment = NSTextAlignmentRight;
-    [user_minister_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_minister_input.delegate = self;
+    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bg.image = [UIImage imageNamed:@"Background-2"];
+    bg.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:bg];
     
     // user_category_input;
     user_category_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
@@ -432,12 +390,17 @@
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
-    sys_tableView.backgroundColor = We_background_general;
+    sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
     
     // save button
-    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:[WeAppDelegate transition:we_status asin:@"doctorStatus"] style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [sys_tableView reloadData];
+    [super viewWillAppear:YES];
 }
 
 - (void)didReceiveMemoryWarning

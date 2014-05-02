@@ -56,6 +56,15 @@
     tmp3.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (we_targetTabId != -1) {
+        NSLog(@"%d", we_targetTabId);
+        [self.tabBarController setSelectedIndex:2];
+        we_targetTabId = -1;
+    }
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -18,6 +18,10 @@
     we_targetTabId = 0;
     UITabBarController<UITabBarControllerDelegate> * _tabBarController = (UITabBarController<UITabBarControllerDelegate> *)_window.rootViewController;
     _tabBarController.delegate = _tabBarController;
+    
+    we_hospitalList = [[NSMutableDictionary alloc] init];
+    we_sectionList = [[NSMutableDictionary alloc] init];
+    [self refreshInitialData];
     return YES;
 }
 
@@ -90,14 +94,12 @@
     return received;
 }
 
-+ (NSData *)we_post:(NSString*)urlString paras:(NSDictionary *)paras
-{
++ (NSData *)postToServer:(NSString *)urlString withDictionaryParas:(NSDictionary *)paras {
     NSLog(@"%@ %@", urlString, paras);
     NSURL * url = [NSURL URLWithString:urlString];
     NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"IOS" forHTTPHeaderField:@"yijiaren"];
-    //[request setValuesForKeysWithDictionary:paras];
+    [request setValue:@"iOS" forHTTPHeaderField:@"yijiaren"];
     NSData * data = [NSKeyedArchiver archivedDataWithRootObject:paras];
     [request setHTTPBody:data];
     return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -149,6 +151,33 @@
     return @"出错啦！";
 }
 
++ (NSString *)transition:(NSString *)code asin:(NSString *)type {
+    return we_codings[type][code];
+}
+
+- (void)refreshInitialData {
+    NSString * urlString = yijiarenUrl(@"data", @"initData");
+    NSString * paraString = @"";
+    NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
+    
+    NSString * errorMessage = @"连接服务器失败，暂时使用本地缓存数据";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        //NSLog(@"%@", HTTPResponse);
+        we_codings = HTTPResponse[@"codings"];
+        we_imagePaths = HTTPResponse[@"imagePaths"];
+        NSLog(@"%@", we_codings);
+        return;
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"更新应用数据失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+}
+
 + (void)refreshUserData {
     NSString * urlString = yijiarenUrl(@"user", @"refreshUser");
     NSString * paraString = @"";
@@ -168,8 +197,8 @@
             we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
             we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
             we_workPeriod_save = [NSString stringWithString:we_workPeriod];
-            we_hospital = [WeAppDelegate toString:[[response objectForKey:@"hospital"] objectForKey:@"name"]];
-            we_section = [WeAppDelegate toString:[[response objectForKey:@"section"] objectForKey:@"text"]];
+            we_hospital = [response objectForKey:@"hospital"];
+            we_section = [response objectForKey:@"section"];
             we_title = [WeAppDelegate toString:[response objectForKey:@"title"]];
             we_category = [WeAppDelegate toString:[response objectForKey:@"category"]];
             we_skills = [WeAppDelegate toString:[response objectForKey:@"skills"]];
@@ -178,13 +207,18 @@
             we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
             we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
             we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
-            NSString *urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/avatar/%@",[response objectForKey:@"avatar"]];
+            we_status = [WeAppDelegate toString:[response objectForKey:@"status"]];
+            we_avatarPath = [WeAppDelegate toString:[response objectForKey:@"avatar"]];
+            /*
+            NSString *urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/avatar/%@",];
             NSString *paraString = @"";
             NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_avatar = [UIImage imageWithData:DataResponse];
+            we_avatar = [UIImage imageWithData:DataResponse]; */
+            
             we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
             we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
             
+            /*
             urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"wcPath"]];
             paraString = @"";
             DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
@@ -198,7 +232,7 @@
             urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"qcPath"]];
             paraString = @"";
             DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_qcImage = [UIImage imageWithData:DataResponse];
+            we_qcImage = [UIImage imageWithData:DataResponse];*/
             return;
         }
         if ([result isEqualToString:@"2"]) {
@@ -243,6 +277,25 @@
             result[12], result[13], result[14], result[15]
             ];
 }
+- (NSString *)urlencode {
+    NSMutableString *output = [NSMutableString string];
+    const unsigned char *source = (const unsigned char *)[self UTF8String];
+    int sourceLen = strlen((const char *)source);
+    for (int i = 0; i < sourceLen; ++i) {
+        const unsigned char thisChar = source[i];
+        if (thisChar == ' '){
+            [output appendString:@"+"];
+        } else if (thisChar == '.' || thisChar == '-' || thisChar == '_' || thisChar == '~' ||
+                   (thisChar >= 'a' && thisChar <= 'z') ||
+                   (thisChar >= 'A' && thisChar <= 'Z') ||
+                   (thisChar >= '0' && thisChar <= '9')) {
+            [output appendFormat:@"%c", thisChar];
+        } else {
+            [output appendFormat:@"%%%02X", thisChar];
+        }
+    }
+    return output;
+}
 @end
 
 @implementation NSData (WeDelegate)
@@ -259,3 +312,4 @@
             ];  
 }
 @end
+

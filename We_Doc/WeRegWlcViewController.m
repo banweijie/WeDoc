@@ -28,6 +28,11 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+// 调整格子的透明度
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.alpha = We_alpha_cell_general;;
+    cell.opaque = YES;
+}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
@@ -48,7 +53,7 @@
         [self send_login:self];
     }
     if (path.section == 3) {
-        [self send_forgetpass:self];
+        [self send_register:self];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
@@ -190,9 +195,8 @@
     
     [self.view setBackgroundColor:[UIColor colorWithRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1.0]];
     
+    // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
-   // UIImage * bgi = [UIImage imageNamed:@"Background-2"];
-    bg.alpha = 1;
     bg.image = [UIImage imageNamed:@"Background-2"];
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
@@ -218,6 +222,9 @@
     
     We_init_textFieldInCell_pholder(user_password_input, @"请输入您的登录密码", We_font_textfield_zh_cn);
     user_password_input.secureTextEntry = YES;
+    
+    user_phone_input.text = @"18810521309";
+    user_password_input.text = @"52yuqing";
     
     // user_forgetpass
     user_forgetPassView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 35)];
@@ -265,7 +272,7 @@
     NSLog(@"%@ %@", user_phone_input.text, user_password_input.text);
     if (![self checkUserRights]) return;
     we_logined = YES;
-    we_targetTabId = 2;
+    we_targetTabId = 3;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

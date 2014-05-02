@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeSelSecViewController : UIViewController
+@interface WeSelSecViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+
 
 @end

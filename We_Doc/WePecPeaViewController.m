@@ -8,6 +8,7 @@
 
 #import "WePecPeaViewController.h"
 #import "WeAppDelegate.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface WePecPeaViewController () {
     UITableView * sys_tableView;
@@ -89,6 +90,11 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = We_alpha_cell_general;;
+    cell.opaque = YES;
+}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
@@ -136,6 +142,7 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) return 20 + 64;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -193,6 +200,7 @@
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell.contentView addSubview:user_avatar_imageView];
+                    [user_avatar_imageView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(we_avatarPath)]];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -299,7 +307,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_avatar = image;
+            we_avatarPath = HTTPResponse[@"response"];
             return YES;
         }
         if ([result isEqualToString:@"2"]) {
@@ -465,12 +473,18 @@
     user_avatar_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
     user_avatar_imageView.image = we_avatar;
     
+    // 背景图片
+    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bg.image = [UIImage imageNamed:@"Background-2"];
+    bg.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:bg];
+    
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 570) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
-    sys_tableView.backgroundColor = We_background_general;
+    sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
 }
 
