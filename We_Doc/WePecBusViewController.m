@@ -35,6 +35,11 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = We_alpha_cell_general;;
+    cell.opaque = YES;
+}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
@@ -61,7 +66,7 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) return 40;
+    if (section == 0) return 40 + 64;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -301,12 +306,18 @@
     sys_explaination_label.textAlignment = NSTextAlignmentCenter;
     [sys_explaination_view addSubview:sys_explaination_label];
     
+    // 背景图片
+    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bg.image = [UIImage imageNamed:@"Background-2"];
+    bg.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:bg];
+    
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
-    sys_tableView.backgroundColor = We_background_general;
+    sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
 }
 

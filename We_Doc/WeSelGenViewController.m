@@ -11,6 +11,8 @@
 
 @interface WeSelGenViewController () {
     UITableView * sys_tableView;
+    NSArray * genderKeyArray;
+    NSInteger genderSelected;
 }
 
 @end
@@ -48,15 +50,7 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray * tmp;
-    if ([we_pea_gender isEqualToString:[self sys_trans:indexPath.row]]) {
-        tmp = [NSArray arrayWithObjects:indexPath, nil];
-    }
-    else {
-        tmp = [NSArray arrayWithObjects:indexPath, [NSIndexPath indexPathForRow:[self sys_detrans:we_pea_gender] inSection:0], nil];
-    }
-    we_pea_gender = [self sys_trans:indexPath.row];
-    [sys_tableView reloadRowsAtIndexPaths:tmp withRowAnimation:UITableViewRowAnimationNone];
+    [self save:indexPath.row];
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,7 +88,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 3;
+            return [we_codings[@"userGender"] count];
             break;
         default:
             return 0;
@@ -110,19 +104,57 @@
     switch (indexPath.section) {
         case 0:
             cell.backgroundColor = We_background_cell_general;
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = [WeAppDelegate transitionGenderFromChar:[self sys_trans:indexPath.row]];
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            if ([we_pea_gender isEqualToString:[self sys_trans:indexPath.row]]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-            else
-                [cell setAccessoryType:UITableViewCellAccessoryNone];
+            cell.textLabel.text = we_codings[@"userGender"][genderKeyArray[indexPath.row]];
+            if (indexPath.row == genderSelected) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             break;
         default:
             break;
     }
     return cell;
 }
+         
+ - (void)save:(NSInteger)selected {
+     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
+     NSString * paraString = [NSString stringWithFormat:@"gender=%@", genderKeyArray[selected]];
+     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
+     
+     NSString * errorMessage = @"连接服务器失败";
+     if (DataResponse != NULL) {
+         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+         NSLog(@"%@", HTTPResponse);
+         NSString *result = [HTTPResponse objectForKey:@"result"];
+         result = [NSString stringWithFormat:@"%@", result];
+         if ([result isEqualToString:@"1"]) {
+             we_gender = genderKeyArray[selected];
+             [self.navigationController popViewControllerAnimated:YES];
+             return;
+         }
+         if ([result isEqualToString:@"2"]) {
+             NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+             NSEnumerator *enumerator = [fields keyEnumerator];
+             id key;
+             while ((key = [enumerator nextObject])) {
+                 NSString * tmp1 = [fields objectForKey:key];
+                 if (tmp1 != NULL) errorMessage = tmp1;
+             }
+         }
+         if ([result isEqualToString:@"3"]) {
+             errorMessage = [HTTPResponse objectForKey:@"info"];
+         }
+         if ([result isEqualToString:@"4"]) {
+             errorMessage = [HTTPResponse objectForKey:@"info"];
+         }
+     }
+     UIAlertView *notPermitted = [[UIAlertView alloc]
+                                  initWithTitle:@"更新性别信息失败"
+                                  message:errorMessage
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+     [notPermitted show];
+ }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -151,6 +183,13 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+    
+    genderKeyArray = [we_codings[@"userGender"] allKeys];
+    genderSelected = -1;
+    
+    for (int i = 0; i < [genderKeyArray count]; i++) {
+        if ([we_gender isEqualToString:genderKeyArray[i]]) genderSelected = i;
+    }
 }
 
 - (void)didReceiveMemoryWarning

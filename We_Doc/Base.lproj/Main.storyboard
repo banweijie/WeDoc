@@ -153,6 +153,7 @@
                     <connections>
                         <segue destination="QcZ-h7-BrQ" kind="push" identifier="PecPea_pushto_SelGen" id="o1D-ln-kHi"/>
                         <segue destination="djG-Ww-epg" kind="push" identifier="PecPea_pushto_RegIvc" id="gWA-BA-tfi"/>
+                        <segue destination="1zb-Bm-qE3" kind="push" identifier="inputOfNameInPersonalAccount" id="IFR-hT-Nle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbQ-1r-c28" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,7 +245,7 @@
             </objects>
             <point key="canvasLocation" x="5669" y="47"/>
         </scene>
-        <!--We Sel Til View Controller-->
+        <!--We Sel Til View Controller - 选择职称-->
         <scene sceneID="MfN-e4-nOr">
             <objects>
                 <viewController id="k5F-VR-Y9F" customClass="WeSelTilViewController" sceneMemberID="viewController">
@@ -257,13 +258,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Olu-sg-Bu7"/>
+                    <navigationItem key="navigationItem" title="选择职称" id="Olu-sg-Bu7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pD-QS-HEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6669" y="-958"/>
         </scene>
-        <!--We Sel Gen View Controller-->
+        <!--We Inp Nam View Controller - 姓名-->
+        <scene sceneID="eiF-3K-Acd">
+            <objects>
+                <viewController id="1zb-Bm-qE3" customClass="WeInpNamViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FCA-MY-TVs"/>
+                        <viewControllerLayoutGuide type="bottom" id="daf-XZ-3Zy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1tA-ik-zCM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="姓名" id="HsI-Dd-eFC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0RA-0O-kOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4880" y="-1754"/>
+        </scene>
+        <!--We Sel Gen View Controller - 性别-->
         <scene sceneID="JKg-z8-5Nn">
             <objects>
                 <viewController id="QcZ-h7-BrQ" customClass="WeSelGenViewController" sceneMemberID="viewController">
@@ -276,13 +296,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ngV-K8-xKe"/>
+                    <navigationItem key="navigationItem" title="性别" id="ngV-K8-xKe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHD-d2-IhT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4880" y="-956"/>
         </scene>
-        <!--We Sel Hos View Controller-->
+        <!--We Sel Hos View Controller - 选择医院-->
         <scene sceneID="Tra-7R-rlj">
             <objects>
                 <viewController id="lVL-rt-H5n" customClass="WeSelHosViewController" sceneMemberID="viewController">
@@ -295,13 +315,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YiR-a4-a7S"/>
+                    <navigationItem key="navigationItem" title="选择医院" id="YiR-a4-a7S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQI-JW-NaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5637" y="-961"/>
         </scene>
-        <!--We Sel Sec View Controller-->
+        <!--We Sel Sec View Controller - 选择科室-->
         <scene sceneID="o0A-c1-Efr">
             <objects>
                 <viewController id="YPs-Ct-69b" customClass="WeSelSecViewController" sceneMemberID="viewController">
@@ -314,7 +334,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PYb-98-Xy3"/>
+                    <navigationItem key="navigationItem" title="选择科室" id="PYb-98-Xy3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cul-U6-wFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

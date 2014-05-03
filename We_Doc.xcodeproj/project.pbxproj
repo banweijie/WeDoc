@@ -26,6 +26,8 @@
 		9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFAE1912E3BA00CE4A7A /* WeSelHosViewController.m */; };
 		9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFB119143BA500CE4A7A /* WeSelSecViewController.m */; };
 		9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFB4191447FB00CE4A7A /* WeSelTilViewController.m */; };
+		9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFB8191471C400CE4A7A /* PAImageView.m */; };
+		9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFBB191473D900CE4A7A /* WeInpNamViewController.m */; };
 		9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */; };
 		9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC621902E32F00EA8310 /* WeMapNavController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
@@ -108,6 +110,10 @@
 		9026EFB119143BA500CE4A7A /* WeSelSecViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelSecViewController.m; sourceTree = "<group>"; };
 		9026EFB3191447FB00CE4A7A /* WeSelTilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelTilViewController.h; sourceTree = "<group>"; };
 		9026EFB4191447FB00CE4A7A /* WeSelTilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelTilViewController.m; sourceTree = "<group>"; };
+		9026EFB7191471C400CE4A7A /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
+		9026EFB8191471C400CE4A7A /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
+		9026EFBA191473D900CE4A7A /* WeInpNamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpNamViewController.h; sourceTree = "<group>"; };
+		9026EFBB191473D900CE4A7A /* WeInpNamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpNamViewController.m; sourceTree = "<group>"; };
 		9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTableViewCell.h; sourceTree = "<group>"; };
 		9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTableViewCell.m; sourceTree = "<group>"; };
 		9039CC611902E32F00EA8310 /* WeMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMapNavController.h; sourceTree = "<group>"; };
@@ -193,6 +199,8 @@
 			children = (
 				9026EDFD19044B9000CE4A7A /* WePecPeaViewController.h */,
 				9026EDFE19044B9000CE4A7A /* WePecPeaViewController.m */,
+				9026EFBA191473D900CE4A7A /* WeInpNamViewController.h */,
+				9026EFBB191473D900CE4A7A /* WeInpNamViewController.m */,
 				9026EE001904536300CE4A7A /* WeSelGenViewController.h */,
 				9026EE011904536300CE4A7A /* WeSelGenViewController.m */,
 			);
@@ -206,6 +214,15 @@
 				9026EE0A1904A60700CE4A7A /* VPImageCropperViewController.m */,
 			);
 			name = VPImageCropper;
+			sourceTree = "<group>";
+		};
+		9026EFB6191471C400CE4A7A /* PAImageView */ = {
+			isa = PBXGroup;
+			children = (
+				9026EFB7191471C400CE4A7A /* PAImageView.h */,
+				9026EFB8191471C400CE4A7A /* PAImageView.m */,
+			);
+			path = PAImageView;
 			sourceTree = "<group>";
 		};
 		9039CC5C1902B40800EA8310 /* Customs */ = {
@@ -263,6 +280,7 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
+				9026EFB6191471C400CE4A7A /* PAImageView */,
 				9026EE0C1904A61300CE4A7A /* VPImageCropper */,
 				9039CC5C1902B40800EA8310 /* Customs */,
 				904F7A4118F0F146000CB41B /* WeAppDelegate.h */,
@@ -574,6 +592,7 @@
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
+				9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */,
 				9026EE021904536300CE4A7A /* WeSelGenViewController.m in Sources */,
 				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
 				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
@@ -595,6 +614,7 @@
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
+				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

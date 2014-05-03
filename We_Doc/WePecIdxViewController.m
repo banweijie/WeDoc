@@ -10,6 +10,7 @@
 #import "WeAppDelegate.h"
 #import <AFNetworking.h>
 #import <UIImageView+AFNetworking.h>
+#import "PAImageView.h"
 
 @interface WePecIdxViewController ()
 @end
@@ -135,7 +136,7 @@
     }
     UILabel * l1;
     UILabel * l2;
-    UIImageView * imageView;
+    PAImageView *avatarView;
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
@@ -153,9 +154,9 @@
                     l2.textColor = We_foreground_gray_general;
                     l2.font = We_font_textfield_zh_cn;
                     [cell.contentView addSubview:l2];
-                    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 70, 70)];
-                    [imageView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(we_avatarPath)]];
-                    [cell.contentView addSubview:imageView];
+                    avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
+                    [avatarView setImageURL:yijiarenAvatarUrl(we_avatarPath)];
+                    [cell.contentView addSubview:avatarView];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -309,13 +310,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [WeAppDelegate refreshUserData];
+    
+    
+    // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
-    
-    
-    [WeAppDelegate refreshUserData];
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
@@ -324,68 +326,6 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
-    
-    /*
-    NSLog(@"%@", we_hospital[@"id"]);
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:yijiarenAvatarUrl(we_avatarPath) parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
-             [self.view addSubview:sys_tableView];
-             NSLog(@"JSON: %@", HTTPResponse);
-             NSString * errorMessage;
-             
-             NSString *result = [HTTPResponse objectForKey:@"result"];
-             result = [NSString stringWithFormat:@"%@", result];
-             if ([result isEqualToString:@"1"]) {
-                 we_sectionList[we_hospital[@"id"]] = HTTPResponse[@"response"];
-                 NSLog(@"%@", we_sectionList[we_hospital[@"id"]]);
-                 return;
-             }
-             if ([result isEqualToString:@"2"]) {
-                 NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-                 NSEnumerator *enumerator = [fields keyEnumerator];
-                 id key;
-                 while ((key = [enumerator nextObject])) {
-                     NSString * tmp1 = [fields objectForKey:key];
-                     if (tmp1 != NULL) errorMessage = tmp1;
-                 }
-             }
-             if ([result isEqualToString:@"3"]) {
-                 errorMessage = [HTTPResponse objectForKey:@"info"];
-             }
-             if ([result isEqualToString:@"4"]) {
-                 errorMessage = [HTTPResponse objectForKey:@"info"];
-             }
-             UIAlertView *notPermitted = [[UIAlertView alloc]
-                                          initWithTitle:@"获取科室列表失败"
-                                          message:errorMessage
-                                          delegate:nil
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
-             [notPermitted show];
-         }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"Error: %@", error);
-             UIAlertView *notPermitted = [[UIAlertView alloc]
-                                          initWithTitle:@"获取头像失败"
-                                          message:@"未能连接服务器，请重试"
-                                          delegate:nil
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
-             [notPermitted show];
-         }
-     ];*/
-    /*
-    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-    requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
-    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response: %@", responseObject);
-        we_avatar = responseObject;
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Image error: %@", error);
-    }];
-    [requestOperation start];*/
 }
 
 - (void)viewWillAppear:(BOOL)animated {

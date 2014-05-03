@@ -158,7 +158,7 @@
             }
             break;
         case 3:
-            cell.contentView.backgroundColor = We_background_red_tableviewcell;
+            cell.contentView.backgroundColor = We_foreground_red_general;
             cell.backgroundColor = [UIColor clearColor];
             cell.textLabel.text = @"初次使用？现在注册";
             cell.textLabel.font = We_font_textfield_zh_cn;

@@ -1,21 +1,22 @@
 //
-//  WeSelDayViewController.m
+//  WeInpNamViewController.m
 //  We_Doc
 //
-//  Created by WeDoctor on 14-4-20.
+//  Created by WeDoctor on 14-5-3.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WeSelDayViewController.h"
+#import "WeInpNamViewController.h"
 #import "WeAppDelegate.h"
 
-@interface WeSelDayViewController () {
+@interface WeInpNamViewController () {
     UITableView * sys_tableView;
+    UITextField * user_name_input;
 }
 
 @end
 
-@implementation WeSelDayViewController
+@implementation WeInpNamViewController
 
 /*
  [AREA]
@@ -27,23 +28,15 @@
     cell.opaque = YES;
 }
 // 欲选中某个Cell触发的事件
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    
-    return indexPath;
+    if (path.section == 0 && path.row == 0) [user_name_input becomeFirstResponder];
+    return nil;
 }
 // 选中某个Cell触发的事件
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    NSArray * tmp;
-    if ([we_wkp_dayOfWeek isEqualToString:[NSString stringWithFormat:@"%d", indexPath.row + 1]]) {
-        tmp = [NSArray arrayWithObjects:indexPath, nil];
-    }
-    else {
-        tmp = [NSArray arrayWithObjects:indexPath, [NSIndexPath indexPathForRow:[we_wkp_dayOfWeek intValue] - 1 inSection:0], nil];
-    }
-    we_wkp_dayOfWeek = [NSString stringWithFormat:@"%d", indexPath.row + 1];
-    [sys_tableView reloadRowsAtIndexPaths:tmp withRowAnimation:UITableViewRowAnimationNone];
+    
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +53,6 @@
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    //if (section == 1) return 30;
     if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
     return 10;
 }
@@ -81,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 7;
+            return 1;
             break;
         default:
             return 0;
@@ -96,19 +88,65 @@
     }
     switch (indexPath.section) {
         case 0:
-            cell.backgroundColor = We_background_cell_general;
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = [WeAppDelegate transitionDayOfWeekFromChar:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
-            cell.textLabel.font = We_font_textfield_zh_cn;
-            cell.textLabel.textColor = We_foreground_black_general;
-            if ([we_wkp_dayOfWeek isEqualToString:[NSString stringWithFormat:@"%d", indexPath.row + 1]]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-            else
-                [cell setAccessoryType:UITableViewCellAccessoryNone];
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell addSubview:user_name_input];
+                    break;
+                default:
+                    break;
+            }
             break;
         default:
             break;
     }
     return cell;
+}
+
+/*
+ [AREA]
+ Response functions
+ */
+- (void) user_save_onpress:(id)sender {
+    NSString *parasString = [NSString stringWithFormat:@"name=%@", [user_name_input.text urlencode]];
+    NSData * DataResponse = [WeAppDelegate postToServer:yijiarenUrl(@"user", @"updateInfo") withParas:parasString];
+    
+    NSString *errorMessage = @"发送失败，请检查网络";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            we_name = user_name_input.text;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp = [fields objectForKey:key];
+                if (tmp != NULL) errorMessage = tmp;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -124,6 +162,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    We_init_textFieldInCell_forInput(user_name_input, we_name, @"", We_font_textfield_zh_cn)
+
+    // save button
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
+    self.navigationItem.rightBarButtonItem = user_save;
     
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
