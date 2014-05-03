@@ -24,6 +24,11 @@
     // Initialization code
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    //self.imageView.frame = CGRectMake(self.imageView.frame.origin.x,self.imageView.frame.origin.x,20,20);
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

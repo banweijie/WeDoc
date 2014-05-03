@@ -48,15 +48,8 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray * tmp;
-    if ([we_wkp_typeOfPeriod isEqualToString:[self sys_trans:indexPath.row]]) {
-        tmp = [NSArray arrayWithObjects:indexPath, nil];
-    }
-    else {
-        tmp = [NSArray arrayWithObjects:indexPath, [NSIndexPath indexPathForRow:[self sys_detrans:we_wkp_typeOfPeriod]inSection:0], nil];
-    }
     we_wkp_typeOfPeriod = [self sys_trans:indexPath.row];
-    [sys_tableView reloadRowsAtIndexPaths:tmp withRowAnimation:UITableViewRowAnimationNone];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {

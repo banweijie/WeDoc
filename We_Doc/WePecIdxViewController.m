@@ -11,6 +11,7 @@
 #import <AFNetworking.h>
 #import <UIImageView+AFNetworking.h>
 #import "PAImageView.h"
+#import "WeTableViewCell.h"
 
 @interface WePecIdxViewController ()
 @end
@@ -130,13 +131,14 @@
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
+    WeTableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
+        cell = [[WeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     UILabel * l1;
     UILabel * l2;
     PAImageView *avatarView;
+    [[cell imageView] setContentMode:UIViewContentModeCenter];
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
