@@ -24,6 +24,10 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.alpha = We_alpha_cell_general;;
+    cell.opaque = YES;
+}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
@@ -50,6 +54,7 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) return 20 + 64;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -104,10 +109,12 @@
             l1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 240, 25)];
             l1.text = [NSString stringWithFormat:@"%@ %@ %@", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"hospital"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"section"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"title"]];
             l1.font = We_font_textfield_zh_cn;
+            l1.textColor = We_foreground_black_general;
             [cell.contentView addSubview:l1];
             l2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 240, 25)];
             l2.text = [NSString stringWithFormat:@"%@年%@月 - %@年%@月", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromMonth"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endMonth"]];
             l2.font = We_font_textfield_zh_cn;
+            l2.textColor = We_foreground_gray_general;
             [cell.contentView addSubview:l2];
             break;
         case 1:
@@ -229,13 +236,13 @@
  Response functions
  */
 - (void) user_edit_onpress:(id)sender {
-    if ([user_edit.title isEqualToString:@"编辑"]) {
+    if ([user_edit.title isEqualToString:@"删除"]) {
         [sys_tableView setEditing:YES animated:YES];
         user_edit.title = @"结束";
     }
     else {
         [sys_tableView setEditing:NO animated:YES];
-        user_edit.title = @"编辑";
+        user_edit.title = @"删除";
     }
 }
 
@@ -255,18 +262,24 @@
     // Do any additional setup after loading the view.
     
     // edit button
-    user_edit = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(user_edit_onpress:)];
+    user_edit = [[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonItemStylePlain target:self action:@selector(user_edit_onpress:)];
     self.navigationItem.rightBarButtonItem = user_edit;
     
     // get experience info
     [self get_experience];
+    
+    // Background
+    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bg.image = [UIImage imageNamed:@"Background-2"];
+    bg.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:bg];
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
-    sys_tableView.backgroundColor = We_background_general;
+    sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
 }
 

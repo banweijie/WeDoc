@@ -227,7 +227,7 @@
 - (void)user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
-    NSString *parasString = [NSString stringWithFormat:@"work_period=%@&plus_price=%@&consult_price=%@&max_response_gap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
+    NSString *parasString = [NSString stringWithFormat:@"workPeriod=%@&plusPrice=%@&consultPrice=%@&maxResponseGap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {

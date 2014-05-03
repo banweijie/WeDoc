@@ -8,6 +8,7 @@
 
 #import "WePecCaiViewController.h"
 #import "WeAppDelegate.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface WePecCaiViewController ()
 
@@ -31,20 +32,6 @@
 {
     // 选中该行自动跳转到该行的文本框
     switch (path.section) {
-        case 1:
-            switch (path.row) {
-                case 0:
-                    [self performSegueWithIdentifier:@"PecCai2PecCtf" sender:self];
-                    break;
-                case 1:
-                    [self performSegueWithIdentifier:@"PecCai2PecVctf" sender:self];
-                    break;
-                case 2:
-                    [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiWkp" sender:self];
-                    break;
-                default:
-                    break;
-            }
         case 2:
             switch (path.row) {
                 case 0:
@@ -86,6 +73,17 @@
         }
         if (path.row == 2) {
             [self performSegueWithIdentifier:@"selectionOfTitleInCareerInformation" sender:self];
+        }
+    }
+    if (path.section == 1) {
+        if (path.row == 0) {
+            [self performSegueWithIdentifier:@"PecCai2PecCtf" sender:self];
+        }
+        if (path.row == 1) {
+            [self performSegueWithIdentifier:@"PecCai2PecVctf" sender:self];
+        }
+        if (path.row == 2) {
+            [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiWkp" sender:self];
         }
     }
 }
@@ -152,6 +150,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
+    UIImageView * imageView;
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
@@ -196,6 +195,16 @@
                     cell.textLabel.text = @"资格证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    if ([we_qcPath isEqualToString:@""]) {
+                        cell.detailTextLabel.text = @"必填";
+                        cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                        cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    }
+                    else {
+                        imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_qcPath)]];
+                        [cell.contentView addSubview:imageView];
+                    }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 1:
@@ -203,6 +212,16 @@
                     cell.textLabel.text = @"职业证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    if ([we_pcPath isEqualToString:@""]) {
+                        cell.detailTextLabel.text = @"必填";
+                        cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                        cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    }
+                    else {
+                        imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_pcPath)]];
+                        [cell.contentView addSubview:imageView];
+                    }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
@@ -210,6 +229,16 @@
                     cell.textLabel.text = @"工作证照片";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    if ([we_wcPath isEqualToString:@""]) {
+                        cell.detailTextLabel.text = @"必填";
+                        cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                        cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    }
+                    else {
+                        imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_wcPath)]];
+                        [cell.contentView addSubview:imageView];
+                    }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:

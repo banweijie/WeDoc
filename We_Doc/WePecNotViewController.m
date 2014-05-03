@@ -22,6 +22,7 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.alpha = We_alpha_cell_general;;

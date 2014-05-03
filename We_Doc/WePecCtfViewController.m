@@ -8,6 +8,7 @@
 
 #import "WePecCtfViewController.h"
 #import "WeAppDelegate.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface WePecCtfViewController () {
     UITableView * sys_tableView;
@@ -21,7 +22,17 @@
 
 @implementation WePecCtfViewController
 
-
+// Action Sheet 按钮样式
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    for (UIView *subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            [button setTitleColor:We_foreground_red_general forState:UIControlStateNormal];
+            button.titleLabel.font = We_font_textfield_zh_cn;
+        }
+    }
+}
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         // 拍照
@@ -74,6 +85,11 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
+- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.alpha = We_alpha_cell_general;;
+    cell.opaque = YES;
+}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -108,6 +124,7 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) return 20 + 64;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -169,6 +186,7 @@
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             [cell addSubview:user_certificatePhoto_view];
+            [user_certificatePhoto_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_qcPath)]];
             break;
         default:
             break;
@@ -214,7 +232,6 @@
     
     NSData * DataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
-   // NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     NSString *errorMessage = @"发送失败，请检查网络";
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
@@ -222,8 +239,8 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_qcImage = user_certificatePhoto_view.image;
             we_qc = user_certificateId_input.text;
+            we_qcPath = HTTPResponse[@"response"];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }

@@ -327,6 +327,7 @@
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
+    sys_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:sys_tableView];
 }
 

@@ -72,7 +72,7 @@
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    if (section == 0) return 230;
+    if (section == 0) return 230 - (568 - self.view.frame.size.height);
     if (section == 1) return 2;
     if (section == 2) return 37;
     if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
@@ -204,14 +204,14 @@
     // Title
     sys_titles = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 140)];
     
-    title_en = [[UILabel alloc] initWithFrame:CGRectMake(90, 68 - (568 - self.view.frame.size.height) / 2, 150, 100)];
+    title_en = [[UILabel alloc] initWithFrame:CGRectMake(90, 68 - (568 - self.view.frame.size.height) * 2 / 5, 150, 100)];
     title_en.text = @"A+Dr";
     [title_en setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:57]];
     [title_en setTextColor:[UIColor colorWithRed:51.0/255 green:51.0/255 blue:51.0/255 alpha:1.0]];
     [title_en setTextAlignment:NSTextAlignmentCenter];
     [sys_titles addSubview:title_en];
     
-    title_zh = [[UILabel alloc] initWithFrame:CGRectMake(90, 115 - (568 - self.view.frame.size.height) / 2, 150, 100)];
+    title_zh = [[UILabel alloc] initWithFrame:CGRectMake(90, 115 - (568 - self.view.frame.size.height) * 2 / 5, 150, 100)];
     title_zh.text = @"医  家  仁";
     [title_zh setFont:[UIFont fontWithName:@"Heiti SC" size:16]];
     [title_zh setTextColor:[UIColor colorWithRed:134.0/255 green:11.0/255 blue:38.0/255 alpha:0.9]];

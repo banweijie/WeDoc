@@ -37,6 +37,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        NSLog(@"%d %@", indexPath.row, we_sectionList[we_hospital[@"id"]][indexPath.row]);
         if ([self save:indexPath.row]) {
             we_section = we_sectionList[we_hospital[@"id"]][indexPath.row];
             [self.navigationController popViewControllerAnimated:YES];
@@ -102,10 +103,10 @@
 
 - (BOOL)save:(NSInteger)selected {
     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
-    NSString * paraString = [NSString stringWithFormat:@"sectionId=%@", we_section[@"id"]];
+    NSString * paraString = [NSString stringWithFormat:@"sectionId=%@", we_sectionList[we_hospital[@"id"]][selected][@"id"]];
     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
     
-    NSString * errorMessage = @"连接服务器失败，暂时使用本地缓存数据";
+    NSString * errorMessage = @"连接服务器失败";
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"%@", HTTPResponse);

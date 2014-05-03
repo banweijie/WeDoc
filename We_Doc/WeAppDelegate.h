@@ -64,6 +64,9 @@ NSString * we_qc;
 NSString * we_pc;
 NSString * we_status;
 NSString * we_avatarPath;
+NSString * we_pcPath;
+NSString * we_qcPath;
+NSString * we_wcPath;
 
 UIImage * we_avatar;
 UIImage * we_qcImage;
@@ -88,14 +91,15 @@ NSMutableDictionary * we_sectionList;
 #define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
 #define yijiarenImageServer we_imagePaths[@"imgServer"]
 #define yijiarenAvatarUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"avatarPath"], fileName]
+#define yijiarenCertUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"certPath"], fileName]
 
 #define UIColorFromRGB0x(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define UIColorFromRGB(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
-#define We_font_textfield_zh_cn [UIFont fontWithName:@"Heiti SC" size:15]
-#define We_font_textfield_en_us [UIFont fontWithName:@"Helvetica" size:15]
-#define We_font_button_zh_cn [UIFont fontWithName:@"Heiti SC" size:15]
+#define We_font_textfield_zh_cn [UIFont fontWithName:@"Heiti SC" size:14]
+#define We_font_textfield_en_us [UIFont fontWithName:@"Helvetica" size:14]
+#define We_font_button_zh_cn [UIFont fontWithName:@"Heiti SC" size:14]
 
 #define We_background_cell_general UIColorFromRGB(255, 255, 255, 0.85)
 #define We_background_general UIColorFromRGB(237, 237, 237, 1)
@@ -110,7 +114,7 @@ NSMutableDictionary * we_sectionList;
 #define We_frame_labelInCell_general CGRectMake(100, 9, 180, 30)
 #define We_frame_textFieldInCell_forInput CGRectMake(15, 8, 290, 30)
 #define We_frame_textView_huge CGRectMake(10, 10, 300, 180)
-
+#define We_frame_detailImageInCell_general CGRectMake(255, 7, 30, 30)
 #define We_alpha_cell_general 0.85
 
 #define We_init_textFieldInCell_general(tf, _text, _font) tf = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];tf.text = _text;tf.font = _font;tf.textAlignment = NSTextAlignmentRight;tf.delegate = self;

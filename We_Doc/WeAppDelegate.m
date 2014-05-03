@@ -209,30 +209,13 @@
             we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
             we_status = [WeAppDelegate toString:[response objectForKey:@"status"]];
             we_avatarPath = [WeAppDelegate toString:[response objectForKey:@"avatar"]];
-            /*
-            NSString *urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/avatar/%@",];
-            NSString *paraString = @"";
-            NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_avatar = [UIImage imageWithData:DataResponse]; */
             
             we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
             we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
             
-            /*
-            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"wcPath"]];
-            paraString = @"";
-            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_wcImage = [UIImage imageWithData:DataResponse];
-            
-            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"pcPath"]];
-            paraString = @"";
-            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_pcImage = [UIImage imageWithData:DataResponse];
-            
-            urlString = [NSString stringWithFormat:@"http://115.28.222.1/yijiaren/pics/certs/%@",[response objectForKey:@"qcPath"]];
-            paraString = @"";
-            DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-            we_qcImage = [UIImage imageWithData:DataResponse];*/
+            we_qcPath = [WeAppDelegate toString:[response objectForKey:@"qcPath"]];
+            we_pcPath = [WeAppDelegate toString:[response objectForKey:@"pcPath"]];
+            we_wcPath = [WeAppDelegate toString:[response objectForKey:@"wcPath"]];
             return;
         }
         if ([result isEqualToString:@"2"]) {

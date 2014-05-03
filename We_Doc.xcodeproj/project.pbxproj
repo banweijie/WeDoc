@@ -416,10 +416,10 @@
 				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
 				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
 				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
-				9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */,
-				9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */,
 				9026EE0619049E7400CE4A7A /* WePecCaiWkpViewController.h */,
 				9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */,
+				9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */,
+				9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */,
 			);
 			name = CareerInformation;
 			sourceTree = "<group>";

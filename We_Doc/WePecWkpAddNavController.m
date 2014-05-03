@@ -29,7 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationBar.translucent = NO;
+    self.navigationBar.translucent = YES;
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"texture"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setAlpha:0.9];
     [self.navigationBar setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName,
