@@ -194,6 +194,8 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+    
+    [user_notification_input becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

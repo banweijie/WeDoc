@@ -1,23 +1,23 @@
 //
-//  WeSelGenViewController.m
+//  WeSelDegViewController.m
 //  We_Doc
 //
-//  Created by WeDoctor on 14-4-21.
+//  Created by WeDoctor on 14-5-3.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WeSelGenViewController.h"
+#import "WeSelDegViewController.h"
 #import "WeAppDelegate.h"
 
-@interface WeSelGenViewController () {
+@interface WeSelDegViewController () {
     UITableView * sys_tableView;
-    NSArray * genderKeyArray;
-    NSInteger genderSelected;
+    NSArray * degreeKeyArray;
+    NSInteger degreeSelected;
 }
 
 @end
 
-@implementation WeSelGenViewController
+@implementation WeSelDegViewController
 
 /*
  [AREA]
@@ -74,7 +74,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [we_codings[@"userGender"] count];
+            return [we_codings[@"doctorDegree"] count];
             break;
         default:
             return 0;
@@ -92,55 +92,55 @@
             cell.backgroundColor = We_background_cell_general;
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            cell.textLabel.text = we_codings[@"userGender"][genderKeyArray[indexPath.row]];
-            if (indexPath.row == genderSelected) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            cell.textLabel.text = we_codings[@"doctorDegree"][degreeKeyArray[indexPath.row]];
+            if (indexPath.row == degreeSelected) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             break;
         default:
             break;
     }
     return cell;
 }
-         
- - (void)save:(NSInteger)selected {
-     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
-     NSString * paraString = [NSString stringWithFormat:@"gender=%@", genderKeyArray[selected]];
-     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
-     
-     NSString * errorMessage = @"连接服务器失败";
-     if (DataResponse != NULL) {
-         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-         NSLog(@"%@", HTTPResponse);
-         NSString *result = [HTTPResponse objectForKey:@"result"];
-         result = [NSString stringWithFormat:@"%@", result];
-         if ([result isEqualToString:@"1"]) {
-             we_gender = genderKeyArray[selected];
-             [self.navigationController popViewControllerAnimated:YES];
-             return;
-         }
-         if ([result isEqualToString:@"2"]) {
-             NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-             NSEnumerator *enumerator = [fields keyEnumerator];
-             id key;
-             while ((key = [enumerator nextObject])) {
-                 NSString * tmp1 = [fields objectForKey:key];
-                 if (tmp1 != NULL) errorMessage = tmp1;
-             }
-         }
-         if ([result isEqualToString:@"3"]) {
-             errorMessage = [HTTPResponse objectForKey:@"info"];
-         }
-         if ([result isEqualToString:@"4"]) {
-             errorMessage = [HTTPResponse objectForKey:@"info"];
-         }
-     }
-     UIAlertView *notPermitted = [[UIAlertView alloc]
-                                  initWithTitle:@"更新性别信息失败"
-                                  message:errorMessage
-                                  delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-     [notPermitted show];
- }
+
+- (void)save:(NSInteger)selected {
+    NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
+    NSString * paraString = [NSString stringWithFormat:@"degree=%@", degreeKeyArray[selected]];
+    NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
+    
+    NSString * errorMessage = @"连接服务器失败";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"%@", HTTPResponse);
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            we_degree = degreeKeyArray[selected];
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"更新性别信息失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -170,11 +170,11 @@
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
     
-    genderKeyArray = [we_codings[@"userGender"] allKeys];
-    genderSelected = -1;
+    degreeKeyArray = [we_codings[@"doctorDegree"] allKeys];
+    degreeSelected = -1;
     
-    for (int i = 0; i < [genderKeyArray count]; i++) {
-        if ([we_gender isEqualToString:genderKeyArray[i]]) genderSelected = i;
+    for (int i = 0; i < [degreeKeyArray count]; i++) {
+        if ([we_degree isEqualToString:degreeKeyArray[i]]) degreeSelected = i;
     }
 }
 

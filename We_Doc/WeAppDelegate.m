@@ -209,6 +209,7 @@
             we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
             we_status = [WeAppDelegate toString:[response objectForKey:@"status"]];
             we_avatarPath = [WeAppDelegate toString:[response objectForKey:@"avatar"]];
+            we_groupIntro = [WeAppDelegate toString:[response objectForKey:@"groupIntro"]];
             
             we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
             we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];

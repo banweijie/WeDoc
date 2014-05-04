@@ -28,6 +28,9 @@
 		9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFB4191447FB00CE4A7A /* WeSelTilViewController.m */; };
 		9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFB8191471C400CE4A7A /* PAImageView.m */; };
 		9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFBB191473D900CE4A7A /* WeInpNamViewController.m */; };
+		9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFBE1914AC1900CE4A7A /* WeInpSkiViewController.m */; };
+		9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */; };
+		9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */; };
 		9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */; };
 		9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC621902E32F00EA8310 /* WeMapNavController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
@@ -114,6 +117,12 @@
 		9026EFB8191471C400CE4A7A /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
 		9026EFBA191473D900CE4A7A /* WeInpNamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpNamViewController.h; sourceTree = "<group>"; };
 		9026EFBB191473D900CE4A7A /* WeInpNamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpNamViewController.m; sourceTree = "<group>"; };
+		9026EFBD1914AC1900CE4A7A /* WeInpSkiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpSkiViewController.h; sourceTree = "<group>"; };
+		9026EFBE1914AC1900CE4A7A /* WeInpSkiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpSkiViewController.m; sourceTree = "<group>"; };
+		9026EFC01914AC2C00CE4A7A /* WeSelDegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelDegViewController.h; sourceTree = "<group>"; };
+		9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelDegViewController.m; sourceTree = "<group>"; };
+		9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpEmaViewController.h; sourceTree = "<group>"; };
+		9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpEmaViewController.m; sourceTree = "<group>"; };
 		9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTableViewCell.h; sourceTree = "<group>"; };
 		9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTableViewCell.m; sourceTree = "<group>"; };
 		9039CC611902E32F00EA8310 /* WeMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMapNavController.h; sourceTree = "<group>"; };
@@ -420,6 +429,12 @@
 				9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */,
 				9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */,
 				9026EE0419049E5700CE4A7A /* WePecCaiGriViewController.m */,
+				9026EFBD1914AC1900CE4A7A /* WeInpSkiViewController.h */,
+				9026EFBE1914AC1900CE4A7A /* WeInpSkiViewController.m */,
+				9026EFC01914AC2C00CE4A7A /* WeSelDegViewController.h */,
+				9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */,
+				9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */,
+				9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */,
 			);
 			name = CareerInformation;
 			sourceTree = "<group>";
@@ -578,9 +593,11 @@
 				9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */,
 				9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */,
 				9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */,
+				9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */,
 				9026EF1B190D00E200CE4A7A /* WeRapViewController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
+				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
 				9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */,
 				904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */,
@@ -590,6 +607,7 @@
 				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
+				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
 				9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */,
@@ -745,9 +763,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "D2A0AF6A-E6EE-4C70-8652-7360D2206248";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -764,9 +782,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0B4C248A-4664-4BF0-8866-4F6C08037CDF";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -30,35 +30,6 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    // 选中该行自动跳转到该行的文本框
-    switch (path.section) {
-        case 2:
-            switch (path.row) {
-                case 0:
-                    [user_category_input becomeFirstResponder];
-                    break;
-                case 1:
-                    [user_speciality_input becomeFirstResponder];
-                    break;
-                case 2:
-                    [user_degree_input becomeFirstResponder];
-                    break;
-                default:
-                    break;
-            }
-            return nil;
-            break;
-        case 3:
-            switch (path.row) {
-                case 0:
-                    [user_email_input becomeFirstResponder];
-                    break;
-                default:
-                    break;
-            }
-        default:
-            break;
-    }
     return path;
 }
 // 选中某个Cell触发的事件
@@ -84,6 +55,22 @@
         }
         if (path.row == 2) {
             [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiWkp" sender:self];
+        }
+    }
+    if (path.section == 2) {
+        if (path.row == 0) {
+            [self performSegueWithIdentifier:@"PecCai_pushto_PecCaiGri" sender:self];
+        }
+        if (path.row == 1) {
+            [self performSegueWithIdentifier:@"inputOfSkillInCareerInfo" sender:self];
+        }
+        if (path.row == 2) {
+            [self performSegueWithIdentifier:@"selectionOfDegreeInCareerInfo" sender:self];
+        }
+    }
+    if (path.section == 3) {
+        if (path.row == 0) {
+            [self performSegueWithIdentifier:@"inputOfEmailInCareerInfo" sender:self];
         }
     }
 }
@@ -252,21 +239,33 @@
                     cell.textLabel.text = @"团队介绍";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_category_input];
+                    cell.detailTextLabel.text = we_groupIntro;
+                    if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"专业特长";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_speciality_input];
+                    cell.detailTextLabel.text = we_skills;
+                    if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"学位";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_degree_input];
+                    cell.detailTextLabel.text = we_codings[@"doctorDegree"][we_degree];
+                    if ([we_degree isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
                     break;
@@ -279,7 +278,11 @@
                     cell.textLabel.text = @"邮箱";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    [cell addSubview:user_email_input];
+                    cell.detailTextLabel.text = we_email;
+                    if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
                     break;
@@ -377,42 +380,6 @@
     bg.image = [UIImage imageNamed:@"Background-2"];
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
-    
-    // user_category_input;
-    user_category_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_category_input.placeholder = @"选填";
-    user_category_input.text = we_category;
-    user_category_input.font = We_font_textfield_zh_cn;
-    user_category_input.textAlignment = NSTextAlignmentRight;
-    [user_category_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_category_input.delegate = self;
-    
-    // user_speciality_input;
-    user_speciality_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_speciality_input.placeholder = @"选填";
-    user_speciality_input.text = we_skills;
-    user_speciality_input.font = We_font_textfield_zh_cn;
-    user_speciality_input.textAlignment = NSTextAlignmentRight;
-    [user_speciality_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_speciality_input.delegate = self;
-    
-    // user_degree_input;
-    user_degree_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_degree_input.placeholder = @"选填";
-    user_degree_input.text = we_degree;
-    user_degree_input.font = We_font_textfield_zh_cn;
-    user_degree_input.textAlignment = NSTextAlignmentRight;
-    [user_degree_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_degree_input.delegate = self;
-    
-    // user_email_input;
-    user_email_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
-    user_email_input.placeholder = @"选填";
-    user_email_input.text = we_email;
-    user_email_input.font = We_font_textfield_zh_cn;
-    user_email_input.textAlignment = NSTextAlignmentRight;
-    [user_email_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    user_email_input.delegate = self;
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];

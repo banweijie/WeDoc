@@ -67,6 +67,7 @@ NSString * we_avatarPath;
 NSString * we_pcPath;
 NSString * we_qcPath;
 NSString * we_wcPath;
+NSString * we_groupIntro;
 
 UIImage * we_avatar;
 UIImage * we_qcImage;

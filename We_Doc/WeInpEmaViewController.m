@@ -1,23 +1,22 @@
 //
-//  WeSelGenViewController.m
+//  WeInpEmaViewController.m
 //  We_Doc
 //
-//  Created by WeDoctor on 14-4-21.
+//  Created by WeDoctor on 14-5-3.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WeSelGenViewController.h"
+#import "WeInpEmaViewController.h"
 #import "WeAppDelegate.h"
 
-@interface WeSelGenViewController () {
+@interface WeInpEmaViewController () {
+    UITextField * user_email_input;
     UITableView * sys_tableView;
-    NSArray * genderKeyArray;
-    NSInteger genderSelected;
 }
 
 @end
 
-@implementation WeSelGenViewController
+@implementation WeInpEmaViewController
 
 /*
  [AREA]
@@ -29,14 +28,15 @@
     cell.opaque = YES;
 }
 // 欲选中某个Cell触发的事件
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    return indexPath;
+    if (path.section == 0 && path.row == 0) [user_email_input becomeFirstResponder];
+    return nil;
 }
 // 选中某个Cell触发的事件
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    [self save:indexPath.row];
+    
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,7 +53,6 @@
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    //if (section == 1) return 30;
     if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
     return 10;
 }
@@ -74,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [we_codings[@"userGender"] count];
+            return 1;
             break;
         default:
             return 0;
@@ -89,58 +88,66 @@
     }
     switch (indexPath.section) {
         case 0:
-            cell.backgroundColor = We_background_cell_general;
-            cell.textLabel.font = We_font_textfield_zh_cn;
-            cell.textLabel.textColor = We_foreground_black_general;
-            cell.textLabel.text = we_codings[@"userGender"][genderKeyArray[indexPath.row]];
-            if (indexPath.row == genderSelected) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            switch (indexPath.row) {
+                case 0:
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell addSubview:user_email_input];
+                    break;
+                default:
+                    break;
+            }
             break;
         default:
             break;
     }
     return cell;
 }
-         
- - (void)save:(NSInteger)selected {
-     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
-     NSString * paraString = [NSString stringWithFormat:@"gender=%@", genderKeyArray[selected]];
-     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
-     
-     NSString * errorMessage = @"连接服务器失败";
-     if (DataResponse != NULL) {
-         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-         NSLog(@"%@", HTTPResponse);
-         NSString *result = [HTTPResponse objectForKey:@"result"];
-         result = [NSString stringWithFormat:@"%@", result];
-         if ([result isEqualToString:@"1"]) {
-             we_gender = genderKeyArray[selected];
-             [self.navigationController popViewControllerAnimated:YES];
-             return;
-         }
-         if ([result isEqualToString:@"2"]) {
-             NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-             NSEnumerator *enumerator = [fields keyEnumerator];
-             id key;
-             while ((key = [enumerator nextObject])) {
-                 NSString * tmp1 = [fields objectForKey:key];
-                 if (tmp1 != NULL) errorMessage = tmp1;
-             }
-         }
-         if ([result isEqualToString:@"3"]) {
-             errorMessage = [HTTPResponse objectForKey:@"info"];
-         }
-         if ([result isEqualToString:@"4"]) {
-             errorMessage = [HTTPResponse objectForKey:@"info"];
-         }
-     }
-     UIAlertView *notPermitted = [[UIAlertView alloc]
-                                  initWithTitle:@"更新性别信息失败"
-                                  message:errorMessage
-                                  delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-     [notPermitted show];
- }
+
+/*
+ [AREA]
+ Response functions
+ */
+- (void) user_save_onpress:(id)sender {
+    NSString *parasString = [NSString stringWithFormat:@"email=%@", [user_email_input.text urlencode]];
+    NSData * DataResponse = [WeAppDelegate postToServer:yijiarenUrl(@"doctor", @"updateInfo") withParas:parasString];
+    
+    NSString *errorMessage = @"发送失败，请检查网络";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            we_email = user_email_input.text;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp = [fields objectForKey:key];
+                if (tmp != NULL) errorMessage = tmp;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"保存失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -156,6 +163,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    We_init_textFieldInCell_forInput(user_email_input, we_email, @"", We_font_textfield_zh_cn)
+    
+    // save button
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
+    self.navigationItem.rightBarButtonItem = user_save;
+    
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
@@ -170,12 +183,7 @@
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
     
-    genderKeyArray = [we_codings[@"userGender"] allKeys];
-    genderSelected = -1;
-    
-    for (int i = 0; i < [genderKeyArray count]; i++) {
-        if ([we_gender isEqualToString:genderKeyArray[i]]) genderSelected = i;
-    }
+    [user_email_input becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

@@ -182,6 +182,9 @@
                         <segue destination="lVL-rt-H5n" kind="push" identifier="selectionOfHospitalInCareerInformation" id="4sd-6F-kZs"/>
                         <segue destination="YPs-Ct-69b" kind="push" identifier="selectionOfSectionInCareerInformation" id="Lo9-7a-IkN"/>
                         <segue destination="k5F-VR-Y9F" kind="push" identifier="selectionOfTitleInCareerInformation" id="R72-Ge-tzC"/>
+                        <segue destination="Aw2-Aa-Vwm" kind="push" identifier="inputOfSkillInCareerInfo" id="OCq-pf-9Ik"/>
+                        <segue destination="2Cn-mG-NdZ" kind="push" identifier="selectionOfDegreeInCareerInfo" id="MbF-pV-Zoe"/>
+                        <segue destination="4gu-gQ-U91" kind="push" identifier="inputOfEmailInCareerInfo" id="iBM-t7-tJr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqx-PR-fRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,6 +209,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYf-af-Obn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4880" y="784"/>
+        </scene>
+        <!--We Inp Ski View Controller - 专业特长-->
+        <scene sceneID="3Yt-sd-SYr">
+            <objects>
+                <viewController id="Aw2-Aa-Vwm" customClass="WeInpSkiViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nwX-Va-bHj"/>
+                        <viewControllerLayoutGuide type="bottom" id="4ON-Yo-ftz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HAE-od-NNA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="专业特长" id="xuT-G3-EUU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8oH-iJ-Qnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5685" y="1041"/>
+        </scene>
+        <!--We Sel Deg View Controller - 学位-->
+        <scene sceneID="GvF-dv-BrC">
+            <objects>
+                <viewController id="2Cn-mG-NdZ" customClass="WeSelDegViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AvP-Xo-4KN"/>
+                        <viewControllerLayoutGuide type="bottom" id="M4N-pI-eTX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="buK-46-Jva">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="学位" id="pca-OJ-dbk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bs7-PQ-5k7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6397" y="1033"/>
+        </scene>
+        <!--We Inp Ema View Controller - 邮箱-->
+        <scene sceneID="TvS-6N-8ay">
+            <objects>
+                <viewController id="4gu-gQ-U91" customClass="WeInpEmaViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bMb-qf-28h"/>
+                        <viewControllerLayoutGuide type="bottom" id="r3V-eT-idM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ATz-18-Y9x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="邮箱" id="Uoc-yG-AMz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWD-do-c3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7093" y="1033"/>
         </scene>
         <!--We Pec Cai Gri View Controller - 团队信息-->
         <scene sceneID="MZe-sV-Gzj">
@@ -432,7 +492,6 @@
         <!--We Sel Day View Controller - 选择日期-->
         <scene sceneID="Y0D-sQ-Pjr">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n2a-5Y-gnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zrT-MJ-mcW" customClass="WeSelDayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ggo-Zh-1Aw"/>
@@ -445,13 +504,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="选择日期" id="T8j-2G-EDH"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2a-5Y-gnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6117" y="3897"/>
         </scene>
         <!--We Sel Per View Controller - 选择时间段-->
         <scene sceneID="a4O-TS-hR0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9jI-gX-0cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="iPk-9L-tYZ" customClass="WeSelPerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R2f-Qe-XYR"/>
@@ -464,13 +523,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="选择时间段" id="bYc-SY-anR"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9jI-gX-0cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6117" y="4662"/>
         </scene>
         <!--We Sel Typ View Controller-->
         <scene sceneID="EDz-Bf-vCb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7xf-u7-4KQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CbQ-YC-Gv4" customClass="WeSelTypViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I88-rC-94C"/>
@@ -483,6 +542,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="U96-Zb-3zb"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xf-u7-4KQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6117" y="5500"/>
         </scene>
@@ -771,10 +831,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pov-aw-V1X"/>
-        <segue reference="hf8-zt-DF2"/>
-        <segue reference="p97-ix-W3p"/>
         <segue reference="PNH-k3-thk"/>
+        <segue reference="NZg-3l-cVs"/>
         <segue reference="gWA-BA-tfi"/>
+        <segue reference="p97-ix-W3p"/>
+        <segue reference="hf8-zt-DF2"/>
     </inferredMetricsTieBreakers>
 </document>
