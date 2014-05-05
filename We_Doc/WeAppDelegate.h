@@ -75,6 +75,7 @@ UIImage * we_pcImage;
 UIImage * we_wcImage;
 
 NSMutableArray * user_exps;
+NSMutableArray * we_patients;
 NSMutableDictionary * we_hospitalList;
 NSMutableDictionary * we_sectionList;
 

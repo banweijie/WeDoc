@@ -16,7 +16,11 @@
 @implementation WeTabBarViewController
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (viewController == [tabBarController.viewControllers objectAtIndex:3] && !we_logined) {
+    if (viewController == [tabBarController.viewControllers objectAtIndex:4] && !we_logined) {
+        [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
+        return NO;
+    }
+    if (viewController == [tabBarController.viewControllers objectAtIndex:1] && !we_logined) {
         [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
         return NO;
     }
@@ -54,6 +58,8 @@
     tmp2.selectedImage = [UIImage imageNamed:@"tab-crowdfunding-selected"];
     UITabBarItem * tmp3 = [self.tabBar.items objectAtIndex:3];
     tmp3.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
+    UITabBarItem * tmp4 = [self.tabBar.items objectAtIndex:4];
+    tmp4.selectedImage = [UIImage imageNamed:@"tab-appointment-selected"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -31,6 +31,8 @@
 		9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFBE1914AC1900CE4A7A /* WeInpSkiViewController.m */; };
 		9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */; };
 		9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */; };
+		9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC71916FA3700CE4A7A /* WeCsrNavViewController.m */; };
+		9026EFCB1917893D00CE4A7A /* WeCsrIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFCA1917893D00CE4A7A /* WeCsrIdxViewController.m */; };
 		9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */; };
 		9039CC631902E32F00EA8310 /* WeMapNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9039CC621902E32F00EA8310 /* WeMapNavController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
@@ -123,6 +125,10 @@
 		9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelDegViewController.m; sourceTree = "<group>"; };
 		9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpEmaViewController.h; sourceTree = "<group>"; };
 		9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpEmaViewController.m; sourceTree = "<group>"; };
+		9026EFC61916FA3700CE4A7A /* WeCsrNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrNavViewController.h; sourceTree = "<group>"; };
+		9026EFC71916FA3700CE4A7A /* WeCsrNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrNavViewController.m; sourceTree = "<group>"; };
+		9026EFC91917893D00CE4A7A /* WeCsrIdxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrIdxViewController.h; sourceTree = "<group>"; };
+		9026EFCA1917893D00CE4A7A /* WeCsrIdxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrIdxViewController.m; sourceTree = "<group>"; };
 		9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTableViewCell.h; sourceTree = "<group>"; };
 		9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTableViewCell.m; sourceTree = "<group>"; };
 		9039CC611902E32F00EA8310 /* WeMapNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMapNavController.h; sourceTree = "<group>"; };
@@ -361,9 +367,9 @@
 				9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */,
 				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
+				909E3C6E1901AF4300ADC2E9 /* Experience */,
 				9026EDFC19044B7100CE4A7A /* PersonalAccount */,
 				909E3C6D1901AF0C00ADC2E9 /* CareerInformation */,
-				909E3C6E1901AF4300ADC2E9 /* Experience */,
 				907FE5A31902518B0070DB3E /* BusinessSetting */,
 				907FE5A019023E7D0070DB3E /* WePecNotViewController.h */,
 				907FE5A119023E7D0070DB3E /* WePecNotViewController.m */,
@@ -374,6 +380,10 @@
 		9054808518FAA56D00CE8172 /* ConsultingRoom */ = {
 			isa = PBXGroup;
 			children = (
+				9026EFC61916FA3700CE4A7A /* WeCsrNavViewController.h */,
+				9026EFC71916FA3700CE4A7A /* WeCsrNavViewController.m */,
+				9026EFC91917893D00CE4A7A /* WeCsrIdxViewController.h */,
+				9026EFCA1917893D00CE4A7A /* WeCsrIdxViewController.m */,
 			);
 			name = ConsultingRoom;
 			sourceTree = "<group>";
@@ -597,6 +607,7 @@
 				9026EF1B190D00E200CE4A7A /* WeRapViewController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
+				9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
 				9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */,
@@ -616,6 +627,7 @@
 				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				9026EF68190D30B500CE4A7A /* WeViewController.m in Sources */,
+				9026EFCB1917893D00CE4A7A /* WeCsrIdxViewController.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
