@@ -30,42 +30,12 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    switch (path.section) {
-        case 0:
-            switch (path.row) {
-                case 0:
-                    [self performSegueWithIdentifier:@"PecIdx_pushto_PecPea" sender:self];
-                    break;
-                case 1:
-                    [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
-                    break;
-                case 2:
-                    [self performSegueWithIdentifier:@"PecIdx2PecDcl" sender:self];
-                default:
-                    break;
-            }
-            return nil;
-            break;
-        case 1:
-            switch (path.row) {
-                case 0:
-                    [self performSegueWithIdentifier:@"push_to_PecBus" sender:self];
-                    break;
-                case 1:
-                    [self performSegueWithIdentifier:@"push_to_PecNot" sender:self];
-                default:
-                    break;
-            }
-            return nil;
-            break;
-        default:
-            break;
-    }
     return path;
 }
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,6 +79,19 @@
             return 0;
     }
 }
+// 编辑时进行的动作
+-(void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        if (![self deletePatientAtIndex:indexPath.row]) return;
+        [we_patients removeObjectAtIndex:indexPath.row];
+        [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+// 返回是否可编辑
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
@@ -118,24 +101,42 @@
     }
     UILabel * l1;
     UILabel * l2;
+    UILabel * l3;
     PAImageView *avatarView;
+    NSDictionary * lastMsg;
     [[cell imageView] setContentMode:UIViewContentModeCenter];
     switch (indexPath.section) {
         case 0:
             cell.contentView.backgroundColor = We_background_cell_general;
-            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-            l1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 9, 240, 25)];
-            l1.text = we_name;
+            // l1 - user name
+            l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 9, 240, 23)];
+            l1.text = we_patients[indexPath.row][@"patient"][@"name"];
             if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
             l1.font = We_font_textfield_zh_cn;
             l1.textColor = We_foreground_black_general;
             [cell.contentView addSubview:l1];
-            l2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 36, 240, 25)];
-            l2.text = we_phone;
-            l2.textColor = We_foreground_gray_general;
-            l2.font = We_font_textfield_zh_cn;
+            // l2 - lastMsg - content
+            l2 = [[UILabel alloc] initWithFrame:CGRectMake(75, 33, 240, 23)];
+            lastMsg = [we_msgsForPatient[[WeAppDelegate toString:we_patients[indexPath.row][@"patient"][@"id"]]]lastObject];
+            if ([lastMsg[@"type"] isEqualToString:@"C"]) {
+                long long restSecond = [we_maxResponseGap intValue] * 3600 - (long long) (([[NSDate date] timeIntervalSince1970] - [[WeAppDelegate toString:lastMsg[@"time"]] longLongValue] / 100));
+                l2.text = [NSString stringWithFormat:@"[申请咨询中 剩余%lld小时%lld分钟]",  restSecond / 3600, restSecond % 3600 / 60];
+                l2.textColor = We_foreground_red_general;
+            }
+            else {
+                l2.text = @"尚未处理此类型的消息";
+            }
+            l2.font = We_font_textfield_small_zh_cn;
             [cell.contentView addSubview:l2];
-            avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(18, 10, 46, 46) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
+            // l3 - lastMsg - time
+            l3 = [[UILabel alloc] initWithFrame:CGRectMake(75, 33, 235, 23)];
+            l3.textColor = We_foreground_gray_general;
+            l3.font = [UIFont fontWithName:@"Heiti SC" size:10];
+            l3.text = [WeAppDelegate transitionToDateFromSecond:[lastMsg[@"time"] longLongValue]];
+            l3.textAlignment = NSTextAlignmentRight;
+            [cell.contentView addSubview:l3];
+            // avatar
+            avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(15, 9, 48, 48) backgroundProgressColor:[UIColor clearColor] progressColor:[UIColor lightGrayColor]];
             [avatarView setImageURL:yijiarenAvatarUrl(we_patients[indexPath.row][@"patient"][@"avatar"])];
             [cell.contentView addSubview:avatarView];
             break;
@@ -143,6 +144,45 @@
             break;
     }
     return cell;
+}
+
+- (BOOL)deletePatientAtIndex:(NSInteger)index {
+    NSString * urlString = yijiarenUrl(@"doctor", @"deletePatient");
+    NSString * paraString = [NSString stringWithFormat:@"patientId=%@", we_patients[index][@"patient"][@"id"]];
+    NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
+    
+    NSString * errorMessage = @"连接服务器失败";
+    if (DataResponse != NULL) {
+        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
+        NSString *result = [HTTPResponse objectForKey:@"result"];
+        result = [NSString stringWithFormat:@"%@", result];
+        if ([result isEqualToString:@"1"]) {
+            return YES;
+        }
+        if ([result isEqualToString:@"2"]) {
+            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+            NSEnumerator *enumerator = [fields keyEnumerator];
+            id key;
+            while ((key = [enumerator nextObject])) {
+                NSString * tmp1 = [fields objectForKey:key];
+                if (tmp1 != NULL) errorMessage = tmp1;
+            }
+        }
+        if ([result isEqualToString:@"3"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+        if ([result isEqualToString:@"4"]) {
+            errorMessage = [HTTPResponse objectForKey:@"info"];
+        }
+    }
+    UIAlertView *notPermitted = [[UIAlertView alloc]
+                                 initWithTitle:@"删除病人失败"
+                                 message:errorMessage
+                                 delegate:nil
+                                 cancelButtonTitle:@"OK"
+                                 otherButtonTitles:nil];
+    [notPermitted show];
+    return NO;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -172,21 +212,22 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     sys_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //sys_tableView.editing = YES;
     //[self.view addSubview:sys_tableView];
     
-    //NSDictionary * parameters = @{@"areaId" : @"100"};
+    // Get patients
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:yijiarenUrl(@"doctor", @"listPatients") parameters:nil
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
              [self.view addSubview:sys_tableView];
-             NSLog(@"JSON: %@", HTTPResponse);
              NSString * errorMessage;
              
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
-                 we_patients = [HTTPResponse objectForKey:@"response"];
+                 we_patients = [[NSMutableArray alloc] initWithArray:[HTTPResponse objectForKey:@"response"]];
                  NSLog(@"%@", we_patients);
+                 [self getMessage];
                  return;
              }
              if ([result isEqualToString:@"2"]) {
@@ -222,6 +263,66 @@
                                           otherButtonTitles:nil];
              [notPermitted show];
          }
+     ];
+    
+}
+
+- (void)getMessage {
+    // Get Messages
+    AFHTTPRequestOperationManager * manager1 = [AFHTTPRequestOperationManager manager];
+    NSDictionary * parameters = @{@"lastMessageId":@"1"};
+    [manager1 GET:yijiarenUrl(@"doctor", @"getMsg") parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+              NSString * errorMessage;
+              
+              NSString *result = [HTTPResponse objectForKey:@"result"];
+              result = [NSString stringWithFormat:@"%@", result];
+              if ([result isEqualToString:@"1"]) {
+                  we_msgs = [HTTPResponse objectForKey:@"response"];
+                  NSLog(@"%@", we_msgs);
+                  for (int i = 0; i < [we_msgs count]; i ++) {
+                      if (we_msgsForPatient[[WeAppDelegate toString:we_msgs[i][@"senderId"]]] == NULL) {
+                          we_msgsForPatient[[WeAppDelegate toString:we_msgs[i][@"senderId"]]] = [[NSMutableArray alloc] init];
+                      }
+                      [we_msgsForPatient[[WeAppDelegate toString:we_msgs[i][@"senderId"]]] addObject:we_msgs[i]];
+                  }
+                  NSLog(@"%@", we_msgsForPatient);
+                  [sys_tableView reloadData];
+                  return;
+              }
+              if ([result isEqualToString:@"2"]) {
+                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                  NSEnumerator *enumerator = [fields keyEnumerator];
+                  id key;
+                  while ((key = [enumerator nextObject])) {
+                      NSString * tmp1 = [fields objectForKey:key];
+                      if (tmp1 != NULL) errorMessage = tmp1;
+                  }
+              }
+              if ([result isEqualToString:@"3"]) {
+                  errorMessage = [HTTPResponse objectForKey:@"info"];
+              }
+              if ([result isEqualToString:@"4"]) {
+                  errorMessage = [HTTPResponse objectForKey:@"info"];
+              }
+              UIAlertView *notPermitted = [[UIAlertView alloc]
+                                           initWithTitle:@"获取消息列表失败"
+                                           message:errorMessage
+                                           delegate:nil
+                                           cancelButtonTitle:@"确定"
+                                           otherButtonTitles:nil];
+              [notPermitted show];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+              UIAlertView *notPermitted = [[UIAlertView alloc]
+                                           initWithTitle:@"获取消息列表失败"
+                                           message:@"未能连接服务器，请重试"
+                                           delegate:nil
+                                           cancelButtonTitle:@"确定"
+                                           otherButtonTitles:nil];
+              [notPermitted show];
+          }
      ];
 }
 

@@ -57,9 +57,9 @@
     UITabBarItem * tmp2 = [self.tabBar.items objectAtIndex:2];
     tmp2.selectedImage = [UIImage imageNamed:@"tab-crowdfunding-selected"];
     UITabBarItem * tmp3 = [self.tabBar.items objectAtIndex:3];
-    tmp3.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
+    tmp3.selectedImage = [UIImage imageNamed:@"tab-appointment-selected"];
     UITabBarItem * tmp4 = [self.tabBar.items objectAtIndex:4];
-    tmp4.selectedImage = [UIImage imageNamed:@"tab-appointment-selected"];
+    tmp4.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

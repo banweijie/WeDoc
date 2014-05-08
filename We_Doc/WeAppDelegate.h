@@ -23,6 +23,7 @@
 + (NSString *)transitionTitleFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transitionGenderFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transition:(NSString *)code asin:(NSString *)type;
++ (NSString *)transitionToDateFromSecond:(long long)s;
 + (void)refreshUserData;
 @end
 
@@ -74,8 +75,10 @@ UIImage * we_qcImage;
 UIImage * we_pcImage;
 UIImage * we_wcImage;
 
+NSMutableArray * we_msgs;
 NSMutableArray * user_exps;
 NSMutableArray * we_patients;
+NSMutableDictionary * we_msgsForPatient;
 NSMutableDictionary * we_hospitalList;
 NSMutableDictionary * we_sectionList;
 
@@ -102,6 +105,8 @@ NSMutableDictionary * we_sectionList;
 #define We_font_textfield_zh_cn [UIFont fontWithName:@"Heiti SC" size:14]
 #define We_font_textfield_en_us [UIFont fontWithName:@"Helvetica" size:14]
 #define We_font_button_zh_cn [UIFont fontWithName:@"Heiti SC" size:14]
+#define We_font_textfield_small_zh_cn [UIFont fontWithName:@"Heiti SC" size:11]
+
 
 #define We_background_cell_general UIColorFromRGB(255, 255, 255, 0.85)
 #define We_background_general UIColorFromRGB(237, 237, 237, 1)

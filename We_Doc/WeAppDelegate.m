@@ -21,6 +21,7 @@
     
     we_hospitalList = [[NSMutableDictionary alloc] init];
     we_sectionList = [[NSMutableDictionary alloc] init];
+    we_msgsForPatient = [[NSMutableDictionary alloc] init];
     [self refreshInitialData];
     return YES;
 }
@@ -66,6 +67,25 @@
         return nil;
     }
     
+}
+
++ (NSString *)transitionToDateFromSecond:(long long)s {
+    NSDate * t = [NSDate dateWithTimeIntervalSince1970:s / 100];
+    NSDate * date = [NSDate date];
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents * the = [calendar components:unitFlags fromDate:t];
+    NSDateComponents * now = [calendar components:unitFlags fromDate:date];
+
+    if ([[NSDate date] timeIntervalSince1970] - s / 100 <= 24 * 3600) {
+        if ([the day] != [now day]) return [NSString stringWithFormat:@"昨天 %02d:%02d", [the hour], [the minute]];
+        else return [NSString stringWithFormat:@"%02d:%02d", [the hour], [the minute]];
+    }
+    else {
+        if ([the year] != [now year]) return [NSString stringWithFormat:@"%d年%d月", [the year], [the month]];
+        else return [NSString stringWithFormat:@"%d月%d日", [the month], [the day]];
+    }
+    return [NSString stringWithFormat:@"%lld", s];
 }
 
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString

@@ -329,6 +329,10 @@
     sys_tableView.backgroundColor = [UIColor clearColor];
     sys_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:sys_tableView];
+    
+    UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = We_foreground_red_general;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
