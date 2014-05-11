@@ -38,6 +38,7 @@ NSString * we_wkp_dayOfWeek;
 NSString * we_wkp_periodOfDay;
 NSString * we_wkp_typeOfPeriod;
 NSString * we_pea_gender;
+NSMutableDictionary * we_patient_chating;
 
 // app data
 NSDictionary * we_codings;

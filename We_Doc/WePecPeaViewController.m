@@ -217,7 +217,7 @@
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(230, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView setImageURL:yijiarenAvatarUrl(we_avatarPath)];
+                    [avatarView setImageURL:yijiarenAvatarUrl(we_avatarPath) successCompletion:nil];
                     [cell.contentView addSubview:avatarView];
                     break;
                 case 1:

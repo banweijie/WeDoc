@@ -19,16 +19,22 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AFPopupView (1.0)
+  - JSQMessagesViewController (5.0.0):
+    - JSQSystemSoundPlayer
+  - JSQSystemSoundPlayer (1.5.0)
   - SRMonthPicker (0.2.9)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFPopupView (~> 1.0)
+  - JSQMessagesViewController
   - SRMonthPicker
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
   AFPopupView: a3e9e827ed9ce4c7087af259746353aaf7ab75a2
+  JSQMessagesViewController: 4ebac202bb5c3b4717b877b12905f41e14599776
+  JSQSystemSoundPlayer: 6dbac8dcc33e3add6facb3e59451a0249aece17d
   SRMonthPicker: 483ab343465f8b88bb54394e37be692b50418fd1
 
 COCOAPODS: 0.32.1

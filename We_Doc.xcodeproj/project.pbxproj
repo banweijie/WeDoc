@@ -56,6 +56,14 @@
 		9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */; };
 		9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808318FAA23300CE8172 /* WeTabBarViewController.m */; };
 		9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808818FAC28700CE8172 /* WePecCaiViewController.m */; };
+		907D5AFF191DE0AD0006EAE0 /* WeCsrCtrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5AFE191DE0AD0006EAE0 /* WeCsrCtrViewController.m */; };
+		907D5B0C191E583B0006EAE0 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B02191E583B0006EAE0 /* NSBubbleData.m */; };
+		907D5B0D191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */; };
+		907D5B0E191E583B0006EAE0 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */; };
+		907D5B0F191E583B0006EAE0 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */; };
+		907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */; };
+		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
+		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
 		907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A5190252580070DB3E /* WePecBusViewController.m */; };
 		909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C621901661400ADC2E9 /* WePecCtfViewController.m */; };
@@ -166,6 +174,21 @@
 		9054808318FAA23300CE8172 /* WeTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTabBarViewController.m; sourceTree = "<group>"; };
 		9054808718FAC28700CE8172 /* WePecCaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecCaiViewController.h; sourceTree = "<group>"; };
 		9054808818FAC28700CE8172 /* WePecCaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiViewController.m; sourceTree = "<group>"; };
+		907D5AFD191DE0AD0006EAE0 /* WeCsrCtrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrCtrViewController.h; sourceTree = "<group>"; };
+		907D5AFE191DE0AD0006EAE0 /* WeCsrCtrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrCtrViewController.m; sourceTree = "<group>"; };
+		907D5B01191E583B0006EAE0 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
+		907D5B02191E583B0006EAE0 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
+		907D5B03191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		907D5B05191E583B0006EAE0 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
+		907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
+		907D5B07191E583B0006EAE0 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
+		907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		907D5B09191E583B0006EAE0 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		907D5B0A191E583B0006EAE0 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
+		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
 		907FE5A119023E7D0070DB3E /* WePecNotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecNotViewController.m; sourceTree = "<group>"; };
 		907FE5A4190252580070DB3E /* WePecBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecBusViewController.h; sourceTree = "<group>"; };
@@ -189,6 +212,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */,
+				907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */,
 				904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */,
 				904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */,
 				904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */,
@@ -283,6 +308,8 @@
 		904F7A3118F0F146000CB41B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				907D5B1E191F60900006EAE0 /* CoreData.framework */,
+				907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */,
 				904F7A3218F0F146000CB41B /* Foundation.framework */,
 				904F7A3418F0F146000CB41B /* CoreGraphics.framework */,
 				904F7A3618F0F146000CB41B /* UIKit.framework */,
@@ -295,6 +322,7 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
+				907D5B00191E583B0006EAE0 /* UIBubbleTableView */,
 				9026EFB6191471C400CE4A7A /* PAImageView */,
 				9026EE0C1904A61300CE4A7A /* VPImageCropper */,
 				9039CC5C1902B40800EA8310 /* Customs */,
@@ -384,6 +412,8 @@
 				9026EFC71916FA3700CE4A7A /* WeCsrNavViewController.m */,
 				9026EFC91917893D00CE4A7A /* WeCsrIdxViewController.h */,
 				9026EFCA1917893D00CE4A7A /* WeCsrIdxViewController.m */,
+				907D5AFD191DE0AD0006EAE0 /* WeCsrCtrViewController.h */,
+				907D5AFE191DE0AD0006EAE0 /* WeCsrCtrViewController.m */,
 			);
 			name = ConsultingRoom;
 			sourceTree = "<group>";
@@ -397,6 +427,24 @@
 				9026EF1A190D00E200CE4A7A /* WeRapViewController.m */,
 			);
 			name = RaisePublic;
+			sourceTree = "<group>";
+		};
+		907D5B00191E583B0006EAE0 /* UIBubbleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				907D5B01191E583B0006EAE0 /* NSBubbleData.h */,
+				907D5B02191E583B0006EAE0 /* NSBubbleData.m */,
+				907D5B03191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.h */,
+				907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */,
+				907D5B05191E583B0006EAE0 /* UIBubbleTableView.h */,
+				907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */,
+				907D5B07191E583B0006EAE0 /* UIBubbleTableViewCell.h */,
+				907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */,
+				907D5B09191E583B0006EAE0 /* UIBubbleTableViewDataSource.h */,
+				907D5B0A191E583B0006EAE0 /* UIBubbleTypingTableViewCell.h */,
+				907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */,
+			);
+			path = UIBubbleTableView;
 			sourceTree = "<group>";
 		};
 		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
@@ -607,6 +655,8 @@
 				9026EF1B190D00E200CE4A7A /* WeRapViewController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
+				907D5B0E191E583B0006EAE0 /* UIBubbleTableView.m in Sources */,
+				907D5B0C191E583B0006EAE0 /* NSBubbleData.m in Sources */,
 				9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
@@ -617,6 +667,7 @@
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
 				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
+				907D5AFF191DE0AD0006EAE0 /* WeCsrCtrViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */,
@@ -628,11 +679,13 @@
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				9026EF68190D30B500CE4A7A /* WeViewController.m in Sources */,
 				9026EFCB1917893D00CE4A7A /* WeCsrIdxViewController.m in Sources */,
+				907D5B0D191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
+				907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
@@ -641,6 +694,7 @@
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
 				9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */,
+				907D5B0F191E583B0006EAE0 /* UIBubbleTableViewCell.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,

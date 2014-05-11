@@ -110,11 +110,12 @@ NSString * const spm_identifier = @"spm.imagecache.tg";
     return self;
 }
 
-- (void)setImageURL:(NSString *)URL {
+- (void)setImageURL:(NSString *)URL successCompletion:(void (^__strong)(__strong id)) successc {
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
     UIImage *cachedImage = (_cacheEnabled) ? [_cache getImageForURL:URL] : nil;
     if(cachedImage) {
         [self updateWithImage:cachedImage animated:NO];
+        if (successc) successc(cachedImage);
     } else {
         __weak __typeof(self)weakSelf = self;
         AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
@@ -131,6 +132,8 @@ NSString * const spm_identifier = @"spm.imagecache.tg";
             if(_cacheEnabled) {
                 [_cache setImage:responseObject forURL:URL];
             }
+            NSLog(@"!!!");
+            if (successc) successc(image);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Image error: %@", error);
         }];

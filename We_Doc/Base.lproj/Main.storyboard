@@ -721,10 +721,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="咨询室" id="JJT-vb-nXs"/>
+                    <connections>
+                        <segue destination="Foq-d5-k0D" kind="push" identifier="CsrIdx_pushto_CsrCtr" id="SWs-Xy-zOF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uad-bp-ueb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152" y="2976"/>
+        </scene>
+        <!--We Csr Ctr View Controller-->
+        <scene sceneID="XVJ-O0-yNd">
+            <objects>
+                <viewController id="Foq-d5-k0D" customClass="WeCsrCtrViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6sk-yh-xOJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="axn-VZ-hsa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m7i-aK-fo5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EPf-UB-4NN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Rt-CU-zxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1781" y="2976"/>
         </scene>
         <!--We Rap Nav Controller - 众筹项目-->
         <scene sceneID="grl-Bt-DYQ">

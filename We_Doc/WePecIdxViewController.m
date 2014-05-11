@@ -157,7 +157,10 @@
                     l2.font = We_font_textfield_zh_cn;
                     [cell.contentView addSubview:l2];
                     avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView setImageURL:yijiarenAvatarUrl(we_avatarPath)];
+                    [avatarView  setImageURL:yijiarenAvatarUrl(we_avatarPath) successCompletion:^(id responseImage) {
+                        we_avatar = responseImage;
+                        NSLog(@"!!!");
+                    }];
                     [cell.contentView addSubview:avatarView];
                     break;
                 case 1:

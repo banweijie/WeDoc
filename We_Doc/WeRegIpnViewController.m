@@ -265,10 +265,10 @@
     [user_veriCode_input addTarget:self action:@selector(resignFirstResponder:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     // sys_veriCode_image init
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/getImageCode.action";
-    NSString *paraString = @"";
-    NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-    sys_veriCode_image = [UIImage imageWithData:DataResponse];
+    //NSString *urlString = @"http://115.28.222.1/yijiaren/user/getImageCode.action";
+    //NSString *paraString = @"";
+    //NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
+    //sys_veriCode_image = [UIImage imageWithData:DataResponse];
     
     // sys_nextStep_button init
     sys_nextStep_button = [UIButton buttonWithType:UIButtonTypeSystem];

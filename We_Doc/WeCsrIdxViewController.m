@@ -35,6 +35,10 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    if (path.section == 0) {
+        we_patient_chating = we_patients[path.row];
+        [self performSegueWithIdentifier:@"CsrIdx_pushto_CsrCtr" sender:self];
+    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -137,7 +141,7 @@
             [cell.contentView addSubview:l3];
             // avatar
             avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(15, 9, 48, 48) backgroundProgressColor:[UIColor clearColor] progressColor:[UIColor lightGrayColor]];
-            [avatarView setImageURL:yijiarenAvatarUrl(we_patients[indexPath.row][@"patient"][@"avatar"])];
+            [avatarView setImageURL:yijiarenAvatarUrl(we_patients[indexPath.row][@"patient"][@"avatar"]) successCompletion:nil];
             [cell.contentView addSubview:avatarView];
             break;
         default:
@@ -192,6 +196,11 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad
