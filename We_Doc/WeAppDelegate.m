@@ -22,7 +22,18 @@
     we_hospitalList = [[NSMutableDictionary alloc] init];
     we_sectionList = [[NSMutableDictionary alloc] init];
     we_msgsForPatient = [[NSMutableDictionary alloc] init];
+    we_avatars = [[NSMutableDictionary alloc] init];
+    we_messagesWithPatient = [[NSMutableDictionary alloc] init];
     [self refreshInitialData];
+    
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:@"1" forKey:@"lastMessageId"];
+
+    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshMessage:) userInfo:nil repeats:YES];
+    
+    NSTimer * timer1 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshPatientList:) userInfo:nil repeats:YES];
+    
+    NSLog(@"%@", [userDefaults stringForKey:@"lastMessageId"]);
     return YES;
 }
 
@@ -230,6 +241,7 @@
             we_status = [WeAppDelegate toString:[response objectForKey:@"status"]];
             we_avatarPath = [WeAppDelegate toString:[response objectForKey:@"avatar"]];
             we_groupIntro = [WeAppDelegate toString:[response objectForKey:@"groupIntro"]];
+            we_doctorId = [WeAppDelegate toString:[response objectForKey:@"id"]];
             
             we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
             we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
@@ -262,6 +274,109 @@
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
     [notPermitted show];
+}
+
+- (void)refreshMessage:(id)sender {
+    if (!we_logined) return;
+    NSLog(@"refreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
+    
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary * parameters = @{@"lastMessageId":[userDefaults stringForKey:@"lastMessageId"]};
+    [manager GET:yijiarenUrl(@"message", @"getMsg") parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+              NSString * errorMessage;
+              
+              NSString * result = [NSString stringWithFormat:@"%@", [HTTPResponse objectForKey:@"result"]];
+              
+              if ([result isEqualToString:@"1"]) {
+                  NSArray * messages = [HTTPResponse objectForKey:@"response"];
+                  //NSLog(@"%@", messages);
+                  for (int i = 0; i < [messages count]; i ++) {
+                      NSString * patientId = [WeAppDelegate toString:messages[i][@"senderId"]];
+                      if (we_messagesWithPatient[patientId] == NULL) we_messagesWithPatient[patientId] = [[NSMutableArray alloc] init];
+                      [we_messagesWithPatient[patientId] addObject:messages[i]];
+                      [userDefaults setValue:messages[i][@"id"] forKey:@"lastMessageId"];
+                  }
+                  //NSLog(@"%@", we_messagesWithPatient);
+                  return;
+              }
+              if ([result isEqualToString:@"2"]) {
+                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                  NSEnumerator *enumerator = [fields keyEnumerator];
+                  id key;
+                  while ((key = [enumerator nextObject])) {
+                      NSString * tmp1 = [fields objectForKey:key];
+                      if (tmp1 != NULL) errorMessage = tmp1;
+                  }
+              }
+              if ([result isEqualToString:@"3"]) {
+                  errorMessage = [HTTPResponse objectForKey:@"info"];
+              }
+              if ([result isEqualToString:@"4"]) {
+                  errorMessage = [HTTPResponse objectForKey:@"info"];
+              }
+              NSLog(@"Fail: %@", errorMessage);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"Error: %@", error);
+          }
+     ];
+}
+
+- (void)refreshPatientList:(id)sender {
+    if (!we_logined) return;
+    // Get patients
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:yijiarenUrl(@"doctor", @"listPatients") parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+             NSString * errorMessage;
+             
+             NSString *result = [HTTPResponse objectForKey:@"result"];
+             result = [NSString stringWithFormat:@"%@", result];
+             if ([result isEqualToString:@"1"]) {
+                 we_patients = [[NSMutableDictionary alloc] init];
+                 NSArray * we_patientList = [HTTPResponse objectForKey:@"response"];
+                 for (int i = 0; i < [we_patientList count]; i++) {
+                     NSString * patientId = [WeAppDelegate toString:we_patientList[i][@"patient"][@"id"]];
+                     we_patients[patientId] = we_patientList[i][@"patient"];
+                 }
+                 //NSLog(@"we_patients : %@", we_patients);
+                 return;
+             }
+             if ([result isEqualToString:@"2"]) {
+                 NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                 NSEnumerator *enumerator = [fields keyEnumerator];
+                 id key;
+                 while ((key = [enumerator nextObject])) {
+                     NSString * tmp1 = [fields objectForKey:key];
+                     if (tmp1 != NULL) errorMessage = tmp1;
+                 }
+             }
+             if ([result isEqualToString:@"3"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             if ([result isEqualToString:@"4"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"获取病人列表失败"
+                                          message:errorMessage
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"获取病人列表失败"
+                                          message:@"未能连接服务器，请重试"
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+     ];
 }
 @end
 

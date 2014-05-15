@@ -64,6 +64,10 @@
 		907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
+		907D5B22191F60CD0006EAE0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B20191F60CD0006EAE0 /* Model.xcdatamodeld */; };
+		907D5B31191F662C0006EAE0 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B30191F662C0006EAE0 /* Patient.m */; };
+		907D5B34191F662C0006EAE0 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B33191F662C0006EAE0 /* Message.m */; };
+		907D5B521920B94B0006EAE0 /* WeSPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B511920B94B0006EAE0 /* WeSPViewController.m */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
 		907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A5190252580070DB3E /* WePecBusViewController.m */; };
 		909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 909E3C621901661400ADC2E9 /* WePecCtfViewController.m */; };
@@ -189,6 +193,13 @@
 		907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		907D5B21191F60CD0006EAE0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		907D5B2F191F662C0006EAE0 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		907D5B30191F662C0006EAE0 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		907D5B32191F662C0006EAE0 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		907D5B33191F662C0006EAE0 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		907D5B501920B94B0006EAE0 /* WeSPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSPViewController.h; sourceTree = "<group>"; };
+		907D5B511920B94B0006EAE0 /* WeSPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSPViewController.m; sourceTree = "<group>"; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
 		907FE5A119023E7D0070DB3E /* WePecNotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecNotViewController.m; sourceTree = "<group>"; };
 		907FE5A4190252580070DB3E /* WePecBusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecBusViewController.h; sourceTree = "<group>"; };
@@ -272,6 +283,8 @@
 				9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */,
 				9026EF66190D30B500CE4A7A /* WeViewController.h */,
 				9026EF67190D30B500CE4A7A /* WeViewController.m */,
+				907D5B501920B94B0006EAE0 /* WeSPViewController.h */,
+				907D5B511920B94B0006EAE0 /* WeSPViewController.m */,
 			);
 			name = Customs;
 			sourceTree = "<group>";
@@ -288,6 +301,11 @@
 		904F7A2618F0F146000CB41B = {
 			isa = PBXGroup;
 			children = (
+				907D5B20191F60CD0006EAE0 /* Model.xcdatamodeld */,
+				907D5B32191F662C0006EAE0 /* Message.h */,
+				907D5B33191F662C0006EAE0 /* Message.m */,
+				907D5B2F191F662C0006EAE0 /* Patient.h */,
+				907D5B30191F662C0006EAE0 /* Patient.m */,
 				904F7A3818F0F146000CB41B /* We_Doc */,
 				904F7A5718F0F146000CB41B /* We_DocTests */,
 				904F7A3118F0F146000CB41B /* Frameworks */,
@@ -659,6 +677,7 @@
 				907D5B0C191E583B0006EAE0 /* NSBubbleData.m in Sources */,
 				9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
+				907D5B22191F60CD0006EAE0 /* Model.xcdatamodeld in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
 				9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */,
 				904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */,
@@ -683,10 +702,13 @@
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
+				907D5B521920B94B0006EAE0 /* WeSPViewController.m in Sources */,
+				907D5B31191F662C0006EAE0 /* Patient.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
 				907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
+				907D5B34191F662C0006EAE0 /* Message.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
 				909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */,
@@ -831,7 +853,7 @@
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C79D1B6-96BC-4353-9D29-71289B62E99F";
+				PROVISIONING_PROFILE = "D2A3C9BD-4902-4117-BA26-309D6875673F";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -927,6 +949,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		907D5B20191F60CD0006EAE0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				907D5B21191F60CD0006EAE0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 907D5B21191F60CD0006EAE0 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 904F7A2718F0F146000CB41B /* Project object */;
 }

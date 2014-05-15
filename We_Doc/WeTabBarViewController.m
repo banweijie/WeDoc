@@ -39,9 +39,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"tab bar view did load at index %d", we_targetTabId);
-    //self.tabBar.delegate = self;
-    //[self setSelectedIndex:we_targetTabId];
 }
 - (void)viewDidAppear:(BOOL)animated {
     // Other code...
@@ -64,7 +61,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     if (we_targetTabId != -1) {
-        NSLog(@"%d", we_targetTabId);
+        //NSLog(@"%d", we_targetTabId);
         [self.tabBarController setSelectedIndex:2];
         we_targetTabId = -1;
     }

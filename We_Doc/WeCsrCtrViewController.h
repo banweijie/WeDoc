@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "UIBubbleTableView.h"
+#import "WeSPViewController.h"
 
-@interface WeCsrCtrViewController : UIViewController <UIBubbleTableViewDataSource>
+@interface WeCsrCtrViewController : UIViewController <UIBubbleTableViewDataSource, UITextFieldDelegate>
 
 @end

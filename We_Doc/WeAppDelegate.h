@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Patient.h"
+#import <AFNetworking.h>
 
 @interface WeAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -28,6 +30,8 @@
 @end
 
 // Global Variables
+NSUserDefaults * userDefaults;
+
 BOOL we_logined;
 int we_targetTabId;
 NSString * we_vericode_type;
@@ -38,7 +42,13 @@ NSString * we_wkp_dayOfWeek;
 NSString * we_wkp_periodOfDay;
 NSString * we_wkp_typeOfPeriod;
 NSString * we_pea_gender;
-NSMutableDictionary * we_patient_chating;
+NSString * we_patient_chating;
+
+Patient * patient_chating;
+
+NSMutableDictionary * we_avatars;
+NSMutableDictionary * we_patients;
+NSMutableDictionary * we_messagesWithPatient;
 
 // app data
 NSDictionary * we_codings;
@@ -46,6 +56,7 @@ NSDictionary * we_imagePaths;
 
 // user data
 NSString * we_notice;
+NSString * we_doctorId;
 NSString * we_consultPrice;
 NSString * we_plusPrice;
 NSString * we_maxResponseGap;
@@ -78,7 +89,6 @@ UIImage * we_wcImage;
 
 NSMutableArray * we_msgs;
 NSMutableArray * user_exps;
-NSMutableArray * we_patients;
 NSMutableDictionary * we_msgsForPatient;
 NSMutableDictionary * we_hospitalList;
 NSMutableDictionary * we_sectionList;
@@ -91,6 +101,8 @@ NSMutableDictionary * we_sectionList;
 @interface NSData (WeDelegate)
 - (NSString*)md5;
 @end
+
+#define refreshInterval 5
 
 
 #define yijiarenServer @"http://115.28.222.1/yijiaren"
