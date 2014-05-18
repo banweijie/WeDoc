@@ -87,7 +87,7 @@
 
 - (void)reloadData
 {
-    self.showsVerticalScrollIndicator = NO;
+    self.showsVerticalScrollIndicator = YES;
     self.showsHorizontalScrollIndicator = NO;
     
     // Cleaning up
@@ -187,7 +187,7 @@
     // Now typing
 	if (indexPath.section >= [self.bubbleSection count])
     {
-        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 52 : 0);
+        return MAX([UIBubbleTypingTableViewCell height], self.showAvatars ? 42 : 0);
     }
     
     // Header
@@ -197,7 +197,7 @@
     }
     
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
-    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 52 : 0);
+    return MAX(data.insets.top + data.view.frame.size.height + data.insets.bottom, self.showAvatars ? 42 : 0) + 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -7,6 +7,7 @@
 //
 
 #import "UIBubbleHeaderTableViewCell.h"
+#import "WeAppDelegate.h"
 
 @interface UIBubbleHeaderTableViewCell ()
 
@@ -29,7 +30,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *text = [dateFormatter stringFromDate:value];
+    NSString *text = [WeAppDelegate transitionToDateFromSecond:[value timeIntervalSince1970] * 100];
 #if !__has_feature(objc_arc)
     [dateFormatter release];
 #endif

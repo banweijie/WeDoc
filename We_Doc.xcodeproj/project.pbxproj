@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0CB24654A3894C74B50B7DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C83D077ED634B6A9726A5B2 /* libPods.a */; };
+		900E28D919292B67008BF61C /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28CF19292B67008BF61C /* NSBubbleData.m */; };
+		900E28DA19292B67008BF61C /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28D119292B67008BF61C /* UIBubbleHeaderTableViewCell.m */; };
+		900E28DB19292B67008BF61C /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28D319292B67008BF61C /* UIBubbleTableView.m */; };
+		900E28DC19292B67008BF61C /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28D519292B67008BF61C /* UIBubbleTableViewCell.m */; };
+		900E28DD19292B67008BF61C /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28D819292B67008BF61C /* UIBubbleTypingTableViewCell.m */; };
 		9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeRegNavViewController.m */; };
 		9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */; };
 		9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */; };
@@ -57,11 +62,6 @@
 		9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808318FAA23300CE8172 /* WeTabBarViewController.m */; };
 		9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808818FAC28700CE8172 /* WePecCaiViewController.m */; };
 		907D5AFF191DE0AD0006EAE0 /* WeCsrCtrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5AFE191DE0AD0006EAE0 /* WeCsrCtrViewController.m */; };
-		907D5B0C191E583B0006EAE0 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B02191E583B0006EAE0 /* NSBubbleData.m */; };
-		907D5B0D191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */; };
-		907D5B0E191E583B0006EAE0 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */; };
-		907D5B0F191E583B0006EAE0 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */; };
-		907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907D5B22191F60CD0006EAE0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 907D5B20191F60CD0006EAE0 /* Model.xcdatamodeld */; };
@@ -91,6 +91,17 @@
 /* Begin PBXFileReference section */
 		2C4C0E4422684F3590DC7997 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		900E28CE19292B67008BF61C /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
+		900E28CF19292B67008BF61C /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
+		900E28D019292B67008BF61C /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		900E28D119292B67008BF61C /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		900E28D219292B67008BF61C /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
+		900E28D319292B67008BF61C /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
+		900E28D419292B67008BF61C /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
+		900E28D519292B67008BF61C /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		900E28D619292B67008BF61C /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		900E28D719292B67008BF61C /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		900E28D819292B67008BF61C /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		9013553B18F6626900436A24 /* WeRegNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegNavViewController.h; sourceTree = "<group>"; };
 		9013553C18F6626900436A24 /* WeRegNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegNavViewController.m; sourceTree = "<group>"; };
 		9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpAddViewController.h; sourceTree = "<group>"; };
@@ -180,17 +191,6 @@
 		9054808818FAC28700CE8172 /* WePecCaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiViewController.m; sourceTree = "<group>"; };
 		907D5AFD191DE0AD0006EAE0 /* WeCsrCtrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrCtrViewController.h; sourceTree = "<group>"; };
 		907D5AFE191DE0AD0006EAE0 /* WeCsrCtrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrCtrViewController.m; sourceTree = "<group>"; };
-		907D5B01191E583B0006EAE0 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
-		907D5B02191E583B0006EAE0 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
-		907D5B03191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
-		907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
-		907D5B05191E583B0006EAE0 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
-		907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
-		907D5B07191E583B0006EAE0 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
-		907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
-		907D5B09191E583B0006EAE0 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
-		907D5B0A191E583B0006EAE0 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
-		907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907D5B21191F60CD0006EAE0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -245,6 +245,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		900E28CD19292B51008BF61C /* UIBubbleTableView */ = {
+			isa = PBXGroup;
+			children = (
+				900E28CE19292B67008BF61C /* NSBubbleData.h */,
+				900E28CF19292B67008BF61C /* NSBubbleData.m */,
+				900E28D019292B67008BF61C /* UIBubbleHeaderTableViewCell.h */,
+				900E28D119292B67008BF61C /* UIBubbleHeaderTableViewCell.m */,
+				900E28D219292B67008BF61C /* UIBubbleTableView.h */,
+				900E28D319292B67008BF61C /* UIBubbleTableView.m */,
+				900E28D419292B67008BF61C /* UIBubbleTableViewCell.h */,
+				900E28D519292B67008BF61C /* UIBubbleTableViewCell.m */,
+				900E28D619292B67008BF61C /* UIBubbleTableViewDataSource.h */,
+				900E28D719292B67008BF61C /* UIBubbleTypingTableViewCell.h */,
+				900E28D819292B67008BF61C /* UIBubbleTypingTableViewCell.m */,
+			);
+			name = UIBubbleTableView;
+			sourceTree = "<group>";
+		};
 		9026EDFC19044B7100CE4A7A /* PersonalAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +358,7 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
-				907D5B00191E583B0006EAE0 /* UIBubbleTableView */,
+				900E28CD19292B51008BF61C /* UIBubbleTableView */,
 				9026EFB6191471C400CE4A7A /* PAImageView */,
 				9026EE0C1904A61300CE4A7A /* VPImageCropper */,
 				9039CC5C1902B40800EA8310 /* Customs */,
@@ -445,24 +463,6 @@
 				9026EF1A190D00E200CE4A7A /* WeRapViewController.m */,
 			);
 			name = RaisePublic;
-			sourceTree = "<group>";
-		};
-		907D5B00191E583B0006EAE0 /* UIBubbleTableView */ = {
-			isa = PBXGroup;
-			children = (
-				907D5B01191E583B0006EAE0 /* NSBubbleData.h */,
-				907D5B02191E583B0006EAE0 /* NSBubbleData.m */,
-				907D5B03191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.h */,
-				907D5B04191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m */,
-				907D5B05191E583B0006EAE0 /* UIBubbleTableView.h */,
-				907D5B06191E583B0006EAE0 /* UIBubbleTableView.m */,
-				907D5B07191E583B0006EAE0 /* UIBubbleTableViewCell.h */,
-				907D5B08191E583B0006EAE0 /* UIBubbleTableViewCell.m */,
-				907D5B09191E583B0006EAE0 /* UIBubbleTableViewDataSource.h */,
-				907D5B0A191E583B0006EAE0 /* UIBubbleTypingTableViewCell.h */,
-				907D5B0B191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m */,
-			);
-			path = UIBubbleTableView;
 			sourceTree = "<group>";
 		};
 		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
@@ -673,13 +673,13 @@
 				9026EF1B190D00E200CE4A7A /* WeRapViewController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
-				907D5B0E191E583B0006EAE0 /* UIBubbleTableView.m in Sources */,
-				907D5B0C191E583B0006EAE0 /* NSBubbleData.m in Sources */,
 				9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				907D5B22191F60CD0006EAE0 /* Model.xcdatamodeld in Sources */,
+				900E28DA19292B67008BF61C /* UIBubbleHeaderTableViewCell.m in Sources */,
 				904F7A6C18F11603000CB41B /* WeRegIpnViewController.m in Sources */,
 				9039CC5F1902B43F00EA8310 /* WeTableViewCell.m in Sources */,
+				900E28DC19292B67008BF61C /* UIBubbleTableViewCell.m in Sources */,
 				904F7A7318F13C68000CB41B /* WeRegIrpViewController.m in Sources */,
 				9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
@@ -698,7 +698,7 @@
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				9026EF68190D30B500CE4A7A /* WeViewController.m in Sources */,
 				9026EFCB1917893D00CE4A7A /* WeCsrIdxViewController.m in Sources */,
-				907D5B0D191E583B0006EAE0 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				900E28DD19292B67008BF61C /* UIBubbleTypingTableViewCell.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
@@ -706,8 +706,8 @@
 				907D5B31191F662C0006EAE0 /* Patient.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
-				907D5B10191E583B0006EAE0 /* UIBubbleTypingTableViewCell.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
+				900E28DB19292B67008BF61C /* UIBubbleTableView.m in Sources */,
 				907D5B34191F662C0006EAE0 /* Message.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
@@ -716,11 +716,11 @@
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
 				9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */,
-				907D5B0F191E583B0006EAE0 /* UIBubbleTableViewCell.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
+				900E28D919292B67008BF61C /* NSBubbleData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
