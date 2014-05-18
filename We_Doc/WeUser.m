@@ -24,7 +24,6 @@
 }
 
 - (id)initWithNSDictionary:(NSDictionary *)info {
-    NSLog(@"%@", info);
     self.userId = [NSString stringWithFormat:@"%@", info[@"id"]];
     self.userName = [NSString stringWithFormat:@"%@", info[@"name"]];
     self.userPhone = [NSString stringWithFormat:@"%@", info[@"phone"]];

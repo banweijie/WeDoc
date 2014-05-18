@@ -87,7 +87,7 @@
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents * the = [calendar components:unitFlags fromDate:t];
     NSDateComponents * now = [calendar components:unitFlags fromDate:date];
-
+    NSLog(@"%lld %f %ld %ld", s, [[NSDate date] timeIntervalSince1970], (long)[the hour], (long)[the minute]);
     if ([[NSDate date] timeIntervalSince1970] - s <= 24 * 3600) {
         if ([the day] != [now day]) return [NSString stringWithFormat:@"昨天 %02d:%02d", [the hour], [the minute]];
         else return [NSString stringWithFormat:@"%02d:%02d", [the hour], [the minute]];
@@ -220,7 +220,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            NSLog(@"%@", [HTTPResponse objectForKey:@"response"]);
+            //NSLog(@"%@", [HTTPResponse objectForKey:@"response"]);
             
             if (currentUser) {
                 [currentUser setWithNSDictionary:HTTPResponse[@"response"]];
@@ -228,6 +228,11 @@
             else {
                 currentUser = [[WeDoctor alloc] initWithNSDictionary:HTTPResponse[@"response"]];
             }
+            
+            [WeAppDelegate DownloadImageWithURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:^(id image) {
+                currentUser.avatar = image;
+                NSLog(@"Download Image(%@) succeed, user' avatar has been changed.", currentUser.avatarPath);
+            }];
             
             return;
         }
@@ -260,7 +265,7 @@
     // 判断登录状态
     if (!we_logined) return;
     
-    NSLog(@"refreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
+    NSLog(@"\nrefreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -285,7 +290,11 @@
                          if ([message.messageType isEqualToString:@"I"]) {
                              [self DownloadImageWithURL:yijiarenImageUrl(message.content) successCompletion:^(id image) {
                                  message.imageContent = (UIImage *) image;
+                                 message.loading = NO;
                              }];
+                         }
+                         else {
+                             message.loading = NO;
                          }
                          // 添加到所属医生的信息列表中
                          if (we_messagesWithPatient[message.senderId] == NULL) {
@@ -334,13 +343,27 @@
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
-                 favorPatients = [[NSMutableDictionary alloc] init];
+                 NSMutableDictionary * newFavorPatients = [[NSMutableDictionary alloc] init];
                  NSArray * favorPatientList = HTTPResponse[@"response"];
                  for (int i = 0; i < [favorPatientList count]; i++) {
+                     // 取出原来的病人和现在的病人
                      WeFavorPatient * newPatient = [[WeFavorPatient alloc] initWithNSDictionary:favorPatientList[i][@"patient"]];
-                     favorPatients[newPatient.userId] = newPatient;
-                     //NSLog(@"%@", [newPatient stringValue]);
+                     WeFavorPatient * oldPatient = (WeFavorPatient *) favorPatients[newPatient.userId];
+                     
+                     // 如果头像变化则前往更新，否则沿用之前的
+                     if (![oldPatient.avatarPath isEqualToString:newPatient.avatarPath]) {
+                         [self DownloadImageWithURL:yijiarenAvatarUrl(newPatient.avatarPath) successCompletion:^(id image) {
+                             newPatient.avatar = image;
+                             NSLog(@"Download Image(%@) succeed, patient(%@)' avatar has been changed.", newPatient.avatarPath, newPatient.userName);
+                         }];
+                     }
+                     else {
+                         newPatient.avatar = oldPatient.avatar;
+                     }
+                     
+                     newFavorPatients[newPatient.userId] = newPatient;
                  }
+                 favorPatients = newFavorPatients;
                  //NSLog(@"%@", favorPatients);
                  return;
              }
@@ -393,6 +416,17 @@
     [requestOperation start];
 }
 
++ (void)DownloadImageWithURL:(NSString *)URL successCompletion:(void (^__strong)(__strong id))success {
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"DownloadImageWithURL error: %@", error);
+    }];
+    [requestOperation start];
+}
 @end
 
 

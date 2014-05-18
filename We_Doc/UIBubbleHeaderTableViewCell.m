@@ -30,7 +30,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *text = [WeAppDelegate transitionToDateFromSecond:[value timeIntervalSince1970] * 100];
+    NSString *text = [WeAppDelegate transitionToDateFromSecond:[value timeIntervalSince1970]];
 #if !__has_feature(objc_arc)
     [dateFormatter release];
 #endif

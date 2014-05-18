@@ -32,6 +32,7 @@
 + (NSString *)transitionGenderFromChar:(NSString *)TypeOfPeriod;
 + (NSString *)transition:(NSString *)code asin:(NSString *)type;
 + (NSString *)transitionToDateFromSecond:(long long)s;
++ (void)DownloadImageWithURL:(NSString *)URL successCompletion:(void (^__strong)(__strong id))success;
 + (void)refreshUserData;
 @end
 

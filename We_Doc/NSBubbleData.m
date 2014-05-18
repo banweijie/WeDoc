@@ -73,8 +73,8 @@ const UIEdgeInsets textInsetsSomeone = {15, 20, 15, 15};
 
 #pragma mark - Image bubble
 
-const UIEdgeInsets imageInsetsMine = {25, 20, 25, 20};
-const UIEdgeInsets imageInsetsSomeone = {25, 20, 25, 20};
+const UIEdgeInsets imageInsetsMine = {10, 10, 10, 15};
+const UIEdgeInsets imageInsetsSomeone = {10, 15, 10, 10};
 
 + (id)dataWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
 {
@@ -88,10 +88,10 @@ const UIEdgeInsets imageInsetsSomeone = {25, 20, 25, 20};
 - (id)initWithImage:(UIImage *)image date:(NSDate *)date type:(NSBubbleType)type
 {
     CGSize size = image.size;
-    if (size.width > 240)
+    if (size.width > 220)
     {
-        size.height /= (size.width / 240);
-        size.width = 240;
+        size.height /= (size.width / 220);
+        size.width = 220;
     }
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];

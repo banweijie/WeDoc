@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIBubbleTableView.h"
-#import "WeSPViewController.h"
+#import "WeAppDelegate.h"
+#import <AFNetworking.h>
+#import "WeToolButton.h"
+#import <UIImageView+AFNetworking.h>
 
-@interface WeCsrCtrViewController : UIViewController <UIBubbleTableViewDataSource, UITextFieldDelegate>
+@interface WeCsrCtrViewController : UIViewController  <UIBubbleTableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end

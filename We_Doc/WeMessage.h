@@ -17,6 +17,7 @@
 @property(strong, nonatomic) NSString * senderId;
 @property(strong, nonatomic) NSString * viewed;
 @property(strong, nonatomic) NSString * content;
+@property(nonatomic) BOOL loading;
 @property(nonatomic) long long time;
 
 

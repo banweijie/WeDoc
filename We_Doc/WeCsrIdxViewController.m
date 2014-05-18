@@ -149,7 +149,8 @@
             [cell.contentView addSubview:l3];
             // avatar
             avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 9, 48, 48)];
-            [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(patient.avatarPath)]];
+            //[avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(patient.avatarPath)]];
+            avatarView.image = patient.avatar;
             avatarView.layer.cornerRadius = avatarView.frame.size.height / 2;
             avatarView.clipsToBounds = YES;
             [cell.contentView addSubview:avatarView];

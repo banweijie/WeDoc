@@ -19,6 +19,7 @@
 		900E28EA19292C55008BF61C /* WeMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E619292C55008BF61C /* WeMessage.m */; };
 		900E28ED19294070008BF61C /* WePatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28EC19294070008BF61C /* WePatient.m */; };
 		900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28EF192940E6008BF61C /* WeFavorPatient.m */; };
+		900E28F319294AEB008BF61C /* WeToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28F219294AEB008BF61C /* WeToolButton.m */; };
 		9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeRegNavViewController.m */; };
 		9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */; };
 		9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */; };
@@ -117,6 +118,8 @@
 		900E28EC19294070008BF61C /* WePatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePatient.m; sourceTree = "<group>"; };
 		900E28EE192940E6008BF61C /* WeFavorPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFavorPatient.h; sourceTree = "<group>"; };
 		900E28EF192940E6008BF61C /* WeFavorPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFavorPatient.m; sourceTree = "<group>"; };
+		900E28F119294AEB008BF61C /* WeToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeToolButton.h; sourceTree = "<group>"; };
+		900E28F219294AEB008BF61C /* WeToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeToolButton.m; sourceTree = "<group>"; };
 		9013553B18F6626900436A24 /* WeRegNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegNavViewController.h; sourceTree = "<group>"; };
 		9013553C18F6626900436A24 /* WeRegNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegNavViewController.m; sourceTree = "<group>"; };
 		9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpAddViewController.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				907D5B511920B94B0006EAE0 /* WeSPViewController.m */,
 				9054808218FAA23300CE8172 /* WeTabBarViewController.h */,
 				9054808318FAA23300CE8172 /* WeTabBarViewController.m */,
+				900E28F119294AEB008BF61C /* WeToolButton.h */,
+				900E28F219294AEB008BF61C /* WeToolButton.m */,
 			);
 			name = Customs;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				9026EFCB1917893D00CE4A7A /* WeCsrIdxViewController.m in Sources */,
 				900E28DD19292B67008BF61C /* UIBubbleTypingTableViewCell.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
+				900E28F319294AEB008BF61C /* WeToolButton.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
 				907D5B521920B94B0006EAE0 /* WeSPViewController.m in Sources */,
