@@ -143,8 +143,8 @@
 }
 
 - (void)user_save_onpress:(id)sender {
-    we_workPeriod = [NSString stringWithFormat:@"%@-%@%@%@", we_workPeriod, we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod];
-    NSLog(@"%@", we_workPeriod);
+    currentUser.workPeriod = [NSString stringWithFormat:@"%@-%@%@%@", currentUser.workPeriod, we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod];
+    NSLog(@"%@", currentUser.workPeriod);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

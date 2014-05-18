@@ -124,8 +124,8 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            we_category = categoryKeyArray[categorySelected];
-            we_title = titleKeyArray[titleSelected];
+            currentUser.category = categoryKeyArray[categorySelected];
+            currentUser.title = titleKeyArray[titleSelected];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -183,16 +183,16 @@
     [self.view addSubview:sys_tableView];
     
     categoryKeyArray = [we_codings[@"doctorCategory"] allKeys];
-    titleKeyArray = [we_codings[@"doctorCategory"][we_category][@"title"] allKeys];
+    titleKeyArray = [we_codings[@"doctorCategory"][currentUser.category][@"title"] allKeys];
     categorySelected = -1;
     titleSelected = -1;
     
     for (int i = 0; i < [categoryKeyArray count]; i++) {
-        if ([we_category isEqualToString:categoryKeyArray[i]]) categorySelected = i;
+        if ([currentUser.category isEqualToString:categoryKeyArray[i]]) categorySelected = i;
     }
     
     for (int i = 0; i < [titleKeyArray count]; i++) {
-        if ([we_title isEqualToString:titleKeyArray[i]]) titleSelected = i;
+        if ([currentUser.category isEqualToString:titleKeyArray[i]]) titleSelected = i;
     }
     
     // save button

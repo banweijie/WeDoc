@@ -146,19 +146,19 @@
                     cell.contentView.backgroundColor = We_background_cell_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     l1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 240, 25)];
-                    l1.text = we_name;
+                    l1.text = currentUser.userName;
                     if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
                     l1.font = We_font_textfield_zh_cn;
                     l1.textColor = We_foreground_black_general;
                     [cell.contentView addSubview:l1];
                     l2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 45, 240, 25)];
-                    l2.text = we_phone;
+                    l2.text = currentUser.userPhone;
                     l2.textColor = We_foreground_gray_general;
                     l2.font = We_font_textfield_zh_cn;
                     [cell.contentView addSubview:l2];
                     avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView  setImageURL:yijiarenAvatarUrl(we_avatarPath) successCompletion:^(id responseImage) {
-                        we_avatar = responseImage;
+                    [avatarView  setImageURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:^(id responseImage) {
+                        currentUser.avatar = responseImage;
                         NSLog(@"!!!");
                     }];
                     [cell.contentView addSubview:avatarView];
@@ -198,7 +198,7 @@
                     cell.textLabel.text = @"公告";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_notice;
+                    cell.detailTextLabel.text = currentUser.notice;
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.imageView.image = [UIImage imageNamed:@"me-bulletinboard"];

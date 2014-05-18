@@ -113,7 +113,7 @@
          NSString *result = [HTTPResponse objectForKey:@"result"];
          result = [NSString stringWithFormat:@"%@", result];
          if ([result isEqualToString:@"1"]) {
-             we_gender = genderKeyArray[selected];
+             currentUser.gender = genderKeyArray[selected];
              [self.navigationController popViewControllerAnimated:YES];
              return;
          }
@@ -174,7 +174,7 @@
     genderSelected = -1;
     
     for (int i = 0; i < [genderKeyArray count]; i++) {
-        if ([we_gender isEqualToString:genderKeyArray[i]]) genderSelected = i;
+        if ([currentUser.gender isEqualToString:genderKeyArray[i]]) genderSelected = i;
     }
 }
 

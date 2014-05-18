@@ -217,7 +217,7 @@
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(230, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView setImageURL:yijiarenAvatarUrl(we_avatarPath) successCompletion:nil];
+                    [avatarView setImageURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:nil];
                     [cell.contentView addSubview:avatarView];
                     break;
                 case 1:
@@ -225,7 +225,7 @@
                     cell.textLabel.text = @"真实姓名";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_name;
+                    cell.detailTextLabel.text = currentUser.userName;
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -235,7 +235,7 @@
                     cell.textLabel.text = @"性别";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_codings[@"userGender"][we_gender];
+                    cell.detailTextLabel.text = we_codings[@"userGender"][currentUser.gender];
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -251,7 +251,7 @@
                     cell.textLabel.text = @"手机号";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_phone;
+                    cell.detailTextLabel.text = currentUser.userPhone;
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -326,7 +326,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_avatarPath = HTTPResponse[@"response"];
+            currentUser.avatarPath = HTTPResponse[@"response"];
             return YES;
         }
         if ([result isEqualToString:@"2"]) {

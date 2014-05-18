@@ -123,7 +123,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
-            we_groupIntro = user_notification_input.text;
+            currentUser.groupIntro = user_notification_input.text;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -166,11 +166,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if ([we_groupIntro isEqualToString:@""]) {
+    if ([currentUser.groupIntro isEqualToString:@""]) {
         We_init_textView_huge(user_notification_input, @"目前暂未有团队介绍", We_font_textfield_zh_cn)
     }
     else {
-        We_init_textView_huge(user_notification_input, we_groupIntro, We_font_textfield_zh_cn)
+        We_init_textView_huge(user_notification_input, currentUser.groupIntro, We_font_textfield_zh_cn)
     }
     
     

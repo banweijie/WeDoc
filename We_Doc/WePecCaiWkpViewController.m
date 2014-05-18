@@ -184,7 +184,7 @@
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             [cell addSubview:user_Photo_view];
-            [user_Photo_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_wcPath)]];
+            [user_Photo_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.wcPath)]];
             break;
         default:
             break;
@@ -237,7 +237,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_wcPath = HTTPResponse[@"response"];
+            currentUser.wcPath = HTTPResponse[@"response"];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -273,7 +273,7 @@
     user_Id_input.placeholder = @"请输入证书编号";
     
     user_Photo_view = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
-    user_Photo_view.image = we_wcImage;
+    user_Photo_view.image = currentUser.wcImage;
     
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];

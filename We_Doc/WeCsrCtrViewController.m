@@ -146,7 +146,7 @@
     } failure:nil];
     
     UIImageView * tmpImageView1 = [[UIImageView alloc] init];
-    [tmpImageView1 setImageWithURLRequest: [NSURLRequest requestWithURL:[NSURL URLWithString:yijiarenAvatarUrl(we_avatarPath)]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    [tmpImageView1 setImageWithURLRequest: [NSURLRequest requestWithURL:[NSURL URLWithString:yijiarenAvatarUrl(currentUser.avatarPath)]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         [self refreshDoctorAvatar:image];
         doctorAvatar = image;
     } failure:nil];

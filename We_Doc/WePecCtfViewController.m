@@ -186,7 +186,7 @@
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             [cell addSubview:user_certificatePhoto_view];
-            [user_certificatePhoto_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_qcPath)]];
+            [user_certificatePhoto_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.qcPath)]];
             break;
         default:
             break;
@@ -239,8 +239,8 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_qc = user_certificateId_input.text;
-            we_qcPath = HTTPResponse[@"response"];
+            //currentUser = user_certificateId_input.text;
+            currentUser.qcPath = HTTPResponse[@"response"];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -273,11 +273,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    We_init_textFieldInCell_general(user_certificateId_input, we_qc, We_font_textfield_zh_cn)
+    We_init_textFieldInCell_general(user_certificateId_input, @"", We_font_textfield_zh_cn)
     user_certificateId_input.placeholder = @"请输入证书编号";
     
     user_certificatePhoto_view = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
-    user_certificatePhoto_view.image = we_qcImage;
+    user_certificatePhoto_view.image = currentUser.qcImage;
     
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];

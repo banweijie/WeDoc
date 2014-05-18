@@ -108,35 +108,35 @@
     UILabel * l1;
     UILabel * l2;
     UILabel * l3;
-    PAImageView *avatarView;
-    NSDictionary * lastMsg;
+    WeMessage * lastMsg;
+    UIImageView * avatarView;
+    WeFavorPatient * patient = favorPatients[orderedIdOfPatient[indexPath.row]];
     [[cell imageView] setContentMode:UIViewContentModeCenter];
     switch (indexPath.section) {
         case 0:
             cell.contentView.backgroundColor = We_background_cell_general;
             // l1 - user name
             l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 9, 240, 23)];
-            l1.text = we_patients[orderedIdOfPatient[indexPath.row]][@"name"];
+            l1.text = patient.userName;
             if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
             l1.font = We_font_textfield_zh_cn;
             l1.textColor = We_foreground_black_general;
             [cell.contentView addSubview:l1];
+            
             // l2 - lastMsg - content
             l2 = [[UILabel alloc] initWithFrame:CGRectMake(75, 33, 240, 23)];
-            NSLog(@"%@", orderedIdOfPatient[indexPath.row]);
-            NSLog(@"%@", we_messagesWithPatient[orderedIdOfPatient[indexPath.row]]);
             lastMsg = [we_messagesWithPatient[orderedIdOfPatient[indexPath.row]] lastObject];
-            if ([lastMsg[@"type"] isEqualToString:@"C"]) {
-                long long restSecond = [we_maxResponseGap intValue] * 3600 - (long long) (([[NSDate date] timeIntervalSince1970] - [[WeAppDelegate toString:lastMsg[@"time"]] longLongValue] / 100));
+            if ([lastMsg.messageType isEqualToString:@"C"]) {
+                long long restSecond = [currentUser.maxResponseGap intValue] * 3600 - (long long) (([[NSDate date] timeIntervalSince1970] - lastMsg.time));
                 l2.text = [NSString stringWithFormat:@"[申请咨询中 剩余%lld小时%lld分钟]",  restSecond / 3600, restSecond % 3600 / 60];
                 l2.textColor = We_foreground_red_general;
             }
-            else if ([lastMsg[@"type"] isEqualToString:@"T"]) {
-                l2.text = lastMsg[@"content"];
+            else if ([lastMsg.messageType isEqualToString:@"T"]) {
+                l2.text = lastMsg.content;
                 l2.textColor = We_foreground_black_general;
             }
             else {
-                l2.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg[@"type"], lastMsg[@"content"]];
+                l2.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
             }
             l2.font = We_font_textfield_small_zh_cn;
             [cell.contentView addSubview:l2];
@@ -144,12 +144,14 @@
             l3 = [[UILabel alloc] initWithFrame:CGRectMake(75, 33, 235, 23)];
             l3.textColor = We_foreground_gray_general;
             l3.font = [UIFont fontWithName:@"Heiti SC" size:10];
-            l3.text = [WeAppDelegate transitionToDateFromSecond:[lastMsg[@"time"] longLongValue]];
+            l3.text = [WeAppDelegate transitionToDateFromSecond:lastMsg.time];
             l3.textAlignment = NSTextAlignmentRight;
             [cell.contentView addSubview:l3];
             // avatar
-            avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(15, 9, 48, 48) backgroundProgressColor:[UIColor clearColor] progressColor:[UIColor lightGrayColor]];
-            [avatarView setImageURL:yijiarenAvatarUrl(we_patients[orderedIdOfPatient[indexPath.row]][@"avatar"]) successCompletion:nil];
+            avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 9, 48, 48)];
+            [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(patient.avatarPath)]];
+            avatarView.layer.cornerRadius = avatarView.frame.size.height / 2;
+            avatarView.clipsToBounds = YES;
             [cell.contentView addSubview:avatarView];
             break;
         default:
@@ -237,7 +239,7 @@
 }
 
 - (void)refreshData:(id)sender {
-    orderedIdOfPatient = [NSMutableArray arrayWithArray:[we_messagesWithPatient allKeys]];
+    orderedIdOfPatient = [NSMutableArray arrayWithArray:[favorPatients allKeys]];
     [sys_tableView reloadData];
 }
 

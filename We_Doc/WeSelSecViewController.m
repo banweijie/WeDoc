@@ -37,9 +37,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        NSLog(@"%d %@", indexPath.row, we_sectionList[we_hospital[@"id"]][indexPath.row]);
+        NSLog(@"%d %@", indexPath.row, we_sectionList[currentUser.hospitalId][indexPath.row]);
         if ([self save:indexPath.row]) {
-            we_section = we_sectionList[we_hospital[@"id"]][indexPath.row];
+            currentUser.sectionId = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"id"]];
+            currentUser.sectionName = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"name"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -77,8 +78,8 @@
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%d",[we_sectionList[we_hospital[@"id"]] count]);
-    return [we_sectionList[we_hospital[@"id"]] count];
+    NSLog(@"%d",[we_sectionList[currentUser.hospitalId] count]);
+    return [we_sectionList[currentUser.hospitalId] count];
 }
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,8 +93,8 @@
             cell.backgroundColor = We_background_cell_general;
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            cell.textLabel.text = we_sectionList[we_hospital[@"id"]][indexPath.row][@"text"];
-            if ([we_sectionList[we_hospital[@"id"]][indexPath.row][@"id"] isEqualToValue:we_section[@"id"]]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            cell.textLabel.text = we_sectionList[currentUser.hospitalId][indexPath.row][@"text"];
+            if ([[NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"id"]] isEqualToString:currentUser.sectionId]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             break;
         default:
             break;
@@ -103,7 +104,7 @@
 
 - (BOOL)save:(NSInteger)selected {
     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
-    NSString * paraString = [NSString stringWithFormat:@"sectionId=%@", we_sectionList[we_hospital[@"id"]][selected][@"id"]];
+    NSString * paraString = [NSString stringWithFormat:@"sectionId=%@", we_sectionList[currentUser.hospitalId][selected][@"id"]];
     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
     
     NSString * errorMessage = @"连接服务器失败";
@@ -168,8 +169,8 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     
-    NSDictionary * parameters = @{@"hospitalId" : we_hospital[@"id"]};
-    NSLog(@"%@", we_hospital[@"id"]);
+    NSDictionary * parameters = @{@"hospitalId" : currentUser.hospitalId};
+    NSLog(@"%@", currentUser.hospitalId);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     [manager GET:yijiarenUrl(@"data", @"listSectionsOfHospital") parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
@@ -180,8 +181,8 @@
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
-                 we_sectionList[we_hospital[@"id"]] = HTTPResponse[@"response"];
-                 NSLog(@"%@", we_sectionList[we_hospital[@"id"]]);
+                 we_sectionList[currentUser.hospitalId] = HTTPResponse[@"response"];
+                 NSLog(@"%@", we_sectionList[currentUser.hospitalId]);
                  return;
              }
              if ([result isEqualToString:@"2"]) {

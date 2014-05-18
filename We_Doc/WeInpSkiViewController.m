@@ -123,7 +123,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
-            we_skills = user_skills_input.text;
+            currentUser.skills = user_skills_input.text;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -166,11 +166,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if ([we_skills isEqualToString:@""]) {
+    if ([currentUser.skills isEqualToString:@""]) {
         We_init_textView_huge(user_skills_input, @"尚未填写专业特长", We_font_textfield_zh_cn)
     }
     else {
-        We_init_textView_huge(user_skills_input, we_skills, We_font_textfield_zh_cn)
+        We_init_textView_huge(user_skills_input, currentUser.skills, We_font_textfield_zh_cn)
     }
     
     

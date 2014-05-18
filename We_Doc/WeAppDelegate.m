@@ -9,6 +9,8 @@
 #import "WeAppDelegate.h"
 
 @implementation WeAppDelegate {
+    NSTimer * timer;
+    NSTimer * timer1;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,17 +23,15 @@
     
     we_hospitalList = [[NSMutableDictionary alloc] init];
     we_sectionList = [[NSMutableDictionary alloc] init];
-    we_msgsForPatient = [[NSMutableDictionary alloc] init];
-    we_avatars = [[NSMutableDictionary alloc] init];
     we_messagesWithPatient = [[NSMutableDictionary alloc] init];
     [self refreshInitialData];
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:@"1" forKey:@"lastMessageId"];
 
-    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshMessage:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshMessage:) userInfo:nil repeats:YES];
     
-    NSTimer * timer1 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshPatientList:) userInfo:nil repeats:YES];
+    timer1 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshPatientList:) userInfo:nil repeats:YES];
     
     NSLog(@"%@", [userDefaults stringForKey:@"lastMessageId"]);
     return YES;
@@ -81,14 +81,14 @@
 }
 
 + (NSString *)transitionToDateFromSecond:(long long)s {
-    NSDate * t = [NSDate dateWithTimeIntervalSince1970:s / 100];
+    NSDate * t = [NSDate dateWithTimeIntervalSince1970:s];
     NSDate * date = [NSDate date];
     NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents * the = [calendar components:unitFlags fromDate:t];
     NSDateComponents * now = [calendar components:unitFlags fromDate:date];
 
-    if ([[NSDate date] timeIntervalSince1970] - s / 100 <= 24 * 3600) {
+    if ([[NSDate date] timeIntervalSince1970] - s <= 24 * 3600) {
         if ([the day] != [now day]) return [NSString stringWithFormat:@"昨天 %02d:%02d", [the hour], [the minute]];
         else return [NSString stringWithFormat:@"%02d:%02d", [the hour], [the minute]];
     }
@@ -220,35 +220,15 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            NSDictionary * response = [HTTPResponse objectForKey:@"response"];
-            NSLog(@"%@", response);
-            we_notice = [WeAppDelegate toString:[response objectForKey:@"notice"]];
-            we_consultPrice = [WeAppDelegate toString:[response objectForKey:@"consultPrice"]];
-            we_plusPrice = [WeAppDelegate toString:[response objectForKey:@"plusPrice"]];
-            we_maxResponseGap = [WeAppDelegate toString:[response objectForKey:@"maxResponseGap"]];
-            we_workPeriod = [WeAppDelegate toString:[response objectForKey:@"workPeriod"]];
-            we_workPeriod_save = [NSString stringWithString:we_workPeriod];
-            we_hospital = [response objectForKey:@"hospital"];
-            we_section = [response objectForKey:@"section"];
-            we_title = [WeAppDelegate toString:[response objectForKey:@"title"]];
-            we_category = [WeAppDelegate toString:[response objectForKey:@"category"]];
-            we_skills = [WeAppDelegate toString:[response objectForKey:@"skills"]];
-            we_degree = [WeAppDelegate toString:[response objectForKey:@"degree"]];
-            we_email = [WeAppDelegate toString:[response objectForKey:@"email"]];
-            we_phone = [WeAppDelegate toString:[response objectForKey:@"phone"]];
-            we_name = [WeAppDelegate toString:[response objectForKey:@"name"]];
-            we_gender = [WeAppDelegate toString:[response objectForKey:@"gender"]];
-            we_status = [WeAppDelegate toString:[response objectForKey:@"status"]];
-            we_avatarPath = [WeAppDelegate toString:[response objectForKey:@"avatar"]];
-            we_groupIntro = [WeAppDelegate toString:[response objectForKey:@"groupIntro"]];
-            we_doctorId = [WeAppDelegate toString:[response objectForKey:@"id"]];
+            NSLog(@"%@", [HTTPResponse objectForKey:@"response"]);
             
-            we_qc = [WeAppDelegate toString:[response objectForKey:@"qc"]];
-            we_pc = [WeAppDelegate toString:[response objectForKey:@"pc"]];
+            if (currentUser) {
+                [currentUser setWithNSDictionary:HTTPResponse[@"response"]];
+            }
+            else {
+                currentUser = [[WeDoctor alloc] initWithNSDictionary:HTTPResponse[@"response"]];
+            }
             
-            we_qcPath = [WeAppDelegate toString:[response objectForKey:@"qcPath"]];
-            we_pcPath = [WeAppDelegate toString:[response objectForKey:@"pcPath"]];
-            we_wcPath = [WeAppDelegate toString:[response objectForKey:@"wcPath"]];
             return;
         }
         if ([result isEqualToString:@"2"]) {
@@ -277,56 +257,76 @@
 }
 
 - (void)refreshMessage:(id)sender {
+    // 判断登录状态
     if (!we_logined) return;
+    
     NSLog(@"refreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSDictionary * parameters = @{@"lastMessageId":[userDefaults stringForKey:@"lastMessageId"]};
     [manager GET:yijiarenUrl(@"message", @"getMsg") parameters:parameters
-          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
-              NSString * errorMessage;
-              
-              NSString * result = [NSString stringWithFormat:@"%@", [HTTPResponse objectForKey:@"result"]];
-              
-              if ([result isEqualToString:@"1"]) {
-                  NSArray * messages = [HTTPResponse objectForKey:@"response"];
-                  //NSLog(@"%@", messages);
-                  for (int i = 0; i < [messages count]; i ++) {
-                      NSString * patientId = [WeAppDelegate toString:messages[i][@"senderId"]];
-                      if (we_messagesWithPatient[patientId] == NULL) we_messagesWithPatient[patientId] = [[NSMutableArray alloc] init];
-                      [we_messagesWithPatient[patientId] addObject:messages[i]];
-                      [userDefaults setValue:messages[i][@"id"] forKey:@"lastMessageId"];
-                  }
-                  //NSLog(@"%@", we_messagesWithPatient);
-                  return;
-              }
-              if ([result isEqualToString:@"2"]) {
-                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-                  NSEnumerator *enumerator = [fields keyEnumerator];
-                  id key;
-                  while ((key = [enumerator nextObject])) {
-                      NSString * tmp1 = [fields objectForKey:key];
-                      if (tmp1 != NULL) errorMessage = tmp1;
-                  }
-              }
-              if ([result isEqualToString:@"3"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              if ([result isEqualToString:@"4"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              NSLog(@"Fail: %@", errorMessage);
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
-          }
+         success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+             NSString * errorMessage;
+             
+             NSString * result = [NSString stringWithFormat:@"%@", [HTTPResponse objectForKey:@"result"]];
+             
+             if ([result isEqualToString:@"1"]) {
+                 // 获取所有信息
+                 NSArray * messages = [HTTPResponse objectForKey:@"response"];
+                 
+                 // 依次处理所有信息
+                 if ([messages count] > 0) {
+                     WeMessage * message;
+                     for (int i = 0; i < [messages count]; i ++) {
+                         // 取出某一条消息
+                         message = [[WeMessage alloc] initWithNSDictionary:messages[i]];
+                         // 如果是图片消息则去读取图片
+                         if ([message.messageType isEqualToString:@"I"]) {
+                             [self DownloadImageWithURL:yijiarenImageUrl(message.content) successCompletion:^(id image) {
+                                 message.imageContent = (UIImage *) image;
+                             }];
+                         }
+                         // 添加到所属医生的信息列表中
+                         if (we_messagesWithPatient[message.senderId] == NULL) {
+                             we_messagesWithPatient[message.senderId] = [[NSMutableArray alloc] init];
+                         }
+                         [we_messagesWithPatient[message.senderId] addObject:message];
+                     }
+                     // 设置最后读取的信息
+                     [userDefaults setValue:message.messageId forKey:@"lastMessageId"];
+                 }
+                 return;
+             }
+             if ([result isEqualToString:@"2"]) {
+                 NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                 NSEnumerator *enumerator = [fields keyEnumerator];
+                 id key;
+                 while ((key = [enumerator nextObject])) {
+                     NSString * tmp1 = [fields objectForKey:key];
+                     if (tmp1 != NULL) errorMessage = tmp1;
+                 }
+             }
+             if ([result isEqualToString:@"3"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             if ([result isEqualToString:@"4"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             NSLog(@"Fail: %@", errorMessage);
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+         }
      ];
 }
 
 - (void)refreshPatientList:(id)sender {
+    // 判断登录状态
     if (!we_logined) return;
-    // Get patients
+    
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:yijiarenUrl(@"doctor", @"listPatients") parameters:nil
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
              NSString * errorMessage;
@@ -334,15 +334,17 @@
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
-                 we_patients = [[NSMutableDictionary alloc] init];
-                 NSArray * we_patientList = [HTTPResponse objectForKey:@"response"];
-                 for (int i = 0; i < [we_patientList count]; i++) {
-                     NSString * patientId = [WeAppDelegate toString:we_patientList[i][@"patient"][@"id"]];
-                     we_patients[patientId] = we_patientList[i][@"patient"];
+                 favorPatients = [[NSMutableDictionary alloc] init];
+                 NSArray * favorPatientList = HTTPResponse[@"response"];
+                 for (int i = 0; i < [favorPatientList count]; i++) {
+                     WeFavorPatient * newPatient = [[WeFavorPatient alloc] initWithNSDictionary:favorPatientList[i][@"patient"]];
+                     favorPatients[newPatient.userId] = newPatient;
+                     //NSLog(@"%@", [newPatient stringValue]);
                  }
-                 //NSLog(@"we_patients : %@", we_patients);
+                 //NSLog(@"%@", favorPatients);
                  return;
              }
+             
              if ([result isEqualToString:@"2"]) {
                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
                  NSEnumerator *enumerator = [fields keyEnumerator];
@@ -378,6 +380,19 @@
          }
      ];
 }
+
+- (void)DownloadImageWithURL:(NSString *)URL successCompletion:(void (^__strong)(__strong id))success {
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
+    AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (success) success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"DownloadImageWithURL error: %@", error);
+    }];
+    [requestOperation start];
+}
+
 @end
 
 

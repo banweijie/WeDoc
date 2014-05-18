@@ -184,7 +184,7 @@
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             [cell addSubview:user_Photo_view];
-            [user_Photo_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_pcPath)]];
+            [user_Photo_view setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.pcPath)]];
             break;
         default:
             break;
@@ -237,8 +237,8 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             NSLog(@"%@", HTTPResponse);
-            we_pcPath = HTTPResponse[@"response"];
-            we_pc = user_Id_input.text;
+            currentUser.pcPath = HTTPResponse[@"response"];
+            //we_pc = user_Id_input.text;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -271,7 +271,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    We_init_textFieldInCell_general(user_Id_input, we_pc, We_font_textfield_zh_cn)
+    We_init_textFieldInCell_general(user_Id_input, @"", We_font_textfield_zh_cn)
     user_Id_input.placeholder = @"请输入证书编号";
     
     user_Photo_view = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];

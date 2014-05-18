@@ -40,7 +40,8 @@
 {
     if (indexPath.section == 0) {
         if ([self save:indexPath.row]) {
-            we_hospital = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row];
+            currentUser.hospitalId = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row][@"id"];
+            currentUser.hospitalName = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row][@"name"];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -95,7 +96,7 @@
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             cell.textLabel.text = [[[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row] objectForKey:@"name"];
-            if ([[[[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row] objectForKey:@"id"] isEqualToValue:[we_hospital objectForKey:@"id"]]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            if ([[NSString stringWithFormat:@"%@", we_hospitalList[@"100"][indexPath.row][@"id"]] isEqualToString:currentUser.hospitalId]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             break;
         default:
             break;

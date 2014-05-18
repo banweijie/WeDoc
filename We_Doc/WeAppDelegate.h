@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Patient.h"
 #import <AFNetworking.h>
+
+#import "WeUser.h"
+#import "WeDoctor.h"
+#import "WeFavorDoctor.h"
+#import "WePatient.h"
+#import "WeFavorPatient.h"
+#import "WeMessage.h"
 
 @interface WeAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -30,6 +36,10 @@
 @end
 
 // Global Variables
+WeDoctor * currentUser;
+NSMutableDictionary * favorPatients;
+
+// user defaults
 NSUserDefaults * userDefaults;
 
 BOOL we_logined;
@@ -44,8 +54,6 @@ NSString * we_wkp_typeOfPeriod;
 NSString * we_pea_gender;
 NSString * we_patient_chating;
 
-Patient * patient_chating;
-
 NSMutableDictionary * we_avatars;
 NSMutableDictionary * we_patients;
 NSMutableDictionary * we_messagesWithPatient;
@@ -55,37 +63,10 @@ NSDictionary * we_codings;
 NSDictionary * we_imagePaths;
 
 // user data
-NSString * we_notice;
-NSString * we_doctorId;
-NSString * we_consultPrice;
-NSString * we_plusPrice;
-NSString * we_maxResponseGap;
-NSString * we_workPeriod;
-NSString * we_workPeriod_save;
-NSDictionary * we_hospital;
-NSDictionary * we_section;
-NSString * we_title;
-NSString * we_category;
-NSString * we_skills;
-NSString * we_degree;
-NSString * we_email;
-NSString * we_phone;
-NSString * we_name;
-NSString * we_gender;
 NSString * we_phone_onReg;
-NSString * we_qc;
-NSString * we_pc;
-NSString * we_status;
-NSString * we_avatarPath;
-NSString * we_pcPath;
-NSString * we_qcPath;
-NSString * we_wcPath;
-NSString * we_groupIntro;
+NSString * we_workPeriod_save;
 
 UIImage * we_avatar;
-UIImage * we_qcImage;
-UIImage * we_pcImage;
-UIImage * we_wcImage;
 
 NSMutableArray * we_msgs;
 NSMutableArray * user_exps;
@@ -102,14 +83,15 @@ NSMutableDictionary * we_sectionList;
 - (NSString*)md5;
 @end
 
+// 后台轮询的时间间隔
 #define refreshInterval 5
-
 
 #define yijiarenServer @"http://115.28.222.1/yijiaren"
 #define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
 #define yijiarenImageServer we_imagePaths[@"imgServer"]
 #define yijiarenAvatarUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"avatarPath"], fileName]
 #define yijiarenCertUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"certPath"], fileName]
+#define yijiarenImageUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"imagePath"], fileName]
 
 #define UIColorFromRGB0x(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 

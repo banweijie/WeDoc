@@ -123,7 +123,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
-            we_notice = user_notification_input.text;
+            currentUser.notice = user_notification_input.text;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -166,13 +166,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    we_notice = [NSString stringWithFormat:@"%@", we_notice];
+    currentUser.notice = [NSString stringWithFormat:@"%@", currentUser.notice];
     //NSLog(@"%@ %@", we_notice, [NSString stringWithUTF8String:object_getClassName(we_notice)]);
-    if ([we_notice isEqualToString:@"<null>"]) {
+    if ([currentUser.notice isEqualToString:@"<null>"]) {
         We_init_textView_huge(user_notification_input, @"目前暂未有公告", We_font_textfield_zh_cn)
     }
     else {
-        We_init_textView_huge(user_notification_input, we_notice, We_font_textfield_zh_cn)
+        We_init_textView_huge(user_notification_input, currentUser.notice, We_font_textfield_zh_cn)
     }
     
     

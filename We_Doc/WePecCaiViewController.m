@@ -143,7 +143,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.backgroundColor = We_background_cell_general;
-                    cell.detailTextLabel.text = [we_hospital objectForKey:@"name"];
+                    cell.detailTextLabel.text = currentUser.hospitalName;
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"医院";
@@ -153,7 +153,7 @@
                     break;
                 case 1:
                     cell.backgroundColor = We_background_cell_general;
-                    cell.detailTextLabel.text = [we_section objectForKey:@"text"];
+                    cell.detailTextLabel.text = currentUser.sectionName;
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"科室";
@@ -163,7 +163,7 @@
                     break;
                 case 2:
                     cell.backgroundColor = We_background_cell_general;
-                    cell.detailTextLabel.text = we_codings[@"doctorCategory"][we_category][@"title"][we_title];
+                    cell.detailTextLabel.text = we_codings[@"doctorCategory"][currentUser.category][@"title"][currentUser.title];
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"职称";
@@ -182,14 +182,14 @@
                     cell.textLabel.text = @"资格证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    if ([we_qcPath isEqualToString:@""]) {
+                    if ([currentUser.qcPath isEqualToString:@""]) {
                         cell.detailTextLabel.text = @"必填";
                         cell.detailTextLabel.font = We_font_textfield_zh_cn;
                         cell.detailTextLabel.textColor = We_foreground_gray_general;
                     }
                     else {
                         imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
-                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_qcPath)]];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.qcPath)]];
                         [cell.contentView addSubview:imageView];
                     }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -199,14 +199,14 @@
                     cell.textLabel.text = @"职业证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    if ([we_pcPath isEqualToString:@""]) {
+                    if ([currentUser.pcPath isEqualToString:@""]) {
                         cell.detailTextLabel.text = @"必填";
                         cell.detailTextLabel.font = We_font_textfield_zh_cn;
                         cell.detailTextLabel.textColor = We_foreground_gray_general;
                     }
                     else {
                         imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
-                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_pcPath)]];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.pcPath)]];
                         [cell.contentView addSubview:imageView];
                     }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -216,14 +216,14 @@
                     cell.textLabel.text = @"工作证照片";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    if ([we_wcPath isEqualToString:@""]) {
+                    if ([currentUser.wcPath isEqualToString:@""]) {
                         cell.detailTextLabel.text = @"必填";
                         cell.detailTextLabel.font = We_font_textfield_zh_cn;
                         cell.detailTextLabel.textColor = We_foreground_gray_general;
                     }
                     else {
                         imageView = [[UIImageView alloc]initWithFrame:We_frame_detailImageInCell_general];
-                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(we_wcPath)]];
+                        [imageView setImageWithURL:[NSURL URLWithString:yijiarenCertUrl(currentUser.wcPath)]];
                         [cell.contentView addSubview:imageView];
                     }
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -239,7 +239,7 @@
                     cell.textLabel.text = @"团队介绍";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_groupIntro;
+                    cell.detailTextLabel.text = currentUser.groupIntro;
                     if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
@@ -250,7 +250,7 @@
                     cell.textLabel.text = @"专业特长";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_skills;
+                    cell.detailTextLabel.text = currentUser.skills;
                     if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
@@ -261,8 +261,8 @@
                     cell.textLabel.text = @"学位";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_codings[@"doctorDegree"][we_degree];
-                    if ([we_degree isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.text = we_codings[@"doctorDegree"][currentUser.degree];
+                    if ([currentUser.degree isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -278,7 +278,7 @@
                     cell.textLabel.text = @"邮箱";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_email;
+                    cell.detailTextLabel.text = currentUser.email;
                     if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
@@ -390,7 +390,7 @@
     [self.view addSubview:sys_tableView];
     
     // save button
-    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:[WeAppDelegate transition:we_status asin:@"doctorStatus"] style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
+    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:[WeAppDelegate transition:currentUser.status asin:@"doctorStatus"] style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
 }
 

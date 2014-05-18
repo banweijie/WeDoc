@@ -120,7 +120,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             [self dismissViewControllerAnimated:YES completion:nil];
-            we_name = user_name_input.text;
+            currentUser.userName = user_name_input.text;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -163,7 +163,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    We_init_textFieldInCell_forInput(user_name_input, we_name, @"", We_font_textfield_zh_cn)
+    We_init_textFieldInCell_forInput(user_name_input, currentUser.userName, @"", We_font_textfield_zh_cn)
 
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];

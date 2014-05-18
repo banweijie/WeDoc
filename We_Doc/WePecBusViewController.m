@@ -99,7 +99,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [we_workPeriod length] / 4;
+            return [currentUser.workPeriod length] / 4;
             break;
         case 1:
             return 1;
@@ -124,7 +124,7 @@
     switch (indexPath.section) {
         case 0:
             cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@                                            %@", [WeAppDelegate transitionDayOfWeekFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[we_workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@                                            %@", [WeAppDelegate transitionDayOfWeekFromChar:[currentUser.workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 1, 1)]], [WeAppDelegate transitionPeriodOfDayFromChar:[currentUser.workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 2, 1)]], [WeAppDelegate transitionTypeOfPeriodFromChar:[currentUser.workPeriod substringWithRange:NSMakeRange(4 * indexPath.row + 3, 1)]]];
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             break;
@@ -227,7 +227,7 @@
 - (void)user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
-    NSString *parasString = [NSString stringWithFormat:@"workPeriod=%@&plusPrice=%@&consultPrice=%@&maxResponseGap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
+    NSString *parasString = [NSString stringWithFormat:@"workPeriod=%@&plusPrice=%@&consultPrice=%@&maxResponseGap=%@", currentUser.workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {
@@ -235,10 +235,10 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            we_workPeriod_save = we_workPeriod;
-            we_plusPrice = user_plusPrice_value;
-            we_consultPrice = user_consultPrice_value;
-            we_maxResponseGap = user_maxResponseGap_value;
+            we_workPeriod_save = currentUser.workPeriod;
+            currentUser.plusPrice = user_plusPrice_value;
+            currentUser.consultPrice = user_consultPrice_value;
+            currentUser.maxResponseGap = user_maxResponseGap_value;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -272,15 +272,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    we_workPeriod = we_workPeriod_save;
+    currentUser.workPeriod = we_workPeriod_save;
     
     // save button
     user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
     
-    user_consultPrice_value = we_consultPrice;
-    user_plusPrice_value = we_plusPrice;
-    user_maxResponseGap_value = we_maxResponseGap;
+    user_consultPrice_value = currentUser.consultPrice;
+    user_plusPrice_value = currentUser.plusPrice;
+    user_maxResponseGap_value = currentUser.maxResponseGap;
     
     
     // user_consultPrice_input

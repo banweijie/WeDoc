@@ -113,7 +113,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            we_degree = degreeKeyArray[selected];
+            currentUser = degreeKeyArray[selected];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -174,7 +174,7 @@
     degreeSelected = -1;
     
     for (int i = 0; i < [degreeKeyArray count]; i++) {
-        if ([we_degree isEqualToString:degreeKeyArray[i]]) degreeSelected = i;
+        if ([currentUser.degree isEqualToString:degreeKeyArray[i]]) degreeSelected = i;
     }
 }
 
