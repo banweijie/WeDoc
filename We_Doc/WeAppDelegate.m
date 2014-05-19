@@ -87,7 +87,7 @@
     NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents * the = [calendar components:unitFlags fromDate:t];
     NSDateComponents * now = [calendar components:unitFlags fromDate:date];
-    NSLog(@"%lld %f %ld %ld", s, [[NSDate date] timeIntervalSince1970], (long)[the hour], (long)[the minute]);
+    //NSLog(@"%lld %f %ld %ld", s, [[NSDate date] timeIntervalSince1970], (long)[the hour], (long)[the minute]);
     if ([[NSDate date] timeIntervalSince1970] - s <= 24 * 3600) {
         if ([the day] != [now day]) return [NSString stringWithFormat:@"昨天 %02d:%02d", [the hour], [the minute]];
         else return [NSString stringWithFormat:@"%02d:%02d", [the hour], [the minute]];
@@ -265,7 +265,7 @@
     // 判断登录状态
     if (!we_logined) return;
     
-    NSLog(@"\nrefreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
+    //NSLog(@"\nrefreshMessage(lastMessageId = %@)", [userDefaults stringForKey:@"lastMessageId"]);
     
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
@@ -289,9 +289,29 @@
                          // 如果是图片消息则去读取图片
                          if ([message.messageType isEqualToString:@"I"]) {
                              [self DownloadImageWithURL:yijiarenImageUrl(message.content) successCompletion:^(id image) {
+                                // NSLog(@"Image loaded!");
                                  message.imageContent = (UIImage *) image;
                                  message.loading = NO;
                              }];
+                         }
+                         else if ([message.messageType isEqualToString:@"A"]) {
+                             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+                             AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+                             
+                             NSURL *URL = [NSURL URLWithString:yijiarenImageUrl(message.content)];
+                             NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+                             
+                             NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                                 NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+                                 return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+                             } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                                 NSLog(@"File downloaded to: %@", filePath);
+                                 [VoiceConverter amrToWav:filePath.path wavSavePath:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
+                                 message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
+                                 NSLog(@"%@ %@", filePath.path, [NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]);
+                                 message.loading = NO;
+                             }];
+                             [downloadTask resume];
                          }
                          else {
                              message.loading = NO;

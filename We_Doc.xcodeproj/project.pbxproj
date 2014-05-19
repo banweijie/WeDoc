@@ -20,6 +20,12 @@
 		900E28ED19294070008BF61C /* WePatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28EC19294070008BF61C /* WePatient.m */; };
 		900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28EF192940E6008BF61C /* WeFavorPatient.m */; };
 		900E28F319294AEB008BF61C /* WeToolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28F219294AEB008BF61C /* WeToolButton.m */; };
+		900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 900E29201929AFBB008BF61C /* amrFileCodec.mm */; };
+		900E292F1929AFBB008BF61C /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 900E29221929AFBB008BF61C /* wav.mm */; };
+		900E29301929AFBB008BF61C /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 900E29241929AFBB008BF61C /* libopencore-amrnb.a */; };
+		900E29311929AFBB008BF61C /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 900E29251929AFBB008BF61C /* libopencore-amrwb.a */; };
+		900E29321929AFBB008BF61C /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 900E292D1929AFBB008BF61C /* VoiceConverter.mm */; };
+		900E29631929E9C8008BF61C /* WeInfoedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E29621929E9C8008BF61C /* WeInfoedButton.m */; };
 		9013553D18F6626900436A24 /* WeRegNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013553C18F6626900436A24 /* WeRegNavViewController.m */; };
 		9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEB1903EE9400CE4A7A /* WePecWkpAddViewController.m */; };
 		9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EDEE1903EEAD00CE4A7A /* WePecWkpModViewController.m */; };
@@ -120,6 +126,20 @@
 		900E28EF192940E6008BF61C /* WeFavorPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFavorPatient.m; sourceTree = "<group>"; };
 		900E28F119294AEB008BF61C /* WeToolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeToolButton.h; sourceTree = "<group>"; };
 		900E28F219294AEB008BF61C /* WeToolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeToolButton.m; sourceTree = "<group>"; };
+		900E291F1929AFBB008BF61C /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		900E29201929AFBB008BF61C /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		900E29211929AFBB008BF61C /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		900E29221929AFBB008BF61C /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		900E29241929AFBB008BF61C /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		900E29251929AFBB008BF61C /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		900E29271929AFBB008BF61C /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		900E29281929AFBB008BF61C /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		900E292A1929AFBB008BF61C /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		900E292B1929AFBB008BF61C /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		900E292C1929AFBB008BF61C /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		900E292D1929AFBB008BF61C /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		900E29611929E9C8008BF61C /* WeInfoedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInfoedButton.h; sourceTree = "<group>"; };
+		900E29621929E9C8008BF61C /* WeInfoedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInfoedButton.m; sourceTree = "<group>"; };
 		9013553B18F6626900436A24 /* WeRegNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegNavViewController.h; sourceTree = "<group>"; };
 		9013553C18F6626900436A24 /* WeRegNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegNavViewController.m; sourceTree = "<group>"; };
 		9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecWkpAddViewController.h; sourceTree = "<group>"; };
@@ -239,7 +259,9 @@
 				907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */,
 				907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */,
 				904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */,
+				900E29301929AFBB008BF61C /* libopencore-amrnb.a in Frameworks */,
 				904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */,
+				900E29311929AFBB008BF61C /* libopencore-amrwb.a in Frameworks */,
 				904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */,
 				0CB24654A3894C74B50B7DFF /* libPods.a in Frameworks */,
 			);
@@ -295,6 +317,58 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		900E291D1929AFBB008BF61C /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				900E291E1929AFBB008BF61C /* amrwapper */,
+				900E29231929AFBB008BF61C /* lib */,
+				900E29261929AFBB008BF61C /* opencore-amrnb */,
+				900E29291929AFBB008BF61C /* opencore-amrwb */,
+				900E292C1929AFBB008BF61C /* VoiceConverter.h */,
+				900E292D1929AFBB008BF61C /* VoiceConverter.mm */,
+			);
+			name = VoiceConvert;
+			path = arm/VoiceConvert;
+			sourceTree = "<group>";
+		};
+		900E291E1929AFBB008BF61C /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				900E291F1929AFBB008BF61C /* amrFileCodec.h */,
+				900E29201929AFBB008BF61C /* amrFileCodec.mm */,
+				900E29211929AFBB008BF61C /* wav.h */,
+				900E29221929AFBB008BF61C /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		900E29231929AFBB008BF61C /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				900E29241929AFBB008BF61C /* libopencore-amrnb.a */,
+				900E29251929AFBB008BF61C /* libopencore-amrwb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		900E29261929AFBB008BF61C /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				900E29271929AFBB008BF61C /* interf_dec.h */,
+				900E29281929AFBB008BF61C /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		900E29291929AFBB008BF61C /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				900E292A1929AFBB008BF61C /* dec_if.h */,
+				900E292B1929AFBB008BF61C /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
 		9026EDFC19044B7100CE4A7A /* PersonalAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +403,8 @@
 		9039CC5C1902B40800EA8310 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				900E29611929E9C8008BF61C /* WeInfoedButton.h */,
+				900E29621929E9C8008BF61C /* WeInfoedButton.m */,
 				9039CC5D1902B43F00EA8310 /* WeTableViewCell.h */,
 				9039CC5E1902B43F00EA8310 /* WeTableViewCell.m */,
 				9026EF66190D30B500CE4A7A /* WeViewController.h */,
@@ -389,6 +465,7 @@
 		904F7A3818F0F146000CB41B /* We_Doc */ = {
 			isa = PBXGroup;
 			children = (
+				900E291D1929AFBB008BF61C /* VoiceConvert */,
 				900E28DE19292C42008BF61C /* Model */,
 				900E28CD19292B51008BF61C /* UIBubbleTableView */,
 				9026EFB6191471C400CE4A7A /* PAImageView */,
@@ -703,6 +780,7 @@
 				9026EF1B190D00E200CE4A7A /* WeRapViewController.m in Sources */,
 				9054808418FAA23300CE8172 /* WeTabBarViewController.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
+				900E29321929AFBB008BF61C /* VoiceConverter.mm in Sources */,
 				9026EFC81916FA3700CE4A7A /* WeCsrNavViewController.m in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */,
@@ -738,6 +816,7 @@
 				9026EF18190D00C700CE4A7A /* WeRapNavController.m in Sources */,
 				907D5B521920B94B0006EAE0 /* WeSPViewController.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
+				900E29631929E9C8008BF61C /* WeInfoedButton.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
 				904F7A6918F0F9CA000CB41B /* WeRegWlcViewController.m in Sources */,
 				900E28DB19292B67008BF61C /* UIBubbleTableView.m in Sources */,
@@ -748,6 +827,7 @@
 				900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */,
 				904F7A7018F133C4000CB41B /* WeRegIvcViewController.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
+				900E292F1929AFBB008BF61C /* wav.mm in Sources */,
 				9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
@@ -755,6 +835,7 @@
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
 				900E28ED19294070008BF61C /* WePatient.m in Sources */,
 				900E28D919292B67008BF61C /* NSBubbleData.m in Sources */,
+				900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,7 +966,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/We_Doc/VoiceConvert/lib",
+					"$(PROJECT_DIR)/We_Doc/arm/lib",
+					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D2A3C9BD-4902-4117-BA26-309D6875673F";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -904,7 +991,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/We_Doc/VoiceConvert/lib",
+					"$(PROJECT_DIR)/We_Doc/arm/lib",
+					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3312E140-D977-43DD-BA2B-547349F9997C";
 				TARGETED_DEVICE_FAMILY = 1;

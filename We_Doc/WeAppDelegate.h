@@ -15,6 +15,7 @@
 #import "WePatient.h"
 #import "WeFavorPatient.h"
 #import "WeMessage.h"
+#import "VoiceConverter.h"
 
 @interface WeAppDelegate : UIResponder <UIApplicationDelegate>
 

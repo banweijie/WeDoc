@@ -19,6 +19,7 @@
 @synthesize time;
 
 @synthesize imageContent;
+@synthesize audioContent;
 
 - (WeMessage *)initWithNSDictionary:(NSDictionary *)info {
     [self setWithNSDictionary:info];

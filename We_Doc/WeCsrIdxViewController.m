@@ -135,6 +135,14 @@
                 l2.text = lastMsg.content;
                 l2.textColor = We_foreground_black_general;
             }
+            else if ([lastMsg.messageType isEqualToString:@"A"]) {
+                l2.text = @"[语音]";
+                l2.textColor = We_foreground_red_general;
+            }
+            else if ([lastMsg.messageType isEqualToString:@"I"]) {
+                l2.text = @"[图片]";
+                l2.textColor = We_foreground_red_general;
+            }
             else {
                 l2.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
             }
