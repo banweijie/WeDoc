@@ -195,8 +195,8 @@
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
         //NSLog(@"%@", HTTPResponse);
-        we_codings = HTTPResponse[@"codings"];
-        we_imagePaths = HTTPResponse[@"imagePaths"];
+        we_codings = HTTPResponse[@"response"][@"codings"];
+        we_imagePaths = HTTPResponse[@"response"][@"imagePaths"];
         NSLog(@"%@", we_codings);
         return;
     }
@@ -367,7 +367,7 @@
                  NSArray * favorPatientList = HTTPResponse[@"response"];
                  for (int i = 0; i < [favorPatientList count]; i++) {
                      // 取出原来的病人和现在的病人
-                     WeFavorPatient * newPatient = [[WeFavorPatient alloc] initWithNSDictionary:favorPatientList[i][@"patient"]];
+                     WeFavorPatient * newPatient = [[WeFavorPatient alloc] initWithNSDictionary:favorPatientList[i]];
                      WeFavorPatient * oldPatient = (WeFavorPatient *) favorPatients[newPatient.userId];
                      
                      // 如果头像变化则前往更新，否则沿用之前的

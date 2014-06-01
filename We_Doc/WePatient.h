@@ -10,4 +10,7 @@
 
 @interface WePatient : WeUser
 
+- (WePatient *)initWithNSDictionary:(NSDictionary *)info;
+- (void)setWithNSDictionary:(NSDictionary *)info;
+
 @end

@@ -10,4 +10,14 @@
 
 @implementation WePatient
 
+- (WePatient *)initWithNSDictionary:(NSDictionary *)info {
+    [self setWithNSDictionary:info];
+    return self;
+}
+
+- (void)setWithNSDictionary:(NSDictionary *)info {
+    // 提取信息
+    [super setWithNSDictionary:info];
+}
+
 @end

@@ -19,6 +19,7 @@
 
 - (id)init;
 - (WeUser *)initWithNSDictionary:(NSDictionary *)info;
+- (void)setWithNSDictionary:(NSDictionary *)info;
 - (NSString *)stringValue;
 
 @end

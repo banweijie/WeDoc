@@ -10,4 +10,22 @@
 
 @implementation WeFavorPatient
 
+@synthesize consultStatus;
+@synthesize sendable;
+@synthesize deadline;
+
+- (WeFavorPatient *)initWithNSDictionary:(NSDictionary *)info {
+    [self setWithNSDictionary:info];
+    return self;
+}
+
+- (void)setWithNSDictionary:(NSDictionary *)info {
+    // 提取信息
+    [super setWithNSDictionary:info[@"patient"]];
+    
+    self.consultStatus = [NSString stringWithFormat:@"%@", info[@"consultStatus"]];
+    self.sendable = [[NSString stringWithFormat:@"%@", info[@"sendable"]] isEqualToString:@"true"];
+    self.deadline = [info[@"time"] longLongValue] / 100;
+}
+
 @end
