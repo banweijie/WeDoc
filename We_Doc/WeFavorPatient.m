@@ -11,6 +11,7 @@
 @implementation WeFavorPatient
 
 @synthesize consultStatus;
+@synthesize currentConsultId;
 @synthesize sendable;
 @synthesize deadline;
 
@@ -24,6 +25,7 @@
     [super setWithNSDictionary:info[@"patient"]];
     
     self.consultStatus = [NSString stringWithFormat:@"%@", info[@"consultStatus"]];
+    self.currentConsultId = [NSString stringWithFormat:@"%@", info[@"currentConsultId"]];
     self.sendable = [[NSString stringWithFormat:@"%@", info[@"sendable"]] isEqualToString:@"true"];
     self.deadline = [info[@"time"] longLongValue] / 100;
 }

@@ -11,6 +11,7 @@
 @interface WeFavorPatient : WePatient
 
 @property(strong, nonatomic) NSString * consultStatus;
+@property(strong, nonatomic) NSString * currentConsultId;
 @property(nonatomic) BOOL sendable;
 @property(nonatomic) long long deadline;
 

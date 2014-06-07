@@ -172,6 +172,7 @@
     NSDictionary * parameters = @{@"hospitalId" : currentUser.hospitalId};
     NSLog(@"%@", currentUser.hospitalId);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:yijiarenUrl(@"data", @"listSectionsOfHospital") parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
              [self.view addSubview:sys_tableView];

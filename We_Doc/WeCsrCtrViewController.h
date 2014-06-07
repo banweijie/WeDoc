@@ -20,5 +20,6 @@
 
 @property (strong, nonatomic) AVAudioRecorder * audioRecorder;
 @property (strong, nonatomic) AVAudioPlayer * audioPlayer;
+@property (strong, nonatomic) WeFavorPatient * patientChating;
 
 @end

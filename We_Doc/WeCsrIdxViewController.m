@@ -39,7 +39,11 @@
 {
     if (path.section == 0) {
         we_patient_chating = orderedIdOfPatient[path.row];
-        [self performSegueWithIdentifier:@"CsrIdx_pushto_CsrCtr" sender:self];
+        //[self performSegueWithIdentifier:@"CsrIdx_pushto_CsrCtr" sender:self];
+        
+        WeCsrCtrViewController * vc = [[WeCsrCtrViewController alloc] init];
+        vc.patientChating = favorPatients[orderedIdOfPatient[path.row]];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
@@ -147,7 +151,7 @@
                 l2.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
             }
             l2.font = We_font_textfield_small_zh_cn;
-            [cell.contentView addSubview:l2];
+            //[cell.contentView addSubview:l2];
             // l3 - lastMsg - time
             l3 = [[UILabel alloc] initWithFrame:CGRectMake(75, 33, 235, 23)];
             l3.textColor = We_foreground_gray_general;

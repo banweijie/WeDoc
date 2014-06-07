@@ -33,7 +33,7 @@
     
     timer1 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshPatientList:) userInfo:nil repeats:YES];
     
-    NSLog(@"%@", [userDefaults stringForKey:@"lastMessageId"]);
+    //NSLog(@"%@", [userDefaults stringForKey:@"lastMessageId"]);
     return YES;
 }
 
@@ -231,7 +231,7 @@
             
             [WeAppDelegate DownloadImageWithURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:^(id image) {
                 currentUser.avatar = image;
-                NSLog(@"Download Image(%@) succeed, user' avatar has been changed.", currentUser.avatarPath);
+                //NSLog(@"Download Image(%@) succeed, user' avatar has been changed.", currentUser.avatarPath);
             }];
             
             return;
@@ -305,10 +305,10 @@
                                  NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
                                  return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
                              } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                                 NSLog(@"File downloaded to: %@", filePath);
+                                 //NSLog(@"File downloaded to: %@", filePath);
                                  [VoiceConverter amrToWav:filePath.path wavSavePath:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
                                  message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
-                                 NSLog(@"%@ %@", filePath.path, [NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]);
+                                 //NSLog(@"%@ %@", filePath.path, [NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]);
                                  message.loading = NO;
                              }];
                              [downloadTask resume];
@@ -374,7 +374,7 @@
                      if (![oldPatient.avatarPath isEqualToString:newPatient.avatarPath]) {
                          [self DownloadImageWithURL:yijiarenAvatarUrl(newPatient.avatarPath) successCompletion:^(id image) {
                              newPatient.avatar = image;
-                             NSLog(@"Download Image(%@) succeed, patient(%@)' avatar has been changed.", newPatient.avatarPath, newPatient.userName);
+                             //NSLog(@"Download Image(%@) succeed, patient(%@)' avatar has been changed.", newPatient.avatarPath, newPatient.userName);
                          }];
                      }
                      else {

@@ -24,6 +24,9 @@
     int currentMoreInputState;
     UIButton * changmodeButton;
     UIButton * audioRecoderButton;
+    
+    // 接受咨询
+    UIButton * accpetConsultView;
 }
 
 @end
@@ -210,6 +213,14 @@
             else {
                 bubble = [NSBubbleData dataWithView:tmpButton date:[NSDate dateWithTimeIntervalSince1970:message.time] type:senderType insets:UIEdgeInsetsMake(10, 15, 10, 10)];
             }
+        }
+        else if ([message.messageType isEqualToString:@"C"]) {
+            currentCount ++;
+            continue;
+        }
+        else if ([message.messageType isEqualToString:@"J"]) {
+            currentCount ++;
+            continue;
         }
         else {
             bubble = [NSBubbleData dataWithText:message.content date:[NSDate dateWithTimeIntervalSince1970:message.time] type:senderType];
@@ -450,11 +461,8 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     
     [unionView addSubview:bubbletTableView];
     
-    [self refreshMessage:self];
     bubbletTableView.bubbleDataSource = self;
     bubbletTableView.showAvatars = YES;
-    [bubbletTableView reloadData];
-    [bubbletTableView scrollBubbleViewToBottomAnimated:YES];
     
     inputView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, 320, 40)];
     inputView.backgroundColor = [UIColor colorWithRed:231 / 255.0 green:228 / 255.0 blue:223 / 255.0 alpha:0.9];
@@ -529,6 +537,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [uploadHiButton setFrame:CGRectMake(100, 0, 120, 100)];
     [uploadHiButton setTitle:@"完成咨询" forState:UIControlStateNormal];
     [uploadHiButton setImage:[UIImage imageNamed:@"chatroom-sendcasehistory"] forState:UIControlStateNormal];
+    [uploadHiButton addTarget:self action:@selector(finishConsult:) forControlEvents:UIControlEventTouchUpInside];
     uploadHiButton.titleLabel.font = We_font_textfield_zh_cn;
     uploadHiButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadHiButton];
@@ -538,7 +547,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [uploadVedioButton setTitle:@"结束咨询并退款" forState:UIControlStateNormal];
     [uploadVedioButton setImage:[UIImage imageNamed:@"chatroom-sendvideo"] forState:UIControlStateNormal];
     uploadVedioButton.titleLabel.font = We_font_textfield_zh_cn;
-    uploadVedioButton.tintColor = We_foreground_red_general;
+    uploadVedioButton.tintColor = We_foreground_gray_general;
     [moreInputView addSubview:uploadVedioButton];
     
     /*
@@ -559,6 +568,160 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                  name:UIKeyboardWillHideNotification object:nil];
     [unionView addSubview:inputView];
     
+    // 接受咨询界面
+    accpetConsultView = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [accpetConsultView setFrame:CGRectMake(0, 64, 320, 60)];
+    [accpetConsultView setTitle:@"该用户发起了咨询，点击接受咨询" forState:UIControlStateNormal];
+    [accpetConsultView setAlpha:0.85];
+    [accpetConsultView setBackgroundColor:We_foreground_white_general];
+    [accpetConsultView setTintColor:We_foreground_red_general];
+    [accpetConsultView.titleLabel setFont:We_font_button_zh_cn];
+    [accpetConsultView setHidden:YES];
+    [accpetConsultView addTarget:self action:@selector(acceptConsult:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:accpetConsultView];
+    
+    [self refreshView:self];
+    
+}
+
+- (void)acceptConsult:(id)sender {
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSLog(@"%@", self.patientChating.currentConsultId);
+    [manager GET:yijiarenUrl(@"doctor", @"acceptConsult") parameters:@{
+                                                                       @"consultId":self.patientChating.currentConsultId
+                                                                       }
+         success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+             NSString * errorMessage;
+             
+             NSString *result = [HTTPResponse objectForKey:@"result"];
+             result = [NSString stringWithFormat:@"%@", result];
+             if ([result isEqualToString:@"1"]) {
+                 NSLog(@"response : %@", HTTPResponse[@"response"]);
+                 self.patientChating.consultStatus = @"C";
+                 [self refreshView:self];
+                 return;
+             }
+             if ([result isEqualToString:@"2"]) {
+                 NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                 NSEnumerator *enumerator = [fields keyEnumerator];
+                 id key;
+                 while ((key = [enumerator nextObject])) {
+                     NSString * tmp1 = [fields objectForKey:key];
+                     if (tmp1 != NULL) errorMessage = tmp1;
+                 }
+             }
+             if ([result isEqualToString:@"3"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             if ([result isEqualToString:@"4"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"发送信息失败"
+                                          message:errorMessage
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"发送信息失败"
+                                          message:@"未能连接服务器，请重试"
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+     ];
+}
+
+- (void)finishConsult:(id)sender {
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager GET:yijiarenUrl(@"doctor", @"endConsult") parameters:@{
+                                                                       @"patientId":self.patientChating.userId,
+                                                                       @"refund":@"false"
+                                                                       }
+         success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
+             NSString * errorMessage;
+             
+             NSString *result = [HTTPResponse objectForKey:@"result"];
+             result = [NSString stringWithFormat:@"%@", result];
+             if ([result isEqualToString:@"1"]) {
+                 NSLog(@"response : %@", HTTPResponse[@"response"]);
+                 self.patientChating.consultStatus = @"N";
+                 [self refreshView:self];
+                 return;
+             }
+             if ([result isEqualToString:@"2"]) {
+                 NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
+                 NSEnumerator *enumerator = [fields keyEnumerator];
+                 id key;
+                 while ((key = [enumerator nextObject])) {
+                     NSString * tmp1 = [fields objectForKey:key];
+                     if (tmp1 != NULL) errorMessage = tmp1;
+                 }
+             }
+             if ([result isEqualToString:@"3"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             if ([result isEqualToString:@"4"]) {
+                 errorMessage = [HTTPResponse objectForKey:@"info"];
+             }
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"发送信息失败"
+                                          message:errorMessage
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             UIAlertView *notPermitted = [[UIAlertView alloc]
+                                          initWithTitle:@"发送信息失败"
+                                          message:@"未能连接服务器，请重试"
+                                          delegate:nil
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+             [notPermitted show];
+         }
+     ];
+}
+
+// 根绝Model刷新整个页面
+- (void)refreshView:(id)sender {
+    [self refreshMessage:sender];
+    [self refreshKeyboard:sender];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@(%@)", _patientChating.userName, _patientChating.consultStatus];
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%@(%@)", _patientChating.userName, _patientChating.consultStatus];
+    if ([_patientChating.consultStatus isEqualToString:@"A"]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@(申请咨询中)", _patientChating.userName];
+    }
+    if ([_patientChating.consultStatus isEqualToString:@"N"]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@", _patientChating.userName];
+    }
+    if ([_patientChating.consultStatus isEqualToString:@"C"]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@(咨询中)", _patientChating.userName];
+    }
+    if ([_patientChating.consultStatus isEqualToString:@"W"]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@(等待支付)", _patientChating.userName];
+    }
+}
+
+// 刷新键盘
+- (void)refreshKeyboard:(id)sender {
+    if ([self.patientChating.consultStatus isEqualToString:@"A"]) {
+        [accpetConsultView setHidden:NO];
+    }
+    else {
+        [accpetConsultView setHidden:YES];
+    }
 }
 
 - (void)displayMoreInput:(int)mode {

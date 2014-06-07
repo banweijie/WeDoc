@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <UIImageView+AFNetworking.h>
+#import "WeCsrCtrViewController.h"
 
 @interface WeCsrIdxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

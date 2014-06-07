@@ -53,7 +53,7 @@
     [self setAvatarPath:[NSString stringWithFormat:@"%@", info[@"avatar"]]];
     [self setNotice:[NSString stringWithFormat:@"%@", info[@"notice"]]];
     [self setGroupIntro:[NSString stringWithFormat:@"%@", info[@"groupIntro"]]];
-    [self setConsultPrice:[NSString stringWithFormat:@"%@", info[@"consultingPrice"]]];
+    [self setConsultPrice:[NSString stringWithFormat:@"%@", info[@"consultPrice"]]];
     [self setDegree:[NSString stringWithFormat:@"%@", info[@"degree"]]];
     [self setEmail:[NSString stringWithFormat:@"%@", info[@"email"]]];
     [self setGender:[NSString stringWithFormat:@"%@", info[@"gender"]]];

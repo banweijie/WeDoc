@@ -45,8 +45,8 @@
         if (path.row == 2) [self performSegueWithIdentifier:@"PecWkpMod_pushto_SelTyp" sender:self];
     }
     if (path.section == 1 && path.row == 0) {
-        currentUser.workPeriod = [NSString stringWithFormat:@"%@%@", [currentUser.workPeriod substringToIndex:we_wkpTOModify_id * 4],  [currentUser.workPeriod substringFromIndex:we_wkpTOModify_id * 4 + 4]];
-        NSLog(@"%@", currentUser.workPeriod);
+        we_workPeriod_save = [NSString stringWithFormat:@"%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4],  [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
+        NSLog(@"%@", we_workPeriod_save);
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -154,8 +154,8 @@
 }
 
 - (void)user_save_onpress:(id)sender {
-    currentUser.workPeriod = [NSString stringWithFormat:@"%@-%@%@%@%@", [currentUser.workPeriod substringToIndex:we_wkpTOModify_id * 4], we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod, [currentUser.workPeriod substringFromIndex:we_wkpTOModify_id * 4 + 4]];
-    NSLog(@"%@", currentUser.workPeriod);
+    we_workPeriod_save = [NSString stringWithFormat:@"%@-%@%@%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4], we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod, [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
+    NSLog(@"%@", we_workPeriod_save);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -167,9 +167,9 @@
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
     
-    we_wkp_dayOfWeek = [currentUser.workPeriod substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 1, 1)];
-    we_wkp_periodOfDay = [currentUser.workPeriod substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 2, 1)];
-    we_wkp_typeOfPeriod = [currentUser.workPeriod substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 3, 1)];
+    we_wkp_dayOfWeek = [we_workPeriod_save substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 1, 1)];
+    we_wkp_periodOfDay = [we_workPeriod_save substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 2, 1)];
+    we_wkp_typeOfPeriod = [we_workPeriod_save substringWithRange:NSMakeRange(we_wkpTOModify_id * 4 + 3, 1)];
     
     We_init_labelInCell_general(user_dayOfWeek_label, [WeAppDelegate transitionDayOfWeekFromChar:we_wkp_dayOfWeek], We_font_textfield_zh_cn)
     We_init_labelInCell_general(user_periodOfDay_label, [WeAppDelegate transitionPeriodOfDayFromChar:we_wkp_periodOfDay], We_font_textfield_zh_cn)
