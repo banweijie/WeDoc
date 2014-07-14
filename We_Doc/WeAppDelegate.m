@@ -393,7 +393,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                  [globalHelper insertToDB:message];
                                              }
                                              // 图片消息
-                                             if ([message.messageType isEqualToString:@"I"]) {
+                                             else if ([message.messageType isEqualToString:@"I"]) {
                                                  [globalHelper insertToDB:message];
                                                  [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
                                                                    successCompletion:^(id image) {
@@ -403,7 +403,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                                    }];
                                              }
                                              // 语音消息
-                                             if ([message.messageType isEqualToString:@"A"]) {
+                                             else if ([message.messageType isEqualToString:@"A"]) {
                                                  [globalHelper insertToDB:message];
                                                  [WeAppDelegate DownloadFileWithURL:yijiarenImageUrl(message.content)
                                                                   successCompletion:^(NSURL * filePath) {
@@ -411,6 +411,27 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                                       message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
                                                                       [globalHelper updateToDB:message where:nil];
                                                                   }];
+                                             }
+                                             // 状态改变
+                                             else if ([message.messageType isEqualToString:@"C"]) {
+                                                 for (int i = 0; i < message.content.length; i++) {
+                                                     if ([message.content characterAtIndex:i] == '=') {
+                                                         NSString * left = [message.content substringToIndex:i];
+                                                         NSString * right = [message.content substringFromIndex:i + 1];
+                                                         NSLog(@"%@ %@", left, right);
+                                                         if ([left isEqualToString:@"consultStatus"]) {
+                                                             WeFavorPatient * currentPatient = favorPatientList[message.senderId];
+                                                             currentPatient.consultStatus = right;
+                                                         }
+                                                     }
+                                                 }
+                                             }
+                                             // 咨询消息
+                                             else if ([message.messageType isEqualToString:@"c"]) {
+                                                 NSLog(@"%@", message.content);
+                                                 WeFavorPatient * currentPatient = favorPatientList[message.senderId];
+                                                 NSLog(@"%@", currentPatient.userName);
+                                                 currentPatient.currentConsultId = message.content;
                                              }
                                          }
                                      }

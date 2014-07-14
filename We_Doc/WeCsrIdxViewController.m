@@ -55,7 +55,7 @@
 
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 10;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 1 + self.tabBarController.tabBar.frame.size.height;
     return 1;
 }
 
@@ -87,11 +87,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
-    [[cell imageView] setContentMode:UIViewContentModeCenter];
+    [cell setOpaque:NO];
     
     WeFavorPatient * patient = favorPatientList[orderedIdOfPatients[indexPath.row]];
     if (indexPath.section == 0) {
-        cell.contentView.backgroundColor = We_background_cell_general;
+        cell.backgroundColor = We_background_cell_general;
         // l1 - user name
         UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 12, 240, 23)];
         l1.text = patient.userName;
@@ -169,7 +169,7 @@
     */
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;

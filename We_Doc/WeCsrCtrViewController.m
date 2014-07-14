@@ -49,6 +49,8 @@
     
     // consultApply
     UIToolbar * consultApplyView;
+    
+    UIActivityIndicatorView * sys_pendingView;
 }
 
 @end
@@ -812,7 +814,7 @@
     [self.view addSubview:moreInputView];
     
     WeToolButton * uploadPicButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
-    [uploadPicButton setFrame:CGRectMake(0, 0, 80, 100)];
+    [uploadPicButton setFrame:CGRectMake(0, 0, 110, 100)];
     [uploadPicButton setTitle:@"上传图片" forState:UIControlStateNormal];
     [uploadPicButton setImage:[UIImage imageNamed:@"chatroom-sendphoto"] forState:UIControlStateNormal];
     [uploadPicButton addTarget:self action:@selector(uploadPic:) forControlEvents:UIControlEventTouchUpInside];
@@ -821,28 +823,22 @@
     [moreInputView addSubview:uploadPicButton];
     
     WeToolButton * uploadHiButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
-    [uploadHiButton setFrame:CGRectMake(80, 0, 80, 100)];
-    [uploadHiButton setTitle:@"上传病例" forState:UIControlStateNormal];
-    [uploadHiButton setImage:[UIImage imageNamed:@"chatroom-sendcasehistory"] forState:UIControlStateNormal];
+    [uploadHiButton setFrame:CGRectMake(110, 0, 100, 100)];
+    [uploadHiButton setTitle:@"结束咨询" forState:UIControlStateNormal];
+    [uploadHiButton setImage:[UIImage imageNamed:@"chatroom-end"] forState:UIControlStateNormal];
+    [uploadHiButton addTarget:self action:@selector(api_doctor_endConsult) forControlEvents:UIControlEventTouchUpInside];
     uploadHiButton.titleLabel.font = We_font_textfield_zh_cn;
     uploadHiButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadHiButton];
     
     WeToolButton * uploadVedioButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
-    [uploadVedioButton setFrame:CGRectMake(160, 0, 80, 100)];
-    [uploadVedioButton setTitle:@"上传视频" forState:UIControlStateNormal];
-    [uploadVedioButton setImage:[UIImage imageNamed:@"chatroom-sendvideo"] forState:UIControlStateNormal];
+    [uploadVedioButton setFrame:CGRectMake(210, 0, 110, 100)];
+    [uploadVedioButton setTitle:@"结束咨询并退款" forState:UIControlStateNormal];
+    [uploadVedioButton setImage:[UIImage imageNamed:@"chatroom-endforfree"] forState:UIControlStateNormal];
+    [uploadVedioButton addTarget:self action:@selector(api_doctor_endConsult_forFree) forControlEvents:UIControlEventTouchUpInside];
     uploadVedioButton.titleLabel.font = We_font_textfield_zh_cn;
     uploadVedioButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadVedioButton];
-    
-    WeToolButton * jiahaoButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
-    [jiahaoButton setFrame:CGRectMake(240, 0, 80, 100)];
-    [jiahaoButton setTitle:@"我要加号" forState:UIControlStateNormal];
-    [jiahaoButton setImage:[UIImage imageNamed:@"chatroom-makeappointment"] forState:UIControlStateNormal];
-    jiahaoButton.titleLabel.font = We_font_textfield_zh_cn;
-    jiahaoButton.tintColor = We_foreground_red_general;
-    [moreInputView addSubview:jiahaoButton];
     
     //
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -864,6 +860,12 @@
     [consultApplyButton setTintColor:We_background_red_general];
     [consultApplyView addSubview:consultApplyButton];
     
+    // 转圈圈
+    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [sys_pendingView setAlpha:1.0];
+    [self.view addSubview:sys_pendingView];
     
     [self refreshView:NO];
 }
@@ -871,6 +873,7 @@
 - (void)consultApllyButton_onPress {
     WeConsultDetailViewController * vc = [[WeConsultDetailViewController alloc] init];
     vc.consultId = self.patientChating.currentConsultId;
+    vc.currentPatient = self.patientChating;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -993,6 +996,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+    [self refreshView:NO];
     timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(timer_onTick:) userInfo:nil repeats:YES];
 }
 
@@ -1037,6 +1041,57 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [timer invalidate];
     timer = nil;
+}
+
+#pragma mark - apis
+- (void)api_doctor_endConsult {
+    [sys_pendingView startAnimating];
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"endConsult"
+                              parameters:@{
+                                           @"patientId":self.patientChating.userId,
+                                           @"refund":@"NO"
+                                           }
+                                 success:^(id response) {
+                                     self.patientChating.consultStatus = @"N";
+                                     [self refreshView:NO];
+                                     [sys_pendingView stopAnimating];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     NSLog(@"%@", errorMessage);
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"结束咨询失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                     [sys_pendingView stopAnimating];
+                                 }];
+}
+
+- (void)api_doctor_endConsult_forFree {
+    [sys_pendingView startAnimating];
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"endConsult"
+                              parameters:@{
+                                           @"patientId":self.patientChating.userId,
+                                           @"refund":@"YES"
+                                           }
+                                 success:^(id response) {
+                                     self.patientChating.consultStatus = @"N";
+                                     [self refreshView:NO];
+                                     [sys_pendingView stopAnimating];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     NSLog(@"%@", errorMessage);
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"结束咨询失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                     [sys_pendingView stopAnimating];
+                                 }];
 }
 
 @end
