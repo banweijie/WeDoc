@@ -48,7 +48,7 @@
     NSData * amrAudio;
     
     // consultApply
-    UIView * consultApplyView;
+    UIToolbar * consultApplyView;
 }
 
 @end
@@ -705,6 +705,7 @@
     [self.view addSubview:bg];
     
     // Title
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:nil];
     
     // Invisible of tab bar
     [self setExtendedLayoutIncludesOpaqueBars:YES];
@@ -853,15 +854,24 @@
     [unionView addSubview:inputView];
     
     // 申请咨询
-    consultApplyView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, 320, 50)];
+    consultApplyView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 50)];
+    [self.view addSubview:consultApplyView];
     
     UIButton * consultApplyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [consultApplyButton setFrame:CGRectMake(0, 0, 320, 50)];
     [consultApplyButton setTitle:@"该病人提交了咨询申请，点击查看详情" forState:UIControlStateNormal];
+    [consultApplyButton addTarget:self action:@selector(consultApllyButton_onPress) forControlEvents:UIControlEventTouchUpInside];
+    [consultApplyButton setTintColor:We_background_red_general];
     [consultApplyView addSubview:consultApplyButton];
     
     
     [self refreshView:NO];
+}
+
+- (void)consultApllyButton_onPress {
+    WeConsultDetailViewController * vc = [[WeConsultDetailViewController alloc] init];
+    vc.consultId = self.patientChating.currentConsultId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 输入框右侧更多选项

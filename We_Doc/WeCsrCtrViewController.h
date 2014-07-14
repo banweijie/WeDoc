@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIBubbleTableView.h"
 #import "WeAppDelegate.h"
 #import "WeToolButton.h"
 #import <AFNetworking.h>
@@ -15,10 +14,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "VoiceConverter.h"
 #import "WeInfoedButton.h"
-#import "WeCsrCosViewController.h"
 #import "WeNavViewController.h"
-#import "WeCsrJiaViewController.h"
 #import "WeImageButton.h"
+#import "WeConsultDetailViewController.h"
 
 @interface WeCsrCtrViewController : UIViewController  <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVAudioPlayerDelegate, UITableViewDataSource, UITableViewDelegate>
 

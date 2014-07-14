@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking.h>
 
 @interface WeMessage : NSObject
 

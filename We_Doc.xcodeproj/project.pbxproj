@@ -57,6 +57,8 @@
 		9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808818FAC28700CE8172 /* WePecCaiViewController.m */; };
 		906F4D93197376CC007807FE /* WeCsrIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D90197376CC007807FE /* WeCsrIdxViewController.m */; };
 		906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D92197376CC007807FE /* WeCsrCtrViewController.m */; };
+		906F4D9719738AB2007807FE /* WeConsultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */; };
+		906F4D9C19738D20007807FE /* WeConsult.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9B19738D20007807FE /* WeConsult.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
@@ -196,6 +198,10 @@
 		906F4D90197376CC007807FE /* WeCsrIdxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrIdxViewController.m; sourceTree = "<group>"; };
 		906F4D91197376CC007807FE /* WeCsrCtrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrCtrViewController.h; sourceTree = "<group>"; };
 		906F4D92197376CC007807FE /* WeCsrCtrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrCtrViewController.m; sourceTree = "<group>"; };
+		906F4D9519738AB2007807FE /* WeConsultDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeConsultDetailViewController.h; sourceTree = "<group>"; };
+		906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeConsultDetailViewController.m; sourceTree = "<group>"; };
+		906F4D9A19738D20007807FE /* WeConsult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeConsult.h; sourceTree = "<group>"; };
+		906F4D9B19738D20007807FE /* WeConsult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeConsult.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
@@ -294,19 +300,12 @@
 		900E28DE19292C42008BF61C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				906F4D9919738C87007807FE /* User */,
 				90B4AC41196D1D2D006E60CE /* Funding */,
-				900E28DF19292C55008BF61C /* WeUser.h */,
-				900E28E019292C55008BF61C /* WeUser.m */,
-				900E28E119292C55008BF61C /* WeDoctor.h */,
-				900E28E219292C55008BF61C /* WeDoctor.m */,
-				900E28E319292C55008BF61C /* WeFavorDoctor.h */,
-				900E28E419292C55008BF61C /* WeFavorDoctor.m */,
-				900E28EB19294070008BF61C /* WePatient.h */,
-				900E28EC19294070008BF61C /* WePatient.m */,
-				900E28EE192940E6008BF61C /* WeFavorPatient.h */,
-				900E28EF192940E6008BF61C /* WeFavorPatient.m */,
 				900E28E519292C55008BF61C /* WeMessage.h */,
 				900E28E619292C55008BF61C /* WeMessage.m */,
+				906F4D9A19738D20007807FE /* WeConsult.h */,
+				906F4D9B19738D20007807FE /* WeConsult.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -573,8 +572,27 @@
 				906F4D90197376CC007807FE /* WeCsrIdxViewController.m */,
 				906F4D91197376CC007807FE /* WeCsrCtrViewController.h */,
 				906F4D92197376CC007807FE /* WeCsrCtrViewController.m */,
+				906F4D9519738AB2007807FE /* WeConsultDetailViewController.h */,
+				906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */,
 			);
 			name = ConsultingRoom;
+			sourceTree = "<group>";
+		};
+		906F4D9919738C87007807FE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				900E28DF19292C55008BF61C /* WeUser.h */,
+				900E28E019292C55008BF61C /* WeUser.m */,
+				900E28E119292C55008BF61C /* WeDoctor.h */,
+				900E28E219292C55008BF61C /* WeDoctor.m */,
+				900E28E319292C55008BF61C /* WeFavorDoctor.h */,
+				900E28E419292C55008BF61C /* WeFavorDoctor.m */,
+				900E28EB19294070008BF61C /* WePatient.h */,
+				900E28EC19294070008BF61C /* WePatient.m */,
+				900E28EE192940E6008BF61C /* WeFavorPatient.h */,
+				900E28EF192940E6008BF61C /* WeFavorPatient.m */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
@@ -803,6 +821,7 @@
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
 				900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */,
 				90B4AC49196D1D39006E60CE /* WeFundingLevel.m in Sources */,
+				906F4D9719738AB2007807FE /* WeConsultDetailViewController.m in Sources */,
 				90B4AC69196D1D6A006E60CE /* WeImageButton.m in Sources */,
 				900E28E819292C55008BF61C /* WeDoctor.m in Sources */,
 				900E28E719292C55008BF61C /* WeUser.m in Sources */,
@@ -825,6 +844,7 @@
 				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				90B4AC3D196D1CF4006E60CE /* WeFunDetViewController.m in Sources */,
+				906F4D9C19738D20007807FE /* WeConsult.m in Sources */,
 				90B4AC77196D1DA0006E60CE /* WeRegWlcViewController.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
