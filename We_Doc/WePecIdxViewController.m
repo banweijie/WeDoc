@@ -314,9 +314,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [WeAppDelegate refreshUserData];
-    
+
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];

@@ -16,23 +16,17 @@
     UITextField * user_loginPassword_input;
     UITextField * user_repeatPassword_input;
     UITableView * sys_tableView;
+    UIActivityIndicatorView * sys_pendingView;
 }
 
-extern BOOL we_logined;
-extern int we_targetTabId;
+#pragma mark - UITableView Delegate & DataSource
 
-/*
- [AREA]
- UITableView dataSource & delegate interfaces
- */
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.alpha = We_alpha_cell_general;;
-    cell.opaque = YES;
-}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 0) {
+        if (path.row == 0) [user_loginPassword_input becomeFirstResponder];
+        if (path.row == 1) [user_repeatPassword_input becomeFirstResponder];
         return nil;
     }
     return path;
@@ -41,22 +35,9 @@ extern int we_targetTabId;
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 1) {
-        [self performSelector:@selector(unselectCurrentRow) withObject:nil afterDelay:0];
-        if (![self checkRepeatPassword]) return;
-        if ([we_vericode_type isEqualToString:@"NewPassword"]) {
-            if (![self submitPassword]) return;
-            if (![self checkUserRights]) return;
-            we_logined = YES;
-        }
-        else
-        if ([we_vericode_type isEqualToString:@"ModifyPassword"]) {
-            if (![self changePassword]) return;
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }
-        else return;
-        //[self segue_to_PmpIdx:nil];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self checkRepeatPassword];
     }
+    [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
@@ -70,7 +51,7 @@ extern int we_targetTabId;
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    return 0;
+    return 10;
 }
 // 询问每个段落的尾部标题
 - (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
@@ -100,14 +81,14 @@ extern int we_targetTabId;
     }
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.contentView.backgroundColor = We_background_cell_general;
+            cell.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"登录密码";
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
             [cell addSubview:user_loginPassword_input];
         }
         if (indexPath.row == 1) {
-            cell.contentView.backgroundColor = We_background_cell_general;
+            cell.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"重复密码";
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
@@ -115,7 +96,7 @@ extern int we_targetTabId;
         }
     }
     if (indexPath.section == 1) {
-        cell.contentView.backgroundColor = We_background_red_tableviewcell;
+        cell.backgroundColor = We_background_red_tableviewcell;
         if ([we_vericode_type isEqualToString:@"NewPassword"]) {
             cell.textLabel.text = @"完成注册";
         }
@@ -130,178 +111,44 @@ extern int we_targetTabId;
     return cell;
 }
 
+#pragma mark - Functional
 
-/*
- [AREA]
- Actions of all views
- */
-- (void)user_loginPassword_input_return:(id)sender {
-    NSLog(@"user_loginPassword_input_return:");
-    [user_repeatPassword_input becomeFirstResponder];
-}
-- (void)resignFirstResponder:(id)sender {
-    NSLog(@"resignFirstResponder:");
-    [sender resignFirstResponder];
-}
-- (void)segue_to_PmpIdx:(id)sender {
-    NSLog(@"segue:to_PmpIdx~~:");
-    [self performSegueWithIdentifier:@"irp2pec" sender:self];
-}
-/*
- [AREA]
- Functional
- */
-// 取消Table的当前选中行
-- (void) unselectCurrentRow
-{
-    [sys_tableView deselectRowAtIndexPath: [sys_tableView indexPathForSelectedRow] animated:NO];
-}
-- (BOOL) checkRepeatPassword {
-    NSLog(@"checkVeriCode");
-    NSString *errorMessege = @"输入的密码有误";
-    
+- (void) checkRepeatPassword {
     if ([user_loginPassword_input.text isEqualToString:user_repeatPassword_input.text]) {
-        return YES;
+        [self api_user_doRegister];
     }
     else {
-        errorMessege = @"两次输入的密码不一致";
+        [[[UIAlertView alloc] initWithTitle:@"输入的密码有误" message:@"两次输入的密码不一致" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil] show];
     }
-    // alert error messege
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"输入的密码有误"
-                                 message:errorMessege
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    return NO;
 }
 
-- (BOOL) changePassword {
-    NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/updateInfo.action";
-    NSString *parasString = [NSString stringWithFormat:@"password=%@", [user_loginPassword_input.text md5]];
-    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
-    
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [HTTPResponse objectForKey:@"result"];
-        result = [NSString stringWithFormat:@"%@", result];
-        if ([result isEqualToString:@"1"]) {
-            return YES;
-        }
-        if ([result isEqualToString:@"2"]) {
-            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-            NSEnumerator *enumerator = [fields keyEnumerator];
-            id key;
-            while ((key = [enumerator nextObject])) {
-                NSString * tmp1 = [fields objectForKey:key];
-                if (tmp1 != NULL) errorMessage = tmp1;
-            }
-        }
-        if ([result isEqualToString:@"3"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-        if ([result isEqualToString:@"4"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-    }
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"修改密码失败"
-                                 message:errorMessage
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    return NO;
+#pragma mark - APIs
+
+- (void)api_user_doRegister {
+    [sys_pendingView startAnimating];
+    [WeAppDelegate postToServerWithField:@"user" action:@"doRegister"
+                              parameters:@{
+                                           @"password":[user_loginPassword_input.text md5],
+                                           @"userType":@"P"
+                                           }
+                                 success:^(id response) {
+                                     WeRegWlcViewController * vc = self.navigationController.viewControllers[0];
+                                     [self.navigationController popToRootViewControllerAnimated:YES];
+                                     [vc api_user_login:self.user_phone_value password:user_loginPassword_input.text];
+                                     [sys_pendingView stopAnimating];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"注册失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                     [sys_pendingView stopAnimating];
+                                 }];
 }
 
-- (BOOL) submitPassword {
-    NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/doRegister.action";
-    NSString *md5pw = user_loginPassword_input.text;
-    md5pw = [md5pw md5];
-    NSString *parasString = [NSString stringWithFormat:@"userType=D&password=%@", md5pw];
-    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
-    
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [HTTPResponse objectForKey:@"result"];
-        result = [NSString stringWithFormat:@"%@", result];
-        if ([result isEqualToString:@"1"]) {
-            return YES;
-        }
-        if ([result isEqualToString:@"2"]) {
-            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-            NSEnumerator *enumerator = [fields keyEnumerator];
-            id key;
-            while ((key = [enumerator nextObject])) {
-                NSString * tmp = [fields objectForKey:key];
-                if (tmp != NULL) errorMessage = tmp;
-            }
-        }
-        if ([result isEqualToString:@"3"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-        if ([result isEqualToString:@"4"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-    }
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"创建用户失败"
-                                 message:errorMessage
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    return NO;
-}
-- (BOOL) checkUserRights {
-    NSString *errorMessage = @"连接失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/login.action";
-    NSString *md5pw = user_loginPassword_input.text;
-    md5pw = [md5pw md5];
-    NSString *parasString = [NSString stringWithFormat:@"phone=%@&password=%@", we_phone_onReg, md5pw];
-    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
-    
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [HTTPResponse objectForKey:@"result"];
-        result = [NSString stringWithFormat:@"%@", result];
-        if ([result isEqualToString:@"1"]) {
-            NSDictionary * response = [HTTPResponse objectForKey:@"response"];
-            NSLog(@"%@", response);
-            return YES;
-        }
-        if ([result isEqualToString:@"2"]) {
-            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-            NSEnumerator *enumerator = [fields keyEnumerator];
-            id key;
-            while ((key = [enumerator nextObject])) {
-                NSString * tmp = [fields objectForKey:key];
-                if (tmp != NULL) errorMessage = tmp;
-            }
-        }
-        if ([result isEqualToString:@"3"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-        if ([result isEqualToString:@"4"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-    }
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"登陆失败"
-                                 message:errorMessage
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    return NO;
-}
-/*
- [AREA]
- View releated
- */
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -323,7 +170,6 @@ extern int we_targetTabId;
     user_loginPassword_input.secureTextEntry = YES;
     user_loginPassword_input.autocorrectionType = UITextAutocorrectionTypeNo;
     [user_loginPassword_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [user_loginPassword_input addTarget:self action:@selector(resignFirstResponder:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     // user_repeatPassword_input init
     user_repeatPassword_input = [[UITextField alloc] initWithFrame:CGRectMake(100, 9, 220, 30)];
@@ -332,8 +178,6 @@ extern int we_targetTabId;
     user_repeatPassword_input.secureTextEntry = YES;
     user_repeatPassword_input.autocorrectionType = UITextAutocorrectionTypeNo;
     [user_repeatPassword_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [user_repeatPassword_input addTarget:self action:@selector(resignFirstResponder:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
@@ -342,12 +186,20 @@ extern int we_targetTabId;
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
+    sys_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:sys_tableView];
+    
+    // 转圈圈
+    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [sys_pendingView setAlpha:1.0];
+    [self.view addSubview:sys_pendingView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -356,14 +208,4 @@ extern int we_targetTabId;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 @end

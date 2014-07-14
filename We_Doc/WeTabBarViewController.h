@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeRegWlcViewController.h"
+#import "WeNavViewController.h"
 
 @interface WeTabBarViewController : UITabBarController<UITabBarControllerDelegate, UITabBarDelegate>
 

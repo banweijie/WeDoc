@@ -19,22 +19,36 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AFPopupView (1.0)
+  - FMDB (2.3):
+    - FMDB/standard
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
+    - FMDB/common
   - JSQMessagesViewController (5.0.0):
     - JSQSystemSoundPlayer
-  - JSQSystemSoundPlayer (1.5.0)
+  - JSQSystemSoundPlayer (1.5.2)
+  - LKDBHelper (1.4):
+    - FMDB
   - SRMonthPicker (0.2.9)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - AFPopupView (~> 1.0)
   - JSQMessagesViewController
+  - LKDBHelper (from `https://github.com/li6185377/LKDBHelper-SQLite-ORM.git`)
   - SRMonthPicker
 
+EXTERNAL SOURCES:
+  LKDBHelper:
+    :git: https://github.com/li6185377/LKDBHelper-SQLite-ORM.git
+
 SPEC CHECKSUMS:
-  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  AFPopupView: a3e9e827ed9ce4c7087af259746353aaf7ab75a2
-  JSQMessagesViewController: 4ebac202bb5c3b4717b877b12905f41e14599776
-  JSQSystemSoundPlayer: 6dbac8dcc33e3add6facb3e59451a0249aece17d
-  SRMonthPicker: 483ab343465f8b88bb54394e37be692b50418fd1
+  AFNetworking: 8dde8c8a6597ad95dac332a593c27e541bc87371
+  AFPopupView: a637995cd7975bc2dca692cb5c3dc5c9eefc555b
+  FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
+  JSQMessagesViewController: 833cfacdd1e883b7f117d3a1b465085e9ae1ed8f
+  JSQSystemSoundPlayer: c24914bc96ff5365b5d28b59d7ecffd60d1c5587
+  LKDBHelper: ab1741c564f6ac6ff1bd9ef4bd32a14850a25dc4
+  SRMonthPicker: e4a787ad4c41b605743482631189d97e25867c36
 
 COCOAPODS: 0.32.1

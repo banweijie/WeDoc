@@ -1,19 +1,18 @@
 //
-//  WeWelcomeNavigationViewController.m
-//  We_Doc
+//  WeFunDesViewController.m
+//  AplusDr
 //
-//  Created by WeDoctor on 14-4-10.
+//  Created by WeDoctor on 14-6-22.
 //  Copyright (c) 2014年 ___PKU___. All rights reserved.
 //
 
-#import "WeRegNavViewController.h"
-#import "WeAppDelegate.h"
+#import "WeFunDesViewController.h"
 
-@interface WeRegNavViewController ()
+@interface WeFunDesViewController ()
 
 @end
 
-@implementation WeRegNavViewController
+@implementation WeFunDesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,19 +26,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationBar.translucent = YES;
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"texture"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationBar setAlpha:0.9];
-    [self.navigationBar setTitleTextAttributes:
-        [NSDictionary dictionaryWithObjectsAndKeys:
-            UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName,
-            [UIFont fontWithName:@"HeiTi SC-medium" size:18], NSFontAttributeName,
-            nil
-         ]
-     ];
-    self.navigationBar.TintColor = We_foreground_white_general;
     // Do any additional setup after loading the view.
+    
+    // 背景图片
+    UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
+    bg.image = [UIImage imageNamed:@"Background-2"];
+    bg.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:bg];
+    
+    // 标题
+    [self.navigationItem setTitle:@"众筹详情"];
+    
+    // 富文本内容显示
+    UIWebView * webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.frame.size.height - 64 - self.tabBarController.tabBar.frame.size.height)];
+    [webView loadHTMLString:_HTMLContent baseURL:[NSURL URLWithString:@"www.yijiaren.com"]];
+    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,12 +59,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 
 @end

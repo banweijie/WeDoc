@@ -24,28 +24,11 @@
     // Initialization code
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    //self.imageView.frame = CGRectMake(self.imageView.frame.origin.x,self.imageView.frame.origin.x,20,20);
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
--(void)addSubview:(UIView *)view
-{
-    // The separator has a height of 0.5pt on a retina display and 1pt on non-retina.
-    // Prevent subviews with this height from being added.
-    [super addSubview:view];
-    if (CGRectGetHeight(view.frame)*[UIScreen mainScreen].scale == 1)
-    {
-        return;
-    }
-    
 }
 
 /*

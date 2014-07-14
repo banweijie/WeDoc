@@ -17,32 +17,21 @@
 @implementation WeRegIpnViewController
 {
     UITextField * user_phone_input;
-    UITextField * user_veriCode_input;
-    UIImage * sys_veriCode_image;
     UIButton * sys_nextStep_button;
     UIView * sys_userAgreement_demo;
     UITableView * sys_tableView;
-    int count;
+    UIActivityIndicatorView * sys_pendingView;
 }
-
-/*
-    [AREA]
-        Variables
-*/
-
 
 /*
     [AREA] 
         UITableView dataSource & delegate interfaces
 */
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.alpha = We_alpha_cell_general;;
-    cell.opaque = YES;
-}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 0) {
+        [user_phone_input becomeFirstResponder];
         return nil;
     }
     return path;
@@ -51,22 +40,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
 {
     if (path.section == 1 && path.row == 0) {
-        count ++;
-        //if (!self.checkVeriCode) return;
-        if (!self.sendVeriCode) return;
-        we_vericode_type = @"NewPassword";
-        we_phone_onReg = user_phone_input.text;
-        [self push_to_ivc:nil];
+        [self api_user_sendVerificationCode];
     }
+    [tableView deselectRowAtIndexPath:path animated:YES];
+}
+// 询问每个段落的头部标题
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"";
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
     if (section == 0) return 20 + 64;
     return 20;
-}
-// 询问每个段落的头部标题
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -96,142 +81,25 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
-    NSLog(@"%ld, %ld",(long)indexPath.section, (long)indexPath.row);
+    cell.opaque = NO;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            cell.contentView.backgroundColor = We_background_cell_general;
+            cell.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"手机号";
             cell.textLabel.font = [UIFont fontWithName:@"Heiti SC" size:16];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell addSubview:user_phone_input];
-        }
-        if (indexPath.row == 1) {
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.imageView.image = sys_veriCode_image;
-            cell.imageView.transform = CGAffineTransformMakeScale(0.3, 0.3);
-            [cell addSubview:user_veriCode_input];
         }
     }
     if (indexPath.section == 1) {
-        cell.contentView.backgroundColor = We_background_red_tableviewcell;
+        cell.backgroundColor = We_background_red_tableviewcell;
         cell.textLabel.text = @"下一步";
         cell.textLabel.font = We_font_button_zh_cn;
         cell.textLabel.textColor = We_foreground_white_general;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }
 
-/*
-    [AREA]
-        Actions of all views
-*/
-- (void)user_phone_input_return:(id)sender {
-    NSLog(@"user_phone_input_return:");
-    [user_veriCode_input becomeFirstResponder];
-}
-- (void)resignFirstResponder:(id)sender {
-    NSLog(@"resignFirstResponder:");
-    [sender resignFirstResponder];
-}
-- (void)checkForUserAgreement:(id)sender {
-    NSLog(@"checkForUserAgreement:");
-}
-- (void)push_to_ivc:(id)sender {
-    NSLog(@"segue~~:");
-    [self performSegueWithIdentifier:@"ipn2ivc" sender:self];
-}
-/*
-    [AREA]
-        Functional
-*/
-- (BOOL) checkVeriCode {
-    NSLog(@"checkVeriCode");
-    NSString *errorMessege = @"无法连接网络，请重试";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/checkImageCode.action";
-    NSString *paraString = [NSString stringWithFormat:@"imageCode=%@", user_veriCode_input.text];
-    NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [HTTPResponse objectForKey:@"result"];
-        result = [NSString stringWithFormat:@"%@", result];
-        if ([result isEqualToString:@"1"]) {
-            return YES;
-        }
-        else {
-            if ([result isEqualToString:@"2"]) {
-                NSString *fields = [HTTPResponse objectForKey:@"fields"];
-                if (fields != NULL) errorMessege = [[HTTPResponse objectForKey:@"fields"] objectForKey:@"phone"];
-            }
-            if ([result isEqualToString:@"3"]) {
-                errorMessege = [HTTPResponse objectForKey:@"info"];
-            }
-            if ([result isEqualToString:@"4"]) {
-                errorMessege = [HTTPResponse objectForKey:@"info"];
-            }
-        }
-    }
-    // alert error messege
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"验证图形验证码失败"
-                                 message:errorMessege
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    
-    // refresh veri code
-    urlString = @"http://115.28.222.1/yijiaren/user/getImageCode.action";
-    paraString = @"";
-    DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-    sys_veriCode_image = [UIImage imageWithData:DataResponse];
-    
-    // clear veri code input
-    user_veriCode_input.text = @"";
-    
-    // refresh table
-    [sys_tableView reloadData];
-    return NO;
-}
-- (BOOL) sendVeriCode
-{
-    NSLog(@"sendVeriCode");
-    NSString *errorMessage = @"无法连接网络，请重试";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/sendVerificationCode.action";
-    NSString *parasString = [NSString stringWithFormat:@"phone=%@", user_phone_input.text];
-    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-    NSString *result = [HTTPResponse objectForKey:@"result"];
-    result = [NSString stringWithFormat:@"%@", result];
-    if ([result isEqualToString:@"1"]) {
-        return YES;
-    }
-    if ([result isEqualToString:@"2"]) {
-        NSString *fields = [HTTPResponse objectForKey:@"fields"];
-        if (fields != NULL) errorMessage = [[HTTPResponse objectForKey:@"fields"] objectForKey:@"phone"];
-    }
-    if ([result isEqualToString:@"3"]) {
-        errorMessage = [HTTPResponse objectForKey:@"info"];
-    }
-    if ([result isEqualToString:@"4"]) {
-        errorMessage = [HTTPResponse objectForKey:@"info"];
-    }
-    }
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"发送验证码失败"
-                                 message:errorMessage
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];
-    return NO;
-}
-/*
-    [AREA]
-        View releated
-*/
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -240,35 +108,19 @@
     }
     return self;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    count = 0;
-    // navigation return button init
-    //self.navigationController.navigationBar.TintColor = We_foreground_white_general;
+    // 标题
+    self.navigationItem.title = @"输入手机号";
     
     // user_phone_input init
-    user_phone_input = [[UITextField alloc] initWithFrame:CGRectMake(100, 9, 220, 30)];
+    user_phone_input = [[UITextField alloc] initWithFrame:We_frame_textFieldInCell_general];
     user_phone_input.placeholder = @"请输入您的手机号码";
     user_phone_input.font = We_font_textfield_zh_cn;
-    user_phone_input.autocorrectionType = UITextAutocorrectionTypeNo;
-    [user_phone_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [user_phone_input addTarget:self action:@selector(user_phone_input_return:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    // user_veriCode_input init
-    user_veriCode_input = [[UITextField alloc] initWithFrame:CGRectMake(100, 9, 220, 30)];
-    user_veriCode_input.placeholder = @"请输入左边图形中的字母";
-    user_veriCode_input.font = We_font_textfield_zh_cn;
-    user_veriCode_input.autocorrectionType = UITextAutocorrectionTypeNo;
-    [user_veriCode_input setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [user_veriCode_input addTarget:self action:@selector(resignFirstResponder:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    // sys_veriCode_image init
-    //NSString *urlString = @"http://115.28.222.1/yijiaren/user/getImageCode.action";
-    //NSString *paraString = @"";
-    //NSData *DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:paraString];
-    //sys_veriCode_image = [UIImage imageWithData:DataResponse];
+    [user_phone_input setTextAlignment:NSTextAlignmentRight];
     
     // sys_nextStep_button init
     sys_nextStep_button = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -291,7 +143,7 @@
     sys_userAgreement_demo_button.frame = CGRectMake(172, 0, 60, 30);
     [sys_userAgreement_demo_button setTitle:@"用户协议" forState:UIControlStateNormal];
     [sys_userAgreement_demo_button.titleLabel setFont:We_font_button_zh_cn];
-    [sys_userAgreement_demo_button addTarget:self action:@selector(checkForUserAgreement:) forControlEvents:UIControlEventTouchUpInside];
+    //[sys_userAgreement_demo_button addTarget:self action:@selector(checkForUserAgreement:) forControlEvents:UIControlEventTouchUpInside];
     [sys_userAgreement_demo addSubview:sys_userAgreement_demo_button];
     
     // Background
@@ -301,12 +153,20 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
+    sys_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:sys_tableView];
+    
+    // 转圈圈
+    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [sys_pendingView setAlpha:1.0];
+    [self.view addSubview:sys_pendingView];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -314,14 +174,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Navigation
+# pragma mark - apis
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)api_user_sendVerificationCode {
+    [sys_pendingView startAnimating];
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [WeAppDelegate postToServerWithField:@"user" action:@"sendVerificationCode"
+                              parameters:@{
+                                           @"phone":user_phone_input.text
+                                           }
+                                 success:^(id response) {
+                                     WeRegIvcViewController * vc = [[WeRegIvcViewController alloc] init];
+                                     vc.user_phone_value = user_phone_input.text;
+                                     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonItemStylePlain target:nil action:nil];
+                                     [self.navigationController pushViewController:vc animated:YES];
+                                     [sys_pendingView stopAnimating];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"发送验证码失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                     [sys_pendingView stopAnimating];
+                                 }];
 }
+
 @end

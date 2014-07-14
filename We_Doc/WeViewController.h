@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeInfoedTextField.h"
 
 @interface WeViewController : UIViewController<UITextFieldDelegate>
+
+@property(nonatomic, strong) UITableView * sys_tableView;
+@property(nonatomic) CGFloat sys_tableView_originHeight;
 
 @end

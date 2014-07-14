@@ -16,14 +16,35 @@
 @implementation WeTabBarViewController
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    if (viewController == [tabBarController.viewControllers objectAtIndex:4] && !we_logined) {
+    
+    if (currentUser == nil && viewController != [tabBarController.viewControllers objectAtIndex:0]) {
+        WeRegWlcViewController * vc = [[WeRegWlcViewController alloc] init];
+        vc.originTargetViewController = viewController;
+        vc.tabBarController = tabBarController;
+        
+        WeNavViewController * nav = [[WeNavViewController alloc] init];
+        [nav pushViewController:vc animated:NO];
+        
+        [self presentViewController:nav animated:YES completion:nil];
+        
+        return NO;
+    }
+    /*
+    if (viewController == [tabBarController.viewControllers objectAtIndex:weTabBarIdPersonalCenter] && !we_logined) {
+        we_targetView = targetViewPersonalCenter;
         [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
         return NO;
     }
-    if (viewController == [tabBarController.viewControllers objectAtIndex:1] && !we_logined) {
+    if (viewController == [tabBarController.viewControllers objectAtIndex:weTabBarIdConsultingRoom] && !we_logined) {
+        we_targetView = targetViewConsultingRoom;
         [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
         return NO;
     }
+    if (viewController == [tabBarController.viewControllers objectAtIndex:weTabBarIdCaseHistory] && !we_logined) {
+        we_targetView = targetViewCaseHistory;
+        [self performSegueWithIdentifier:@"TabBar_Modalto_RegWlc" sender:self];
+        return NO;
+    }*/
     return YES;
 }
 
@@ -38,15 +59,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     // Other code...
-    //[self setSelectedIndex:1];
     [super viewDidAppear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     
     self.tabBar.selectedImageTintColor = We_foreground_red_general;
+    self.tabBar.tintColor = We_foreground_red_general;
+    self.tabBar.translucent = YES;
     
+    /*
     UITabBarItem * tmp0 = [self.tabBar.items objectAtIndex:0];
     tmp0.selectedImage = [UIImage imageNamed:@"tab-home-selected"];
     UITabBarItem * tmp1 = [self.tabBar.items objectAtIndex:1];
@@ -54,17 +80,10 @@
     UITabBarItem * tmp2 = [self.tabBar.items objectAtIndex:2];
     tmp2.selectedImage = [UIImage imageNamed:@"tab-crowdfunding-selected"];
     UITabBarItem * tmp3 = [self.tabBar.items objectAtIndex:3];
-    tmp3.selectedImage = [UIImage imageNamed:@"tab-appointment-selected"];
+    tmp3.selectedImage = [UIImage imageNamed:@"tab-casehistory-selected"];
     UITabBarItem * tmp4 = [self.tabBar.items objectAtIndex:4];
     tmp4.selectedImage = [UIImage imageNamed:@"tab-me-selected"];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    if (we_targetTabId != -1) {
-        //NSLog(@"%d", we_targetTabId);
-        [self.tabBarController setSelectedIndex:2];
-        we_targetTabId = -1;
-    }
+    */
     [super viewWillAppear:animated];
 }
 
@@ -75,14 +94,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

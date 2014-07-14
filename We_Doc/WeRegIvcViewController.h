@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeRegIrpViewController.h"
 
-@interface WeRegIvcViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface WeRegIvcViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+
+@property(nonatomic, strong) NSString * user_phone_value;
 
 @end

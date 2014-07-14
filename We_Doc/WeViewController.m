@@ -8,99 +8,71 @@
 
 #import "WeViewController.h"
 
-@interface WeViewController ()
+@interface WeViewController () {
+    NSIndexPath * indexPath_needToBeSeen;
+}
 
 @end
 
 @implementation WeViewController
 
-#define kOFFSET_FOR_KEYBOARD 80.0
+@synthesize sys_tableView;
+@synthesize sys_tableView_originHeight;
 
--(void)keyboardWillShow {
-    // Animate the current view out of the way
-    if (self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSValue * keyboardBoundsValue = notification.userInfo[@"UIKeyboardBoundsUserInfoKey"];
+    CGFloat KeyboardAnimationDurationUserInfoKey = [notification.userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] floatValue];
+    CGRect keyboardBounds = [keyboardBoundsValue CGRectValue];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:KeyboardAnimationDurationUserInfoKey];
+    
+    [self moveContentWithKeyboardHeight:keyboardBounds.size.height duration:KeyboardAnimationDurationUserInfoKey];
+    
+    [UIView commitAnimations];
 }
 
--(void)keyboardWillHide {
-    if (self.view.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-    else if (self.view.frame.origin.y < 0)
-    {
-        [self setViewMovedUp:NO];
-    }
+- (void)keyboardWillHide:(NSNotification*)notification {
+    CGFloat KeyboardAnimationDurationUserInfoKey = [notification.userInfo[@"UIKeyboardAnimationDurationUserInfoKey"] floatValue];
+    [self moveContentWithKeyboardHeight:0 duration:KeyboardAnimationDurationUserInfoKey];
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)sender
+-(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    //if ([sender isEqual:mailTf])
-    {
-        //move the main view, so that the keyboard does not hide it.
-    //    if  (self.view.frame.origin.y >= 0)
-        {
-    //        [self setViewMovedUp:YES];
+    if ([textField isKindOfClass:[WeInfoedTextField class]]) {
+        WeInfoedTextField * infoedTextField = (WeInfoedTextField *)textField;
+        if ([infoedTextField.userData isKindOfClass:[NSIndexPath class]]) {
+            indexPath_needToBeSeen = (NSIndexPath *)infoedTextField.userData;
         }
     }
 }
 
-//method to move the view up/down whenever the keyboard is shown/dismissed
--(void)setViewMovedUp:(BOOL)movedUp
+-(void)moveContentWithKeyboardHeight:(CGFloat)kbdHeight duration:(CGFloat)duration
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    CGRect rect = sys_tableView.frame;
     
-    CGRect rect = self.view.frame;
-    if (movedUp)
-    {
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
-        rect.size.height += kOFFSET_FOR_KEYBOARD;
-    }
-    else
-    {
-        // revert back to the normal state.
-        rect.origin.y += kOFFSET_FOR_KEYBOARD;
-        rect.size.height -= kOFFSET_FOR_KEYBOARD;
-    }
-    self.view.frame = rect;
+    rect.size.height = MIN(self.view.frame.size.height - kbdHeight - rect.origin.y, self.sys_tableView_originHeight);
     
-    [UIView commitAnimations];
+    sys_tableView.frame = rect;
+    
+    [sys_tableView scrollToRowAtIndexPath:indexPath_needToBeSeen atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardWillHideNotification
-                                                  object:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

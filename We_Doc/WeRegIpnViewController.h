@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeRegIvcViewController.h"
 
 @interface WeRegIpnViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
