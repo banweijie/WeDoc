@@ -18,8 +18,8 @@
 - (void)setWithNSDictionary:(NSDictionary *)info {
     // 提取信息
     self.gender = [NSString stringWithFormat:@"%@", info[@"gender"]];
-    self.age = [NSString stringWithFormat:@"%@", info[@"gender"]];
-    self.emergent = [[NSString stringWithFormat:@"%@", info[@"gender"]] isEqualToString:@"1"];
+    self.age = [NSString stringWithFormat:@"%@", info[@"age"]];
+    self.emergent = [[NSString stringWithFormat:@"%@", info[@"emergent"]] isEqualToString:@"1"];
 }
 
 @end

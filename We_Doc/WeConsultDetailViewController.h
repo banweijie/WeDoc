@@ -12,5 +12,6 @@
 @interface WeConsultDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) NSString * consultId;
+@property(nonatomic, strong) WeFavorPatient * currentPatient;
 
 @end
