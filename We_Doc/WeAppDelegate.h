@@ -61,14 +61,11 @@ LKDBHelper * globalHelper;
 // 全局变量
 WeDoctor * currentUser;
 long long lastMessageId;
-NSMutableDictionary * favorDoctorList;
+NSMutableDictionary * favorPatientList;
 NSMutableArray * caseRecords;
 NSMutableArray * examinations;
 
 NSString * we_workPeriod_save;
-
-WeDoctor * doctorViewing;
-WePatient * we_patient_chating;
 
 // user defaults
 NSUserDefaults * userDefaults;

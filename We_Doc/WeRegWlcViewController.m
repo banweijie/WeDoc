@@ -208,7 +208,7 @@
     // 用于输入手机号码的文本框
     user_phone_input = [[WeInfoedTextField alloc] initWithFrame:We_frame_textFieldInCell_general];
     [user_phone_input setTextAlignment:NSTextAlignmentRight];
-    [user_phone_input setText:@"18810521330"];
+    [user_phone_input setText:@"18810521309"];
     [user_phone_input setFont:We_font_textfield_zh_cn];
     [user_phone_input setPlaceholder:@"请输入您的手机号码"];
     [user_phone_input setTextColor:We_foreground_black_general];
@@ -296,7 +296,7 @@
                                            @"password":[password md5]
                                            }
                                  success:^(NSDictionary * response) {
-                                     [self api_user_refreshUser];
+                                     [self api_doctor_listPatients];
                                  }
                                  failure:^(NSString * errorMessage) {
                                      UIAlertView * notPermitted = [[UIAlertView alloc]
@@ -311,21 +311,22 @@
 }
 
 // 访问获取保健医列表接口
-- (void)api_patient_listFavorDoctors {
-    [WeAppDelegate postToServerWithField:@"patient" action:@"listFavorDoctors"
+- (void)api_doctor_listPatients {
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"listPatients"
                               parameters:@{
                                            }
                                  success:^(NSArray * response) {
-                                     favorDoctorList = [[NSMutableDictionary alloc] init];
+                                     NSLog(@"response");
+                                     favorPatientList = [[NSMutableDictionary alloc] init];
                                      for (int i = 0; i < [response count]; i++) {
-                                         WeFavorDoctor * newFavorDoctor = [[WeFavorDoctor alloc] initWithNSDictionary:response[i]];
-                                         favorDoctorList[newFavorDoctor.userId] = newFavorDoctor;
+                                         WeFavorPatient * newFavorPatient = [[WeFavorPatient alloc] initWithNSDictionary:response[i]];
+                                         favorPatientList[newFavorPatient.userId] = newFavorPatient;
                                      }
                                      [self api_user_refreshUser];
                                  }
                                  failure:^(NSString * errorMessage) {
                                      UIAlertView * notPermitted = [[UIAlertView alloc]
-                                                                   initWithTitle:@"获取保健医列表失败"
+                                                                   initWithTitle:@"获取病人列表失败"
                                                                    message:errorMessage
                                                                    delegate:nil
                                                                    cancelButtonTitle:@"OK"

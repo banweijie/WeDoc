@@ -21,8 +21,18 @@
 @synthesize imageContent;
 @synthesize audioContent;
 
+@synthesize sending;
+@synthesize loading;
+@synthesize failed;
+
 - (WeMessage *)initWithNSDictionary:(NSDictionary *)info {
     [self setWithNSDictionary:info];
+    
+    self.loading = YES;
+    self.sending = YES;
+    
+    [self setImageContent:nil];
+    [self setAudioContent:nil];
     return self;
 }
 
@@ -35,8 +45,6 @@
     [self setViewed:[NSString stringWithFormat:@"%@", info[@"viewed"]]];
     [self setContent:[NSString stringWithFormat:@"%@", info[@"content"]]];
     self.time = [info[@"time"] longLongValue] / 100;
-    self.loading = YES;
-    [self setImageContent:nil];
 }
 
 - (NSString *)stringValue {

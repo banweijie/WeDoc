@@ -17,8 +17,11 @@
 @property(strong, nonatomic) NSString * senderId;
 @property(strong, nonatomic) NSString * viewed;
 @property(strong, nonatomic) NSString * content;
-@property(nonatomic) BOOL loading;
 @property(nonatomic) long long time;
+
+@property(nonatomic) BOOL loading;
+@property(nonatomic) BOOL sending;
+@property(nonatomic) BOOL failed;
 
 @property(strong, nonatomic) UIImage * imageContent;
 @property(strong, nonatomic) NSData * audioContent;
