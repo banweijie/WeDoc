@@ -240,7 +240,7 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
     
     // sys_tableView
-    self.sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
+    self.sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
     self.sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     self.sys_tableView.delegate = self;
     self.sys_tableView.dataSource = self;

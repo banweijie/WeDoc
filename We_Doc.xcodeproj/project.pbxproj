@@ -59,6 +59,7 @@
 		906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D92197376CC007807FE /* WeCsrCtrViewController.m */; };
 		906F4D9719738AB2007807FE /* WeConsultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */; };
 		906F4D9C19738D20007807FE /* WeConsult.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9B19738D20007807FE /* WeConsult.m */; };
+		906F4DE11973F194007807FE /* WeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DE01973F194007807FE /* WeOrder.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
@@ -202,6 +203,8 @@
 		906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeConsultDetailViewController.m; sourceTree = "<group>"; };
 		906F4D9A19738D20007807FE /* WeConsult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeConsult.h; sourceTree = "<group>"; };
 		906F4D9B19738D20007807FE /* WeConsult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeConsult.m; sourceTree = "<group>"; };
+		906F4DDF1973F194007807FE /* WeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeOrder.h; sourceTree = "<group>"; };
+		906F4DE01973F194007807FE /* WeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeOrder.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 				900E28E619292C55008BF61C /* WeMessage.m */,
 				906F4D9A19738D20007807FE /* WeConsult.h */,
 				906F4D9B19738D20007807FE /* WeConsult.m */,
+				906F4DDF1973F194007807FE /* WeOrder.h */,
+				906F4DE01973F194007807FE /* WeOrder.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -871,6 +876,7 @@
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
 				906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */,
+				906F4DE11973F194007807FE /* WeOrder.m in Sources */,
 				90B4AC7A196D1DA0006E60CE /* WeRegIrpViewController.m in Sources */,
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
 				900E28ED19294070008BF61C /* WePatient.m in Sources */,

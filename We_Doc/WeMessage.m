@@ -44,7 +44,7 @@
     [self setSenderId:[NSString stringWithFormat:@"%@", info[@"senderId"]]];
     [self setViewed:[NSString stringWithFormat:@"%@", info[@"viewed"]]];
     [self setContent:[NSString stringWithFormat:@"%@", info[@"content"]]];
-    self.time = [info[@"time"] longLongValue] / 100;
+    self.time = [info[@"time"] longLongValue] / 1000;
 }
 
 - (NSString *)stringValue {

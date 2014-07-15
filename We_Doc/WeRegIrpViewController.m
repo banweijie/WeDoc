@@ -100,10 +100,10 @@
         if ([we_vericode_type isEqualToString:@"NewPassword"]) {
             cell.textLabel.text = @"完成注册";
         }
-        else
-            if ([we_vericode_type isEqualToString:@"ModifyPassword"]) {
-                cell.textLabel.text = @"修改密码";
-            }
+        else if ([we_vericode_type isEqualToString:@"ModifyPassword"]) {
+            cell.textLabel.text = @"修改密码";
+        }
+        else cell.textLabel.text = @"完成";
         cell.textLabel.font = We_font_button_zh_cn;
         cell.textLabel.textColor = We_foreground_white_general;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
