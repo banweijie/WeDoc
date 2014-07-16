@@ -10,7 +10,7 @@
 #import "WeAppDelegate.h"
 #import "WeJiahao.h"
 
-@interface WeJiahaoDetailViewController : UIViewController
+@interface WeJiahaoDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) WeJiahao * currentJiahao;
 

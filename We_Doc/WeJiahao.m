@@ -33,13 +33,14 @@
         NSString * period = [self.dates substringWithRange:NSMakeRange(i * 12 + 11, 1)];
         self.datesToDemo = [NSString stringWithFormat:@"%@%@年%@月%@日 %@\n", self.datesToDemo, year, month, day, [self transitionPeriodOfDayFromChar:period]];
     }
-    self.date = [NSString stringWithFormat:@"%@", info[@"date"]];
-    NSString * year = [self.date substringWithRange:NSMakeRange(0, 4)];
-    NSString * month = [self.date substringWithRange:NSMakeRange(5, 2)];
-    NSString * day = [self.date substringWithRange:NSMakeRange(8, 2)];
-    NSString * period = [self.date substringWithRange:NSMakeRange(10, 1)];
-    self.dateToDemo = [NSString stringWithFormat:@"%@年%@月%@日 %@\n", year, month, day, [self transitionPeriodOfDayFromChar:period]];
-    
+    if (info[@"date"] != [NSNull null]) {
+        self.date = [NSString stringWithFormat:@"%@", info[@"date"]];
+        NSString * year = [self.date substringWithRange:NSMakeRange(0, 4)];
+        NSString * month = [self.date substringWithRange:NSMakeRange(5, 2)];
+        NSString * day = [self.date substringWithRange:NSMakeRange(8, 2)];
+        NSString * period = [self.date substringWithRange:NSMakeRange(10, 1)];
+        self.dateToDemo = [NSString stringWithFormat:@"%@年%@月%@日 %@\n", year, month, day, [self transitionPeriodOfDayFromChar:period]];
+    }
     self.name = [NSString stringWithFormat:@"%@", info[@"name"]];
     self.age = [NSString stringWithFormat:@"%@", info[@"age"]];
     self.idNum = [NSString stringWithFormat:@"%@", info[@"idNum"]];

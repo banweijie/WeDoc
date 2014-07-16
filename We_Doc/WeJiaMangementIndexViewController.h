@@ -10,6 +10,7 @@
 #import "WeAppDelegate.h"
 #import "WeJiahao.h"
 #import "WeNewJiahaoApplyIndexViewController.h"
+#import "WeJiahaoDetailViewController.h"
 
 @interface WeJiaMangementIndexViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

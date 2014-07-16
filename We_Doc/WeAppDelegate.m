@@ -433,6 +433,10 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                  NSLog(@"%@", currentPatient.userName);
                                                  currentPatient.currentConsultId = message.content;
                                              }
+                                             // 系统消息
+                                             else if ([message.messageType isEqualToString:@"X"]) {
+                                                 [globalHelper insertToDB:message];
+                                             }
                                          }
                                      }
                                  }

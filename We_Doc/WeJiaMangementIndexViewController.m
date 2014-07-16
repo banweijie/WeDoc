@@ -30,7 +30,10 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    WeJiahaoDetailViewController * vc = [[WeJiahaoDetailViewController alloc] init];
+    vc.currentJiahao = jiahaoList[path.section][path.row];
     
+    [self.navigationController pushViewController:vc animated:YES];
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
