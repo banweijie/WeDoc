@@ -20,14 +20,11 @@
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.section == 0 && path.row == 0) {
-        WePecPeaViewController * vc = [[WePecPeaViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
     switch (path.section) {
         case 0:
             switch (path.row) {
                 case 0:
+                    return path;
                     break;
                 case 1:
                     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
@@ -59,6 +56,10 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    if (path.section == 0 && path.row == 0) {
+        WePecPeaViewController * vc = [[WePecPeaViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
