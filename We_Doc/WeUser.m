@@ -30,7 +30,7 @@
 
 - (void)setWithNSDictionary:(NSDictionary *)info {
     self.userId = [NSString stringWithFormat:@"%@", info[@"id"]];
-    self.userName = [NSString stringWithFormat:@"%@", info[@"name"]];
+    self.userName = [NSMutableString stringWithFormat:@"%@", info[@"name"]];
     self.userPhone = [NSString stringWithFormat:@"%@", info[@"phone"]];
     self.avatarPath = [NSString stringWithFormat:@"%@", info[@"avatar"]];
     avatar = [UIImage imageNamed:@"defaultAvatar"];

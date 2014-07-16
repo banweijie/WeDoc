@@ -98,10 +98,9 @@
         }
     }
 }
-/*
- [AREA]
- UITableView dataSource & delegate interfaces
- */
+
+#pragma mark - UITableView
+
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
@@ -165,7 +164,7 @@
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 10 + self.tabBarController.tabBar.frame.size.height;
     return 10;
 }
 // 询问每个段落的尾部标题
@@ -174,7 +173,6 @@
 }
 // 询问每个段落的尾部
 -(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
-    //if (section == 1) return sys_countDown_demo;
     return nil;
 }
 // 询问共有多少个段落
@@ -204,17 +202,23 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
-    PAImageView * avatarView;
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        cell.textLabel.text = @"头像";
+        cell.textLabel.font = We_font_textfield_zh_cn;
+        cell.textLabel.textColor = We_foreground_black_general;
+        
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
+        [imageView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(currentUser.avatarPath)]];
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2;
+        imageView.clipsToBounds = YES;
+        [cell.contentView addSubview:imageView];
+    }
+    
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
                 case 0:
-                    cell.textLabel.text = @"头像";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(230, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView setImageURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:nil];
-                    [cell.contentView addSubview:avatarView];
+                    
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;

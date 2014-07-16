@@ -12,7 +12,7 @@
 
 @property(strong, nonatomic) NSString * userId;
 @property(strong, nonatomic) NSString * avatarPath;
-@property(strong, nonatomic) NSString * userName;
+@property(strong, nonatomic) NSMutableString * userName;
 @property(strong, nonatomic) NSString * userPhone;
 
 @property(strong, nonatomic) UIImage * avatar;
