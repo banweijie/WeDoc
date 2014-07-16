@@ -649,10 +649,10 @@
             </objects>
             <point key="canvasLocation" x="-168" y="1496"/>
         </scene>
-        <!--We Pec Nav View Controller - 个人中心-->
+        <!--We Nav View Controller - 个人中心-->
         <scene sceneID="ZFO-BM-93v">
             <objects>
-                <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" customClass="WePecNavViewController" sceneMemberID="viewController">
+                <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" customClass="WeNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="个人中心" image="tab-me" id="f8O-K2-dEM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s11-tv-Fsj">

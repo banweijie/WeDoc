@@ -52,7 +52,6 @@
 		904F7A5C18F0F146000CB41B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 904F7A5A18F0F146000CB41B /* InfoPlist.strings */; };
 		904F7A5E18F0F146000CB41B /* We_DocTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 904F7A5D18F0F146000CB41B /* We_DocTests.m */; };
 		9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */; };
-		9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */; };
 		9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054808818FAC28700CE8172 /* WePecCaiViewController.m */; };
 		906F4D93197376CC007807FE /* WeCsrIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D90197376CC007807FE /* WeCsrIdxViewController.m */; };
 		906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D92197376CC007807FE /* WeCsrCtrViewController.m */; };
@@ -195,8 +194,6 @@
 		904F7A5D18F0F146000CB41B /* We_DocTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = We_DocTests.m; sourceTree = "<group>"; };
 		9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecIdxViewController.h; sourceTree = "<group>"; };
 		9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecIdxViewController.m; sourceTree = "<group>"; };
-		9054807E18FA6A5A00CE8172 /* WePecNavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNavViewController.h; sourceTree = "<group>"; };
-		9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecNavViewController.m; sourceTree = "<group>"; };
 		9054808718FAC28700CE8172 /* WePecCaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecCaiViewController.h; sourceTree = "<group>"; };
 		9054808818FAC28700CE8172 /* WePecCaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecCaiViewController.m; sourceTree = "<group>"; };
 		906F4D8F197376CC007807FE /* WeCsrIdxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrIdxViewController.h; sourceTree = "<group>"; };
@@ -545,8 +542,6 @@
 		9054807A18FA68D600CE8172 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
-				9054807E18FA6A5A00CE8172 /* WePecNavViewController.h */,
-				9054807F18FA6A5A00CE8172 /* WePecNavViewController.m */,
 				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
 				909E3C6E1901AF4300ADC2E9 /* Experience */,
@@ -907,7 +902,6 @@
 				90B4AC6B196D1D6A006E60CE /* WeInfoedTextField.m in Sources */,
 				90B4AC63196D1D6A006E60CE /* WeTableViewCell.m in Sources */,
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
-				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
 				909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */,
 				906F4E0D19769257007807FE /* WeSelLanViewController.m in Sources */,
 				90B4AC6C196D1D6A006E60CE /* WeImageViewerViewController.m in Sources */,

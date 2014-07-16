@@ -135,33 +135,38 @@
     if (cell == nil) {
         cell = [[WeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
-    UILabel * l1;
-    UILabel * l2;
-    PAImageView *avatarView;
-    [[cell imageView] setContentMode:UIViewContentModeCenter];
+    [cell.imageView setContentMode:UIViewContentModeCenter];
+    [cell setOpaque:NO];
+    [cell setBackgroundColor:We_background_cell_general];
+    
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        // 用户名
+        UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 240, 25)];
+        if ([currentUser.userName isEqualToString:@""]) l1.text = @"尚未设置名称";
+        else l1.text = currentUser.userName;
+        l1.font = We_font_textfield_zh_cn;
+        l1.textColor = We_foreground_black_general;
+        [cell.contentView addSubview:l1];
+        // 手机号
+        UILabel * l2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 45, 240, 25)];
+        l2.text = currentUser.userPhone;
+        l2.textColor = We_foreground_gray_general;
+        l2.font = We_font_textfield_zh_cn;
+        [cell.contentView addSubview:l2];
+        // 头像
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 70, 70)];
+        [imageView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(currentUser.avatarPath)]];
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2;
+        imageView.clipsToBounds = YES;
+        [cell.contentView addSubview:imageView];
+        
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    
     switch (indexPath.section) {
         case 0:
             switch (indexPath.row) {
                 case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-                    l1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 240, 25)];
-                    l1.text = currentUser.userName;
-                    if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
-                    l1.font = We_font_textfield_zh_cn;
-                    l1.textColor = We_foreground_black_general;
-                    [cell.contentView addSubview:l1];
-                    l2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 45, 240, 25)];
-                    l2.text = currentUser.userPhone;
-                    l2.textColor = We_foreground_gray_general;
-                    l2.font = We_font_textfield_zh_cn;
-                    [cell.contentView addSubview:l2];
-                    avatarView = [[PAImageView alloc]initWithFrame:CGRectMake(10, 10, 70, 70) backgroundProgressColor:We_foreground_red_general progressColor:[UIColor lightGrayColor]];
-                    [avatarView  setImageURL:yijiarenAvatarUrl(currentUser.avatarPath) successCompletion:^(id responseImage) {
-                        currentUser.avatar = responseImage;
-                        NSLog(@"!!!");
-                    }];
-                    [cell.contentView addSubview:avatarView];
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
