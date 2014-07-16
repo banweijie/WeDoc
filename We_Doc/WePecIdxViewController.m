@@ -291,21 +291,6 @@
     return cell;
 }
 
-
-/*
- [AREA]
- Actions of all views
- */
-- (void)segue_to_RegWlc:(id)sender {
-    NSLog(@"segue:to_RegWlc~~:");
-    [self performSegueWithIdentifier:@"PecIdx2RegWlc" sender:self];
-}
-
-- (void)segue_to_PecCai:(id)sender {
-    NSLog(@"segue:to_RegWlc~~:");
-    [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -338,7 +323,6 @@
     
     UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = We_foreground_red_general;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
