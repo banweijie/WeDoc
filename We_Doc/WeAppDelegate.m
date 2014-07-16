@@ -333,6 +333,16 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     return we_codings[type][code];
 }
 
++ (NSString *)deCodeOfLanguages:(NSString *)languages {
+    NSString * result = @"";
+    
+    for (int i = 0; i < [languages length]; i++) {
+        result = [NSString stringWithFormat:@"%@%@ ", result, we_codings[@"doctorLanguages"][[languages substringWithRange:NSMakeRange(i, 1)]]];
+    }
+    
+    return result;
+}
+
 #pragma mark - APIs
 
 - (void)refreshInitialData {

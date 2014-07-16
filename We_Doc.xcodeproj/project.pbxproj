@@ -65,6 +65,7 @@
 		906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */; };
 		906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */; };
 		906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */; };
+		906F4E0D19769257007807FE /* WeSelLanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0C19769257007807FE /* WeSelLanViewController.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
@@ -220,6 +221,8 @@
 		906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahaoApplyDetailViewController.m; sourceTree = "<group>"; };
 		906F4E0819764675007807FE /* WeCsrJiaChooseTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrJiaChooseTimeViewController.h; sourceTree = "<group>"; };
 		906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrJiaChooseTimeViewController.m; sourceTree = "<group>"; };
+		906F4E0B19769257007807FE /* WeSelLanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelLanViewController.h; sourceTree = "<group>"; };
+		906F4E0C19769257007807FE /* WeSelLanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelLanViewController.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
@@ -667,6 +670,8 @@
 			children = (
 				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
 				9054808818FAC28700CE8172 /* WePecCaiViewController.m */,
+				906F4E0B19769257007807FE /* WeSelLanViewController.h */,
+				906F4E0C19769257007807FE /* WeSelLanViewController.m */,
 				9026EFAD1912E3BA00CE4A7A /* WeSelHosViewController.h */,
 				9026EFAE1912E3BA00CE4A7A /* WeSelHosViewController.m */,
 				9026EFB019143BA500CE4A7A /* WeSelSecViewController.h */,
@@ -904,6 +909,7 @@
 				909E3C781901B0B800ADC2E9 /* WePecExpModViewController.m in Sources */,
 				9054808018FA6A5A00CE8172 /* WePecNavViewController.m in Sources */,
 				909E3C7B1901B43B00ADC2E9 /* WePecExpAddNavController.m in Sources */,
+				906F4E0D19769257007807FE /* WeSelLanViewController.m in Sources */,
 				90B4AC6C196D1D6A006E60CE /* WeImageViewerViewController.m in Sources */,
 				90B4AC6D196D1D6A006E60CE /* WeSentenceModifyViewController.m in Sources */,
 				90B4AC3C196D1CF4006E60CE /* WeFunIdxViewController.m in Sources */,

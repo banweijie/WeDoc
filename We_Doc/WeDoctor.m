@@ -65,6 +65,7 @@
     [self setWcPath:[NSString stringWithFormat:@"%@", info[@"wcPath"]]];
     [self setSkills:[NSString stringWithFormat:@"%@", info[@"skills"]]];
     [self setStatus:[NSString stringWithFormat:@"%@", info[@"status"]]];
+    self.languages = [NSString stringWithFormat:@"%@", info[@"languages"]];
 }
 
 @end

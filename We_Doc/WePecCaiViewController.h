@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WeMyViewController.h"
+#import "WeSelLanViewController.h"
 
 @interface WePecCaiViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 

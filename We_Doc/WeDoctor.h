@@ -30,6 +30,7 @@
 @property(strong, nonatomic) NSString * wcPath;
 @property(strong, nonatomic) NSString * skills;
 @property(strong, nonatomic) NSString * status;
+@property(strong, nonatomic) NSString * languages;
 
 @property(strong, nonatomic) UIImage * qcImage;
 @property(strong, nonatomic) UIImage * pcImage;

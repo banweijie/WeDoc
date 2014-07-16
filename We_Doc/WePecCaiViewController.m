@@ -45,6 +45,10 @@
         if (path.row == 2) {
             [self performSegueWithIdentifier:@"selectionOfTitleInCareerInformation" sender:self];
         }
+        if (path.row == 3) {
+            WeSelLanViewController * vc = [[WeSelLanViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     if (path.section == 1) {
         if (path.row == 0) {
@@ -110,7 +114,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 3;
+            return 4;
             break;
         case 1:
             return 3;
@@ -167,6 +171,16 @@
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     cell.textLabel.text = @"职称";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+                    break;
+                case 3:
+                    cell.backgroundColor = We_background_cell_general;
+                    cell.detailTextLabel.text = [WeAppDelegate deCodeOfLanguages:currentUser.languages];
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    cell.textLabel.text = @"工作语言";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
