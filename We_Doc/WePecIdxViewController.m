@@ -7,11 +7,6 @@
 //
 
 #import "WePecIdxViewController.h"
-#import "WeAppDelegate.h"
-#import <AFNetworking.h>
-#import <UIImageView+AFNetworking.h>
-#import "PAImageView.h"
-#import "WeTableViewCell.h"
 
 @interface WePecIdxViewController ()
 @end
@@ -20,22 +15,19 @@
     UITableView * sys_tableView;
 }
 
-/*
- [AREA]
- UITableView dataSource & delegate interfaces
- */
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.alpha = We_alpha_cell_general;;
-    cell.opaque = YES;
-}
+#pragma mark - UITableView
+
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    if (path.section == 0 && path.row == 0) {
+        WePecPeaViewController * vc = [[WePecPeaViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     switch (path.section) {
         case 0:
             switch (path.row) {
                 case 0:
-                    [self performSegueWithIdentifier:@"PecIdx_pushto_PecPea" sender:self];
                     break;
                 case 1:
                     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
@@ -131,9 +123,9 @@
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *MyIdentifier = @"MyReuseIdentifier";
-    WeTableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[WeTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     [cell.imageView setContentMode:UIViewContentModeCenter];
     [cell setOpaque:NO];

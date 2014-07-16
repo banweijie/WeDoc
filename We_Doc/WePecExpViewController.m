@@ -8,7 +8,6 @@
 
 #import "WePecExpViewController.h"
 #include "WeAppDelegate.h"
-#include "WeTableViewCell.h"
 #include "WePecExpModViewController.h"
 
 @interface WePecExpViewController () {
@@ -98,7 +97,7 @@
     static NSString *MyIdentifier = @"MyReuseIdentifier";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[WeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
     UILabel * l1;
     UILabel * l2;

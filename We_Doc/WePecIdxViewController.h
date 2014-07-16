@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeAppDelegate.h"
+#import "WePecPeaViewController.h"
 
 @interface WePecIdxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

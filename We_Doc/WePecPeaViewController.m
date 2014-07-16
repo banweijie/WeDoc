@@ -126,10 +126,12 @@
             [actionSheet showInView:self.view];
         }
         if (path.row == 1) {
-            [self performSegueWithIdentifier:@"inputOfNameInPersonalAccount" sender:self];
+            WeInpNamViewController * vc = [[WeInpNamViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         if (path.row == 2) {
-            [self performSegueWithIdentifier:@"PecPea_pushto_SelGen" sender:self];
+            WeSelGenViewController * vc = [[WeSelGenViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     if (path.section == 1) {
