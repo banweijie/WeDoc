@@ -311,8 +311,13 @@
 }
 
 - (BOOL)updateAvatar:(UIImage *)image {
-    NSLog(@"%f",(image.size.width * image.size.width) / 4900);
-    NSData * imageData = UIImageJPEGRepresentation(image, 4900 / (image.size.width * image.size.width));
+    // 调整图像大小至600 * 600
+    UIGraphicsBeginImageContext(CGSizeMake(600, 600));
+    [image drawInRect:CGRectMake(0, 0, 600, 600)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSData * imageData = UIImageJPEGRepresentation(image, 1.0);
     NSString * encodedString = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     //NSDataBase64Encoding64CharacterLineLength
