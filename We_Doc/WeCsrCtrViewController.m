@@ -136,6 +136,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeMessage * currentMessage = chatData[indexPath.section][indexPath.row];
     
+    if ([currentMessage.messageType isEqualToString:@"X"]) {
+        return 40;
+    }
+    
     // 判断是谁发出的信息
     if ([currentMessage.senderId isEqualToString:currentUser.userId]) {
         if ([currentMessage.messageType isEqualToString:@"T"]) {
@@ -251,8 +255,25 @@
     
     WeMessage * currentMessage = chatData[indexPath.section][indexPath.row];
     
+    // 系统消息
+    if ([currentMessage.messageType isEqualToString:@"X"]) {
+        NSLog(@"XXXXXXXXXXXXXXXXXXXXXXXXX");
+        NSString * title = currentMessage.content;
+        
+        CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:320];
+        
+        UIButton * titleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [titleButton setTitle:title forState:UIControlStateNormal];
+        [titleButton setTintColor:We_foreground_white_general];
+        [titleButton setBackgroundColor:We_foreground_gray_general];
+        [titleButton setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 40 - 25, titleSize.width + 20, 20)];
+        [titleButton.titleLabel setFont:We_font_textfield_small_zh_cn];
+        [titleButton.layer setCornerRadius:4];
+        [cell.contentView addSubview:titleButton];
+    }
     // 判断是谁发出的信息
-    if ([currentMessage.senderId isEqualToString:currentUser.userId]) {
+    else if ([currentMessage.senderId isEqualToString:currentUser.userId]) {
+        
         if ([currentMessage.messageType isEqualToString:@"T"]) {
             // 头像
             UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(320 - gasp - avatarWidth, gasp, avatarWidth, avatarWidth)];

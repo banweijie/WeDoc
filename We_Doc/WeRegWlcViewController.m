@@ -384,7 +384,7 @@
                                                      [globalHelper insertToDB:message];
                                                  }
                                                  // 图片消息
-                                                 if ([message.messageType isEqualToString:@"I"]) {
+                                                 else if ([message.messageType isEqualToString:@"I"]) {
                                                      [globalHelper insertToDB:message];
                                                      [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
                                                                        successCompletion:^(id image) {
@@ -394,7 +394,7 @@
                                                                        }];
                                                  }
                                                  // 语音消息
-                                                 if ([message.messageType isEqualToString:@"A"]) {
+                                                 else if ([message.messageType isEqualToString:@"A"]) {
                                                      [globalHelper insertToDB:message];
                                                      [WeAppDelegate DownloadFileWithURL:yijiarenImageUrl(message.content)
                                                                       successCompletion:^(NSURL * filePath) {
@@ -402,6 +402,10 @@
                                                                           message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
                                                                           [globalHelper updateToDB:message where:nil];
                                                                       }];
+                                                 }
+                                                 else if ([message.messageType isEqualToString:@"X"]) {
+                                                     NSLog(@"XXXXXXXXXXXXX");
+                                                     [globalHelper insertToDB:message];
                                                  }
                                              }
                                          }

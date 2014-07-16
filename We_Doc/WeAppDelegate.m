@@ -381,6 +381,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                  success:^(NSArray * response) {
                                      for (int i = 0; i < [response count]; i++) {
                                          WeMessage * message = [[WeMessage alloc] initWithNSDictionary:response[i]];
+                                         if ([message.messageType isEqualToString:@"X"]) NSLog(@"XXXXXXXXXX");
                                          if ([message.messageId longLongValue] > lastMessageId) {
                                              lastMessageId = [message.messageId longLongValue];
                                          }
@@ -397,7 +398,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                  [globalHelper insertToDB:message];
                                                  [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
                                                                    successCompletion:^(id image) {
-                                                                       NSLog(@"!!!");
+                                                                       //NSLog(@"!!!");
                                                                        message.imageContent = (UIImage *)image;
                                                                        [globalHelper updateToDB:message where:nil];
                                                                    }];
@@ -418,7 +419,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                                      if ([message.content characterAtIndex:i] == '=') {
                                                          NSString * left = [message.content substringToIndex:i];
                                                          NSString * right = [message.content substringFromIndex:i + 1];
-                                                         NSLog(@"%@ %@", left, right);
+                                                         //NSLog(@"%@ %@", left, right);
                                                          if ([left isEqualToString:@"consultStatus"]) {
                                                              WeFavorPatient * currentPatient = favorPatientList[message.senderId];
                                                              currentPatient.consultStatus = right;
@@ -428,13 +429,14 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                              }
                                              // 咨询消息
                                              else if ([message.messageType isEqualToString:@"c"]) {
-                                                 NSLog(@"%@", message.content);
+                                                 //NSLog(@"%@", message.content);
                                                  WeFavorPatient * currentPatient = favorPatientList[message.senderId];
-                                                 NSLog(@"%@", currentPatient.userName);
+                                                 //NSLog(@"%@", currentPatient.userName);
                                                  currentPatient.currentConsultId = message.content;
                                              }
                                              // 系统消息
                                              else if ([message.messageType isEqualToString:@"X"]) {
+                                                 NSLog(@"XXXXXXXXXXXXX");
                                                  [globalHelper insertToDB:message];
                                              }
                                          }
