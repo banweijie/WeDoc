@@ -15,11 +15,7 @@
 @property(strong, nonatomic) NSMutableString * userName;
 @property(strong, nonatomic) NSString * userPhone;
 
-@property(strong, nonatomic) UIImage * avatar;
-
-- (id)init;
 - (WeUser *)initWithNSDictionary:(NSDictionary *)info;
 - (void)setWithNSDictionary:(NSDictionary *)info;
-- (NSString *)stringValue;
 
 @end

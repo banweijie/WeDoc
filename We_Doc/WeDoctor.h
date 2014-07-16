@@ -22,7 +22,7 @@
 @property(strong, nonatomic) NSString * consultPrice;
 @property(strong, nonatomic) NSString * degree;
 @property(strong, nonatomic) NSString * email;
-@property(strong, nonatomic) NSString * gender;
+@property(strong, nonatomic) NSMutableString * gender;
 @property(strong, nonatomic) NSString * maxResponseGap;
 @property(strong, nonatomic) NSString * plusPrice;
 @property(strong, nonatomic) NSString * pcPath;
