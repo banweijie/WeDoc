@@ -165,6 +165,10 @@
     
     We_init_textFieldInCell_forInput(user_name_input, currentUser.userName, @"", We_font_textfield_zh_cn)
 
+    
+    // 标题
+    self.navigationItem.title = @"真实姓名";
+    
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;

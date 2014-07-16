@@ -295,8 +295,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    // Do any additional setup after loading the view
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];

@@ -400,6 +400,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // 标题
+    self.navigationItem.title = @"个人账户";
+    
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
