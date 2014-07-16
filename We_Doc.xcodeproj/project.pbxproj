@@ -59,6 +59,12 @@
 		906F4D9719738AB2007807FE /* WeConsultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */; };
 		906F4D9C19738D20007807FE /* WeConsult.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4D9B19738D20007807FE /* WeConsult.m */; };
 		906F4DE11973F194007807FE /* WeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DE01973F194007807FE /* WeOrder.m */; };
+		906F4DFB1976220B007807FE /* WeJiaMangementIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */; };
+		906F4DFE19762294007807FE /* WeJiahao.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DFD19762294007807FE /* WeJiahao.m */; };
+		906F4E01197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */; };
+		906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */; };
+		906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */; };
+		906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
@@ -202,6 +208,18 @@
 		906F4D9B19738D20007807FE /* WeConsult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeConsult.m; sourceTree = "<group>"; };
 		906F4DDF1973F194007807FE /* WeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeOrder.h; sourceTree = "<group>"; };
 		906F4DE01973F194007807FE /* WeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeOrder.m; sourceTree = "<group>"; };
+		906F4DF91976220B007807FE /* WeJiaMangementIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiaMangementIndexViewController.h; sourceTree = "<group>"; };
+		906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiaMangementIndexViewController.m; sourceTree = "<group>"; };
+		906F4DFC19762294007807FE /* WeJiahao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahao.h; sourceTree = "<group>"; };
+		906F4DFD19762294007807FE /* WeJiahao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahao.m; sourceTree = "<group>"; };
+		906F4DFF197628B4007807FE /* WeNewJiahaoApplyIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeNewJiahaoApplyIndexViewController.h; sourceTree = "<group>"; };
+		906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeNewJiahaoApplyIndexViewController.m; sourceTree = "<group>"; };
+		906F4E0219763EEF007807FE /* WeJiahaoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahaoDetailViewController.h; sourceTree = "<group>"; };
+		906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahaoDetailViewController.m; sourceTree = "<group>"; };
+		906F4E05197640D9007807FE /* WeJiahaoApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahaoApplyDetailViewController.h; sourceTree = "<group>"; };
+		906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahaoApplyDetailViewController.m; sourceTree = "<group>"; };
+		906F4E0819764675007807FE /* WeCsrJiaChooseTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCsrJiaChooseTimeViewController.h; sourceTree = "<group>"; };
+		906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCsrJiaChooseTimeViewController.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
@@ -308,6 +326,8 @@
 				906F4D9B19738D20007807FE /* WeConsult.m */,
 				906F4DDF1973F194007807FE /* WeOrder.h */,
 				906F4DE01973F194007807FE /* WeOrder.m */,
+				906F4DFC19762294007807FE /* WeJiahao.h */,
+				906F4DFD19762294007807FE /* WeJiahao.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -594,6 +614,7 @@
 		906F4DF719761FDE007807FE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				906F4DF8197621EC007807FE /* JiaManagement */,
 				9039CC5C1902B40800EA8310 /* Customs */,
 				9054807918FA606900CE8172 /* Register */,
 				9054807A18FA68D600CE8172 /* PersonalCenter */,
@@ -601,6 +622,23 @@
 				906F4D8E197376AC007807FE /* ConsultingRoom */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		906F4DF8197621EC007807FE /* JiaManagement */ = {
+			isa = PBXGroup;
+			children = (
+				906F4DF91976220B007807FE /* WeJiaMangementIndexViewController.h */,
+				906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */,
+				906F4DFF197628B4007807FE /* WeNewJiahaoApplyIndexViewController.h */,
+				906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */,
+				906F4E0219763EEF007807FE /* WeJiahaoDetailViewController.h */,
+				906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */,
+				906F4E05197640D9007807FE /* WeJiahaoApplyDetailViewController.h */,
+				906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */,
+				906F4E0819764675007807FE /* WeCsrJiaChooseTimeViewController.h */,
+				906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */,
+			);
+			name = JiaManagement;
 			sourceTree = "<group>";
 		};
 		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
@@ -820,6 +858,8 @@
 				9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */,
 				90B4AC64196D1D6A006E60CE /* WeSPViewController.m in Sources */,
 				9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */,
+				906F4DFB1976220B007807FE /* WeJiaMangementIndexViewController.m in Sources */,
+				906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */,
 				9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */,
 				90B4AC6A196D1D6A006E60CE /* WeInfoedButton.m in Sources */,
 				9026EDEF1903EEAD00CE4A7A /* WePecWkpModViewController.m in Sources */,
@@ -835,7 +875,9 @@
 				90B4AC67196D1D6A006E60CE /* WeTabBarViewController.m in Sources */,
 				9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
+				906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */,
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
+				906F4DFE19762294007807FE /* WeJiahao.m in Sources */,
 				90B4AC6E196D1D6A006E60CE /* WeParagraphModifyViewController.m in Sources */,
 				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
@@ -876,6 +918,7 @@
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
+				906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */,
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
 				906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */,
 				906F4DE11973F194007807FE /* WeOrder.m in Sources */,
@@ -886,6 +929,7 @@
 				90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */,
 				900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */,
 				90B4AC48196D1D39006E60CE /* WeFunding.m in Sources */,
+				906F4E01197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -784,10 +784,10 @@
             </objects>
             <point key="canvasLocation" x="613" y="2976"/>
         </scene>
-        <!--View Controller-->
+        <!--We Jia Mangement Index View Controller-->
         <scene sceneID="KKi-WV-fL5">
             <objects>
-                <viewController id="e59-1b-o8n" sceneMemberID="viewController">
+                <viewController id="e59-1b-o8n" customClass="WeJiaMangementIndexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p0l-fg-uxd"/>
                         <viewControllerLayoutGuide type="bottom" id="bqr-C6-ovZ"/>
@@ -821,10 +821,10 @@
             </objects>
             <point key="canvasLocation" x="5531" y="3894"/>
         </scene>
-        <!--Navigation Controller - 加号管理-->
+        <!--We Nav View Controller - 加号管理-->
         <scene sceneID="7E6-YR-j0r">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gaa-5b-ld7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gaa-5b-ld7" customClass="WeNavViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="加号管理" image="tab-appointment" id="AdG-rq-WiG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PTf-6R-AD3">

@@ -29,8 +29,8 @@
     self.orderId = [NSString stringWithFormat:@"%@", info[@"id"]];
     self.foreignId = [NSString stringWithFormat:@"%@", info[@"foreignId"]];
     self.status = [NSString stringWithFormat:@"%@", info[@"status"]];
-    self.createTime = [info[@"createTime"] longLongValue] / 100;
-    self.endTime = [info[@"endTime"] longLongValue] / 100;
+    self.createTime = [info[@"createTime"] longLongValue] / 1000;
+    self.endTime = [info[@"endTime"] longLongValue] / 1000;
     self.amount = [info[@"amount"] doubleValue];
 }
 
