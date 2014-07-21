@@ -395,6 +395,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                          if ([message.messageId longLongValue] > lastMessageId) {
                                              lastMessageId = [message.messageId longLongValue];
                                          }
+                                         if (favorPatientList[message.senderId] == nil) [self updateFavorPatientsList];
                                          NSMutableArray * result = [globalHelper search:[WeMessage class]
                                                                                   where:[NSString stringWithFormat:@"messageId = %@", message.messageId]
                                                                                 orderBy:nil offset:0 count:0];
@@ -454,6 +455,30 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                  }
                                  failure:^(NSString * errorMessage) {
                                      NSLog(@"%@", errorMessage);
+                                 }];
+}
+
+- (void)updateFavorPatientsList {
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"listFavorPatients"
+                              parameters:@{
+                                           }
+                                 success:^(NSArray * response) {
+                                     for (int i = 0; i < [response count]; i++) {
+                                         WeFavorPatient * newFavorPatient = [[WeFavorPatient alloc] initWithNSDictionary:response[i]];
+                                         if (favorPatientList[newFavorPatient.userId] == nil) {
+                                             NSLog(@"!!!!!!New Patients!!!!!");
+                                             favorPatientList[newFavorPatient.userId] = newFavorPatient;
+                                         }
+                                     }
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"更新病人列表失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
                                  }];
 }
 

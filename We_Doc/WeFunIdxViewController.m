@@ -594,12 +594,6 @@
     [self api_data_listFunding];
 }
 
-// 我的参与按钮被按下
-- (void)myFundingButton_onPress:(id)sender {
-    WeFunMySupViewController * vc = [[WeFunMySupViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 // 获取众筹列表接口
 - (void)api_data_listFunding:(NSDictionary *)parameters {
     [refreshButton setHidden:YES];
