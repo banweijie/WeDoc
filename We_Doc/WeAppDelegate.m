@@ -459,7 +459,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 }
 
 - (void)updateFavorPatientsList {
-    [WeAppDelegate postToServerWithField:@"doctor" action:@"listFavorPatients"
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"listPatients"
                               parameters:@{
                                            }
                                  success:^(NSArray * response) {

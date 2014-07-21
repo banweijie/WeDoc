@@ -920,6 +920,11 @@
     rect.origin.y = - height;
     unionView.frame = rect;
     
+    rect = chatTableView.frame;
+    rect.origin.y = height;
+    rect.size.height = self.view.frame.size.height - 40 - height;
+    chatTableView.frame = rect;
+    
     [UIView commitAnimations];
 }
 
