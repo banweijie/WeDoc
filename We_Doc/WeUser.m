@@ -10,18 +10,10 @@
 
 @implementation WeUser
 
-@synthesize avatar;
 @synthesize avatarPath;
 @synthesize userId;
 @synthesize userName;
 @synthesize userPhone;
-
-- (id)init {
-    userId = @"NotLogined";
-    avatar = [UIImage imageNamed:@"defaultAvatar"];
-    avatarPath = @"";
-    return self;
-}
 
 - (id)initWithNSDictionary:(NSDictionary *)info {
     [self setWithNSDictionary:info];
@@ -33,7 +25,6 @@
     self.userName = [NSMutableString stringWithFormat:@"%@", info[@"name"]];
     self.userPhone = [NSString stringWithFormat:@"%@", info[@"phone"]];
     self.avatarPath = [NSString stringWithFormat:@"%@", info[@"avatar"]];
-    avatar = [UIImage imageNamed:@"defaultAvatar"];
 }
 
 - (NSString *)stringValue {

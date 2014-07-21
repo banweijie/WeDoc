@@ -55,7 +55,12 @@
     [self setConsultPrice:[NSString stringWithFormat:@"%@", info[@"consultPrice"]]];
     [self setDegree:[NSString stringWithFormat:@"%@", info[@"degree"]]];
     [self setEmail:[NSString stringWithFormat:@"%@", info[@"email"]]];
-    [self setGender:[NSMutableString stringWithFormat:@"%@", info[@"gender"]]];
+    if (info[@"gender"] != [NSNull null]) {
+        [self setGender:[NSMutableString stringWithFormat:@"%@", info[@"gender"]]];
+    }
+    else {
+        [self setGender:[[NSMutableString alloc] init]];
+    }
     [self setMaxResponseGap:[NSString stringWithFormat:@"%@", info[@"maxResponseGap"]]];
     [self setPlusPrice:[NSString stringWithFormat:@"%@", info[@"plusPrice"]]];
     [self setWorkPeriod:[NSString stringWithFormat:@"%@", info[@"workPeriod"]]];
