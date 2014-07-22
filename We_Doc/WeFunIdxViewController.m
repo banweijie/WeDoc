@@ -414,8 +414,9 @@
     [self.view addSubview:sys_tableView];
     
     // 搜索按钮
-    UIBarButtonItem * searchButton = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:@selector(searchButton_onPress)];
+    UIBarButtonItem * searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list-search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchButton_onPress)];
     self.navigationItem.rightBarButtonItem = searchButton;
+    
     
     // 筛选
     selectView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
