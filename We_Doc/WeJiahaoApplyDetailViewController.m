@@ -30,7 +30,7 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.section == 1 && path.row == 0) {
+    if (path.section == 1 && path.row == 1) {
         WeCsrJiaChooseTimeViewController * vc = [[WeCsrJiaChooseTimeViewController alloc] init];
         vc.dates = dates;
         vc.datesToDemo = datesToDemo;
@@ -48,6 +48,7 @@
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) return tv.rowHeight * 2;
+    if (indexPath.section == 1 && indexPath.row == 0) return tv.rowHeight * 1.5;
     return tv.rowHeight;
 }
 // 询问每个段落的头部高度
@@ -91,7 +92,7 @@
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 3;
-    if (section == 1) return 1;
+    if (section == 1) return 2;
     if (section == 2) return 2;
     if (section == 3) return 1;
     if (section == 4) return 1;
@@ -141,6 +142,19 @@
         [cell.detailTextLabel setText:self.currentJiahao.idNum];
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
+        [cell.textLabel setNumberOfLines:0];
+        [cell.textLabel setFont:We_font_textfield_zh_cn];
+        [cell.textLabel setText:@"参考加号时间"];
+        [cell.detailTextLabel setFont:We_font_textfield_zh_cn];
+        [cell.detailTextLabel setTextColor:We_foreground_gray_general];
+        if ([datesToDemo isEqualToString:@""]) {
+            [cell.detailTextLabel setText:@"任意时刻均可"];
+        }
+        else {
+            [cell.detailTextLabel setText:self.currentJiahao.datesToDemo];
+        }
+    }
+    if (indexPath.section == 1 && indexPath.row == 1) {
         [cell.textLabel setNumberOfLines:0];
         [cell.textLabel setFont:We_font_textfield_zh_cn];
         if ([datesToDemo isEqualToString:@""]) {
