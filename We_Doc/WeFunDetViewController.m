@@ -464,17 +464,6 @@
 }
 
 - (void)supportButton_onPress:(id)sender {
-    if (currentUser == nil) {
-        WeRegWlcViewController * vc = [[WeRegWlcViewController alloc] init];
-        vc.originTargetViewController = nil;
-        vc.tabBarController = self.tabBarController;
-        
-        WeNavViewController * nav = [[WeNavViewController alloc] init];
-        [nav pushViewController:vc animated:NO];
-        
-        [self presentViewController:nav animated:YES completion:nil];
-    }
-    else {
         WeFunSupViewController * vc = [[WeFunSupViewController alloc] init];
         vc.currentFunding = currentFunding;
         
@@ -482,7 +471,6 @@
         [nav pushViewController:vc animated:NO];
         
         [self presentViewController:nav animated:YES completion:nil];
-    }
 }
 
 - (void)button1_onPress:(id)sender {
