@@ -20,6 +20,9 @@
     self.gender = [NSString stringWithFormat:@"%@", info[@"gender"]];
     self.age = [NSString stringWithFormat:@"%@", info[@"age"]];
     self.emergent = [[NSString stringWithFormat:@"%@", info[@"emergent"]] isEqualToString:@"1"];
+    if (info[@"description"] != [NSNull null]) {
+        self.description = [NSString stringWithFormat:@"%@", info[@"description"]];
+    }
 }
 
 @end

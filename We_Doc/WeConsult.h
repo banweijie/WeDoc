@@ -13,6 +13,7 @@
 @property(nonatomic, strong) NSString * gender;
 @property(nonatomic, strong) NSString * age;
 @property(nonatomic) bool emergent;
+@property(nonatomic, strong) NSString * description;
 
 - (WeConsult *)initWithNSDictionary:(NSDictionary *)info;
 - (void)setWithNSDictionary:(NSDictionary *)info;
