@@ -203,16 +203,16 @@
      [cell.contentView addSubview:label3];*/
     
     // 进度条
-    UIImageView * progressView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220, 300, 5)];
-    [progressView setImage:[WeAppDelegate imageWithColor:We_background_cell_general]];
+    UIImageView * progressView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260, 5)];
+    [progressView setImage:[WeAppDelegate imageWithColor:We_foreground_gray_general]];
     [cell.contentView addSubview:progressView];
     if ([currentFunding.type isEqualToString:@"D"]) {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220, 300.0 * [currentFunding.supportCount intValue] / [currentFunding.goal intValue], 5)];
+        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.supportCount intValue] / [currentFunding.goal intValue]), 5)];
         [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
         [cell.contentView addSubview:progressBar];
     }
     else {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220, 300.0 * [currentFunding.sum intValue] / [currentFunding.goal intValue], 5)];
+        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.sum intValue] / [currentFunding.goal intValue]), 5)];
         [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
         [cell.contentView addSubview:progressBar];
     }
