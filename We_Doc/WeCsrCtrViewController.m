@@ -51,6 +51,9 @@
     UIToolbar * consultApplyView;
     
     UIActivityIndicatorView * sys_pendingView;
+    
+    WeToolButton * uploadHiButton;
+    WeToolButton * uploadVedioButton;
 }
 
 @end
@@ -843,7 +846,7 @@
     uploadPicButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadPicButton];
     
-    WeToolButton * uploadHiButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
+    uploadHiButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
     [uploadHiButton setFrame:CGRectMake(110, 0, 100, 100)];
     [uploadHiButton setTitle:@"结束咨询" forState:UIControlStateNormal];
     [uploadHiButton setImage:[UIImage imageNamed:@"chatroom-end"] forState:UIControlStateNormal];
@@ -852,7 +855,7 @@
     uploadHiButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadHiButton];
     
-    WeToolButton * uploadVedioButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
+    uploadVedioButton = [WeToolButton buttonWithType:UIButtonTypeRoundedRect];
     [uploadVedioButton setFrame:CGRectMake(210, 0, 110, 100)];
     [uploadVedioButton setTitle:@"结束咨询并退款" forState:UIControlStateNormal];
     [uploadVedioButton setImage:[UIImage imageNamed:@"chatroom-endforfree"] forState:UIControlStateNormal];
@@ -1055,6 +1058,18 @@
     }
     else {
         [consultApplyView setHidden:YES];
+    }
+    if ([self.patientChating.consultStatus isEqualToString:@"C"]) {
+        [uploadHiButton setTintColor:We_foreground_red_general];
+        [uploadVedioButton setTintColor:We_foreground_red_general];
+        [uploadHiButton setUserInteractionEnabled:YES];
+        [uploadVedioButton setUserInteractionEnabled:YES];
+    }
+    else {
+        [uploadHiButton setTintColor:We_foreground_gray_general];
+        [uploadVedioButton setTintColor:We_foreground_gray_general];
+        [uploadHiButton setUserInteractionEnabled:NO];
+        [uploadVedioButton setUserInteractionEnabled:NO];
     }
 }
 
