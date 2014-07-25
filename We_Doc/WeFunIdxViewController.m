@@ -241,12 +241,15 @@
     [cell.contentView addSubview:docInfo];
     
     // 同业支持
-    UILabel * likeInfo = [[UILabel alloc] initWithFrame:CGRectMake(190, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height, 100, 20)];
-    [likeInfo setTextAlignment:NSTextAlignmentRight];
-    [likeInfo setText:[NSString stringWithFormat:@"同业支持 %@", currentFunding.likeCount]];
-    [likeInfo setFont:We_font_textfield_small_zh_cn];
-    [likeInfo setTextColor:We_foreground_red_general];
-    [cell.contentView addSubview:likeInfo];
+    WeInfoedButton * likeInfo = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
+    [likeInfo setUserData:currentFunding];
+    [likeInfo setFrame:CGRectMake(190, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height - 5, 100, 30)];
+    [likeInfo.titleLabel setFont:We_font_textfield_small_zh_cn];
+    [likeInfo setTitle:[NSString stringWithFormat:@"同业支持 %@", currentFunding.likeCount] forState:UIControlStateNormal];
+    [likeInfo addTarget:self action:@selector(api_doctor_likeFunding:) forControlEvents:UIControlEventTouchUpInside];
+    [likeInfo setTintColor:We_foreground_white_general];
+    [likeInfo setBackgroundColor:We_background_red_general];
+    [cell addSubview:likeInfo];
     
     // 已达
     UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
@@ -302,7 +305,12 @@
     [restData setTextAlignment:NSTextAlignmentRight];
     [restData setFont:We_font_textfield_small_zh_cn];
     int restSec =  [currentFunding.endTime longLongValue] / 1000 - [[NSDate date] timeIntervalSince1970];
-    [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400 + 1]];
+    if (restSec < 0) {
+        [restData setText:[NSString stringWithFormat:@"已结束"]];
+    }
+    else {
+        [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400 + 1]];
+    }
     [cell.contentView addSubview:restData];
     
     UILabel * restLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
@@ -316,7 +324,7 @@
     UIView * frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40)];
     [frame1.layer setBorderWidth:0.3];
     [frame1.layer setBorderColor:We_foreground_gray_general.CGColor];
-    [cell.contentView addSubview:frame1];
+    //[cell.contentView addSubview:frame1];
     
     // 框框2
     UIView * frame2 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 60)];
@@ -593,6 +601,25 @@
 // 刷新按钮被按下
 - (void)refreshButton_onPress:(id)sender {
     [self api_data_listFunding];
+}
+
+#pragma mark - api
+
+- (void)api_doctor_likeFunding:(WeInfoedButton *)sender {
+    [sys_pendingView startAnimating];
+    WeFunding * currentFunding = sender.userData;
+    
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"likeFunding"
+                              parameters:@{@"fundingId": currentFunding.fundingId}
+                                 success:^(id response) {
+                                     currentFunding.likeCount = [NSString stringWithFormat:@"%d", [currentFunding.likeCount integerValue] + 1];
+                                     [sys_tableView reloadData];
+                                     [sys_pendingView stopAnimating];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     [[[UIAlertView alloc] initWithTitle:@"点赞失败" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                     [sys_pendingView stopAnimating];
+                                 }];
 }
 
 // 获取众筹列表接口
