@@ -93,48 +93,89 @@
     if (indexPath.section == 0) {
         cell.backgroundColor = We_background_cell_general;
         // l1 - user name
-        UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 12, 240, 23)];
+        UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 8, 240, 23)];
         l1.text = patient.userName;
         if ([l1.text isEqualToString:@"<null>"]) l1.text = @"尚未设置名称";
         l1.font = We_font_textfield_zh_cn;
         l1.textColor = We_foreground_black_general;
         [cell.contentView addSubview:l1];
+        
         // avatar
         UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 9, 48, 48)];
-        //avatarView.image = doctor.avatar;
         [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(patient.avatarPath)]];
         avatarView.layer.cornerRadius = avatarView.frame.size.height / 2;
         avatarView.clipsToBounds = YES;
         [cell.contentView addSubview:avatarView];
+        
+        // 未读消息数
+        NSMutableArray * unviewedMessageList = [globalHelper search:[WeMessage class]
+                                                              where:[NSString stringWithFormat:@"(senderId = %@ and viewed = 0)", patient.userId]
+                                                            orderBy:@"time desc"
+                                                             offset:0
+                                                              count:101];
+        
+        // 所有消息
+        NSMutableArray * viewedmessageList = [globalHelper search:[WeMessage class]
+                                                            where:[NSString stringWithFormat:@"(senderId = %@)", patient.userId]
+                                                          orderBy:@"time desc"
+                                                           offset:0
+                                                            count:100];
+        if ([unviewedMessageList count] > 0) {
+            UIButton * imageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [imageButton setFrame:CGRectMake(50, 10, 18, 18)];
+            if ([unviewedMessageList count] <= 100) {
+                [imageButton setTitle:[NSString stringWithFormat:@"%d", [unviewedMessageList count]] forState:UIControlStateNormal];
+            }
+            else {
+                [imageButton setTitle:@"100+" forState:UIControlStateNormal];
+            }
+            [imageButton.titleLabel setFont:We_font_textfield_tiny_zh_cn];
+            [imageButton setTintColor:We_foreground_white_general];
+            [imageButton.layer setCornerRadius:imageButton.frame.size.height / 2];
+            [imageButton.layer setMasksToBounds:YES];
+            [imageButton setBackgroundColor:We_background_red_general];
+            [cell.contentView addSubview:imageButton];
+        }
+        
+        //
+        if ([viewedmessageList count] > 0) {
+            WeMessage * lastMsg = viewedmessageList[0];
+            
+            UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(75, 25, 200, 44)];
+            [l1 setFont:We_font_textfield_small_zh_cn];
+            [cell.contentView addSubview:l1];
+            
+            UILabel * l2 = [[UILabel alloc] initWithFrame:CGRectMake(60 + 160, 0, 80, 44)];
+            [l2 setFont:We_font_textfield_small_zh_cn];
+            [l2 setTextAlignment:NSTextAlignmentRight];
+            [l2 setTextColor:We_foreground_gray_general];
+            [cell.contentView addSubview:l2];
+            
+            if ([lastMsg.messageType isEqualToString:@"T"]) {
+                l1.text = lastMsg.content;
+                l1.textColor = We_foreground_black_general;
+            }
+            else if ([lastMsg.messageType isEqualToString:@"A"]) {
+                l1.text = @"[语音]";
+                l1.textColor = We_foreground_red_general;
+            }
+            else if ([lastMsg.messageType isEqualToString:@"I"]) {
+                l1.text = @"[图片]";
+                l1.textColor = We_foreground_red_general;
+            }
+            else if ([lastMsg.messageType isEqualToString:@"X"]) {
+                l1.text = [NSString stringWithFormat:@"%@", lastMsg.content];
+                l1.textColor = We_foreground_red_general;
+            }
+            else {
+                l1.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
+            }
+            l2.text = [WeAppDelegate transitionToDateFromSecond:lastMsg.time];
+        }
+        
+        // 
     }
-    /*
-    if (indexPath.row == 2 || (indexPath.row == 1 && doctor.currentFundingId == nil)) {
-        cell.imageView.image = [UIImage imageNamed:@"docinfo-chatroom"];
-        WeMessage * lastMsg = [we_messagesWithDoctor[orderedIdOfDoctor[indexPath.section]] lastObject];
-        if ([lastMsg.messageType isEqualToString:@"c"]) {
-            long long restSecond = [doctor.maxResponseGap integerValue] * 3600 - (long long) (([[NSDate date] timeIntervalSince1970] - lastMsg.time));
-            cell.textLabel.text = [NSString stringWithFormat:@"[申请咨询中 剩余%lld小时%lld分钟]",  restSecond / 3600, restSecond % 3600 / 60];
-            cell.textLabel.textColor = We_foreground_red_general;
-        }
-        else if ([lastMsg.messageType isEqualToString:@"T"]) {
-            cell.textLabel.text = lastMsg.content;
-            cell.textLabel.textColor = We_foreground_black_general;
-        }
-        else if ([lastMsg.messageType isEqualToString:@"A"]) {
-            cell.textLabel.text = @"[语音]";
-            cell.textLabel.textColor = We_foreground_red_general;
-        }
-        else if ([lastMsg.messageType isEqualToString:@"I"]) {
-            cell.textLabel.text = @"[图片]";
-            cell.textLabel.textColor = We_foreground_red_general;
-        }
-        else {
-            cell.textLabel.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
-        }
-        cell.detailTextLabel.text = [WeAppDelegate transitionToDateFromSecond:lastMsg.time];
-        cell.textLabel.font = We_font_textfield_small_zh_cn;
-        cell.detailTextLabel.font = We_font_textfield_small_zh_cn;
-    }*/
+    
     return cell;
 }
 

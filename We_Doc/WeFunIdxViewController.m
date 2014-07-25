@@ -427,8 +427,8 @@
     
     
     // 筛选
-    selectView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
-    for (int i = 0; i < 5; i++) {
+    selectView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 280)];
+    for (int i = 0; i < 7; i++) {
         WeInfoedButton * optionButton = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
         [optionButton setFrame:CGRectMake(0, 40 * i, 320, 40)];
         [optionButton setTintColor:We_foreground_black_general];
@@ -443,6 +443,8 @@
         if (i == 2) [optionButton setTitle:@"科研类" forState:UIControlStateNormal];
         if (i == 3) [optionButton setTitle:@"公益类" forState:UIControlStateNormal];
         if (i == 4) [optionButton setTitle:@"招募类" forState:UIControlStateNormal];
+        if (i == 5) [optionButton setTitle:@"进行中" forState:UIControlStateNormal];
+        if (i == 6) [optionButton setTitle:@"已结束" forState:UIControlStateNormal];
         [selectView addSubview:optionButton];
     }
     [selectView setHidden:YES];
@@ -570,6 +572,14 @@
     if ([order isEqualToString:@"4"]) {
         [titleButton setTitle:@"招募类 v" forState:UIControlStateNormal];
         [self api_data_listFunding:@{@"f.type":@"D"}];
+    }
+    if ([order isEqualToString:@"5"]) {
+        [titleButton setTitle:@"进行中 v" forState:UIControlStateNormal];
+        [self api_data_listFunding:@{@"f.status":@"E"}];
+    }
+    if ([order isEqualToString:@"6"]) {
+        [titleButton setTitle:@"已结束 v" forState:UIControlStateNormal];
+        [self api_data_listFunding:@{@"f.status":@"G"}];
     }
     [selectView setHidden:YES];
 }

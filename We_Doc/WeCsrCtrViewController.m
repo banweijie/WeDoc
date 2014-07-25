@@ -1031,6 +1031,7 @@
 
 - (void)timer_onTick:(id)sender {
     [self refreshView:NO];
+    
 }
 
 - (void)refreshView:(BOOL)forced {
@@ -1049,6 +1050,17 @@
     }
     if ([self.patientChating.consultStatus isEqualToString:@"W"]) {
         self.navigationItem.title = [NSString stringWithFormat:@"%@(等待支付)", self.patientChating.userName];
+    }
+    
+    NSMutableArray * unviewedMessageList = [globalHelper search:[WeMessage class]
+                                                          where:[NSString stringWithFormat:@"(senderId = %@ and viewed = 0)", self.patientChating.userId]
+                                                        orderBy:@"time desc"
+                                                         offset:0
+                                                          count:101];
+    
+    for (int i = 0; i < [unviewedMessageList count]; i++) {
+        ((WeMessage *)unviewedMessageList[i]).viewed = YES;
+        [globalHelper updateToDB:unviewedMessageList[i] where:nil];
     }
 }
 

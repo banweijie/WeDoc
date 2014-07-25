@@ -42,9 +42,10 @@
     [self setMessageType:[NSString stringWithFormat:@"%@", info[@"type"]]];
     [self setReceiverId:[NSString stringWithFormat:@"%@", info[@"receiverId"]]];
     [self setSenderId:[NSString stringWithFormat:@"%@", info[@"senderId"]]];
-    [self setViewed:[NSString stringWithFormat:@"%@", info[@"viewed"]]];
     [self setContent:[NSString stringWithFormat:@"%@", info[@"content"]]];
     self.time = [info[@"time"] longLongValue] / 1000;
+    
+    self.viewed = [[NSString stringWithFormat:@"%@", info[@"viewed"]] isEqualToString:@"1"];
 }
 
 - (NSString *)stringValue {
