@@ -103,7 +103,7 @@
      [cell.contentView addSubview:groundView];*/
     
     // 姓名
-    UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(85, 12, 240, 23)];
+    UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(85, 9, 240, 48)];
     l1.text = [NSString stringWithFormat:@"%@", patient.userName];
     if ([l1.text isEqualToString:@""]) l1.text = @"尚未设置名称";
     l1.font = We_font_textfield_zh_cn;
@@ -136,7 +136,7 @@
         UIButton * imageButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [imageButton setFrame:CGRectMake(30, 78, 30, 20)];
         if ([unviewedMessageList count] <= 100) {
-            [imageButton setTitle:[NSString stringWithFormat:@"%d", [unviewedMessageList count]] forState:UIControlStateNormal];
+            [imageButton setTitle:[NSString stringWithFormat:@"%d", (int)[unviewedMessageList count]] forState:UIControlStateNormal];
         }
         else {
             [imageButton setTitle:@"100+" forState:UIControlStateNormal];

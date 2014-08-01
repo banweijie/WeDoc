@@ -929,6 +929,10 @@
     chatTableView.frame = rect;
     
     [UIView commitAnimations];
+    
+    if ([chatData count] > 0) {
+        [chatTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:[[chatData lastObject] count] - 1 inSection:[chatData count] - 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 - (void)changeModeButtonOnPress:(id)sender {
@@ -1053,7 +1057,7 @@
     }
     
     NSMutableArray * unviewedMessageList = [globalHelper search:[WeMessage class]
-                                                          where:[NSString stringWithFormat:@"(senderId = %@ and viewed = 0)", self.patientChating.userId]
+                                                          where:[NSString stringWithFormat:@"((senderId = %@ or receiverId = %@) and viewed = 0)", self.patientChating.userId, self.patientChating.userId]
                                                         orderBy:@"time desc"
                                                          offset:0
                                                           count:101];
