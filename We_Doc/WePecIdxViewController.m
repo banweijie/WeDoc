@@ -60,6 +60,7 @@
         WePecPeaViewController * vc = [[WePecPeaViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,7 +81,7 @@
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 100;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return self.tabBarController.tabBar.frame.size.height + 30;
     return 10;
 }
 // 询问每个段落的尾部标题
@@ -94,7 +95,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 6;
+    return 5;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -109,12 +110,9 @@
             return 1;
             break;
         case 3:
-            return 2;
-            break;
-        case 4:
             return 1;
             break;
-        case 5:
+        case 4:
             return 1;
             break;
         default:
@@ -232,28 +230,6 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"我的加号";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"me-appointment"];
-                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-                    break;
-                case 1:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"交易记录";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"me-moneyhistory"];
-                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 4:
-            switch (indexPath.row) {
-                case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
                     cell.textLabel.text = @"设置";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
@@ -264,7 +240,7 @@
                     break;
             }
             break;
-        case 5:
+        case 4:
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -305,7 +281,7 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
