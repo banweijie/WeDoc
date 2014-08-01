@@ -1102,7 +1102,7 @@
     [WeAppDelegate postToServerWithField:@"doctor" action:@"endConsult"
                               parameters:@{
                                            @"patientId":self.patientChating.userId,
-                                           @"refund":@"NO"
+                                           @"refund":@"false"
                                            }
                                  success:^(id response) {
                                      self.patientChating.consultStatus = @"N";
@@ -1127,7 +1127,7 @@
     [WeAppDelegate postToServerWithField:@"doctor" action:@"endConsult"
                               parameters:@{
                                            @"patientId":self.patientChating.userId,
-                                           @"refund":@"YES"
+                                           @"refund":@"true"
                                            }
                                  success:^(id response) {
                                      self.patientChating.consultStatus = @"N";
