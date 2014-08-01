@@ -25,6 +25,11 @@
     UIBarButtonItem * user_save;
     
     NSString * tmp;
+    
+    UILabel * consultPrice_explaination;
+    UIView * consultPrice_explaination_view;
+    UILabel * plusPrice_explaination;
+    UIView * plusPrice_explaination_view;
 }
 
 @end
@@ -47,7 +52,7 @@
     if (path.section == 2 && path.row == 1) [user_plusPrice_input becomeFirstResponder];
     if (path.section == 3 && path.row == 0) [user_maxResponseGap_input becomeFirstResponder];
     if (path.section == 0) {
-        we_wkpTOModify_id = path.row;
+        we_wkpTOModify_id = (int)path.row;
         [self performSegueWithIdentifier:@"Push_to_PecWkpMod" sender:self];
     }
     if (path.section == 1) {
@@ -76,24 +81,26 @@
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    //if (section == 1) return 30;
     if (section == 1) return 30;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
+    if (section == 2) return 50;
+    if (section == 3) return 50;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 50 + self.tabBarController.tabBar.frame.size.height;
     return 10;
 }
 // 询问每个段落的尾部标题
 - (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
-    //if (section == 2) return @"患者发出咨询请求后，若您未能在该时限内回复则取消咨询，并将咨询费返还至患者账户";
     return @"";
 }
 // 询问每个段落的尾部
 -(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
-    if (section == 3) return sys_explaination_view;
+    if (section == 2) return consultPrice_explaination;
+    if (section == 3) return plusPrice_explaination_view;
+    if (section == 4) return sys_explaination_view;
     return nil;
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 4;
+    return 5;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -105,9 +112,12 @@
             return 1;
             break;
         case 2:
-            return 2;
+            return 1;
             break;
         case 3:
+            return 1;
+            break;
+        case 4:
             return 1;
             break;
         default:
@@ -143,18 +153,11 @@
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell.contentView addSubview:user_consultPrice_input];
                     break;
-                case 1:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"加号预诊费";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    [cell.contentView addSubview:user_plusPrice_input];
-                    break;
                 default:
                     break;
             }
             break;
-        case 3:
+        case 4:
             cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"咨询回复时限";
             cell.textLabel.font = We_font_textfield_zh_cn;
@@ -163,6 +166,13 @@
             break;
         default:
             break;
+    }
+    if (indexPath.section == 3 && indexPath.row == 0) {
+        cell.contentView.backgroundColor = We_background_cell_general;
+        cell.textLabel.text = @"加号预诊费";
+        cell.textLabel.font = We_font_textfield_zh_cn;
+        cell.textLabel.textColor = We_foreground_black_general;
+        [cell.contentView addSubview:user_plusPrice_input];
     }
     return cell;
 }
@@ -306,6 +316,26 @@
     sys_explaination_label.textColor = We_foreground_gray_general;
     sys_explaination_label.textAlignment = NSTextAlignmentCenter;
     [sys_explaination_view addSubview:sys_explaination_label];
+    
+    // 咨询价格解释
+    consultPrice_explaination_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    consultPrice_explaination = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 280, 50)];
+    [consultPrice_explaination setNumberOfLines:0];
+    [consultPrice_explaination setText:@"患者需要预先支付设定数额的咨询费，方可以向您发起咨询，咨询申请可以在咨询室中查看"];
+    [consultPrice_explaination setFont:We_font_textfield_zh_cn];
+    [consultPrice_explaination setTextColor:We_foreground_gray_general];
+    [consultPrice_explaination setTextAlignment:NSTextAlignmentCenter];
+    [consultPrice_explaination_view addSubview:consultPrice_explaination];
+    
+    // 加号咨询费解释
+    plusPrice_explaination_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    plusPrice_explaination = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 280, 50)];
+    [plusPrice_explaination setNumberOfLines:0];
+    [plusPrice_explaination setText:@"患者的加号申请中往往会附带病例症状描述等信息，需要您进行预诊方可决定是否进行加号，所以需要支付一定的加号预诊费用"];
+    [plusPrice_explaination setFont:We_font_textfield_zh_cn];
+    [plusPrice_explaination setTextColor:We_foreground_gray_general];
+    [plusPrice_explaination setTextAlignment:NSTextAlignmentCenter];
+    [plusPrice_explaination_view addSubview:plusPrice_explaination];
     
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
