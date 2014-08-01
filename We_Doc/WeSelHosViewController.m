@@ -11,7 +11,6 @@
 #import <AFNetworking.h>
 
 @interface WeSelHosViewController () {
-    BOOL sys_prepared;
     UITableView * sys_tableView;
 }
 
@@ -24,12 +23,6 @@
  [AREA]
  UITableView dataSource & delegate interfaces
  */
-// 调整格子的透明度
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.alpha = We_alpha_cell_general;;
-    cell.opaque = YES;
-}
 // 欲选中某个Cell触发的事件
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -40,8 +33,8 @@
 {
     if (indexPath.section == 0) {
         if ([self save:indexPath.row]) {
-            currentUser.hospitalId = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row][@"id"];
-            currentUser.hospitalName = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row][@"name"];
+            currentUser.hospitalId = [NSString stringWithFormat:@"%@", we_hospitalList[@"100"][indexPath.row][@"id"]];
+            currentUser.hospitalName = [[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row][@"text"];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }
@@ -62,7 +55,7 @@
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 20 + self.tabBarController.tabBar.frame.size.height;
     return 10;
 }
 // 询问每个段落的尾部标题
@@ -79,7 +72,6 @@
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%d",[[we_hospitalList objectForKey:@"100"] count]);
     return [[we_hospitalList objectForKey:@"100"] count];
 }
 // 询问每个具体条目的内容
@@ -89,13 +81,16 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
+    cell.opaque = NO;
+    cell.backgroundColor = We_background_cell_general;
+    
     switch (indexPath.section) {
         case 0:
             cell.backgroundColor = We_background_cell_general;
             if (indexPath.row == 0) cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            cell.textLabel.text = [[[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row] objectForKey:@"name"];
+            cell.textLabel.text = [[[we_hospitalList objectForKey:@"100"] objectAtIndex:indexPath.row] objectForKey:@"text"];
             if ([[NSString stringWithFormat:@"%@", we_hospitalList[@"100"][indexPath.row][@"id"]] isEqualToString:currentUser.hospitalId]) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             break;
         default:
@@ -158,8 +153,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    sys_prepared = NO;
-    
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
@@ -179,17 +172,18 @@
     [manager GET:yijiarenUrl(@"data", @"listHospitalsOfArea") parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
              [self.view addSubview:sys_tableView];
-             NSLog(@"JSON: %@", HTTPResponse);
+             //NSLog(@"JSON: %@", HTTPResponse);
              NSString * errorMessage;
              
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
                  [we_hospitalList setObject:[HTTPResponse objectForKey:@"response"] forKey:@"100"];
+                 /*
                  NSLog(@"%@", [HTTPResponse objectForKey:@"response"]);
                  NSLog(@"%@", NSStringFromClass([[HTTPResponse objectForKey:@"response"] class]));
                  NSLog(@"%@", we_hospitalList);
-                 NSLog(@"%@", [we_hospitalList objectForKey:@"100"]);
+                 NSLog(@"%@", [we_hospitalList objectForKey:@"100"]);*/
                  return;
              }
              if ([result isEqualToString:@"2"]) {
@@ -226,7 +220,8 @@
              [notPermitted show];
          }
      ];
-
+    
+    NSLog(@"%@", currentUser.hospitalId);
 }
 
 - (void)didReceiveMemoryWarning
