@@ -523,7 +523,7 @@
                                                   where:[NSString stringWithFormat:@"(senderId = %@ and receiverId = %@) or (senderId = %@ and receiverId = %@)", currentUser.userId, self.patientChating.userId, self.patientChating.userId, currentUser.userId]
                                                 orderBy:nil
                                                  offset:0
-                                                  count:100];
+                                                  count:1000];
     NSLog(@"\nSelect %lu message(s) from database.", (unsigned long)[messageList count]);
     
     // 根据信息数量判断是否需要刷新
