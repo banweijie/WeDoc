@@ -558,7 +558,7 @@
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
 				909E3C6E1901AF4300ADC2E9 /* Experience */,
 				9026EDFC19044B7100CE4A7A /* PersonalAccount */,
-				909E3C6D1901AF0C00ADC2E9 /* CareerInformation */,
+				909E3C6D1901AF0C00ADC2E9 /* 必填信息 */,
 				907FE5A31902518B0070DB3E /* BusinessSetting */,
 				907FE5A019023E7D0070DB3E /* WePecNotViewController.h */,
 				907FE5A119023E7D0070DB3E /* WePecNotViewController.m */,
@@ -680,7 +680,7 @@
 			name = BusinessSetting;
 			sourceTree = "<group>";
 		};
-		909E3C6D1901AF0C00ADC2E9 /* CareerInformation */ = {
+		909E3C6D1901AF0C00ADC2E9 /* 必填信息 */ = {
 			isa = PBXGroup;
 			children = (
 				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
@@ -708,7 +708,7 @@
 				9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */,
 				9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */,
 			);
-			name = CareerInformation;
+			name = "必填信息";
 			sourceTree = "<group>";
 		};
 		909E3C6E1901AF4300ADC2E9 /* Experience */ = {

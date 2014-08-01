@@ -40,7 +40,7 @@
         NSLog(@"%d %@", indexPath.row, we_sectionList[currentUser.hospitalId][indexPath.row]);
         if ([self save:indexPath.row]) {
             currentUser.sectionId = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"id"]];
-            currentUser.sectionName = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"name"]];
+            currentUser.sectionName = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"text"]];
             [self.navigationController popViewControllerAnimated:YES];
         }
     }

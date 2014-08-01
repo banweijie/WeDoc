@@ -129,7 +129,7 @@
     [WeAppDelegate postToServerWithField:@"user" action:@"doRegister"
                               parameters:@{
                                            @"password":[user_loginPassword_input.text md5],
-                                           @"userType":@"P"
+                                           @"userType":@"D"
                                            }
                                  success:^(id response) {
                                      WeRegWlcViewController * vc = self.navigationController.viewControllers[0];

@@ -137,12 +137,20 @@
         if (path.row == 1) {
             if ([self changePassword]) {
                 we_vericode_type = @"ModifyPassword";
-                [self performSegueWithIdentifier:@"PecPea_pushto_RegIvc" sender:self];
+                //[self performSegueWithIdentifier:@"PecPea_pushto_RegIvc" sender:self];
             }
         }
     }
     if (path.section == 2) {
         we_logined = NO;
+        currentUser = nil;
+        favorPatientList = nil;
+        [self.tabBarController setSelectedIndex:weTabBarIdMainPage];
+        [self.tabBarController.viewControllers[0] popToRootViewControllerAnimated:YES];
+        //TODO
+        
+        
+        //[self.tabBarController setSelectedViewController:[[WeFunIdxViewController alloc] init]];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
