@@ -39,7 +39,7 @@
         NSString * month = [self.date substringWithRange:NSMakeRange(5, 2)];
         NSString * day = [self.date substringWithRange:NSMakeRange(8, 2)];
         NSString * period = [self.date substringWithRange:NSMakeRange(10, 1)];
-        self.dateToDemo = [NSString stringWithFormat:@"%@年%@月%@日 %@\n", year, month, day, [self transitionPeriodOfDayFromChar:period]];
+        self.dateToDemo = [NSString stringWithFormat:@"%@年%@月%@日 %@", year, month, day, [self transitionPeriodOfDayFromChar:period]];
     }
     self.name = [NSString stringWithFormat:@"%@", info[@"name"]];
     self.age = [NSString stringWithFormat:@"%@", info[@"age"]];

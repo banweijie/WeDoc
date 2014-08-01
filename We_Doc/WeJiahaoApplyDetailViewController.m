@@ -142,12 +142,12 @@
         [cell.detailTextLabel setText:self.currentJiahao.idNum];
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
-        [cell.textLabel setNumberOfLines:0];
         [cell.textLabel setFont:We_font_textfield_zh_cn];
         [cell.textLabel setText:@"参考加号时间"];
+        [cell.detailTextLabel setNumberOfLines:0];
         [cell.detailTextLabel setFont:We_font_textfield_zh_cn];
         [cell.detailTextLabel setTextColor:We_foreground_gray_general];
-        if ([datesToDemo isEqualToString:@""]) {
+        if ([self.currentJiahao.datesToDemo isEqualToString:@""]) {
             [cell.detailTextLabel setText:@"任意时刻均可"];
         }
         else {
