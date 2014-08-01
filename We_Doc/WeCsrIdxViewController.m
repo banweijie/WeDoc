@@ -96,12 +96,6 @@
     
     WeFavorPatient * patient = favorPatients[indexPath.section];
     
-    /*
-     // 底色
-     UIView * groundView = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 110)];
-     [groundView setBackgroundColor:We_background_cell_general];
-     [cell.contentView addSubview:groundView];*/
-    
     // 姓名
     UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(85, 9, 240, 48)];
     l1.text = [NSString stringWithFormat:@"%@", patient.userName];
@@ -308,7 +302,7 @@
 }
 
 - (void)selectedSegmentChanged:(UISegmentedControl *)segControl {
-    currentPage = segControl.selectedSegmentIndex;
+    currentPage = (int)segControl.selectedSegmentIndex;
     [self refreshData];
     [sys_tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }

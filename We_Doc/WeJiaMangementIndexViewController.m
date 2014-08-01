@@ -14,6 +14,9 @@
     UIActivityIndicatorView * sys_pendingView;
     
     NSMutableArray * jiahaoList;
+    NSMutableArray * jiahaos;
+    
+    int currentPage;
 }
 
 @end
@@ -196,16 +199,28 @@
     [refreshButton setTintColor:We_foreground_red_general];
     [self.view addSubview:refreshButton];
     
-    // 表格
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.frame.size.height - 64) style:UITableViewStyleGrouped];
+    // tabs
+    UIView * segControlView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, 320, 44)];
+    segControlView.backgroundColor = We_background_red_general;
+    [self.view addSubview:segControlView];
+    
+    UISegmentedControl * segControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"申请中", @"咨询中", @"已结束", nil]];
+    [segControl setFrame:CGRectMake(20, 7, 280, 30)];
+    segControl.backgroundColor = [UIColor clearColor];
+    segControl.selectedSegmentIndex = 1;
+    segControl.tintColor = We_foreground_white_general;
+    segControl.layer.cornerRadius = 5;
+    [segControl addTarget:self action:@selector(selectedSegmentChanged:) forControlEvents:UIControlEventValueChanged];
+    [segControlView addSubview:segControl];
+    
+    // sys_tableView
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, 320, self.view.frame.size.height - 64 - 44) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
+    sys_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:sys_tableView];
-    
-    // 加号申请按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"加号申请" style:UIBarButtonItemStylePlain target:self action:@selector(jiahaoApplyButton_onPress)];
     
     // 访问获取众筹详情列表
     [self api_doctor_listJiahao];
@@ -221,14 +236,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Callbacks
+
 - (void)refreshButton_onPress {
     [self api_doctor_listJiahao];
 }
 
-- (void)jiahaoApplyButton_onPress {
-    WeNewJiahaoApplyIndexViewController * vc = [[WeNewJiahaoApplyIndexViewController alloc]  init];
-    [self.navigationController pushViewController:vc animated:YES];
+- (void)refreshData {
+    NSMutableArray * jiahaos_tmp = [[NSMutableArray alloc] init];
+    for (WeJiahao * jiahao in jiahaoList) {
+        // 申请中
+        if (currentPage == 0 && [jiahao.status isEqualToString:@"A"]) [jiahaos_tmp addObject:jiahao];
+        // 咨询中
+        if (currentPage == 1 && [jiahao.status isEqualToString:@"J"]) [jiahaos_tmp addObject:jiahao];
+        // 已结束
+        if (currentPage == 2 && ([jiahao.status isEqualToString:@"Y"] || [jiahao.status isEqualToString:@"N"])) [jiahaos_tmp addObject:jiahao];
+    }
+    
+    if (currentPage == 0) {
+        [jiahaos_tmp sortUsingComparator:^NSComparisonResult(id rA, id rB) {
+            return [(WeJiahao *)rA jiahaoId] < [(WeJiahao *)rB jiahaoId];
+        }];
+        jiahaos = jiahaos_tmp;
+    }
+    else {
+        
+    }
+    
+    [sys_tableView reloadData];
 }
+
+- (void)selectedSegmentChanged:(UISegmentedControl *)segControl {
+    currentPage = (int)segControl.selectedSegmentIndex;
+    [self refreshData];
+    [sys_tableView setContentOffset:CGPointMake(0, 0) animated:NO];
+}
+
+#pragma mark - APIs
 
 - (void)api_doctor_listJiahao {
     [sys_pendingView startAnimating];
@@ -240,8 +284,11 @@
                                            @"status":@"J"
                                            }
                                  success:^(id response) {
-                                     jiahaoList = [self preworkOnJiahaoList:[NSMutableArray arrayWithArray:response]];
-                                     [sys_tableView reloadData];
+                                     jiahaoList = [[NSMutableArray alloc] init];
+                                     for (int i = 0; i < [response count]; i ++) {
+                                         [jiahaoList addObject:[[WeJiahao alloc] initWithNSDictionary:response[i]]];
+                                     }
+                                     [self refreshData];
                                      [sys_tableView setHidden:NO];
                                      [sys_pendingView stopAnimating];
                                  }
@@ -252,29 +299,8 @@
                                  }];
 }
 
-- (NSMutableArray *)preworkOnJiahaoList:(id)response {
-    NSMutableArray * sourceData = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [response count]; i ++) {
-        [sourceData addObject:[[WeJiahao alloc] initWithNSDictionary:response[i]]];
-    }
-    
-    [sourceData sortUsingComparator:^NSComparisonResult(id rA, id rB) {
-        return [[(WeJiahao *)rB date] compare: [(WeJiahao *)rA date]];
-    }];
-    
-    NSMutableArray * tableViewData0 = [[NSMutableArray alloc] init];
-    tableViewData0 = [[NSMutableArray alloc] init];
-    int j = -1;
-    for (int i = 0; i < [sourceData count]; i ++) {
-        if (i == 0 || ![[[(WeJiahao *)sourceData[i] date] substringToIndex:10] isEqualToString:[[(WeJiahao *)sourceData[i - 1] date] substringToIndex:10]]) {
-            j ++;
-            tableViewData0[j] = [[NSMutableArray alloc] init];
-        }
-        [tableViewData0[j] addObject:sourceData[i]];
-    }
-    
-    return tableViewData0;
-}
+#pragma mark - Functional
+
 /*
 #pragma mark - Navigation
 

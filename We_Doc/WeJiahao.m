@@ -45,6 +45,7 @@
     self.age = [NSString stringWithFormat:@"%@", info[@"age"]];
     self.idNum = [NSString stringWithFormat:@"%@", info[@"idNum"]];
     self.gender = [NSString stringWithFormat:@"%@", info[@"gender"]];
+    if (info[@"status"] != [NSNull null]) self.status = [NSString stringWithFormat:@"%@", info[@"status"]];
 }
 
 - (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay {
