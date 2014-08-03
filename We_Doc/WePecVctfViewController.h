@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeInputPcNumberViewController.h"
 
 @interface WePecVctfViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 

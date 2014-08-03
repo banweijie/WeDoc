@@ -45,11 +45,15 @@
         if (path.row == 2) {
             [self performSegueWithIdentifier:@"selectionOfTitleInCareerInformation" sender:self];
         }
-        if (path.row == 3) {
-            WeSelLanViewController * vc = [[WeSelLanViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
     }
+    if (path.section == 0 && path.row == 3) {
+        [self.navigationController pushViewController:[[WeInpEmaViewController alloc] init] animated:YES];
+    }
+    /*
+    if (path.section == && path.row == 3) {
+        WeSelLanViewController * vc = [[WeSelLanViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }*/
     if (path.section == 1) {
         if (path.row == 0) {
             [self performSegueWithIdentifier:@"PecCai2PecCtf" sender:self];
@@ -84,18 +88,21 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) return 20 + 64;
+    if (section == 0) return 100 + 64;
+    if (section == 2) return 80;
     return 20;
 }
 // 询问每个段落的头部标题
 - (NSString *)tableView:(UITableView *)tv titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) return @"以下为必填信息，必填信息必须按要求填写完毕方可提交审核，只有通过审核的医生方可与患者进行交流。每次对必填信息进行修改都会导致审核过期，需要再次提交审核。";
+    if (section == 2) return @"以下为选填信息，选填信息可以任意填写，但是良好完善的信息有助于患者了解您。对选填信息的修改不会导致审核状态的变化。";
     return @"";
 }
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
-    return 10;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 20 + self.tabBarController.tabBar.frame.size.height;
+    return 1;
 }
 // 询问每个段落的尾部标题
 - (NSString *)tableView:(UITableView *)tv titleForFooterInSection:(NSInteger)section {
@@ -103,12 +110,11 @@
 }
 // 询问每个段落的尾部
 -(UIView *)tableView:(UITableView *)tv viewForFooterInSection:(NSInteger)section{
-    //if (section == 1) return sys_countDown_demo;
     return nil;
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 4;
+    return 3;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -129,10 +135,6 @@
             return 0;
     }
 }
-- (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    cell.alpha = 0.85;
-    cell.opaque = YES;
-}
 
 // 询问每个具体条目的内容
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,6 +143,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
+    cell.opaque = NO;
+    cell.backgroundColor = We_background_cell_general;
+    
     UIImageView * imageView;
     switch (indexPath.section) {
         case 0:
@@ -176,13 +181,14 @@
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 case 3:
-                    cell.backgroundColor = We_background_cell_general;
-                    cell.detailTextLabel.text = [WeAppDelegate deCodeOfLanguages:currentUser.languages];
-                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
-                    cell.detailTextLabel.textColor = We_foreground_gray_general;
-                    cell.textLabel.text = @"工作语言";
+                    cell.contentView.backgroundColor = We_background_cell_general;
+                    cell.textLabel.text = @"邮箱";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
+                    cell.detailTextLabel.text = currentUser.email;
+                    if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
@@ -270,17 +276,27 @@
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
+                    /*
                 case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"学位";
+                    cell.textLabel.text = @"教育背景";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = we_codings[@"doctorDegree"][currentUser.degree];
+                    cell.detailTextLabel.text = currentUser.degree;
                     if ([currentUser.degree isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
                     cell.detailTextLabel.font = We_font_textfield_zh_cn;
                     cell.detailTextLabel.textColor = We_foreground_gray_general;
                     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-                    break;
+                    break;*/
+                case 2:
+                    cell.backgroundColor = We_background_cell_general;
+                    cell.detailTextLabel.text = [WeAppDelegate deCodeOfLanguages:currentUser.languages];
+                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
+                    cell.detailTextLabel.textColor = We_foreground_gray_general;
+                    cell.textLabel.text = @"工作语言";
+                    cell.textLabel.font = We_font_textfield_zh_cn;
+                    cell.textLabel.textColor = We_foreground_black_general;
+                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                 default:
                     break;
             }
@@ -288,15 +304,6 @@
         case 3:
             switch (indexPath.row) {
                 case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"邮箱";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    cell.detailTextLabel.text = currentUser.email;
-                    if ([cell.detailTextLabel.text isEqualToString:@""]) cell.detailTextLabel.text = @"选填";
-                    cell.detailTextLabel.font = We_font_textfield_zh_cn;
-                    cell.detailTextLabel.textColor = We_foreground_gray_general;
-                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                     break;
                 default:
                     break;
@@ -342,47 +349,11 @@
 }
 
 - (void)user_save_onpress:(id)sender {
-    /*
-    NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
-    NSString *parasString = [NSString stringWithFormat:@"hospital=%@&section=%@&consult_price=%@&max_response_gap=%@", we_workPeriod, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
-    NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
-    
-    if (DataResponse != NULL) {
-        NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSString *result = [HTTPResponse objectForKey:@"result"];
-        result = [NSString stringWithFormat:@"%@", result];
-        if ([result isEqualToString:@"1"]) {
-            we_workPeriod_save = we_workPeriod;
-            we_plusPrice = user_plusPrice_value;
-            we_consultPrice = user_consultPrice_value;
-            we_maxResponseGap = user_maxResponseGap_value;
-            [self.navigationController popViewControllerAnimated:YES];
-            return;
-        }
-        if ([result isEqualToString:@"2"]) {
-            NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-            NSEnumerator *enumerator = [fields keyEnumerator];
-            id key;
-            while ((key = [enumerator nextObject])) {
-                NSString * tmp1 = [fields objectForKey:key];
-                if (tmp1 != NULL) errorMessage = tmp1;
-            }
-        }
-        if ([result isEqualToString:@"3"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-        if ([result isEqualToString:@"4"]) {
-            errorMessage = [HTTPResponse objectForKey:@"info"];
-        }
-    }
-    UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"保存失败"
-                                 message:errorMessage
-                                 delegate:nil
-                                 cancelButtonTitle:@"OK"
-                                 otherButtonTitles:nil];
-    [notPermitted show];*/
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"applyCheck" parameters:nil success:^(id response) {
+        [[[UIAlertView alloc] initWithTitle:@"申请审核成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+    } failure:^(NSString * errorMessage) {
+        [[[UIAlertView alloc] initWithTitle:@"申请审核失败" message:errorMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+    }];
 }
 
 - (void)viewDidLoad

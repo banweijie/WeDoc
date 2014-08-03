@@ -14,8 +14,7 @@
     UITableView * sys_tableView;
     
     UIImageView * user_certificatePhoto_view;
-    
-    UITextField * user_certificateId_input;
+
 }
 
 @end
@@ -100,7 +99,10 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [user_certificateId_input becomeFirstResponder];
+            WeInputQcNumberViewController * vc = [[WeInputQcNumberViewController alloc] init];
+            vc.stringToPlaceHolder = currentUser.qc;
+            vc.stringToBeTitle = @"资格证书编号";
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     if (indexPath.section == 1) {
@@ -168,16 +170,17 @@
     static NSString *MyIdentifier = @"MyReuseIdentifier";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     switch (indexPath.section) {
         case 0:
             cell.backgroundColor = We_background_cell_general;
-            cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"证书编号";
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            [cell addSubview:user_certificateId_input];
+            cell.detailTextLabel.text = currentUser.qc;
+            cell.detailTextLabel.font = We_font_textfield_zh_cn;
+            cell.detailTextLabel.textColor = We_foreground_gray_general;
             break;
         case 1:
             cell.backgroundColor = We_background_cell_general;
@@ -273,12 +276,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    We_init_textFieldInCell_general(user_certificateId_input, @"", We_font_textfield_zh_cn)
-    user_certificateId_input.placeholder = @"请输入证书编号";
-    
     user_certificatePhoto_view = [[UIImageView alloc] initWithFrame:CGRectMake(242, 10, 70, 70)];
     user_certificatePhoto_view.image = currentUser.qcImage;
-    
+
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
@@ -296,6 +296,10 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [sys_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

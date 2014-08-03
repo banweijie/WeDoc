@@ -98,11 +98,6 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [user_Id_input becomeFirstResponder];
-        }
-    }
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
             UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                           initWithTitle:nil
                                           delegate:self
@@ -117,7 +112,7 @@
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) return tv.rowHeight * 2;
+    if (indexPath.section == 0) return tv.rowHeight * 2;
     return tv.rowHeight;
 }
 // 询问每个段落的头部高度
@@ -146,7 +141,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 2;
+    return 1;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -170,14 +165,6 @@
     }
     switch (indexPath.section) {
         case 0:
-            cell.backgroundColor = We_background_cell_general;
-            cell.contentView.backgroundColor = We_background_cell_general;
-            cell.textLabel.text = @"证书编号";
-            cell.textLabel.font = We_font_textfield_zh_cn;
-            cell.textLabel.textColor = We_foreground_black_general;
-            [cell addSubview:user_Id_input];
-            break;
-        case 1:
             cell.backgroundColor = We_background_cell_general;
             cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"上传证书照片";

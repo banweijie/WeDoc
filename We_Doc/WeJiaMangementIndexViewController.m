@@ -196,14 +196,6 @@
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
     
-    // 转圈圈
-    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4];
-    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
-    [sys_pendingView.layer setCornerRadius:10];
-    [sys_pendingView setAlpha:1.0];
-    [self.view addSubview:sys_pendingView];
-    
     // 刷新按钮
     refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     refreshButton.frame = self.view.frame;
@@ -233,6 +225,14 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+    
+    // 转圈圈
+    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4];
+    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [sys_pendingView.layer setCornerRadius:10];
+    [sys_pendingView setAlpha:1.0];
+    [self.view addSubview:sys_pendingView];
     
     // 访问获取众筹详情列表
     [self api_doctor_listJiahao];

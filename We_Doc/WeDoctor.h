@@ -27,6 +27,8 @@
 @property(strong, nonatomic) NSString * plusPrice;
 @property(strong, nonatomic) NSString * pcPath;
 @property(strong, nonatomic) NSString * qcPath;
+@property(strong, nonatomic) NSString * pc;
+@property(strong, nonatomic) NSString * qc;
 @property(strong, nonatomic) NSString * wcPath;
 @property(strong, nonatomic) NSString * skills;
 @property(strong, nonatomic) NSString * status;

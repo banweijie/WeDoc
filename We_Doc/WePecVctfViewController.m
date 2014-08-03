@@ -98,7 +98,10 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [user_Id_input becomeFirstResponder];
+            WeInputPcNumberViewController * vc = [[WeInputPcNumberViewController alloc] init];
+            vc.stringToPlaceHolder = currentUser.pc;
+            vc.stringToBeTitle = @"职业证书编号";
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     if (indexPath.section == 1) {
@@ -166,16 +169,17 @@
     static NSString *MyIdentifier = @"MyReuseIdentifier";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     switch (indexPath.section) {
         case 0:
             cell.backgroundColor = We_background_cell_general;
-            cell.contentView.backgroundColor = We_background_cell_general;
             cell.textLabel.text = @"证书编号";
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            [cell addSubview:user_Id_input];
+            cell.detailTextLabel.text = currentUser.pc;
+            cell.detailTextLabel.font = We_font_textfield_zh_cn;
+            cell.detailTextLabel.textColor = We_foreground_gray_general;
             break;
         case 1:
             cell.backgroundColor = We_background_cell_general;
@@ -293,6 +297,10 @@
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [sys_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

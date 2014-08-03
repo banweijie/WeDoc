@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeInputQcNumberViewController.h"
 
 @interface WePecCtfViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 

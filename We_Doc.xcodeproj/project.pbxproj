@@ -102,6 +102,8 @@
 		90B4AC78196D1DA0006E60CE /* WeRegIpnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B4AC72196D1DA0006E60CE /* WeRegIpnViewController.m */; };
 		90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B4AC74196D1DA0006E60CE /* WeRegIvcViewController.m */; };
 		90B4AC7A196D1DA0006E60CE /* WeRegIrpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B4AC76196D1DA0006E60CE /* WeRegIrpViewController.m */; };
+		90C908D9198BA7910068EE4C /* WeInputQcNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C908D8198BA7910068EE4C /* WeInputQcNumberViewController.m */; };
+		90C908DC198BAA880068EE4C /* WeInputPcNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C908DB198BAA880068EE4C /* WeInputPcNumberViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +298,10 @@
 		90B4AC74196D1DA0006E60CE /* WeRegIvcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegIvcViewController.m; sourceTree = "<group>"; };
 		90B4AC75196D1DA0006E60CE /* WeRegIrpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRegIrpViewController.h; sourceTree = "<group>"; };
 		90B4AC76196D1DA0006E60CE /* WeRegIrpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRegIrpViewController.m; sourceTree = "<group>"; };
+		90C908D7198BA7910068EE4C /* WeInputQcNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInputQcNumberViewController.h; sourceTree = "<group>"; };
+		90C908D8198BA7910068EE4C /* WeInputQcNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInputQcNumberViewController.m; sourceTree = "<group>"; };
+		90C908DA198BAA880068EE4C /* WeInputPcNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInputPcNumberViewController.h; sourceTree = "<group>"; };
+		90C908DB198BAA880068EE4C /* WeInputPcNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInputPcNumberViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,7 +564,7 @@
 				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
 				909E3C6E1901AF4300ADC2E9 /* Experience */,
 				9026EDFC19044B7100CE4A7A /* PersonalAccount */,
-				909E3C6D1901AF0C00ADC2E9 /* 必填信息 */,
+				909E3C6D1901AF0C00ADC2E9 /* 职业信息 */,
 				907FE5A31902518B0070DB3E /* BusinessSetting */,
 				907FE5A019023E7D0070DB3E /* WePecNotViewController.h */,
 				907FE5A119023E7D0070DB3E /* WePecNotViewController.m */,
@@ -680,7 +686,7 @@
 			name = BusinessSetting;
 			sourceTree = "<group>";
 		};
-		909E3C6D1901AF0C00ADC2E9 /* 必填信息 */ = {
+		909E3C6D1901AF0C00ADC2E9 /* 职业信息 */ = {
 			isa = PBXGroup;
 			children = (
 				9054808718FAC28700CE8172 /* WePecCaiViewController.h */,
@@ -695,8 +701,12 @@
 				9026EFB4191447FB00CE4A7A /* WeSelTilViewController.m */,
 				909E3C611901661400ADC2E9 /* WePecCtfViewController.h */,
 				909E3C621901661400ADC2E9 /* WePecCtfViewController.m */,
+				90C908D7198BA7910068EE4C /* WeInputQcNumberViewController.h */,
+				90C908D8198BA7910068EE4C /* WeInputQcNumberViewController.m */,
 				909E3C641901662F00ADC2E9 /* WePecVctfViewController.h */,
 				909E3C651901662F00ADC2E9 /* WePecVctfViewController.m */,
+				90C908DA198BAA880068EE4C /* WeInputPcNumberViewController.h */,
+				90C908DB198BAA880068EE4C /* WeInputPcNumberViewController.m */,
 				9026EE0619049E7400CE4A7A /* WePecCaiWkpViewController.h */,
 				9026EE0719049E7400CE4A7A /* WePecCaiWkpViewController.m */,
 				9026EE0319049E5700CE4A7A /* WePecCaiGriViewController.h */,
@@ -708,7 +718,7 @@
 				9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */,
 				9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */,
 			);
-			name = "必填信息";
+			name = "职业信息";
 			sourceTree = "<group>";
 		};
 		909E3C6E1901AF4300ADC2E9 /* Experience */ = {
@@ -877,6 +887,7 @@
 			files = (
 				9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */,
 				90B4AC64196D1D6A006E60CE /* WeSPViewController.m in Sources */,
+				90C908D9198BA7910068EE4C /* WeInputQcNumberViewController.m in Sources */,
 				9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */,
 				906F4DFB1976220B007807FE /* WeJiaMangementIndexViewController.m in Sources */,
 				906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */,
@@ -897,6 +908,7 @@
 				90B4AC67196D1D6A006E60CE /* WeTabBarViewController.m in Sources */,
 				9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
+				90C908DC198BAA880068EE4C /* WeInputPcNumberViewController.m in Sources */,
 				906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */,
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
 				906F4DFE19762294007807FE /* WeJiahao.m in Sources */,

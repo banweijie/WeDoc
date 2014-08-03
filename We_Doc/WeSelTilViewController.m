@@ -192,7 +192,7 @@
     }
     
     for (int i = 0; i < [titleKeyArray count]; i++) {
-        if ([currentUser.category isEqualToString:titleKeyArray[i]]) titleSelected = i;
+        if ([currentUser.title isEqualToString:titleKeyArray[i]]) titleSelected = i;
     }
     
     // save button

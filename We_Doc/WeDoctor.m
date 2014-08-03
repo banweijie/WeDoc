@@ -66,6 +66,8 @@
     [self setWorkPeriod:[NSString stringWithFormat:@"%@", info[@"workPeriod"]]];
     [self setWcPath:[NSString stringWithFormat:@"%@", info[@"pcPath"]]];
     [self setQcPath:[NSString stringWithFormat:@"%@", info[@"qcPath"]]];
+    if (info[@"pc"] != [NSNull null]) self.pc = [NSString stringWithFormat:@"%@", info[@"pc"]];
+    if (info[@"qc"] != [NSNull null]) self.qc = [NSString stringWithFormat:@"%@", info[@"qc"]];
     [self setWcPath:[NSString stringWithFormat:@"%@", info[@"wcPath"]]];
     [self setSkills:[NSString stringWithFormat:@"%@", info[@"skills"]]];
     [self setStatus:[NSString stringWithFormat:@"%@", info[@"status"]]];

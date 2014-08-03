@@ -10,6 +10,8 @@
 #import "WeMyViewController.h"
 #import "WeSelLanViewController.h"
 
+#import "WeInpEmaViewController.h"
+
 @interface WePecCaiViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @end
