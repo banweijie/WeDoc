@@ -139,15 +139,15 @@
         NSInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
         NSDateComponents * the = [calendar components:unitFlags fromDate:date];
         
-        int k;
-        if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dA", ([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
-            [yearList addObject:[NSString stringWithFormat:@"%d", [the year]]];
-            [monthList addObject:[NSString stringWithFormat:@"%02d", [the month]]];
-            [dayList addObject:[NSString stringWithFormat:@"%02d", [the day]]];
-            [weekdayList addObject:[NSString stringWithFormat:@"%d", ([the weekday] + 5) % 7 + 1]];
+        long long k;
+        if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dA", (int)([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
+            [yearList addObject:[NSString stringWithFormat:@"%d", (int)[the year]]];
+            [monthList addObject:[NSString stringWithFormat:@"%02d", (int)[the month]]];
+            [dayList addObject:[NSString stringWithFormat:@"%02d", (int)[the day]]];
+            [weekdayList addObject:[NSString stringWithFormat:@"%d", (int)([the weekday] + 5) % 7 + 1]];
             [periodList addObject:[NSString stringWithFormat:@"%@", @"A"]];
             [typeList addObject:[NSString stringWithFormat:@"%@", [currentUser.workPeriod substringWithRange:NSMakeRange(k + 2, 1)]]];
-            if ([self.dates rangeOfString:[NSString stringWithFormat:@"%04d-%02d-%02dA", [the year], [the month], [the day]]].location != NSNotFound) {
+            if ([self.dates rangeOfString:[NSString stringWithFormat:@"%04d-%02d-%02dA", (int)[the year], (int)[the month], (int)[the day]]].location != NSNotFound) {
                 [selectList addObject:@"YES"];
                 selectCount ++;
             }
@@ -155,14 +155,14 @@
                 [selectList addObject:@"NO"];
             }
         }
-        if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dB", ([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
-            [yearList addObject:[NSString stringWithFormat:@"%d", [the year]]];
-            [monthList addObject:[NSString stringWithFormat:@"%02d", [the month]]];
-            [dayList addObject:[NSString stringWithFormat:@"%02d", [the day]]];
-            [weekdayList addObject:[NSString stringWithFormat:@"%d", ([the weekday] + 5) % 7 + 1]];
+        if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dB", (int)([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
+            [yearList addObject:[NSString stringWithFormat:@"%d", (int)[the year]]];
+            [monthList addObject:[NSString stringWithFormat:@"%02d", (int)[the month]]];
+            [dayList addObject:[NSString stringWithFormat:@"%02d", (int)[the day]]];
+            [weekdayList addObject:[NSString stringWithFormat:@"%d", (int)([the weekday] + 5) % 7 + 1]];
             [periodList addObject:[NSString stringWithFormat:@"%@", @"B"]];
             [typeList addObject:[NSString stringWithFormat:@"%@", [currentUser.workPeriod substringWithRange:NSMakeRange(k + 2, 1)]]];
-            if ([self.dates rangeOfString:[NSString stringWithFormat:@"%d-%d-%dB", [the year], [the month], [the day]]].location != NSNotFound) {
+            if ([self.dates rangeOfString:[NSString stringWithFormat:@"%d-%d-%dB", (int)[the year], (int)[the month], (int)[the day]]].location != NSNotFound) {
                 [selectList addObject:@"YES"];
                 selectCount ++;
             }

@@ -37,7 +37,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        NSLog(@"%d %@", indexPath.row, we_sectionList[currentUser.hospitalId][indexPath.row]);
+        //NSLog(@"%d %@", indexPath.row, we_sectionList[currentUser.hospitalId][indexPath.row]);
         if ([self save:indexPath.row]) {
             currentUser.sectionId = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"id"]];
             currentUser.sectionName = [NSString stringWithFormat:@"%@", we_sectionList[currentUser.hospitalId][indexPath.row][@"text"]];
@@ -78,7 +78,7 @@
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%d",[we_sectionList[currentUser.hospitalId] count]);
+    //NSLog(@"%d",[we_sectionList[currentUser.hospitalId] count]);
     return [we_sectionList[currentUser.hospitalId] count];
 }
 // 询问每个具体条目的内容
