@@ -309,7 +309,7 @@
         [restData setText:[NSString stringWithFormat:@"已结束"]];
     }
     else {
-        [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400 + 1]];
+        [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400]];
     }
     [cell.contentView addSubview:restData];
     

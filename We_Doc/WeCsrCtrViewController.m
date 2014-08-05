@@ -260,7 +260,6 @@
     
     // 系统消息
     if ([currentMessage.messageType isEqualToString:@"X"]) {
-        NSLog(@"XXXXXXXXXXXXXXXXXXXXXXXXX");
         NSString * title = currentMessage.content;
         
         CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:320];

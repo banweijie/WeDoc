@@ -572,7 +572,7 @@
 			name = PersonalCenter;
 			sourceTree = "<group>";
 		};
-		9054808618FAA57000CE8172 /* RaisePublic */ = {
+		9054808618FAA57000CE8172 /* 众筹项目 */ = {
 			isa = PBXGroup;
 			children = (
 				906F4E11197D0957007807FE /* WeFunSelViewController.h */,
@@ -592,7 +592,7 @@
 				90B4AC38196D1CF4006E60CE /* WeFunSupViewController.h */,
 				90B4AC39196D1CF4006E60CE /* WeFunSupViewController.m */,
 			);
-			name = RaisePublic;
+			name = "众筹项目";
 			sourceTree = "<group>";
 		};
 		906F4D8E197376AC007807FE /* ConsultingRoom */ = {
@@ -638,17 +638,17 @@
 		906F4DF719761FDE007807FE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				906F4DF8197621EC007807FE /* JiaManagement */,
+				906F4DF8197621EC007807FE /* 加号管理 */,
 				9039CC5C1902B40800EA8310 /* Customs */,
 				9054807918FA606900CE8172 /* Register */,
 				9054807A18FA68D600CE8172 /* PersonalCenter */,
-				9054808618FAA57000CE8172 /* RaisePublic */,
+				9054808618FAA57000CE8172 /* 众筹项目 */,
 				906F4D8E197376AC007807FE /* ConsultingRoom */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
 		};
-		906F4DF8197621EC007807FE /* JiaManagement */ = {
+		906F4DF8197621EC007807FE /* 加号管理 */ = {
 			isa = PBXGroup;
 			children = (
 				906F4DF91976220B007807FE /* WeJiaMangementIndexViewController.h */,
@@ -662,7 +662,7 @@
 				906F4E0819764675007807FE /* WeCsrJiaChooseTimeViewController.h */,
 				906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */,
 			);
-			name = JiaManagement;
+			name = "加号管理";
 			sourceTree = "<group>";
 		};
 		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
