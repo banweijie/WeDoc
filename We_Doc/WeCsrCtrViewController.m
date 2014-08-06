@@ -73,6 +73,9 @@
     
     double startTime;
 
+    // 结束咨询相关
+    UIActionSheet * endConsult_confirmActionSheet;
+    UIActionSheet * endConsultForFree_confirmActionSheet;
 }
 
 @end
@@ -93,6 +96,14 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet == endConsult_confirmActionSheet) {
+        if (buttonIndex == 0) [self api_doctor_endConsult];
+        return;
+    }
+    if (actionSheet == endConsultForFree_confirmActionSheet) {
+        if (buttonIndex == 0) [self api_doctor_endConsult_forFree];
+        return;
+    }
     if (buttonIndex == 0) {
         // 拍照
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
@@ -992,7 +1003,7 @@
     [uploadHiButton setFrame:CGRectMake(110, 0, 100, 100)];
     [uploadHiButton setTitle:@"结束咨询" forState:UIControlStateNormal];
     [uploadHiButton setImage:[UIImage imageNamed:@"chatroom-end"] forState:UIControlStateNormal];
-    [uploadHiButton addTarget:self action:@selector(api_doctor_endConsult) forControlEvents:UIControlEventTouchUpInside];
+    [uploadHiButton addTarget:self action:@selector(endConsultButton_onPress) forControlEvents:UIControlEventTouchUpInside];
     uploadHiButton.titleLabel.font = We_font_textfield_zh_cn;
     uploadHiButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadHiButton];
@@ -1001,7 +1012,7 @@
     [uploadVedioButton setFrame:CGRectMake(210, 0, 110, 100)];
     [uploadVedioButton setTitle:@"结束咨询并退款" forState:UIControlStateNormal];
     [uploadVedioButton setImage:[UIImage imageNamed:@"chatroom-endforfree"] forState:UIControlStateNormal];
-    [uploadVedioButton addTarget:self action:@selector(api_doctor_endConsult_forFree) forControlEvents:UIControlEventTouchUpInside];
+    [uploadVedioButton addTarget:self action:@selector(endConsultForFreeButton_onPress) forControlEvents:UIControlEventTouchUpInside];
     uploadVedioButton.titleLabel.font = We_font_textfield_zh_cn;
     uploadVedioButton.tintColor = We_foreground_red_general;
     [moreInputView addSubview:uploadVedioButton];
@@ -1028,6 +1039,7 @@
     
     [self initView_AudioToolBar];
     [self initView_AudioReplayToolBar];
+    [self initView_endConsult_confirmActionSheets];
     
     // 转圈圈
     sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -1132,6 +1144,22 @@
     
     [self.tabBarController.view addSubview:audioReplayToolBar];
 }
+
+- (void)initView_endConsult_confirmActionSheets {
+    endConsult_confirmActionSheet = [[UIActionSheet alloc] initWithTitle:@"您是否确认结束此次咨询？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"确定", nil];
+    endConsult_confirmActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    
+    endConsultForFree_confirmActionSheet = [[UIActionSheet alloc] initWithTitle:@"您是否确认结束此次咨询并退款？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"确定", nil];
+    endConsultForFree_confirmActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+    [self refreshView:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(timer_onTick:) userInfo:nil repeats:YES];
+}
+
 #pragma mark - Callbacks
 
 // 重听视图 - 遮罩层按钮被按下
@@ -1326,12 +1354,6 @@
     return YES;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-    [self refreshView:NO];
-    timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(timer_onTick:) userInfo:nil repeats:YES];
-}
 
 - (void)timer_onTick:(id)sender {
     [self refreshView:NO];
@@ -1400,7 +1422,19 @@
     timer = nil;
 }
 
+#pragma mark - Callbacks
+
+- (void)endConsultButton_onPress {
+    [endConsult_confirmActionSheet showInView:self.view];
+}
+
+- (void)endConsultForFreeButton_onPress {
+    NSLog(@"!!!");
+    [endConsultForFree_confirmActionSheet showInView:self.view];
+}
+
 #pragma mark - apis
+
 - (void)api_doctor_endConsult {
     [sys_pendingView startAnimating];
     [WeAppDelegate postToServerWithField:@"doctor" action:@"endConsult"
