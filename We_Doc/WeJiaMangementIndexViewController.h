@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WeAppDelegate.h"
 #import "WeJiahao.h"
-#import "WeNewJiahaoApplyIndexViewController.h"
+#import "WeJiahaoApplyDetailViewController.h"
 #import "WeJiahaoDetailViewController.h"
 
 @interface WeJiaMangementIndexViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

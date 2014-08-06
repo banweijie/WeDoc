@@ -60,7 +60,6 @@
 		906F4DE11973F194007807FE /* WeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DE01973F194007807FE /* WeOrder.m */; };
 		906F4DFB1976220B007807FE /* WeJiaMangementIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */; };
 		906F4DFE19762294007807FE /* WeJiahao.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4DFD19762294007807FE /* WeJiahao.m */; };
-		906F4E01197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */; };
 		906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */; };
 		906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E06197640D9007807FE /* WeJiahaoApplyDetailViewController.m */; };
 		906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */; };
@@ -216,8 +215,6 @@
 		906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiaMangementIndexViewController.m; sourceTree = "<group>"; };
 		906F4DFC19762294007807FE /* WeJiahao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahao.h; sourceTree = "<group>"; };
 		906F4DFD19762294007807FE /* WeJiahao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahao.m; sourceTree = "<group>"; };
-		906F4DFF197628B4007807FE /* WeNewJiahaoApplyIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeNewJiahaoApplyIndexViewController.h; sourceTree = "<group>"; };
-		906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeNewJiahaoApplyIndexViewController.m; sourceTree = "<group>"; };
 		906F4E0219763EEF007807FE /* WeJiahaoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahaoDetailViewController.h; sourceTree = "<group>"; };
 		906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeJiahaoDetailViewController.m; sourceTree = "<group>"; };
 		906F4E05197640D9007807FE /* WeJiahaoApplyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeJiahaoApplyDetailViewController.h; sourceTree = "<group>"; };
@@ -433,7 +430,7 @@
 			path = PAImageView;
 			sourceTree = "<group>";
 		};
-		9039CC5C1902B40800EA8310 /* Customs */ = {
+		9039CC5C1902B40800EA8310 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				90B4AC4D196D1D6A006E60CE /* WeSPViewController.h */,
@@ -461,7 +458,7 @@
 				906F4E0E1976B553007807FE /* WeGenderPickerViewController.h */,
 				906F4E0F1976B553007807FE /* WeGenderPickerViewController.m */,
 			);
-			name = Customs;
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		904F7A2618F0F146000CB41B = {
@@ -503,6 +500,7 @@
 			children = (
 				904F7A4118F0F146000CB41B /* WeAppDelegate.h */,
 				904F7A4218F0F146000CB41B /* WeAppDelegate.m */,
+				9039CC5C1902B40800EA8310 /* CustomViews */,
 				906F4DF619761FC3007807FE /* Framework */,
 				900E28DE19292C42008BF61C /* Model */,
 				906F4DF719761FDE007807FE /* ViewController */,
@@ -542,7 +540,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9054807918FA606900CE8172 /* Register */ = {
+		9054807918FA606900CE8172 /* 注册登录 */ = {
 			isa = PBXGroup;
 			children = (
 				90B4AC6F196D1DA0006E60CE /* WeRegWlcViewController.h */,
@@ -554,7 +552,7 @@
 				90B4AC75196D1DA0006E60CE /* WeRegIrpViewController.h */,
 				90B4AC76196D1DA0006E60CE /* WeRegIrpViewController.m */,
 			);
-			name = Register;
+			name = "注册登录";
 			sourceTree = "<group>";
 		};
 		9054807A18FA68D600CE8172 /* 个人中心 */ = {
@@ -639,8 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				906F4DF8197621EC007807FE /* 加号管理 */,
-				9039CC5C1902B40800EA8310 /* Customs */,
-				9054807918FA606900CE8172 /* Register */,
+				9054807918FA606900CE8172 /* 注册登录 */,
 				9054807A18FA68D600CE8172 /* 个人中心 */,
 				9054808618FAA57000CE8172 /* 众筹项目 */,
 				906F4D8E197376AC007807FE /* 咨询室 */,
@@ -653,8 +650,6 @@
 			children = (
 				906F4DF91976220B007807FE /* WeJiaMangementIndexViewController.h */,
 				906F4DFA1976220B007807FE /* WeJiaMangementIndexViewController.m */,
-				906F4DFF197628B4007807FE /* WeNewJiahaoApplyIndexViewController.h */,
-				906F4E00197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m */,
 				906F4E0219763EEF007807FE /* WeJiahaoDetailViewController.h */,
 				906F4E0319763EEF007807FE /* WeJiahaoDetailViewController.m */,
 				906F4E05197640D9007807FE /* WeJiahaoApplyDetailViewController.h */,
@@ -965,7 +960,6 @@
 				90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */,
 				900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */,
 				90B4AC48196D1D39006E60CE /* WeFunding.m in Sources */,
-				906F4E01197628B4007807FE /* WeNewJiahaoApplyIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

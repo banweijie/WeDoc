@@ -187,7 +187,7 @@
     self.navigationItem.title = @"加号管理";
     
     // 变量初始化
-    currentPage = 1;
+    currentPage = 0;
     jiahaos = [[NSMutableArray alloc] init];
     
     // 背景图片
