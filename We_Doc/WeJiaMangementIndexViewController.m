@@ -45,6 +45,12 @@
         
         [self.navigationController pushViewController:vc animated:YES];
     }
+    else  if (currentPage == 2) {
+        WeJiahaoDetailViewController * vc = [[WeJiahaoDetailViewController alloc] init];
+        vc.currentJiahao = jiahaos[path.section][path.row];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度

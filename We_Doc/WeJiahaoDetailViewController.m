@@ -76,6 +76,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
+    if ([self.currentJiahao.status isEqualToString:@"Y"] || [self.currentJiahao.status isEqualToString:@"N"]) return 3;
     return 5;
 }
 // 询问每个段落有多少条目
