@@ -140,7 +140,7 @@
     WeMessage * currentMessage = chatData[indexPath.section][indexPath.row];
     
     if ([currentMessage.messageType isEqualToString:@"X"]) {
-        return 40;
+        return [WeAppDelegate calcSizeForString:currentMessage.content Font:We_font_textfield_small_zh_cn expectWidth:260].height + 10;
     }
     
     // 判断是谁发出的信息
@@ -262,16 +262,22 @@
     if ([currentMessage.messageType isEqualToString:@"X"]) {
         NSString * title = currentMessage.content;
         
-        CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:320];
+        CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:260];
         
-        UIButton * titleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [titleButton setTitle:title forState:UIControlStateNormal];
-        [titleButton setTintColor:We_foreground_white_general];
-        [titleButton setBackgroundColor:We_foreground_gray_general];
-        [titleButton setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 40 - 25, titleSize.width + 20, 20)];
-        [titleButton.titleLabel setFont:We_font_textfield_small_zh_cn];
-        [titleButton.layer setCornerRadius:4];
-        [cell.contentView addSubview:titleButton];
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setBackgroundColor:We_foreground_gray_general];
+        [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 0, titleSize.width + 20, titleSize.height + 20)];
+        [button.layer setCornerRadius:4];
+        [button.layer setMasksToBounds:YES];
+        [cell.contentView addSubview:button];
+        
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake((320 - titleSize.width) / 2, 10, titleSize.width, titleSize.height)];
+        [label setText:title];
+        [label setTextColor:We_foreground_white_general];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setNumberOfLines:0];
+        [label setFont:We_font_textfield_small_zh_cn];
+        [cell.contentView addSubview:label];
     }
     // 判断是谁发出的信息
     else if ([currentMessage.senderId isEqualToString:currentUser.userId]) {

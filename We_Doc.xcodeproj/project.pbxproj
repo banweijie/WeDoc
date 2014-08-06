@@ -557,7 +557,7 @@
 			name = Register;
 			sourceTree = "<group>";
 		};
-		9054807A18FA68D600CE8172 /* PersonalCenter */ = {
+		9054807A18FA68D600CE8172 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
 				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
@@ -569,7 +569,7 @@
 				907FE5A019023E7D0070DB3E /* WePecNotViewController.h */,
 				907FE5A119023E7D0070DB3E /* WePecNotViewController.m */,
 			);
-			name = PersonalCenter;
+			name = "个人中心";
 			sourceTree = "<group>";
 		};
 		9054808618FAA57000CE8172 /* 众筹项目 */ = {
@@ -595,7 +595,7 @@
 			name = "众筹项目";
 			sourceTree = "<group>";
 		};
-		906F4D8E197376AC007807FE /* ConsultingRoom */ = {
+		906F4D8E197376AC007807FE /* 咨询室 */ = {
 			isa = PBXGroup;
 			children = (
 				906F4D8F197376CC007807FE /* WeCsrIdxViewController.h */,
@@ -605,7 +605,7 @@
 				906F4D9519738AB2007807FE /* WeConsultDetailViewController.h */,
 				906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */,
 			);
-			name = ConsultingRoom;
+			name = "咨询室";
 			sourceTree = "<group>";
 		};
 		906F4D9919738C87007807FE /* User */ = {
@@ -641,9 +641,9 @@
 				906F4DF8197621EC007807FE /* 加号管理 */,
 				9039CC5C1902B40800EA8310 /* Customs */,
 				9054807918FA606900CE8172 /* Register */,
-				9054807A18FA68D600CE8172 /* PersonalCenter */,
+				9054807A18FA68D600CE8172 /* 个人中心 */,
 				9054808618FAA57000CE8172 /* 众筹项目 */,
-				906F4D8E197376AC007807FE /* ConsultingRoom */,
+				906F4D8E197376AC007807FE /* 咨询室 */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
