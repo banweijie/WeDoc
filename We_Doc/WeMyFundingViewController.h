@@ -10,6 +10,6 @@
 #import "WeAppDelegate.h"
 #import "WeFundingCard.h"
 
-@interface WeMyFundingViewController : UIViewController
+@interface WeMyFundingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

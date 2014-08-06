@@ -38,7 +38,7 @@
 - (void)setWithNSDictionary:(NSDictionary *)info {
     // 提取信息
     self.fundingId = [NSString stringWithFormat:@"%@", info[@"id"]];
-    self.initiator = [[WeDoctor alloc] initWithNSDictionary:info[@"initiator"]];
+    if (info[@"initiator"] != [NSNull null]) self.initiator = [[WeDoctor alloc] initWithNSDictionary:info[@"initiator"]];
     self.status = [NSString stringWithFormat:@"%@", info[@"status"]];
     self.startTime = [NSString stringWithFormat:@"%@", info[@"startTime"]];
     self.endTime = [NSString stringWithFormat:@"%@", info[@"endTime"]];

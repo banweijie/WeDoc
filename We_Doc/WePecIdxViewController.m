@@ -46,7 +46,6 @@
                 default:
                     break;
             }
-            return nil;
             break;
         default:
             break;
@@ -58,6 +57,10 @@
 {
     if (path.section == 0 && path.row == 0) {
         WePecPeaViewController * vc = [[WePecPeaViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (path.section == 1 && path.row == 2) {
+        WeMyFundingViewController * vc = [[WeMyFundingViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
@@ -273,6 +276,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view
+    
+    //self.navigationItem.backBarButtonItem set
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];

@@ -85,6 +85,7 @@
     }
     cell.opaque = NO;
     cell.backgroundColor = [UIColor clearColor];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     // 当前处理的众筹
     WeFunding * currentFunding = fundingList[indexPath.section];
@@ -101,11 +102,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // Navigation bar
+    self.navigationItem.title = @"我的众筹";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"我的众筹" style:UIBarButtonItemStylePlain target:self action:nil];
+    
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
+    
+    // 表格
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    sys_tableView.delegate = self;
+    sys_tableView.dataSource = self;
+    sys_tableView.backgroundColor = [UIColor clearColor];
+    sys_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [sys_tableView setHidden:YES];
+    [self.view addSubview:sys_tableView];
     
     // 刷新按钮
     refreshButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -114,6 +129,13 @@
     [refreshButton addTarget:self action:@selector(refreshButton_onPress) forControlEvents:UIControlEventTouchUpInside];
     [refreshButton setTintColor:We_foreground_red_general];
     [self.view addSubview:refreshButton];
+    
+    // 转圈圈
+    sys_pendingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    sys_pendingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
+    [sys_pendingView setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
+    [sys_pendingView setAlpha:1.0];
+    [self.view addSubview:sys_pendingView];
     
     [self api_doctor_listFunding];
 }
@@ -135,10 +157,14 @@
                                   action:@"listFunding"
                               parameters:nil
                                  success:^(id response) {
+                                     NSLog(@"%@", response);
                                      fundingList = [[NSMutableArray alloc] init];
                                      for (int i = 0; i < [response count]; i++) {
-                                         [fundingList addObject:[[WeFunding alloc] initWithNSDictionary:response[i]]];
+                                         WeFunding * newFunding = [[WeFunding alloc] initWithNSDictionary:response[i]];
+                                         newFunding.initiator = currentUser;
+                                         [fundingList addObject:newFunding];
                                      }
+                                     [sys_tableView reloadData];
                                      
                                      [sys_tableView setHidden:NO];
                                      [sys_pendingView stopAnimating];

@@ -31,7 +31,7 @@
     [self.navigationBar setTranslucent:YES];
     [self.navigationBar setBarTintColor:We_background_red_general];
     [self.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName, We_font_textfield_large_zh_cn, NSFontAttributeName, nil]];
+    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName, We_font_textfield_huge_zh_cn, NSFontAttributeName, nil]];
     [self.navigationBar setTintColor:We_foreground_white_general];
 }
 
