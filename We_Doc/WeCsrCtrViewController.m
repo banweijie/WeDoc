@@ -169,7 +169,7 @@
     WeMessage * currentMessage = chatData[indexPath.section][indexPath.row];
     
     if ([currentMessage.messageType isEqualToString:@"X"]) {
-        return [WeAppDelegate calcSizeForString:currentMessage.content Font:We_font_textfield_small_zh_cn expectWidth:260].height + 10;
+        return [WeAppDelegate calcSizeForString:currentMessage.content Font:We_font_textfield_small_zh_cn expectWidth:260].height + 30;
     }
     
     // 判断是谁发出的信息
@@ -295,12 +295,12 @@
         
         UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setBackgroundColor:We_foreground_gray_general];
-        [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 0, titleSize.width + 20, titleSize.height + 20)];
+        [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 5, titleSize.width + 20, titleSize.height + 20)];
         [button.layer setCornerRadius:4];
         [button.layer setMasksToBounds:YES];
         [cell.contentView addSubview:button];
         
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake((320 - titleSize.width) / 2, 10, titleSize.width, titleSize.height)];
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake((320 - titleSize.width) / 2, 15, titleSize.width, titleSize.height)];
         [label setText:title];
         [label setTextColor:We_foreground_white_general];
         [label setTextAlignment:NSTextAlignmentCenter];
