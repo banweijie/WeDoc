@@ -32,8 +32,7 @@
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     WeFundingLevel * currentLevel = levels[indexPath.section];
-    CGSize sizezz = [currentLevel.repay sizeWithFont:We_font_textfield_zh_cn constrainedToSize:CGSizeMake(280, 9999) lineBreakMode:NSLineBreakByWordWrapping];
-    return sizezz.height + 80;
+    return [WeAppDelegate calcSizeForString:currentLevel.repay Font:We_font_textfield_zh_cn expectWidth:280].height + 80;
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
