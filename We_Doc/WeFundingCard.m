@@ -75,16 +75,9 @@
     UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(20, 220 + titlePref + heightOfTitle + titleTail + 20 + 20, 260.0 * progress, 5)];
     [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
     [self addSubview:progressBar];
-    
-    
-    /*
-    
-    
-    
-    
-    
+
     // 已达
-    UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
+    UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10, 260, 20)];
     [reachedData setTextAlignment:NSTextAlignmentLeft];
     [reachedData setFont:We_font_textfield_small_zh_cn];
     if ([currentFunding.type isEqualToString:@"D"]) {
@@ -93,47 +86,47 @@
     else {
         [reachedData setText:[NSString stringWithFormat:@"%.2f%%", [currentFunding.sum intValue] * 100.0 / [currentFunding.goal intValue]]];
     }
-    [cell.contentView addSubview:reachedData];
+    [self addSubview:reachedData];
     
-    UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
+    UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10 + 20, 260, 20)];
     [reachedLabel setTextAlignment:NSTextAlignmentLeft];
     [reachedLabel setFont:We_font_textfield_small_zh_cn];
     [reachedLabel setTextColor:We_foreground_gray_general];
     [reachedLabel setText:@"已达"];
-    [cell.contentView addSubview:reachedLabel];
+    [self addSubview:reachedLabel];
     
     // 已筹资
     if ([currentFunding.type isEqualToString:@"D"]) {
-        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
+        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10, 260, 20)];
         [reachedData setTextAlignment:NSTextAlignmentCenter];
         [reachedData setFont:We_font_textfield_small_zh_cn];
         [reachedData setText:[NSString stringWithFormat:@"%@/%@ 人", currentFunding.supportCount, currentFunding.goal]];
-        [cell.contentView addSubview:reachedData];
+        [self addSubview:reachedData];
         
-        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
+        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
         [reachedLabel setTextAlignment:NSTextAlignmentCenter];
         [reachedLabel setFont:We_font_textfield_small_zh_cn];
         [reachedLabel setTextColor:We_foreground_gray_general];
         [reachedLabel setText:@"已招募"];
-        [cell.contentView addSubview:reachedLabel];
+        [self addSubview:reachedLabel];
     }
     else {
-        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
+        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10, 260, 20)];
         [reachedData setTextAlignment:NSTextAlignmentCenter];
         [reachedData setFont:We_font_textfield_small_zh_cn];
         [reachedData setText:[NSString stringWithFormat:@"￥%@/￥%@", currentFunding.sum, currentFunding.goal]];
-        [cell.contentView addSubview:reachedData];
+        [self addSubview:reachedData];
         
-        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
+        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10 + 20, 260, 20)];
         [reachedLabel setTextAlignment:NSTextAlignmentCenter];
         [reachedLabel setFont:We_font_textfield_small_zh_cn];
         [reachedLabel setTextColor:We_foreground_gray_general];
         [reachedLabel setText:@"已筹资"];
-        [cell.contentView addSubview:reachedLabel];
+        [self addSubview:reachedLabel];
     }
     
     // 剩余时间
-    UILabel * restData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
+    UILabel * restData = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10, 260, 20)];
     [restData setTextAlignment:NSTextAlignmentRight];
     [restData setFont:We_font_textfield_small_zh_cn];
     int restSec =  [currentFunding.endTime longLongValue] / 1000 - [[NSDate date] timeIntervalSince1970];
@@ -143,27 +136,21 @@
     else {
         [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400]];
     }
-    [cell.contentView addSubview:restData];
+    [self addSubview:restData];
     
-    UILabel * restLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
+    UILabel * restLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10 + 20, 260, 20)];
     [restLabel setTextAlignment:NSTextAlignmentRight];
     [restLabel setFont:We_font_textfield_small_zh_cn];
     [restLabel setTextColor:We_foreground_gray_general];
     [restLabel setText:@"剩余时间"];
-    [cell.contentView addSubview:restLabel];
-    
-    // 框框1
-    UIView * frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40)];
-    [frame1.layer setBorderWidth:0.3];
-    [frame1.layer setBorderColor:We_foreground_gray_general.CGColor];
-    //[cell.contentView addSubview:frame1];
-    
-    // 框框2
-    UIView * frame2 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 60)];
+    [self addSubview:restLabel];
+
+    // 边框
+    UIView * frame2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 220 + 5 + titlePref + heightOfTitle + titleTail + 20 + 20 + 10 + 20 + 30)];
     [frame2.layer setBorderWidth:0.3];
     [frame2.layer setBorderColor:We_foreground_gray_general.CGColor];
-    [cell.contentView addSubview:frame2];
-    */
+    [self addSubview:frame2];
+    
     return self;
 }
 
