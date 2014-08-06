@@ -94,8 +94,8 @@
 }
 // 询问每个段落的头部标题
 - (NSString *)tableView:(UITableView *)tv titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) return @"以下为必填信息，必填信息必须按要求填写完毕方可提交审核，只有通过审核的医生方可与患者进行交流。每次对必填信息进行修改都会导致审核过期，需要再次提交审核。";
-    if (section == 2) return @"以下为选填信息，选填信息可以任意填写，但是良好完善的信息有助于患者了解您。对选填信息的修改不会导致审核状态的变化。";
+    if (section == 0) return @"以下为必填信息，如修改需要重新提交审核";
+    if (section == 2) return @"以下为选填信息";
     return @"";
 }
 // 询问每个段落的尾部高度
