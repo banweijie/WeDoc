@@ -20,6 +20,7 @@
 #import "WeFavorPatient.h"
 #import "WeMessage.h"
 #import "WeConsult.h"
+#import "WeFunding.h"
 
 @interface WeAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -38,6 +38,8 @@
 		9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFBE1914AC1900CE4A7A /* WeInpSkiViewController.m */; };
 		9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */; };
 		9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */; };
+		902AF5241992184000357B54 /* WeMyFundingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5231992184000357B54 /* WeMyFundingViewController.m */; };
+		902AF52719921B5F00357B54 /* WeFundingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52619921B5F00357B54 /* WeFundingCard.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3418F0F146000CB41B /* CoreGraphics.framework */; };
 		904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
@@ -65,10 +67,6 @@
 		906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0919764675007807FE /* WeCsrJiaChooseTimeViewController.m */; };
 		906F4E0D19769257007807FE /* WeSelLanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0C19769257007807FE /* WeSelLanViewController.m */; };
 		906F4E101976B553007807FE /* WeGenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E0F1976B553007807FE /* WeGenderPickerViewController.m */; };
-		906F4E19197D0957007807FE /* WeFunSelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E12197D0957007807FE /* WeFunSelViewController.m */; };
-		906F4E1A197D0957007807FE /* WeFunSelTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E14197D0957007807FE /* WeFunSelTypeViewController.m */; };
-		906F4E1B197D0957007807FE /* WeFunSelTopSecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E16197D0957007807FE /* WeFunSelTopSecViewController.m */; };
-		906F4E1C197D0957007807FE /* WeFunSelSecSecViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F4E18197D0957007807FE /* WeFunSelSecSecViewController.m */; };
 		907D5B1D191EB9630006EAE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */; };
 		907D5B1F191F60900006EAE0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907D5B1E191F60900006EAE0 /* CoreData.framework */; };
 		907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 907FE5A119023E7D0070DB3E /* WePecNotViewController.m */; };
@@ -180,6 +178,10 @@
 		9026EFC11914AC2C00CE4A7A /* WeSelDegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelDegViewController.m; sourceTree = "<group>"; };
 		9026EFC31914AC3E00CE4A7A /* WeInpEmaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeInpEmaViewController.h; sourceTree = "<group>"; };
 		9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeInpEmaViewController.m; sourceTree = "<group>"; };
+		902AF5221992184000357B54 /* WeMyFundingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyFundingViewController.h; sourceTree = "<group>"; };
+		902AF5231992184000357B54 /* WeMyFundingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingViewController.m; sourceTree = "<group>"; };
+		902AF52519921B5F00357B54 /* WeFundingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFundingCard.h; sourceTree = "<group>"; };
+		902AF52619921B5F00357B54 /* WeFundingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFundingCard.m; sourceTree = "<group>"; };
 		904F7A2F18F0F146000CB41B /* We_Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = We_Doc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A3218F0F146000CB41B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		904F7A3418F0F146000CB41B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,14 +227,6 @@
 		906F4E0C19769257007807FE /* WeSelLanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelLanViewController.m; sourceTree = "<group>"; };
 		906F4E0E1976B553007807FE /* WeGenderPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeGenderPickerViewController.h; sourceTree = "<group>"; };
 		906F4E0F1976B553007807FE /* WeGenderPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeGenderPickerViewController.m; sourceTree = "<group>"; };
-		906F4E11197D0957007807FE /* WeFunSelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunSelViewController.h; sourceTree = "<group>"; };
-		906F4E12197D0957007807FE /* WeFunSelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunSelViewController.m; sourceTree = "<group>"; };
-		906F4E13197D0957007807FE /* WeFunSelTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunSelTypeViewController.h; sourceTree = "<group>"; };
-		906F4E14197D0957007807FE /* WeFunSelTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunSelTypeViewController.m; sourceTree = "<group>"; };
-		906F4E15197D0957007807FE /* WeFunSelTopSecViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunSelTopSecViewController.h; sourceTree = "<group>"; };
-		906F4E16197D0957007807FE /* WeFunSelTopSecViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunSelTopSecViewController.m; sourceTree = "<group>"; };
-		906F4E17197D0957007807FE /* WeFunSelSecSecViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunSelSecSecViewController.h; sourceTree = "<group>"; };
-		906F4E18197D0957007807FE /* WeFunSelSecSecViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunSelSecSecViewController.m; sourceTree = "<group>"; };
 		907D5B1C191EB9630006EAE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		907D5B1E191F60900006EAE0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		907FE5A019023E7D0070DB3E /* WePecNotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecNotViewController.h; sourceTree = "<group>"; };
@@ -399,7 +393,7 @@
 			path = "opencore-amrwb";
 			sourceTree = "<group>";
 		};
-		9026EDFC19044B7100CE4A7A /* PersonalAccount */ = {
+		9026EDFC19044B7100CE4A7A /* 个人账户 */ = {
 			isa = PBXGroup;
 			children = (
 				9026EDFD19044B9000CE4A7A /* WePecPeaViewController.h */,
@@ -409,7 +403,7 @@
 				9026EE001904536300CE4A7A /* WeSelGenViewController.h */,
 				9026EE011904536300CE4A7A /* WeSelGenViewController.m */,
 			);
-			name = PersonalAccount;
+			name = "个人账户";
 			sourceTree = "<group>";
 		};
 		9026EE0C1904A61300CE4A7A /* VPImageCropper */ = {
@@ -428,6 +422,15 @@
 				9026EFB8191471C400CE4A7A /* PAImageView.m */,
 			);
 			path = PAImageView;
+			sourceTree = "<group>";
+		};
+		902AF5211992181F00357B54 /* 我的众筹 */ = {
+			isa = PBXGroup;
+			children = (
+				902AF5221992184000357B54 /* WeMyFundingViewController.h */,
+				902AF5231992184000357B54 /* WeMyFundingViewController.m */,
+			);
+			name = "我的众筹";
 			sourceTree = "<group>";
 		};
 		9039CC5C1902B40800EA8310 /* CustomViews */ = {
@@ -457,6 +460,8 @@
 				90B4AC62196D1D6A006E60CE /* WeParagraphModifyViewController.m */,
 				906F4E0E1976B553007807FE /* WeGenderPickerViewController.h */,
 				906F4E0F1976B553007807FE /* WeGenderPickerViewController.m */,
+				902AF52519921B5F00357B54 /* WeFundingCard.h */,
+				902AF52619921B5F00357B54 /* WeFundingCard.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -558,14 +563,15 @@
 		9054807A18FA68D600CE8172 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
-				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
-				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
-				909E3C6E1901AF4300ADC2E9 /* Experience */,
-				9026EDFC19044B7100CE4A7A /* PersonalAccount */,
+				902AF5211992181F00357B54 /* 我的众筹 */,
+				909E3C6E1901AF4300ADC2E9 /* 工作经历 */,
+				9026EDFC19044B7100CE4A7A /* 个人账户 */,
 				909E3C6D1901AF0C00ADC2E9 /* 职业信息 */,
-				907FE5A31902518B0070DB3E /* BusinessSetting */,
+				907FE5A31902518B0070DB3E /* 业务设置 */,
 				907FE5A019023E7D0070DB3E /* WePecNotViewController.h */,
 				907FE5A119023E7D0070DB3E /* WePecNotViewController.m */,
+				9054807B18FA6A2900CE8172 /* WePecIdxViewController.h */,
+				9054807C18FA6A2900CE8172 /* WePecIdxViewController.m */,
 			);
 			name = "个人中心";
 			sourceTree = "<group>";
@@ -573,14 +579,6 @@
 		9054808618FAA57000CE8172 /* 众筹项目 */ = {
 			isa = PBXGroup;
 			children = (
-				906F4E11197D0957007807FE /* WeFunSelViewController.h */,
-				906F4E12197D0957007807FE /* WeFunSelViewController.m */,
-				906F4E13197D0957007807FE /* WeFunSelTypeViewController.h */,
-				906F4E14197D0957007807FE /* WeFunSelTypeViewController.m */,
-				906F4E15197D0957007807FE /* WeFunSelTopSecViewController.h */,
-				906F4E16197D0957007807FE /* WeFunSelTopSecViewController.m */,
-				906F4E17197D0957007807FE /* WeFunSelSecSecViewController.h */,
-				906F4E18197D0957007807FE /* WeFunSelSecSecViewController.m */,
 				90B4AC32196D1CF4006E60CE /* WeFunIdxViewController.h */,
 				90B4AC33196D1CF4006E60CE /* WeFunIdxViewController.m */,
 				90B4AC34196D1CF4006E60CE /* WeFunDetViewController.h */,
@@ -660,11 +658,11 @@
 			name = "加号管理";
 			sourceTree = "<group>";
 		};
-		907FE5A31902518B0070DB3E /* BusinessSetting */ = {
+		907FE5A31902518B0070DB3E /* 业务设置 */ = {
 			isa = PBXGroup;
 			children = (
-				907FE5A4190252580070DB3E /* WePecBusViewController.h */,
 				907FE5A5190252580070DB3E /* WePecBusViewController.m */,
+				907FE5A4190252580070DB3E /* WePecBusViewController.h */,
 				9026EDF01903EEC800CE4A7A /* WePecWkpAddNavController.h */,
 				9026EDF11903EEC800CE4A7A /* WePecWkpAddNavController.m */,
 				9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */,
@@ -678,7 +676,7 @@
 				9026EDF91904053C00CE4A7A /* WeSelTypViewController.h */,
 				9026EDFA1904053C00CE4A7A /* WeSelTypViewController.m */,
 			);
-			name = BusinessSetting;
+			name = "业务设置";
 			sourceTree = "<group>";
 		};
 		909E3C6D1901AF0C00ADC2E9 /* 职业信息 */ = {
@@ -716,7 +714,7 @@
 			name = "职业信息";
 			sourceTree = "<group>";
 		};
-		909E3C6E1901AF4300ADC2E9 /* Experience */ = {
+		909E3C6E1901AF4300ADC2E9 /* 工作经历 */ = {
 			isa = PBXGroup;
 			children = (
 				909E3C671901A89900ADC2E9 /* WePecExpViewController.h */,
@@ -728,7 +726,7 @@
 				909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */,
 				909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */,
 			);
-			name = Experience;
+			name = "工作经历";
 			sourceTree = "<group>";
 		};
 		90B4AC41196D1D2D006E60CE /* Funding */ = {
@@ -892,13 +890,12 @@
 				90B4AC3F196D1CF4006E60CE /* WeFunSupViewController.m in Sources */,
 				900E29321929AFBB008BF61C /* VoiceConverter.mm in Sources */,
 				9026EFC21914AC2C00CE4A7A /* WeSelDegViewController.m in Sources */,
-				906F4E19197D0957007807FE /* WeFunSelViewController.m in Sources */,
 				900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */,
 				90B4AC49196D1D39006E60CE /* WeFundingLevel.m in Sources */,
 				906F4D9719738AB2007807FE /* WeConsultDetailViewController.m in Sources */,
+				902AF52719921B5F00357B54 /* WeFundingCard.m in Sources */,
 				90B4AC69196D1D6A006E60CE /* WeImageButton.m in Sources */,
 				900E28E819292C55008BF61C /* WeDoctor.m in Sources */,
-				906F4E1C197D0957007807FE /* WeFunSelSecSecViewController.m in Sources */,
 				900E28E719292C55008BF61C /* WeUser.m in Sources */,
 				90B4AC67196D1D6A006E60CE /* WeTabBarViewController.m in Sources */,
 				9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */,
@@ -907,12 +904,12 @@
 				906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */,
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
 				906F4DFE19762294007807FE /* WeJiahao.m in Sources */,
+				902AF5241992184000357B54 /* WeMyFundingViewController.m in Sources */,
 				90B4AC6E196D1D6A006E60CE /* WeParagraphModifyViewController.m in Sources */,
 				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				90B4AC65196D1D6A006E60CE /* WeViewController.m in Sources */,
-				906F4E1B197D0957007807FE /* WeFunSelTopSecViewController.m in Sources */,
 				900E28EA19292C55008BF61C /* WeMessage.m in Sources */,
 				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
@@ -949,7 +946,6 @@
 				906F4E101976B553007807FE /* WeGenderPickerViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 				906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */,
-				906F4E1A197D0957007807FE /* WeFunSelTypeViewController.m in Sources */,
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
 				906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */,
 				906F4DE11973F194007807FE /* WeOrder.m in Sources */,

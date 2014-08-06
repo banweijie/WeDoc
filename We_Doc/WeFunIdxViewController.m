@@ -59,7 +59,7 @@
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 220 + 5 + 40 + [WeAppDelegate calcSizeForString:[(WeFunding *)fundingList[indexPath.section] title] Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 60;
+    return [[WeFundingCard alloc] initWithWeFunding:(WeFunding *)fundingList[indexPath.section]].frame.size.height;
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -106,231 +106,7 @@
     // 当前处理的众筹
     WeFunding * currentFunding = fundingList[indexPath.section];
     
-    // 底色
-    UIImageView * imageView000 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 60)];
-    [imageView000 setBackgroundColor:We_background_cell_general];
-    [cell.contentView addSubview:imageView000];
-    
-    // 背景图片
-    UIImageView * backGroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 300, 220)];
-    [backGroundImageView setImageWithURL:[NSURL URLWithString:yijiarenImageUrl(currentFunding.poster2)]];
-    [backGroundImageView setContentMode:UIViewContentModeScaleAspectFill];
-    [backGroundImageView setClipsToBounds:YES];
-    [cell.contentView addSubview:backGroundImageView];
-    
-    // 阴影层
-    UIImageView * shadow = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220 - 70, 300, 70)];
-    [shadow setImage:[UIImage imageNamed:@"crowdfunding-gradientcover"]];
-    [cell.contentView addSubview:shadow];
-    
-    /*
-     // 高斯模糊
-     UIToolbar * toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 220 - 49 - 70, 300, 70)];
-     [toolBar setBarStyle:UIBarStyleBlackTranslucent];
-     [toolBar setBackgroundImage:[WeAppDelegate imageWithColor:[UIColor clearColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-     [cell.contentView addSubview:toolBar];*/
-    
-    /*
-     // 主标题
-     UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 200, 30)];
-     [title setText:currentFunding.title];
-     [title setFont:We_font_textfield_large_zh_cn];
-     [title setTextColor:We_foreground_white_general];
-     [title setShadowColor:We_foreground_black_general];
-     [title setShadowOffset:CGSizeMake(1, 1)];
-     [cell.contentView addSubview:title];
-     
-     // 医生信息
-     UILabel * docInfo = [[UILabel alloc] initWithFrame:CGRectMake(20, 125, 200, 20)];
-     [docInfo setText:[NSString stringWithFormat:@"%@ 医生  %@", currentFunding.initiator.userName, we_codings[@"doctorCategory"][currentFunding.initiator.category][@"title"][currentFunding.initiator.title]]];
-     [docInfo setFont:We_font_textfield_small_zh_cn];
-     [docInfo setTextColor:We_foreground_white_general];
-     [docInfo setShadowColor:We_foreground_black_general];
-     [docInfo setShadowOffset:CGSizeMake(1, 1)];
-     [cell.contentView addSubview:docInfo];
-     
-     UILabel * docInfo2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 140, 200, 20)];
-     [docInfo2 setText:[NSString stringWithFormat:@"%@ %@", currentFunding.initiator.hospitalName, currentFunding.initiator.sectionName]];
-     [docInfo2 setFont:We_font_textfield_small_zh_cn];
-     [docInfo2 setTextColor:We_foreground_white_general];
-     [docInfo2 setShadowColor:We_foreground_black_general];
-     [docInfo2 setShadowOffset:CGSizeMake(1, 1)];
-     [cell.contentView addSubview:docInfo2];
-     
-     
-     // 信息层
-     UIImageView * infoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 220 - 44, 300, 44)];
-     [infoView setImage:[WeAppDelegate imageWithColor:We_foreground_white_general]];
-     [cell.contentView addSubview:infoView];
-     
-     UIImageView * imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220 - 44 + 12, 20, 20)];
-     [imageView1 setImage:[UIImage imageNamed:@"crowdfunding-list-money"]];
-     [imageView1 setContentMode:UIViewContentModeCenter];
-     [cell.contentView addSubview:imageView1];
-     
-     UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 - 44 + 12, 80, 20)];
-     [label1 setFont:We_font_textfield_small_zh_cn];
-     [label1 setTextColor:We_foreground_black_general];
-     if ([currentFunding.type isEqualToString:@"D"]) {
-     [label1 setText:[NSString stringWithFormat:@"%@人 已募", currentFunding.supportCount]];
-     }
-     else {
-     [label1 setText:[NSString stringWithFormat:@"￥%@ 已筹", currentFunding.sum]];
-     }
-     [cell.contentView addSubview:label1];
-     
-     UIImageView * imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(110, 220 - 44 + 12, 20, 20)];
-     [imageView2 setImage:[UIImage imageNamed:@"crowdfunding-list-favorite"]];
-     [imageView2 setContentMode:UIViewContentModeCenter];
-     [cell.contentView addSubview:imageView2];
-     
-     UILabel * label2 = [[UILabel alloc] initWithFrame:CGRectMake(130, 220 - 44 + 12, 80, 20)];
-     [label2 setFont:We_font_textfield_small_zh_cn];
-     [label2 setTextColor:We_foreground_black_general];
-     [label2 setText:[NSString stringWithFormat:@"%@ 赞", currentFunding.likeCount]];
-     [cell.contentView addSubview:label2];
-     
-     UIImageView * imageView3 = [[UIImageView alloc] initWithFrame:CGRectMake(210, 220 - 44 + 12, 20, 20)];
-     [imageView3 setImage:[UIImage imageNamed:@"crowdfunding-list-time"]];
-     [imageView3 setContentMode:UIViewContentModeCenter];
-     [cell.contentView addSubview:imageView3];
-     
-     UILabel * label3 = [[UILabel alloc] initWithFrame:CGRectMake(230, 220 - 44 + 12, 80, 20)];
-     [label3 setFont:We_font_textfield_small_zh_cn];
-     [label3 setTextColor:We_foreground_black_general];
-     int restSec =  [currentFunding.endTime longLongValue] / 1000 - [[NSDate date] timeIntervalSince1970];
-     [label3 setText:[NSString stringWithFormat:@"%d 天", restSec / 86400 + 1]];
-     [cell.contentView addSubview:label3];*/
-    
-    // 进度条
-    UIImageView * progressView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260, 5)];
-    [progressView setImage:[WeAppDelegate imageWithColor:We_foreground_gray_general]];
-    [cell.contentView addSubview:progressView];
-    if ([currentFunding.type isEqualToString:@"D"]) {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.supportCount intValue] / [currentFunding.goal intValue]), 5)];
-        [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
-        [cell.contentView addSubview:progressBar];
-    }
-    else {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.sum intValue] / [currentFunding.goal intValue]), 5)];
-        [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
-        [cell.contentView addSubview:progressBar];
-    }
-    
-    // 头像
-    UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(245, 160, 50, 50)];
-    [avatarView.layer setCornerRadius:avatarView.frame.size.height / 2];
-    [avatarView.layer setMasksToBounds:YES];
-    [avatarView.layer setBorderWidth:0.5];
-    [avatarView.layer setBorderColor:We_foreground_black_general.CGColor];
-    [cell.contentView addSubview:avatarView];
-    [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(currentFunding.initiator.avatarPath)]];
-    
-    // 主标题栏
-    UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20, 260, [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height)];
-    [title setText:currentFunding.title];
-    [title setFont:We_font_textfield_large_zh_cn];
-    [title setTextColor:We_foreground_black_general];
-    [cell.contentView addSubview:title];
-    
-    // 医生信息
-    UILabel * docInfo = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height, 200, 20)];
-    [docInfo setText:[NSString stringWithFormat:@"%@   %@", currentFunding.initiator.userName, currentFunding.initiator.hospitalName]];
-    [docInfo setFont:We_font_textfield_zh_cn];
-    [docInfo setTextColor:We_foreground_gray_general];
-    [cell.contentView addSubview:docInfo];
-    
-    // 同业支持
-    WeInfoedButton * likeInfo = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
-    [likeInfo setUserData:currentFunding];
-    [likeInfo setFrame:CGRectMake(190, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height - 5, 100, 30)];
-    [likeInfo.titleLabel setFont:We_font_textfield_small_zh_cn];
-    [likeInfo setTitle:[NSString stringWithFormat:@"同业支持 %@", currentFunding.likeCount] forState:UIControlStateNormal];
-    [likeInfo addTarget:self action:@selector(api_doctor_likeFunding:) forControlEvents:UIControlEventTouchUpInside];
-    [likeInfo setTintColor:We_foreground_white_general];
-    [likeInfo setBackgroundColor:We_background_red_general];
-    [cell addSubview:likeInfo];
-    
-    // 已达
-    UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
-    [reachedData setTextAlignment:NSTextAlignmentLeft];
-    [reachedData setFont:We_font_textfield_small_zh_cn];
-    if ([currentFunding.type isEqualToString:@"D"]) {
-        [reachedData setText:[NSString stringWithFormat:@"%.2f%%", [currentFunding.supportCount intValue] * 100.0 / [currentFunding.goal intValue]]];
-    }
-    else {
-        [reachedData setText:[NSString stringWithFormat:@"%.2f%%", [currentFunding.sum intValue] * 100.0 / [currentFunding.goal intValue]]];
-    }
-    [cell.contentView addSubview:reachedData];
-    
-    UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
-    [reachedLabel setTextAlignment:NSTextAlignmentLeft];
-    [reachedLabel setFont:We_font_textfield_small_zh_cn];
-    [reachedLabel setTextColor:We_foreground_gray_general];
-    [reachedLabel setText:@"已达"];
-    [cell.contentView addSubview:reachedLabel];
-    
-    // 已筹资
-    if ([currentFunding.type isEqualToString:@"D"]) {
-        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
-        [reachedData setTextAlignment:NSTextAlignmentCenter];
-        [reachedData setFont:We_font_textfield_small_zh_cn];
-        [reachedData setText:[NSString stringWithFormat:@"%@/%@ 人", currentFunding.supportCount, currentFunding.goal]];
-        [cell.contentView addSubview:reachedData];
-        
-        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
-        [reachedLabel setTextAlignment:NSTextAlignmentCenter];
-        [reachedLabel setFont:We_font_textfield_small_zh_cn];
-        [reachedLabel setTextColor:We_foreground_gray_general];
-        [reachedLabel setText:@"已招募"];
-        [cell.contentView addSubview:reachedLabel];
-    }
-    else {
-        UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
-        [reachedData setTextAlignment:NSTextAlignmentCenter];
-        [reachedData setFont:We_font_textfield_small_zh_cn];
-        [reachedData setText:[NSString stringWithFormat:@"￥%@/￥%@", currentFunding.sum, currentFunding.goal]];
-        [cell.contentView addSubview:reachedData];
-        
-        UILabel * reachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
-        [reachedLabel setTextAlignment:NSTextAlignmentCenter];
-        [reachedLabel setFont:We_font_textfield_small_zh_cn];
-        [reachedLabel setTextColor:We_foreground_gray_general];
-        [reachedLabel setText:@"已筹资"];
-        [cell.contentView addSubview:reachedLabel];
-    }
-    
-    // 剩余时间
-    UILabel * restData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];
-    [restData setTextAlignment:NSTextAlignmentRight];
-    [restData setFont:We_font_textfield_small_zh_cn];
-    int restSec =  [currentFunding.endTime longLongValue] / 1000 - [[NSDate date] timeIntervalSince1970];
-    if (restSec < 0) {
-        [restData setText:[NSString stringWithFormat:@"已结束"]];
-    }
-    else {
-        [restData setText:[NSString stringWithFormat:@"%d天", restSec / 86400]];
-    }
-    [cell.contentView addSubview:restData];
-    
-    UILabel * restLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 20 + 10, 260, 20)];
-    [restLabel setTextAlignment:NSTextAlignmentRight];
-    [restLabel setFont:We_font_textfield_small_zh_cn];
-    [restLabel setTextColor:We_foreground_gray_general];
-    [restLabel setText:@"剩余时间"];
-    [cell.contentView addSubview:restLabel];
-    
-    // 框框1
-    UIView * frame1 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40)];
-    [frame1.layer setBorderWidth:0.3];
-    [frame1.layer setBorderColor:We_foreground_gray_general.CGColor];
-    //[cell.contentView addSubview:frame1];
-    
-    // 框框2
-    UIView * frame2 = [[UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 60)];
-    [frame2.layer setBorderWidth:0.3];
-    [frame2.layer setBorderColor:We_foreground_gray_general.CGColor];
-    [cell.contentView addSubview:frame2];
+    [cell.contentView addSubview:[[WeFundingCard alloc] initWithWeFunding:currentFunding]];
     
     return cell;
 }
@@ -371,46 +147,7 @@
     bg.image = [UIImage imageNamed:@"Background-2"];
     bg.contentMode = UIViewContentModeCenter;
     [self.view addSubview:bg];
-    
-    
-    /*
-     // 所有内容
-     contentView = [[UIView alloc] initWithFrame:self.view.frame];
-     [self.view addSubview:contentView];
-     
-     // 筛选参数
-     sel_keyword = [NSMutableString stringWithString:@""];
-     sel_type = [NSMutableString stringWithString:@""];
-     sel_topSectionId = [NSMutableString stringWithString:@""];
-     sel_topSectionName = [NSMutableString stringWithString:@"全部"];
-     sel_secSectionId = [NSMutableString stringWithString:@""];
-     sel_secSectionName = [NSMutableString stringWithString:@"全部"];
-     
-     
-     // bar background image
-     UIImageView * barBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 320, 85)];
-     barBackground.image = [UIImage imageNamed:@"bar"];
-     [self.view addSubview:barBackground];
-     
-     UIButton * sortButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-     [sortButton setFrame:CGRectMake(0, 64, 210, 40)];
-     [sortButton setImage:[UIImage imageNamed:@"crowdfunding-list-order"] forState:UIControlStateNormal];
-     [sortButton setTitle:@"  已筹募款从多到少" forState:UIControlStateNormal];
-     [sortButton.titleLabel setFont:We_font_textfield_zh_cn];
-     [sortButton setTintColor:We_foreground_red_general];
-     [self.view addSubview:sortButton];
-     
-     UIButton * selectButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-     [selectButton setFrame:CGRectMake(210, 64, 110, 40)];
-     [selectButton setImage:[UIImage imageNamed:@"crowdfunding-list-filter"] forState:UIControlStateNormal];
-     [selectButton setTitle:@"  筛选" forState:UIControlStateNormal];
-     [selectButton.titleLabel setFont:We_font_textfield_zh_cn];
-     [selectButton setTintColor:We_foreground_red_general];
-     [selectButton addTarget:self action:@selector(selectButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
-     [self.view addSubview:selectButton];
-     
-     */
-    
+
     // 表格
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -586,22 +323,6 @@
     [selectView setHidden:YES];
 }
 
-// 筛选按钮被按下
-- (void)selectButton_onPress:(id)sender {
-    WeFunSelViewController * vc = [[WeFunSelViewController alloc] init];
-    vc.lastSel_type = sel_type;
-    vc.lastSel_topSectionId = sel_topSectionId;
-    vc.lastSel_topSectionName = sel_topSectionName;
-    vc.lastSel_secSectionId = sel_secSectionId;
-    vc.lastSel_secSectionName = sel_secSectionName;
-    vc.originVC = self;
-    
-    WeNavViewController * nav = [[WeNavViewController alloc] init];
-    [nav pushViewController:vc animated:NO];
-    
-    [self presentViewController:nav animated:YES completion:nil];
-}
-
 - (void)searchButton_onPress {
     [selectView setHidden:YES];
     [searchView setHidden:!searchView.isHidden];
@@ -624,7 +345,7 @@
     [WeAppDelegate postToServerWithField:@"doctor" action:@"likeFunding"
                               parameters:@{@"fundingId": currentFunding.fundingId}
                                  success:^(id response) {
-                                     currentFunding.likeCount = [NSString stringWithFormat:@"%d", [currentFunding.likeCount integerValue] + 1];
+                                     currentFunding.likeCount = [NSString stringWithFormat:@"%d", [currentFunding.likeCount intValue] + 1];
                                      [sys_tableView reloadData];
                                      [sys_pendingView stopAnimating];
                                  }

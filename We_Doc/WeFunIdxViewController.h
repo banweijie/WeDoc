@@ -10,7 +10,7 @@
 #import "WeAppDelegate.h"
 #import "WeFunding.h"
 #import "WeFunDetViewController.h"
-#import "WeFunSelViewController.h"
+#import "WeFundingCard.h"
 
 @interface WeFunIdxViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
