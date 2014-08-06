@@ -661,8 +661,8 @@
 		907FE5A31902518B0070DB3E /* 业务设置 */ = {
 			isa = PBXGroup;
 			children = (
-				907FE5A5190252580070DB3E /* WePecBusViewController.m */,
 				907FE5A4190252580070DB3E /* WePecBusViewController.h */,
+				907FE5A5190252580070DB3E /* WePecBusViewController.m */,
 				9026EDF01903EEC800CE4A7A /* WePecWkpAddNavController.h */,
 				9026EDF11903EEC800CE4A7A /* WePecWkpAddNavController.m */,
 				9026EDEA1903EE9400CE4A7A /* WePecWkpAddViewController.h */,

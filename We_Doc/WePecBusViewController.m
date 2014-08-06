@@ -311,7 +311,7 @@
     sys_explaination_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
     sys_explaination_label.lineBreakMode = NSLineBreakByWordWrapping;
     sys_explaination_label.numberOfLines = 0;
-    sys_explaination_label.text = @"患者发出咨询请求后，若您未能在该时限内回复则取消咨询，并将咨询费返还至患者账户";
+    sys_explaination_label.text = @"患者发出咨询请求后，若您未能在该时限内回复，系统将自动取消咨询并将费用退回患者账户";
     sys_explaination_label.font = We_font_textfield_zh_cn;
     sys_explaination_label.textColor = We_foreground_gray_general;
     sys_explaination_label.textAlignment = NSTextAlignmentCenter;
@@ -321,7 +321,7 @@
     consultPrice_explaination_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     consultPrice_explaination = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 280, 50)];
     [consultPrice_explaination setNumberOfLines:0];
-    [consultPrice_explaination setText:@"患者需要预先支付设定数额的咨询费，方可以向您发起咨询，咨询申请可以在咨询室中查看"];
+    [consultPrice_explaination setText:@"建议定价在门诊费用的5倍"];
     [consultPrice_explaination setFont:We_font_textfield_zh_cn];
     [consultPrice_explaination setTextColor:We_foreground_gray_general];
     [consultPrice_explaination setTextAlignment:NSTextAlignmentCenter];
@@ -331,7 +331,7 @@
     plusPrice_explaination_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
     plusPrice_explaination = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 280, 50)];
     [plusPrice_explaination setNumberOfLines:0];
-    [plusPrice_explaination setText:@"患者的加号申请中往往会附带病例症状描述等信息，需要您进行预诊方可决定是否进行加号，所以需要支付一定的加号预诊费用"];
+    [plusPrice_explaination setText:@"建议定价在门诊费用的10倍"];
     [plusPrice_explaination setFont:We_font_textfield_zh_cn];
     [plusPrice_explaination setTextColor:We_foreground_gray_general];
     [plusPrice_explaination setTextAlignment:NSTextAlignmentCenter];
