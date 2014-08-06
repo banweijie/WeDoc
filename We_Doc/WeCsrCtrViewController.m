@@ -1032,7 +1032,12 @@
     
     UIButton * consultApplyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [consultApplyButton setFrame:CGRectMake(0, 0, 320, 50)];
-    [consultApplyButton setTitle:@"该病人提交了咨询申请，点击查看详情" forState:UIControlStateNormal];
+    if (self.patientChating.emergent) {
+        [consultApplyButton setTitle:@"该病人提交了紧急申请，点击查看详情" forState:UIControlStateNormal];
+    }
+    else {
+        [consultApplyButton setTitle:@"该病人提交了咨询申请，点击查看详情" forState:UIControlStateNormal];
+    }
     [consultApplyButton addTarget:self action:@selector(consultApllyButton_onPress) forControlEvents:UIControlEventTouchUpInside];
     [consultApplyButton setTintColor:We_background_red_general];
     [consultApplyView addSubview:consultApplyButton];

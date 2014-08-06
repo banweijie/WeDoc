@@ -26,8 +26,10 @@
     
     self.consultStatus = [NSString stringWithFormat:@"%@", info[@"consultStatus"]];
     self.currentConsultId = [NSString stringWithFormat:@"%@", info[@"currentConsultId"]];
-    self.sendable = [[NSString stringWithFormat:@"%@", info[@"sendable"]] isEqualToString:@"true"];
+    self.sendable = [[NSString stringWithFormat:@"%@", info[@"sendable"]] isEqualToString:@"1"];
     self.deadline = [info[@"time"] longLongValue] / 100;
+    
+    if (info[@"emergent"] != [NSNull null]) self.emergent = [[NSString stringWithFormat:@"%@", info[@"emergent"]] isEqualToString:@"1"];
 }
 
 @end

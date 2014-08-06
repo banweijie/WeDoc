@@ -13,6 +13,7 @@
 @property(strong, nonatomic) NSString * consultStatus;
 @property(strong, nonatomic) NSString * currentConsultId;
 @property(nonatomic) BOOL sendable;
+@property(nonatomic) BOOL emergent;
 @property(nonatomic) long long deadline;
 
 - (WeFavorPatient *)initWithNSDictionary:(NSDictionary *)info;
