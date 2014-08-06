@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WeAppDelegate.h"
+#import "WeFundingCard.h"
 
 @interface WeMyFundingViewController : UIViewController
 
