@@ -26,20 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.navigationBar.translucent = YES;
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"texture"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationBar setAlpha:0.7];
-    [self.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName,
-      [UIFont fontWithName:@"HeiTi SC-medium" size:18], NSFontAttributeName,
-      nil
-      ]
-     ];
-    self.navigationBar.TintColor = We_foreground_white_general;
     // Do any additional setup after loading the view.
+    
+    [self.navigationBar setTranslucent:YES];
+    [self.navigationBar setBarTintColor:We_background_red_general];
+    [self.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(255, 255, 255, 1), NSForegroundColorAttributeName, We_font_textfield_large_zh_cn, NSFontAttributeName, nil]];
+    [self.navigationBar setTintColor:We_foreground_white_general];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -54,14 +47,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
