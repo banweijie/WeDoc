@@ -10,6 +10,10 @@
 
 @implementation WeFundingCard
 
+#define titlePref 20
+#define titleTail 20
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -33,61 +37,51 @@
     [backGroundImageView setClipsToBounds:YES];
     [self addSubview:backGroundImageView];
     
-    /*
-    
-    // 阴影层
-    UIImageView * shadow = [[UIImageView alloc] initWithFrame:CGRectMake(10, 220 - 70, 300, 70)];
-    [shadow setImage:[UIImage imageNamed:@"crowdfunding-gradientcover"]];
-    [cell.contentView addSubview:shadow];
-    
-    // 进度条
-    UIImageView * progressView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260, 5)];
-    [progressView setImage:[WeAppDelegate imageWithColor:We_foreground_gray_general]];
-    [cell.contentView addSubview:progressView];
-    if ([currentFunding.type isEqualToString:@"D"]) {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.supportCount intValue] / [currentFunding.goal intValue]), 5)];
-        [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
-        [cell.contentView addSubview:progressBar];
-    }
-    else {
-        UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(30, 220 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 40 + 2, 260.0 * MIN(1, 1.0 * [currentFunding.sum intValue] / [currentFunding.goal intValue]), 5)];
-        [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
-        [cell.contentView addSubview:progressBar];
-    }
-    
-    // 头像
-    UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(245, 160, 50, 50)];
-    [avatarView.layer setCornerRadius:avatarView.frame.size.height / 2];
-    [avatarView.layer setMasksToBounds:YES];
-    [avatarView.layer setBorderWidth:0.5];
-    [avatarView.layer setBorderColor:We_foreground_black_general.CGColor];
-    [cell.contentView addSubview:avatarView];
-    [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(currentFunding.initiator.avatarPath)]];
-    
     // 主标题栏
-    UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20, 260, [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height)];
+    UILabel * title = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + titlePref, 260, heightOfTitle)];
     [title setText:currentFunding.title];
     [title setFont:We_font_textfield_large_zh_cn];
     [title setTextColor:We_foreground_black_general];
-    [cell.contentView addSubview:title];
+    [self addSubview:title];
     
     // 医生信息
-    UILabel * docInfo = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height, 200, 20)];
+    UILabel * docInfo = [[UILabel alloc] initWithFrame:CGRectMake(20, 220 + titlePref + heightOfTitle + titleTail, 260, 20)];
     [docInfo setText:[NSString stringWithFormat:@"%@   %@", currentFunding.initiator.userName, currentFunding.initiator.hospitalName]];
     [docInfo setFont:We_font_textfield_zh_cn];
     [docInfo setTextColor:We_foreground_gray_general];
-    [cell.contentView addSubview:docInfo];
+    [self addSubview:docInfo];
     
     // 同业支持
-    WeInfoedButton * likeInfo = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
-    [likeInfo setUserData:currentFunding];
-    [likeInfo setFrame:CGRectMake(190, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height - 5, 100, 30)];
-    [likeInfo.titleLabel setFont:We_font_textfield_small_zh_cn];
-    [likeInfo setTitle:[NSString stringWithFormat:@"同业支持 %@", currentFunding.likeCount] forState:UIControlStateNormal];
-    [likeInfo addTarget:self action:@selector(api_doctor_likeFunding:) forControlEvents:UIControlEventTouchUpInside];
-    [likeInfo setTintColor:We_foreground_white_general];
-    [likeInfo setBackgroundColor:We_background_red_general];
-    [cell addSubview:likeInfo];
+    UILabel * likeInfo = [[UILabel alloc] initWithFrame:CGRectMake(180, 220 + titlePref + heightOfTitle + titleTail, 100, 20)];
+    [likeInfo setTextAlignment:NSTextAlignmentRight];
+    [likeInfo setText:[NSString stringWithFormat:@"同业支持 %@", currentFunding.likeCount]];
+    [likeInfo setFont:We_font_textfield_small_zh_cn];
+    [likeInfo setTextColor:We_foreground_red_general];
+    [self addSubview:likeInfo];
+    
+    // 进度条
+    UIImageView * progressView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 220 + titlePref + heightOfTitle + titleTail + 20 + 20, 260, 5)];
+    [progressView setImage:[WeAppDelegate imageWithColor:We_foreground_gray_general]];
+    [self addSubview:progressView];
+    
+    int progress;
+    if ([currentFunding.type isEqualToString:@"D"]) {
+        progress = MIN(1, 1.0 * [currentFunding.supportCount intValue] / [currentFunding.goal intValue]);
+    }
+    else {
+        progress = MIN(1, 1.0 * [currentFunding.sum intValue] / [currentFunding.goal intValue]);
+    }
+    
+    UIImageView * progressBar = [[UIImageView alloc] initWithFrame:CGRectMake(20, 220 + titlePref + heightOfTitle + titleTail + 20 + 20, 260.0 * progress, 5)];
+    [progressBar setImage:[WeAppDelegate imageWithColor:We_foreground_red_general]];
+    [self addSubview:progressBar];
+    
+    
+    /*
+    
+    
+    
+    
     
     // 已达
     UILabel * reachedData = [[UILabel alloc] initWithFrame:CGRectMake(30, 220 + 5 + 20 * 2 + [WeAppDelegate calcSizeForString:currentFunding.title Font:We_font_textfield_large_zh_cn expectWidth:260].height + 20 + 20 + 10, 260, 20)];

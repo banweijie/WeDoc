@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WeAppDelegate.h"
+#import "WeInfoedButton.h"
 
 @interface WeFundingCard : UIView
 
