@@ -10,6 +10,7 @@
 #import "WeAppDelegate.h"
 #import "WeFunding.h"
 #import "WeInfoedButton.h"
+#import "WeMyFundingSupportsViewController.h"
 
 @interface WeMyFundingSupportLevelsViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
 

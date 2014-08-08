@@ -1,5 +1,5 @@
 //
-//  WeMyFundingSupportsViewController.h
+//  WeMyFundingSupportDetailViewController.h
 //  We_Doc
 //
 //  Created by WeDoctor on 14-8-8.
@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "WeAppDelegate.h"
-#import "WeFunding.h"
 #import "WeFundingSupport.h"
-#import "WeMyFundingSupportDetailViewController.h"
+#import "WeFundingCard.h"
 
-@interface WeMyFundingSupportsViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
+@interface WeMyFundingSupportDetailViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
 
+@property(nonatomic, strong) WeFundingSupport * currentFundingSupport;
 @property(nonatomic, strong) WeFundingLevel * currentLevel;
 @property(nonatomic, strong) WeFunding * currentFunding;
 

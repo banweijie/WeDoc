@@ -42,6 +42,7 @@
 		902AF52719921B5F00357B54 /* WeFundingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52619921B5F00357B54 /* WeFundingCard.m */; };
 		902AF52A1992415300357B54 /* WeMyFundingSupportLevelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */; };
 		902AF52D1994AE7E00357B54 /* WeMyFundingSupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52C1994AE7E00357B54 /* WeMyFundingSupportsViewController.m */; };
+		902AF5301994BFD100357B54 /* WeMyFundingSupportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3418F0F146000CB41B /* CoreGraphics.framework */; };
 		904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
@@ -188,6 +189,8 @@
 		902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportLevelsViewController.m; sourceTree = "<group>"; };
 		902AF52B1994AE7E00357B54 /* WeMyFundingSupportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyFundingSupportsViewController.h; sourceTree = "<group>"; };
 		902AF52C1994AE7E00357B54 /* WeMyFundingSupportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportsViewController.m; sourceTree = "<group>"; };
+		902AF52E1994BFD100357B54 /* WeMyFundingSupportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyFundingSupportDetailViewController.h; sourceTree = "<group>"; };
+		902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportDetailViewController.m; sourceTree = "<group>"; };
 		904F7A2F18F0F146000CB41B /* We_Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = We_Doc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A3218F0F146000CB41B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		904F7A3418F0F146000CB41B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -439,6 +442,8 @@
 				902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */,
 				902AF52B1994AE7E00357B54 /* WeMyFundingSupportsViewController.h */,
 				902AF52C1994AE7E00357B54 /* WeMyFundingSupportsViewController.m */,
+				902AF52E1994BFD100357B54 /* WeMyFundingSupportDetailViewController.h */,
+				902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */,
 			);
 			name = "我的众筹";
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
 				9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */,
+				902AF5301994BFD100357B54 /* WeMyFundingSupportDetailViewController.m in Sources */,
 				9026EE021904536300CE4A7A /* WeSelGenViewController.m in Sources */,
 				909E3C631901661400ADC2E9 /* WePecCtfViewController.m in Sources */,
 				90B4AC78196D1DA0006E60CE /* WeRegIpnViewController.m in Sources */,

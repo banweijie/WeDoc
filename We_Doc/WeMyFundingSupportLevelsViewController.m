@@ -30,6 +30,11 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    WeMyFundingSupportsViewController * vc = [[WeMyFundingSupportsViewController alloc] init];
+    vc.currentLevel = levels[path.section];
+    vc.currentFunding = self.currentFunding;
+    [self.navigationController pushViewController:vc animated:YES];
+    
     [tableView deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -82,7 +87,7 @@
     
     UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 220 - 16, 60)];
     if ([currentLevel.type isEqualToString:@"C"]) {
-        l1.text = @"咨询档";
+        l1.text = [NSString stringWithFormat:@"咨询档 ￥%@", currentLevel.money];
     }
     else if ([currentLevel.type isEqualToString:@"E"]) {
         l1.text = currentLevel.way;
