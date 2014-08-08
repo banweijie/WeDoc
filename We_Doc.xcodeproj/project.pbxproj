@@ -40,6 +40,7 @@
 		9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9026EFC41914AC3E00CE4A7A /* WeInpEmaViewController.m */; };
 		902AF5241992184000357B54 /* WeMyFundingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5231992184000357B54 /* WeMyFundingViewController.m */; };
 		902AF52719921B5F00357B54 /* WeFundingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52619921B5F00357B54 /* WeFundingCard.m */; };
+		902AF52A1992415300357B54 /* WeMyFundingSupportLevelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3418F0F146000CB41B /* CoreGraphics.framework */; };
 		904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
@@ -182,6 +183,8 @@
 		902AF5231992184000357B54 /* WeMyFundingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingViewController.m; sourceTree = "<group>"; };
 		902AF52519921B5F00357B54 /* WeFundingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFundingCard.h; sourceTree = "<group>"; };
 		902AF52619921B5F00357B54 /* WeFundingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFundingCard.m; sourceTree = "<group>"; };
+		902AF5281992415300357B54 /* WeMyFundingSupportLevelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyFundingSupportLevelsViewController.h; sourceTree = "<group>"; };
+		902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportLevelsViewController.m; sourceTree = "<group>"; };
 		904F7A2F18F0F146000CB41B /* We_Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = We_Doc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A3218F0F146000CB41B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		904F7A3418F0F146000CB41B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -429,6 +432,8 @@
 			children = (
 				902AF5221992184000357B54 /* WeMyFundingViewController.h */,
 				902AF5231992184000357B54 /* WeMyFundingViewController.m */,
+				902AF5281992415300357B54 /* WeMyFundingSupportLevelsViewController.h */,
+				902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */,
 			);
 			name = "我的众筹";
 			sourceTree = "<group>";
@@ -944,6 +949,7 @@
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
 				906F4E101976B553007807FE /* WeGenderPickerViewController.m in Sources */,
+				902AF52A1992415300357B54 /* WeMyFundingSupportLevelsViewController.m in Sources */,
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 				906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */,
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
@@ -1094,7 +1100,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4BA9743D-A9DB-4567-AF44-2AC4E9ECC915";
+				PROVISIONING_PROFILE = "1E4F0041-DCED-41CC-83CB-E4ACA90A2884";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1119,7 +1125,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4BA9743D-A9DB-4567-AF44-2AC4E9ECC915";
+				PROVISIONING_PROFILE = "1E4F0041-DCED-41CC-83CB-E4ACA90A2884";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

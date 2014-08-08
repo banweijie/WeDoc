@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WeAppDelegate.h"
 #import "WeFundingCard.h"
+#import "WeMyFundingSupportLevelsViewController.h"
 
 @interface WeMyFundingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

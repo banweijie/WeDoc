@@ -171,11 +171,11 @@
             NSLog(@"%lld %f",  patient.deadline, [[NSDate date] timeIntervalSince1970]);
             int restSec = patient.deadline - [[NSDate date] timeIntervalSince1970];
             if (patient.emergent) {
-                l1.text = [NSString stringWithFormat:@"[紧急咨询中 剩余%d:%02d]", restSec / 3600, restSec % 3600 / 60];
+                l1.text = [NSString stringWithFormat:@"[紧急咨询中 剩余%d分钟]", restSec / 60];
                 l1.textColor = We_foreground_red_general;
             }
             else {
-                l1.text = [NSString stringWithFormat:@"[申请咨询中 剩余%d:%02d]", restSec / 3600, restSec % 3600 / 60];
+                l1.text = [NSString stringWithFormat:@"[申请咨询中 剩余%d分钟]", restSec / 60];
                 l1.textColor = We_foreground_red_general;
             }
         }
