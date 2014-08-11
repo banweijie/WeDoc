@@ -197,6 +197,11 @@
             l1.text = [NSString stringWithFormat:@"%@", lastMsg.content];
             l1.textColor = We_foreground_red_general;
         }
+        
+        else if ([lastMsg.messageType isEqualToString:@"R"]) {
+            l1.text = @"该病人发送了一个病例";
+            l1.textColor = We_foreground_red_general;
+        }
         else {
             l1.text = [NSString stringWithFormat:@"尚未处理此类型(%@)的消息:%@", lastMsg.messageType, lastMsg.content];
         }

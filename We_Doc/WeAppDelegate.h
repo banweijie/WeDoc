@@ -21,6 +21,8 @@
 #import "WeMessage.h"
 #import "WeConsult.h"
 #import "WeFunding.h"
+#import "WeCaseRecord.h"
+#import "WeExamination.h"
 
 @interface WeAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -66,6 +68,12 @@ long long lastMessageId;
 NSMutableDictionary * favorPatientList;
 NSMutableArray * caseRecords;
 NSMutableArray * examinations;
+
+
+WeCaseRecord * caseRecordChanging;
+WeRecordDrug * recordDrugChanging;
+WeExamination * examinationChanging;
+WeExaminationItem * itemChanging;
 
 NSString * we_workPeriod_save;
 

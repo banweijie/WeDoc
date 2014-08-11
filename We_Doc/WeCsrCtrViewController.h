@@ -17,6 +17,7 @@
 #import "WeNavViewController.h"
 #import "WeImageButton.h"
 #import "WeConsultDetailViewController.h"
+#import "WeCahIdxViewController.h"
 
 @interface WeCsrCtrViewController : UIViewController  <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, AVAudioPlayerDelegate, UITableViewDataSource, UITableViewDelegate>
 

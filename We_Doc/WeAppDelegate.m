@@ -447,7 +447,9 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                              }
                                              // 系统消息
                                              else if ([message.messageType isEqualToString:@"X"]) {
-                                                 NSLog(@"XXXXXXXXXXXXX");
+                                                 [globalHelper insertToDB:message];
+                                             }
+                                             else if ([message.messageType isEqualToString:@"R"]) {
                                                  [globalHelper insertToDB:message];
                                              }
                                          }

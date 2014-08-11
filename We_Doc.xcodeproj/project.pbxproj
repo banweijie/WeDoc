@@ -43,6 +43,17 @@
 		902AF52A1992415300357B54 /* WeMyFundingSupportLevelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5291992415300357B54 /* WeMyFundingSupportLevelsViewController.m */; };
 		902AF52D1994AE7E00357B54 /* WeMyFundingSupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52C1994AE7E00357B54 /* WeMyFundingSupportsViewController.m */; };
 		902AF5301994BFD100357B54 /* WeMyFundingSupportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */; };
+		902AF5431994E50A00357B54 /* WeCahIdxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5361994E50A00357B54 /* WeCahIdxViewController.m */; };
+		902AF5451994E50A00357B54 /* WeCahCahViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF53A1994E50A00357B54 /* WeCahCahViewController.m */; };
+		902AF5461994E50A00357B54 /* WeCahCahAddDruViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF53C1994E50A00357B54 /* WeCahCahAddDruViewController.m */; };
+		902AF5481994E50A00357B54 /* WeCahExaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5401994E50A00357B54 /* WeCahExaViewController.m */; };
+		902AF5491994E50A00357B54 /* WeCahExaAddIteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5421994E50A00357B54 /* WeCahExaAddIteViewController.m */; };
+		902AF5571994E75000357B54 /* WeCaseRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF54C1994E75000357B54 /* WeCaseRecord.m */; };
+		902AF5581994E75000357B54 /* WeRecordDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF54E1994E75000357B54 /* WeRecordDrug.m */; };
+		902AF5591994E75000357B54 /* WeTextCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5501994E75000357B54 /* WeTextCoding.m */; };
+		902AF55A1994E75000357B54 /* WeExamination.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5521994E75000357B54 /* WeExamination.m */; };
+		902AF55B1994E75000357B54 /* WeExaminationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5541994E75000357B54 /* WeExaminationItem.m */; };
+		902AF55C1994E75000357B54 /* WeExaminationItemConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 902AF5561994E75000357B54 /* WeExaminationItemConfig.m */; };
 		904F7A3318F0F146000CB41B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3218F0F146000CB41B /* Foundation.framework */; };
 		904F7A3518F0F146000CB41B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3418F0F146000CB41B /* CoreGraphics.framework */; };
 		904F7A3718F0F146000CB41B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904F7A3618F0F146000CB41B /* UIKit.framework */; };
@@ -191,6 +202,28 @@
 		902AF52C1994AE7E00357B54 /* WeMyFundingSupportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportsViewController.m; sourceTree = "<group>"; };
 		902AF52E1994BFD100357B54 /* WeMyFundingSupportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeMyFundingSupportDetailViewController.h; sourceTree = "<group>"; };
 		902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeMyFundingSupportDetailViewController.m; sourceTree = "<group>"; };
+		902AF5351994E50A00357B54 /* WeCahIdxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCahIdxViewController.h; sourceTree = "<group>"; };
+		902AF5361994E50A00357B54 /* WeCahIdxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCahIdxViewController.m; sourceTree = "<group>"; };
+		902AF5391994E50A00357B54 /* WeCahCahViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCahCahViewController.h; sourceTree = "<group>"; };
+		902AF53A1994E50A00357B54 /* WeCahCahViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCahCahViewController.m; sourceTree = "<group>"; };
+		902AF53B1994E50A00357B54 /* WeCahCahAddDruViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCahCahAddDruViewController.h; sourceTree = "<group>"; };
+		902AF53C1994E50A00357B54 /* WeCahCahAddDruViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCahCahAddDruViewController.m; sourceTree = "<group>"; };
+		902AF53F1994E50A00357B54 /* WeCahExaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCahExaViewController.h; sourceTree = "<group>"; };
+		902AF5401994E50A00357B54 /* WeCahExaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCahExaViewController.m; sourceTree = "<group>"; };
+		902AF5411994E50A00357B54 /* WeCahExaAddIteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCahExaAddIteViewController.h; sourceTree = "<group>"; };
+		902AF5421994E50A00357B54 /* WeCahExaAddIteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCahExaAddIteViewController.m; sourceTree = "<group>"; };
+		902AF54B1994E75000357B54 /* WeCaseRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeCaseRecord.h; sourceTree = "<group>"; };
+		902AF54C1994E75000357B54 /* WeCaseRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeCaseRecord.m; sourceTree = "<group>"; };
+		902AF54D1994E75000357B54 /* WeRecordDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeRecordDrug.h; sourceTree = "<group>"; };
+		902AF54E1994E75000357B54 /* WeRecordDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeRecordDrug.m; sourceTree = "<group>"; };
+		902AF54F1994E75000357B54 /* WeTextCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeTextCoding.h; sourceTree = "<group>"; };
+		902AF5501994E75000357B54 /* WeTextCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeTextCoding.m; sourceTree = "<group>"; };
+		902AF5511994E75000357B54 /* WeExamination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeExamination.h; sourceTree = "<group>"; };
+		902AF5521994E75000357B54 /* WeExamination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeExamination.m; sourceTree = "<group>"; };
+		902AF5531994E75000357B54 /* WeExaminationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeExaminationItem.h; sourceTree = "<group>"; };
+		902AF5541994E75000357B54 /* WeExaminationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeExaminationItem.m; sourceTree = "<group>"; };
+		902AF5551994E75000357B54 /* WeExaminationItemConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeExaminationItemConfig.h; sourceTree = "<group>"; };
+		902AF5561994E75000357B54 /* WeExaminationItemConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeExaminationItemConfig.m; sourceTree = "<group>"; };
 		904F7A2F18F0F146000CB41B /* We_Doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = We_Doc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		904F7A3218F0F146000CB41B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		904F7A3418F0F146000CB41B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -336,6 +369,7 @@
 		900E28DE19292C42008BF61C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				902AF54A1994E74300357B54 /* 病例 */,
 				906F4D9919738C87007807FE /* User */,
 				90B4AC41196D1D2D006E60CE /* Funding */,
 				900E28E519292C55008BF61C /* WeMessage.h */,
@@ -446,6 +480,42 @@
 				902AF52F1994BFD100357B54 /* WeMyFundingSupportDetailViewController.m */,
 			);
 			name = "我的众筹";
+			sourceTree = "<group>";
+		};
+		902AF5341994E4F900357B54 /* 查看病例 */ = {
+			isa = PBXGroup;
+			children = (
+				902AF5351994E50A00357B54 /* WeCahIdxViewController.h */,
+				902AF5361994E50A00357B54 /* WeCahIdxViewController.m */,
+				902AF5391994E50A00357B54 /* WeCahCahViewController.h */,
+				902AF53A1994E50A00357B54 /* WeCahCahViewController.m */,
+				902AF53B1994E50A00357B54 /* WeCahCahAddDruViewController.h */,
+				902AF53C1994E50A00357B54 /* WeCahCahAddDruViewController.m */,
+				902AF53F1994E50A00357B54 /* WeCahExaViewController.h */,
+				902AF5401994E50A00357B54 /* WeCahExaViewController.m */,
+				902AF5411994E50A00357B54 /* WeCahExaAddIteViewController.h */,
+				902AF5421994E50A00357B54 /* WeCahExaAddIteViewController.m */,
+			);
+			name = "查看病例";
+			sourceTree = "<group>";
+		};
+		902AF54A1994E74300357B54 /* 病例 */ = {
+			isa = PBXGroup;
+			children = (
+				902AF54B1994E75000357B54 /* WeCaseRecord.h */,
+				902AF54C1994E75000357B54 /* WeCaseRecord.m */,
+				902AF54D1994E75000357B54 /* WeRecordDrug.h */,
+				902AF54E1994E75000357B54 /* WeRecordDrug.m */,
+				902AF54F1994E75000357B54 /* WeTextCoding.h */,
+				902AF5501994E75000357B54 /* WeTextCoding.m */,
+				902AF5511994E75000357B54 /* WeExamination.h */,
+				902AF5521994E75000357B54 /* WeExamination.m */,
+				902AF5531994E75000357B54 /* WeExaminationItem.h */,
+				902AF5541994E75000357B54 /* WeExaminationItem.m */,
+				902AF5551994E75000357B54 /* WeExaminationItemConfig.h */,
+				902AF5561994E75000357B54 /* WeExaminationItemConfig.m */,
+			);
+			name = "病例";
 			sourceTree = "<group>";
 		};
 		9039CC5C1902B40800EA8310 /* CustomViews */ = {
@@ -609,6 +679,7 @@
 		906F4D8E197376AC007807FE /* 咨询室 */ = {
 			isa = PBXGroup;
 			children = (
+				902AF5341994E4F900357B54 /* 查看病例 */,
 				906F4D8F197376CC007807FE /* WeCsrIdxViewController.h */,
 				906F4D90197376CC007807FE /* WeCsrIdxViewController.m */,
 				906F4D91197376CC007807FE /* WeCsrCtrViewController.h */,
@@ -897,6 +968,7 @@
 				90B4AC64196D1D6A006E60CE /* WeSPViewController.m in Sources */,
 				90C908D9198BA7910068EE4C /* WeInputQcNumberViewController.m in Sources */,
 				9026EFB5191447FB00CE4A7A /* WeSelTilViewController.m in Sources */,
+				902AF55C1994E75000357B54 /* WeExaminationItemConfig.m in Sources */,
 				906F4DFB1976220B007807FE /* WeJiaMangementIndexViewController.m in Sources */,
 				906F4E07197640D9007807FE /* WeJiahaoApplyDetailViewController.m in Sources */,
 				9026EFC51914AC3E00CE4A7A /* WeInpEmaViewController.m in Sources */,
@@ -920,8 +992,10 @@
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
 				906F4DFE19762294007807FE /* WeJiahao.m in Sources */,
 				902AF5241992184000357B54 /* WeMyFundingViewController.m in Sources */,
+				902AF5571994E75000357B54 /* WeCaseRecord.m in Sources */,
 				90B4AC6E196D1D6A006E60CE /* WeParagraphModifyViewController.m in Sources */,
 				9026EDFB1904053C00CE4A7A /* WeSelTypViewController.m in Sources */,
+				902AF5451994E50A00357B54 /* WeCahCahViewController.m in Sources */,
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				90B4AC65196D1D6A006E60CE /* WeViewController.m in Sources */,
@@ -936,6 +1010,7 @@
 				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				90B4AC3D196D1CF4006E60CE /* WeFunDetViewController.m in Sources */,
+				902AF5481994E50A00357B54 /* WeCahExaViewController.m in Sources */,
 				906F4D9C19738D20007807FE /* WeConsult.m in Sources */,
 				90B4AC77196D1DA0006E60CE /* WeRegWlcViewController.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
@@ -948,14 +1023,19 @@
 				906F4E0D19769257007807FE /* WeSelLanViewController.m in Sources */,
 				90B4AC6C196D1D6A006E60CE /* WeImageViewerViewController.m in Sources */,
 				90B4AC6D196D1D6A006E60CE /* WeSentenceModifyViewController.m in Sources */,
+				902AF55B1994E75000357B54 /* WeExaminationItem.m in Sources */,
 				90B4AC3C196D1CF4006E60CE /* WeFunIdxViewController.m in Sources */,
 				907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */,
 				90B4AC66196D1D6A006E60CE /* WeNavViewController.m in Sources */,
 				90B4AC3E196D1CF4006E60CE /* WeFunDesViewController.m in Sources */,
 				90B4AC68196D1D6A006E60CE /* WeToolButton.m in Sources */,
+				902AF5461994E50A00357B54 /* WeCahCahAddDruViewController.m in Sources */,
+				902AF5491994E50A00357B54 /* WeCahExaAddIteViewController.m in Sources */,
 				900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */,
+				902AF5591994E75000357B54 /* WeTextCoding.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
 				900E292F1929AFBB008BF61C /* wav.mm in Sources */,
+				902AF55A1994E75000357B54 /* WeExamination.m in Sources */,
 				9026EE0B1904A60700CE4A7A /* VPImageCropperViewController.m in Sources */,
 				909E3C691901A89900ADC2E9 /* WePecExpViewController.m in Sources */,
 				9026EE0519049E5700CE4A7A /* WePecCaiGriViewController.m in Sources */,
@@ -964,11 +1044,13 @@
 				909E3C711901B05E00ADC2E9 /* WePecExpAddViewController.m in Sources */,
 				906F4E0419763EEF007807FE /* WeJiahaoDetailViewController.m in Sources */,
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
+				902AF5431994E50A00357B54 /* WeCahIdxViewController.m in Sources */,
 				906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */,
 				906F4DE11973F194007807FE /* WeOrder.m in Sources */,
 				90B4AC7A196D1DA0006E60CE /* WeRegIrpViewController.m in Sources */,
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
 				902AF52D1994AE7E00357B54 /* WeMyFundingSupportsViewController.m in Sources */,
+				902AF5581994E75000357B54 /* WeRecordDrug.m in Sources */,
 				900E28ED19294070008BF61C /* WePatient.m in Sources */,
 				906F4D93197376CC007807FE /* WeCsrIdxViewController.m in Sources */,
 				90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */,
@@ -1055,8 +1137,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1087,7 +1170,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1112,7 +1196,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E4F0041-DCED-41CC-83CB-E4ACA90A2884";
+				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1137,7 +1221,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E4F0041-DCED-41CC-83CB-E4ACA90A2884";
+				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

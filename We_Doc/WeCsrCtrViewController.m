@@ -171,6 +171,9 @@
     if ([currentMessage.messageType isEqualToString:@"X"]) {
         return [WeAppDelegate calcSizeForString:currentMessage.content Font:We_font_textfield_small_zh_cn expectWidth:260].height + 30;
     }
+    if ([currentMessage.messageType isEqualToString:@"R"]) {
+        return [WeAppDelegate calcSizeForString:@"该病人发送了一个病例" Font:We_font_textfield_small_zh_cn expectWidth:260].height + 30;
+    }
     
     // 判断是谁发出的信息
     if ([currentMessage.senderId isEqualToString:currentUser.userId]) {
@@ -296,6 +299,28 @@
         UIButton * button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setBackgroundColor:We_foreground_gray_general];
         [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 5, titleSize.width + 20, titleSize.height + 20)];
+        [button.layer setCornerRadius:4];
+        [button.layer setMasksToBounds:YES];
+        [cell.contentView addSubview:button];
+        
+        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake((320 - titleSize.width) / 2, 15, titleSize.width, titleSize.height)];
+        [label setText:title];
+        [label setTextColor:We_foreground_white_general];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setNumberOfLines:0];
+        [label setFont:We_font_textfield_small_zh_cn];
+        [cell.contentView addSubview:label];
+    }
+    else if ([currentMessage.messageType isEqualToString:@"R"]) {
+        NSString * title = @"该病人发送了一个病例";
+        
+        CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:260];
+        
+        WeInfoedButton * button = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setBackgroundColor:We_foreground_gray_general];
+        [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 5, titleSize.width + 20, titleSize.height + 20)];
+        [button setUserData:currentMessage.content];
+        [button addTarget:self action:@selector(caseRecordDetailButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
         [button.layer setCornerRadius:4];
         [button.layer setMasksToBounds:YES];
         [cell.contentView addSubview:button];
@@ -1436,6 +1461,13 @@
 - (void)endConsultForFreeButton_onPress {
     NSLog(@"!!!");
     [endConsultForFree_confirmActionSheet showInView:self.view];
+}
+
+- (void)caseRecordDetailButton_onPress:(WeInfoedButton *)sender {
+    WeCahIdxViewController * vc = [[WeCahIdxViewController alloc] init];
+    vc.rmId = [sender userData];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - apis
