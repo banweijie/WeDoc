@@ -11,6 +11,7 @@
 		5412EBD919D7B15C00CA6C7C /* WeFgtPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD419D7B15C00CA6C7C /* WeFgtPaswdViewController.m */; };
 		5412EBDA19D7B15C00CA6C7C /* WeFgtInpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */; };
 		5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */; };
+		5412EBDE19D7BA3900CA6C7C /* WeFunMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -138,6 +139,8 @@
 		5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtInpViewController.m; sourceTree = "<group>"; };
 		5412EBD719D7B15C00CA6C7C /* WeFgtSetPaswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFgtSetPaswdViewController.h; sourceTree = "<group>"; };
 		5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtSetPaswdViewController.m; sourceTree = "<group>"; };
+		5412EBDC19D7BA3900CA6C7C /* WeFunMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunMovieViewController.h; sourceTree = "<group>"; };
+		5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunMovieViewController.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -687,6 +690,8 @@
 				90B4AC37196D1CF4006E60CE /* WeFunDesViewController.m */,
 				90B4AC38196D1CF4006E60CE /* WeFunSupViewController.h */,
 				90B4AC39196D1CF4006E60CE /* WeFunSupViewController.m */,
+				5412EBDC19D7BA3900CA6C7C /* WeFunMovieViewController.h */,
+				5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */,
 			);
 			name = "众筹项目";
 			sourceTree = "<group>";
@@ -1004,6 +1009,7 @@
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
 				90C908DC198BAA880068EE4C /* WeInputPcNumberViewController.m in Sources */,
 				906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */,
+				5412EBDE19D7BA3900CA6C7C /* WeFunMovieViewController.m in Sources */,
 				9026EDFF19044B9000CE4A7A /* WePecPeaViewController.m in Sources */,
 				906F4DFE19762294007807FE /* WeJiahao.m in Sources */,
 				902AF5241992184000357B54 /* WeMyFundingViewController.m in Sources */,

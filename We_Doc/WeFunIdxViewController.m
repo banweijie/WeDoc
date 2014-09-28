@@ -268,9 +268,8 @@
 }
 
 - (void)coverButtonOnPress:(id)sender {
+    [self searchButton_onPress];
     [sel_keyword setString:searchBar.text];
-    [searchBar resignFirstResponder];
-    [searchView setHidden:YES];
     [self api_data_listFunding:@{@"f.words":searchBar.text}];if ([searchBar.text isEqualToString:@""]) {
         [titleButton setTitle:@"全部 v" forState:UIControlStateNormal];
     }
@@ -281,8 +280,11 @@
 
 //
 - (void)titleButton_onPress:(id)sender {
-    [selectView setHidden:!selectView.isHidden];
-}
+    if(!searchView.isHidden)
+    {
+        [self searchButton_onPress];
+    }
+    [selectView setHidden:!selectView.isHidden];}
 
 - (void)optionButton_onPress:(WeInfoedButton *)sender {
     NSString * order = sender.userData;
@@ -325,8 +327,14 @@
 
 - (void)searchButton_onPress {
     [selectView setHidden:YES];
-    [searchView setHidden:!searchView.isHidden];
     if (!searchView.isHidden) {
+        searchView.hidden=YES;
+        coverButton.hidden = YES;
+        [searchBar resignFirstResponder];
+    }else
+    {
+        searchView.hidden=NO;
+        coverButton.hidden = NO;
         [searchBar becomeFirstResponder];
     }
 }

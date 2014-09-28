@@ -40,12 +40,10 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning
+-(BOOL)shouldAutorotate
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return NO;
 }
-
 /*
  #pragma mark - Navigation
  
