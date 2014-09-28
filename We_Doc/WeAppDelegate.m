@@ -32,6 +32,13 @@
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:@"1" forKey:@"lastMessageId"];
     
+    NSString *username=[ILUserDefaults objectForKey:USERNAME];
+    NSString *passwd=[ILUserDefaults objectForKey:USERPASSWD];
+    //    MyLog(@"user---%@  pwd---%@",username,passwd);
+    if (username!=nil) {
+        [self api_user_login:username password:passwd];
+    }
+    
     //timer0 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshDoctorList:) userInfo:nil repeats:YES];
     
     timer1 = [NSTimer scheduledTimerWithTimeInterval:refreshInterval target:self selector:@selector(refreshMessage:) userInfo:nil repeats:YES];
@@ -43,6 +50,143 @@
     return YES;
 }
 
+
+#pragma mark - Apis
+
+// 访问登录接口
+- (void)api_user_login:(NSString *)phone password:(NSString *)password {
+    [WeAppDelegate postToServerWithField:@"user" action:@"login"
+                              parameters:@{
+                                           @"phone":phone,
+                                           @"password":[password md5]
+                                           }
+                                 success:^(NSDictionary * response) {
+                                     [self api_doctor_listPatients];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"登陆失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                 }];
+}
+
+// 访问获取保健医列表接口
+- (void)api_doctor_listPatients {
+    [WeAppDelegate postToServerWithField:@"doctor" action:@"listPatients"
+                              parameters:@{
+                                           }
+                                 success:^(NSArray * response) {
+//                                     NSLog(@"response");
+                                     favorPatientList = [[NSMutableDictionary alloc] init];
+                                     for (int i = 0; i < [response count]; i++) {
+                                         WeFavorPatient * newFavorPatient = [[WeFavorPatient alloc] initWithNSDictionary:response[i]];
+                                         favorPatientList[newFavorPatient.userId] = newFavorPatient;
+                                     }
+                                     [self api_user_refreshUser];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"获取病人列表失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                 }];
+}
+
+// 访问获取用户信息接口
+- (void)api_user_refreshUser {
+    [WeAppDelegate postToServerWithField:@"user" action:@"refreshUser"
+                              parameters:@{
+                                           }
+                                 success:^(NSDictionary * response) {
+                                     WeDoctor * newUser = [[WeDoctor alloc] initWithNSDictionary:response];
+                                     [self api_message_getUnviewedMsg:newUser];
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"获取用户信息失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                 }];
+}
+
+// 访问获取未读信息接口
+- (void)api_message_getUnviewedMsg:(WeDoctor *)newUser {
+    [WeAppDelegate postToServerWithField:@"message" action:@"getUnviewedMsg"
+                              parameters:@{
+                                           }
+                                 success:^(NSArray * response) {
+//                                     NSLog(@"%@", [response class]);
+                                     if (![response isKindOfClass:[NSArray class]]) {
+//                                         NSLog(@"!!!!");
+                                         lastMessageId = (long long) response;
+                                     }
+                                     else {
+                                         for (int i = 0; i < [response count]; i++) {
+                                             WeMessage * message = [[WeMessage alloc] initWithNSDictionary:response[i]];
+                                             if ([message.messageId longLongValue] > lastMessageId) {
+                                                 lastMessageId = [message.messageId longLongValue];
+//                                                 NSLog(@"%lld", lastMessageId);
+                                             }
+                                             NSMutableArray * result = [globalHelper search:[WeMessage class]
+                                                                                      where:[NSString stringWithFormat:@"messageId = %@", message.messageId]
+                                                                                    orderBy:nil offset:0 count:0];
+                                             if ([result count] == 0) {
+                                                 // 文字消息
+                                                 if ([message.messageType isEqualToString:@"T"]) {
+                                                     [globalHelper insertToDB:message];
+                                                 }
+                                                 // 图片消息
+                                                 else if ([message.messageType isEqualToString:@"I"]) {
+                                                     [globalHelper insertToDB:message];
+                                                     [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
+                                                                       successCompletion:^(id image) {
+//                                                                           NSLog(@"!!!");
+                                                                           message.imageContent = (UIImage *)image;
+                                                                           [globalHelper updateToDB:message where:nil];
+                                                                       }];
+                                                 }
+                                                 // 语音消息
+                                                 else if ([message.messageType isEqualToString:@"A"]) {
+                                                     [globalHelper insertToDB:message];
+                                                     [WeAppDelegate DownloadFileWithURL:yijiarenImageUrl(message.content)
+                                                                      successCompletion:^(NSURL * filePath) {
+                                                                          [VoiceConverter amrToWav:filePath.path wavSavePath:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
+                                                                          message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
+                                                                          [globalHelper updateToDB:message where:nil];
+                                                                      }];
+                                                 }
+                                                 else if ([message.messageType isEqualToString:@"X"]) {
+                                                     [globalHelper insertToDB:message];
+                                                 }
+                                                 else if ([message.messageType isEqualToString:@"R"]) {
+                                                     [globalHelper insertToDB:message];
+                                                 }
+                                             }
+                                         }
+                                     }
+                                     currentUser = newUser;
+                                   
+                                 }
+                                 failure:^(NSString * errorMessage) {
+                                     UIAlertView * notPermitted = [[UIAlertView alloc]
+                                                                   initWithTitle:@"获取未读信息失败"
+                                                                   message:errorMessage
+                                                                   delegate:nil
+                                                                   cancelButtonTitle:@"OK"
+                                                                   otherButtonTitles:nil];
+                                     [notPermitted show];
+                                 }];
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -99,7 +243,7 @@
 # pragma mark - Networking
 
 + (void)postToServerWithField:(NSString *)field action:(NSString *)action parameters:(NSDictionary *)parameters success:(void (^__strong)(__strong id))success failure:(void (^__strong)(__strong NSString *))failure {
-    NSLog(@"\npost to api: <%@, %@>\nparameters: %@", field, action, parameters);
+//    NSLog(@"\npost to api: <%@, %@>\nparameters: %@", field, action, parameters);
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
     [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"yijiaren"];
@@ -134,7 +278,7 @@
 }
 
 + (void)postToServerWithField:(NSString *)field action:(NSString *)action parameters:(NSDictionary *)parameters fileData:(NSData *)fileData fileName:(NSString *)fileName success:(void (^)(id))success failure:(void (^)(NSString *))failure {
-    NSLog(@"\npost to api: <%@, %@>\nparameters: %@\nfileName: %@", field, action, parameters, fileName);
+//    NSLog(@"\npost to api: <%@, %@>\nparameters: %@\nfileName: %@", field, action, parameters, fileName);
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
     [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"yijiaren"];
@@ -248,7 +392,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 
 + (NSData *)sendPhoneNumberToServer:(NSString *)urlString paras:(NSString *)parasString
 {
-    NSLog(@"%@ %@", urlString, parasString);
+//    NSLog(@"%@ %@", urlString, parasString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
@@ -261,7 +405,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 
 + (NSData *)postToServer:(NSString *)urlString withParas:(NSString *)parasString
 {
-    NSLog(@"%@ %@", urlString, parasString);
+//    NSLog(@"%@ %@", urlString, parasString);
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
@@ -273,7 +417,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 }
 
 + (NSData *)postToServer:(NSString *)urlString withDictionaryParas:(NSDictionary *)paras {
-    NSLog(@"%@ %@", urlString, paras);
+//    NSLog(@"%@ %@", urlString, paras);
     NSURL * url = [NSURL URLWithString:urlString];
     NSMutableURLRequest * request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
@@ -356,7 +500,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //NSLog(@"%@", HTTPResponse);
         we_codings = HTTPResponse[@"response"][@"codings"];
         we_imagePaths = HTTPResponse[@"response"][@"imagePaths"];
-        NSLog(@"%@", HTTPResponse);
+//        NSLog(@"%@", HTTPResponse);
         we_examinationTypeKeys = [we_codings[@"examinationType"] allKeys];
         we_examinationTypes = HTTPResponse[@"response"][@"examinationTypes"];
         we_secondaryTypeKeyToValue = [[NSMutableDictionary alloc] init];
@@ -468,7 +612,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                      for (int i = 0; i < [response count]; i++) {
                                          WeFavorPatient * newFavorPatient = [[WeFavorPatient alloc] initWithNSDictionary:response[i]];
                                          if (favorPatientList[newFavorPatient.userId] == nil) {
-                                             NSLog(@"!!!!!!New Patients!!!!!");
+//                                             NSLog(@"!!!!!!New Patients!!!!!");
                                              favorPatientList[newFavorPatient.userId] = newFavorPatient;
                                          }
                                      }

@@ -154,7 +154,7 @@
 // Functions
 - (void) get_experience {
     NSString *errorMessage = @"连接失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/listExperiencesOfDoctor.action";
+    NSString *urlString =yijiarenUrl(@"doctor", @"listExperiencesOfDoctor");
     NSString *parasString = @"";
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
@@ -164,7 +164,7 @@
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
             user_exps = [[NSMutableArray alloc] initWithArray:[HTTPResponse objectForKey:@"response"]];
-            NSLog(@"%@ %@", user_exps, [NSString stringWithUTF8String:object_getClassName(user_exps)]);
+//            NSLog(@"%@ %@", user_exps, [NSString stringWithUTF8String:object_getClassName(user_exps)]);
             return;
         }
         if ([result isEqualToString:@"2"]) {
@@ -194,7 +194,7 @@
 
 - (BOOL) user_delete:(NSInteger)row {
     NSString *errorMessage = @"连接失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/removeExperience.action";
+    NSString *urlString =yijiarenUrl(@"doctor", @"removeExperience");
     NSString *parasString = [NSString stringWithFormat:@"deId=%@", [[user_exps objectAtIndex:row] objectForKey:@"id"]];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     

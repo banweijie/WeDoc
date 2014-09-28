@@ -330,7 +330,7 @@
     encodedString = [encodedString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     //NSDataBase64Encoding64CharacterLineLength
     NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/updateAvatar.action";
+    NSString *urlString =yijiarenUrl(@"user", @"updateAvatar");
     NSString *parasString = [NSString stringWithFormat:@"dataString=%@&smallData=%@", encodedString, encodedString];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     if (DataResponse != NULL) {
@@ -338,7 +338,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            NSLog(@"%@", HTTPResponse);
+//            NSLog(@"%@", HTTPResponse);
             currentUser.avatarPath = HTTPResponse[@"response"];
             return YES;
         }
@@ -370,7 +370,7 @@
 
 - (BOOL) changePassword {
     NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/user/changePassword.action";
+    NSString *urlString =yijiarenUrl(@"user", @"changePassword");
     NSString *parasString = [NSString stringWithFormat:@""];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     

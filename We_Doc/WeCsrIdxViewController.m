@@ -168,7 +168,7 @@
         [cell.contentView addSubview:l2];
         
         if ([patient.consultStatus isEqualToString:@"A"]) {
-            NSLog(@"%lld %f",  patient.deadline, [[NSDate date] timeIntervalSince1970]);
+//            NSLog(@"%lld %f",  patient.deadline, [[NSDate date] timeIntervalSince1970]);
             int restSec = patient.deadline - [[NSDate date] timeIntervalSince1970];
             if (patient.emergent) {
                 l1.text = [NSString stringWithFormat:@"[紧急咨询中 剩余%d分钟]", restSec / 60];

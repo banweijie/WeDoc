@@ -209,7 +209,7 @@
 
 
 - (void)user_save_onpress:(id)sender {
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateCert.action?fileFileName=111.jpg&fileType=qc";
+    NSString *urlString =[NSString stringWithFormat:@"%@?fileFileName=111.jpg&fileType=qc",yijiarenUrl(@"doctor", @"updateCert")]; 
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
@@ -241,7 +241,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            NSLog(@"%@", HTTPResponse);
+//            NSLog(@"%@", HTTPResponse);
             //currentUser = user_certificateId_input.text;
             currentUser.qcPath = HTTPResponse[@"response"];
             [self.navigationController popViewControllerAnimated:YES];

@@ -179,7 +179,7 @@
 }
 - (void) user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateExperience.action";
+    NSString *urlString =yijiarenUrl(@"doctor", @"updateExperience");
     NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
@@ -260,7 +260,7 @@
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
     
-    NSLog(@"%d %s", we_expToModify_id, object_getClassName([[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"fromYear"]));
+//    NSLog(@"%d %s", we_expToModify_id, object_getClassName([[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"fromYear"]));
     
     // textFields
     We_init_textFieldInCell_general(user_exp_startyear, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"fromYear"]], We_font_textfield_zh_cn)

@@ -107,7 +107,7 @@
     NSString * errorMessage = @"连接服务器失败，暂时使用本地缓存数据";
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSLog(@"%@", HTTPResponse);
+//        NSLog(@"%@", HTTPResponse);
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
@@ -221,7 +221,7 @@
          }
      ];
     
-    NSLog(@"%@", currentUser.hospitalId);
+//    NSLog(@"%@", currentUser.hospitalId);
 }
 
 - (void)didReceiveMemoryWarning

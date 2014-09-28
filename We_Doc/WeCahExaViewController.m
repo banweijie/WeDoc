@@ -101,7 +101,7 @@
                   NSString *result = [HTTPResponse objectForKey:@"result"];
                   result = [NSString stringWithFormat:@"%@", result];
                   if ([result isEqualToString:@"1"]) {
-                      NSLog(@"response : %@", HTTPResponse[@"response"]);
+//                      NSLog(@"response : %@", HTTPResponse[@"response"]);
                       WeTextCoding * newImage = [[WeTextCoding alloc] initWithNSDictionary:HTTPResponse[@"response"]];
                       [examinationChanging.images addObject:newImage];
                       [self refreshImageView:self];
@@ -317,7 +317,7 @@
                 cell.textLabel.textColor = We_foreground_black_general;
             }
             if ([examinationChanging.items count] > 0) {
-                NSLog(@"!!!");
+//                NSLog(@"!!!");
                 WeExaminationItem * item = examinationChanging.items[indexPath.row];
                 cell.backgroundColor = We_foreground_white_general;
                 cell.textLabel.text = item.config.name;
@@ -343,7 +343,7 @@
                 cell.textLabel.textColor = We_foreground_black_general;
             }
             if ([examinationChanging.items count] > 0) {
-                NSLog(@"!!!");
+//                NSLog(@"!!!");
                 WeExaminationItem * item = examinationChanging.items[indexPath.row];
                 cell.backgroundColor = We_foreground_white_general;
                 cell.textLabel.text = item.config.name;
@@ -518,7 +518,7 @@
               NSString *result = [HTTPResponse objectForKey:@"result"];
               result = [NSString stringWithFormat:@"%@", result];
               if ([result isEqualToString:@"1"]) {
-                  NSLog(@"response : %@", HTTPResponse[@"response"]);
+//                  NSLog(@"response : %@", HTTPResponse[@"response"]);
                   [examinationChanging.images removeObject:imageToDelete];
                   [self refreshImageView:self];
                   [sys_tableView reloadData];
@@ -580,7 +580,7 @@
                                                                         }
           success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
               NSString * errorMessage;
-              NSLog(@"HTTPResponse : %@", HTTPResponse);
+//              NSLog(@"HTTPResponse : %@", HTTPResponse);
               
               NSString *result = [HTTPResponse objectForKey:@"result"];
               result = [NSString stringWithFormat:@"%@", result];
@@ -642,7 +642,7 @@
                                                                         }
           success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
               NSString * errorMessage;
-              NSLog(@"HTTPResponse : %@", HTTPResponse);
+//              NSLog(@"HTTPResponse : %@", HTTPResponse);
               
               NSString *result = [HTTPResponse objectForKey:@"result"];
               result = [NSString stringWithFormat:@"%@", result];

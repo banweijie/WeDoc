@@ -152,7 +152,7 @@
                                   action:@"listFunding"
                               parameters:nil
                                  success:^(id response) {
-                                     NSLog(@"%@", response);
+//                                     NSLog(@"%@", response);
                                      fundingList = [[NSMutableArray alloc] init];
                                      for (int i = 0; i < [response count]; i++) {
                                          WeFunding * newFunding = [[WeFunding alloc] initWithNSDictionary:response[i]];

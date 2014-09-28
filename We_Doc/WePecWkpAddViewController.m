@@ -144,7 +144,7 @@
 
 - (void)user_save_onpress:(id)sender {
     we_workPeriod_save = [NSString stringWithFormat:@"%@-%@%@%@", we_workPeriod_save, we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod];
-    NSLog(@"%@", we_workPeriod_save);
+//    NSLog(@"%@", we_workPeriod_save);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

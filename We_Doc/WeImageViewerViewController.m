@@ -18,7 +18,7 @@
 @implementation WeImageViewerViewController
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    NSLog(@"!!!");
+//    NSLog(@"!!!");
 }
 
 - (void)centerScrollViewContents {

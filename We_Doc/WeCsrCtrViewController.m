@@ -583,7 +583,7 @@
                                                 orderBy:nil
                                                  offset:0
                                                   count:1000];
-    NSLog(@"\nSelect %lu message(s) from database.", (unsigned long)[messageList count]);
+//    NSLog(@"\nSelect %lu message(s) from database.", (unsigned long)[messageList count]);
     
     // 根据信息数量判断是否需要刷新
     if ([messageList count] == currentCount && !forced) return;
@@ -635,7 +635,7 @@
                                            @"m.type":message.messageType
                                            }
                                  success:^(id response) {
-                                     NSLog(@"\n%@", response);
+//                                     NSLog(@"\n%@", response);
                                      [message setWithNSDictionary:response];
                                      [message setSending:NO];
                                      [globalHelper updateToDB:message where:nil];
@@ -672,7 +672,7 @@
                                 fileData:UIImageJPEGRepresentation(image, 1.0)
                                 fileName:@"a.jpg"
                                  success:^(id response) {
-                                     NSLog(@"\n%@", response);
+//                                     NSLog(@"\n%@", response);
                                      [message setWithNSDictionary:response];
                                      [message setSending:NO];
                                      [globalHelper updateToDB:message where:nil];
@@ -709,7 +709,7 @@
                                 fileData:amrData
                                 fileName:@"a.amr"
                                  success:^(id response) {
-                                     NSLog(@"\n%@", response);
+//                                     NSLog(@"\n%@", response);
                                      [message setWithNSDictionary:response];
                                      [message setSending:NO];
                                      [globalHelper updateToDB:message where:nil];
@@ -841,7 +841,7 @@
     AVAudioPlayer * newPlayer = [[AVAudioPlayer alloc] initWithData:audioReplayToolBarAudioData error:&error];
     [newPlayer play];
     
-    NSLog(@"%lld", (long long)[audioReplayToolBarAudioData length]);
+//    NSLog(@"%lld", (long long)[audioReplayToolBarAudioData length]);
     if (error != nil) {
         [[[UIAlertView alloc] initWithTitle:@"读取录音文件失败" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
     }
@@ -1459,7 +1459,7 @@
 }
 
 - (void)endConsultForFreeButton_onPress {
-    NSLog(@"!!!");
+//    NSLog(@"!!!");
     [endConsultForFree_confirmActionSheet showInView:self.view];
 }
 

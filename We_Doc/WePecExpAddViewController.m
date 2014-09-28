@@ -179,7 +179,7 @@
 }
 - (void) user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/addExperience.action";
+    NSString *urlString = yijiarenUrl(@"doctor", @"addExperience");
     NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text, user_exp_department.text];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
@@ -217,7 +217,7 @@
     [notPermitted show];
 }
 - (void)monthPickerDidChangeDate:(SRMonthPicker *)monthPicker {
-    NSLog(@"monthpicker~");
+//    NSLog(@"monthpicker~");
 }
 /*
  [AREA]

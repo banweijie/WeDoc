@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0CB24654A3894C74B50B7DFF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C83D077ED634B6A9726A5B2 /* libPods.a */; };
+		5412EBD919D7B15C00CA6C7C /* WeFgtPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD419D7B15C00CA6C7C /* WeFgtPaswdViewController.m */; };
+		5412EBDA19D7B15C00CA6C7C /* WeFgtInpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */; };
+		5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -129,6 +132,12 @@
 
 /* Begin PBXFileReference section */
 		2C4C0E4422684F3590DC7997 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		5412EBD319D7B15C00CA6C7C /* WeFgtPaswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFgtPaswdViewController.h; sourceTree = "<group>"; };
+		5412EBD419D7B15C00CA6C7C /* WeFgtPaswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtPaswdViewController.m; sourceTree = "<group>"; };
+		5412EBD519D7B15C00CA6C7C /* WeFgtInpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFgtInpViewController.h; sourceTree = "<group>"; };
+		5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtInpViewController.m; sourceTree = "<group>"; };
+		5412EBD719D7B15C00CA6C7C /* WeFgtSetPaswdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFgtSetPaswdViewController.h; sourceTree = "<group>"; };
+		5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtSetPaswdViewController.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -641,6 +650,12 @@
 				90B4AC74196D1DA0006E60CE /* WeRegIvcViewController.m */,
 				90B4AC75196D1DA0006E60CE /* WeRegIrpViewController.h */,
 				90B4AC76196D1DA0006E60CE /* WeRegIrpViewController.m */,
+				5412EBD319D7B15C00CA6C7C /* WeFgtPaswdViewController.h */,
+				5412EBD419D7B15C00CA6C7C /* WeFgtPaswdViewController.m */,
+				5412EBD519D7B15C00CA6C7C /* WeFgtInpViewController.h */,
+				5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */,
+				5412EBD719D7B15C00CA6C7C /* WeFgtSetPaswdViewController.h */,
+				5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */,
 			);
 			name = "注册登录";
 			sourceTree = "<group>";
@@ -879,7 +894,7 @@
 				ORGANIZATIONNAME = "___PKU___";
 				TargetAttributes = {
 					904F7A2E18F0F146000CB41B = {
-						DevelopmentTeam = 7C2GR9EG83;
+						DevelopmentTeam = 8S6MY9YM27;
 					};
 					904F7A4F18F0F146000CB41B = {
 						TestTargetID = 904F7A2E18F0F146000CB41B;
@@ -1002,6 +1017,7 @@
 				900E28EA19292C55008BF61C /* WeMessage.m in Sources */,
 				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
+				5412EBDA19D7B15C00CA6C7C /* WeFgtInpViewController.m in Sources */,
 				9026EFBC191473D900CE4A7A /* WeInpNamViewController.m in Sources */,
 				902AF5301994BFD100357B54 /* WeMyFundingSupportDetailViewController.m in Sources */,
 				9026EE021904536300CE4A7A /* WeSelGenViewController.m in Sources */,
@@ -1026,9 +1042,11 @@
 				902AF55B1994E75000357B54 /* WeExaminationItem.m in Sources */,
 				90B4AC3C196D1CF4006E60CE /* WeFunIdxViewController.m in Sources */,
 				907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */,
+				5412EBD919D7B15C00CA6C7C /* WeFgtPaswdViewController.m in Sources */,
 				90B4AC66196D1D6A006E60CE /* WeNavViewController.m in Sources */,
 				90B4AC3E196D1CF4006E60CE /* WeFunDesViewController.m in Sources */,
 				90B4AC68196D1D6A006E60CE /* WeToolButton.m in Sources */,
+				5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */,
 				902AF5461994E50A00357B54 /* WeCahCahAddDruViewController.m in Sources */,
 				902AF5491994E50A00357B54 /* WeCahExaAddIteViewController.m in Sources */,
 				900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */,
@@ -1121,6 +1139,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1139,7 +1158,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
+				PROVISIONING_PROFILE = "F4DCBA00-3482-48B2-A8B8-1BD5240EE28C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1160,6 +1179,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1171,7 +1191,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
+				PROVISIONING_PROFILE = "F4DCBA00-3482-48B2-A8B8-1BD5240EE28C";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1183,7 +1203,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
@@ -1196,7 +1216,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
+				PROVISIONING_PROFILE = "c59d908f-27b7-449e-a8da-116b01220c47";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1208,7 +1228,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
@@ -1221,7 +1241,7 @@
 					"$(PROJECT_DIR)/We_Doc/arm/VoiceConvert/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "92E2F983-2B9A-4DE5-8D5C-E6DD6E513B1E";
+				PROVISIONING_PROFILE = "c59d908f-27b7-449e-a8da-116b01220c47";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

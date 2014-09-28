@@ -509,7 +509,7 @@
                                            @"fundingId":_currentFundingId
                                            }
                                  success:^(id response) {
-                                     NSLog(@"%@", response);
+//                                     NSLog(@"%@", response);
                                      currentFunding = [[WeFunding alloc] initWithNSDictionary:response];
                                      self.navigationItem.title = currentFunding.title;
                                      [sys_tableView reloadData];

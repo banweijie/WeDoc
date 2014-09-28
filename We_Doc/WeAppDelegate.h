@@ -185,7 +185,14 @@ weTargetView we_targetView;
 #define weTabBarIdPersonalCenter 4
 #define weTabBarIdCaseHistory 3
 
-#define yijiarenServer @"http://115.28.222.1/yijiaren"
+#define ILUserDefaults [NSUserDefaults standardUserDefaults]
+#define USERNAME @"USERNAME"
+#define USERPASSWD @"USERPASSWD"
+
+#define yijiarenServer @"http://test.ejren.com"    //测试服务器
+
+//#define yijiarenServer @"http://www.ejren.com"      //发布服务器
+
 #define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
 #define yijiarenImageServer we_imagePaths[@"imgServer"]
 #define yijiarenAvatarUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"avatarPath"], fileName]

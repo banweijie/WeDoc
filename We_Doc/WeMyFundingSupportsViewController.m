@@ -158,7 +158,7 @@
                                            @"fundingLevelId":self.currentLevel.levelId
                                            }
                                  success:^(id response) {
-                                     NSLog(@"%@", response);
+//                                     NSLog(@"%@", response);
                                      supports = [[NSMutableArray alloc] init];
                                      for (int i = 0; i < [response count]; i++) {
                                          [supports addObject:[[WeFundingSupport alloc] initWithNSDictionary:response[i]]];

@@ -207,7 +207,7 @@
                                            @"fundingId":self.currentFunding.fundingId
                                            }
                                  success:^(id response) {
-                                     NSLog(@"%@", response);
+//                                     NSLog(@"%@", response);
                                      [self.currentFunding setWithNSDictionary:response];
                                      
                                      levels = [[NSMutableArray alloc] init];

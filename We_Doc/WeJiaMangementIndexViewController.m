@@ -313,7 +313,7 @@
                               parameters:@{
                                            }
                                  success:^(id response) {
-                                     NSLog(@"%@", response);
+//                                     NSLog(@"%@", response);
                                      jiahaoList = [[NSMutableArray alloc] init];
                                      for (int i = 0; i < [response count]; i ++) {
                                          [jiahaoList addObject:[[WeJiahao alloc] initWithNSDictionary:response[i]]];

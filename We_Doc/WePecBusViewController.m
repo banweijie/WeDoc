@@ -236,7 +236,7 @@
 
 - (void)user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateInfo.action";
+    NSString *urlString =yijiarenUrl(@"doctor", @"updateInfo");  
     NSString *parasString = [NSString stringWithFormat:@"workPeriod=%@&plusPrice=%@&consultPrice=%@&maxResponseGap=%@", we_workPeriod_save, user_plusPrice_value, user_consultPrice_value, user_maxResponseGap_value];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
@@ -288,7 +288,7 @@
     user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
     
-    NSLog(@"%@", currentUser.consultPrice);
+//    NSLog(@"%@", currentUser.consultPrice);
     user_consultPrice_value = currentUser.consultPrice;
     user_plusPrice_value = currentUser.plusPrice;
     user_maxResponseGap_value = currentUser.maxResponseGap;

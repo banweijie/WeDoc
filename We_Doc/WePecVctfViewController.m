@@ -208,7 +208,7 @@
 
 
 - (void)user_save_onpress:(id)sender {
-    NSString *urlString = @"http://115.28.222.1/yijiaren/doctor/updateCert.action?fileFileName=111.jpg&fileType=pc";
+    NSString *urlString =[NSString stringWithFormat:@"%@?fileFileName=111.jpg&fileType=pc",yijiarenUrl(@"doctor", @"updateCert")];
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     [request setHTTPMethod:@"POST"];
@@ -240,7 +240,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            NSLog(@"%@", HTTPResponse);
+//            NSLog(@"%@", HTTPResponse);
             currentUser.pcPath = HTTPResponse[@"response"];
             //we_pc = user_Id_input.text;
             [self.navigationController popViewControllerAnimated:YES];

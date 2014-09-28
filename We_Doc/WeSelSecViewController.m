@@ -110,7 +110,7 @@
     NSString * errorMessage = @"连接服务器失败";
     if (DataResponse != NULL) {
         NSDictionary *HTTPResponse = [NSJSONSerialization JSONObjectWithData:DataResponse options:NSJSONReadingMutableLeaves error:nil];
-        NSLog(@"%@", HTTPResponse);
+//        NSLog(@"%@", HTTPResponse);
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
@@ -170,20 +170,20 @@
     sys_tableView.backgroundColor = [UIColor clearColor];
     
     NSDictionary * parameters = @{@"hospitalId" : currentUser.hospitalId};
-    NSLog(@"%@", currentUser.hospitalId);
+//    NSLog(@"%@", currentUser.hospitalId);
     AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:yijiarenUrl(@"data", @"listSectionsOfHospital") parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
              [self.view addSubview:sys_tableView];
-             NSLog(@"JSON: %@", HTTPResponse);
+//             NSLog(@"JSON: %@", HTTPResponse);
              NSString * errorMessage;
              
              NSString *result = [HTTPResponse objectForKey:@"result"];
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
                  we_sectionList[currentUser.hospitalId] = HTTPResponse[@"response"];
-                 NSLog(@"%@", we_sectionList[currentUser.hospitalId]);
+//                 NSLog(@"%@", we_sectionList[currentUser.hospitalId]);
                  return;
              }
              if ([result isEqualToString:@"2"]) {

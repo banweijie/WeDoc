@@ -320,11 +320,11 @@
  Actions of all views
  */
 - (void)segue_to_RegWlc:(id)sender {
-    NSLog(@"segue:to_RegWlc~~:");
+//    NSLog(@"segue:to_RegWlc~~:");
     [self performSegueWithIdentifier:@"PecIdx2RegWlc" sender:self];
 }
 - (void)segue_to_PecCai:(id)sender {
-    NSLog(@"segue:to_RegWlc~~:");
+//    NSLog(@"segue:to_RegWlc~~:");
     [self performSegueWithIdentifier:@"PecIdx2PecCai" sender:self];
 }
 
