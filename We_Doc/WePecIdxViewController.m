@@ -7,6 +7,7 @@
 //
 
 #import "WePecIdxViewController.h"
+#import "WePecMyaViewController.h"
 
 @interface WePecIdxViewController ()
 @end
@@ -61,6 +62,10 @@
     }
     if (path.section == 1 && path.row == 2) {
         WeMyFundingViewController * vc = [[WeMyFundingViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (path.section == 2 && path.row == 0) {
+        WePecMyaViewController * vc = [[WePecMyaViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
@@ -216,7 +221,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"我的余额";
+                    cell.textLabel.text = @"财务信息";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     cell.imageView.image = [UIImage imageNamed:@"me-balance"];

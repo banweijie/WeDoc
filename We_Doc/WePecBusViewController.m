@@ -30,6 +30,8 @@
     UIView * consultPrice_explaination_view;
     UILabel * plusPrice_explaination;
     UIView * plusPrice_explaination_view;
+    
+//    NSMutableArray *tableDataArr;
 }
 
 @end
@@ -84,7 +86,7 @@
     if (section == 1) return 30;
     if (section == 2) return 50;
     if (section == 3) return 50;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 50 + self.tabBarController.tabBar.frame.size.height;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 150 + self.tabBarController.tabBar.frame.size.height;
     return 10;
 }
 // 询问每个段落的尾部标题
@@ -106,6 +108,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
+            NSLog(@"we_workPeriod_save.length    %@",we_workPeriod_save);
             return [we_workPeriod_save length] / 4;
             break;
         case 1:
@@ -281,9 +284,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    we_workPeriod_save=[NSMutableString stringWithString:currentUser.workPeriod];
     
-    we_workPeriod_save = currentUser.workPeriod;
-    
+    NSLog(@"we_workPeriod_save===%@",currentUser.workPeriod);
     // save button
     user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;
@@ -352,21 +355,5 @@
     [self.view addSubview:sys_tableView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

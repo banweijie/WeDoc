@@ -13,6 +13,12 @@
 		5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */; };
 		5412EBDE19D7BA3900CA6C7C /* WeFunMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */; };
 		545B38AC19D9062400C9F0D1 /* WeSelectSelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */; };
+		545B38B219D93BB000C9F0D1 /* WePecMyaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38AF19D93BB000C9F0D1 /* WePecMyaViewController.m */; };
+		545B38B319D93BB000C9F0D1 /* WePecRechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38B119D93BB000C9F0D1 /* WePecRechViewController.m */; };
+		545B38BD19D93C2300C9F0D1 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 545B38B519D93C2300C9F0D1 /* MJRefresh.bundle */; };
+		545B38BE19D93C2300C9F0D1 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38B819D93C2300C9F0D1 /* MJRefreshBaseView.m */; };
+		545B38BF19D93C2300C9F0D1 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38BA19D93C2300C9F0D1 /* MJRefreshFooterView.m */; };
+		545B38C019D93C2300C9F0D1 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38BC19D93C2300C9F0D1 /* MJRefreshHeaderView.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -144,6 +150,18 @@
 		5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunMovieViewController.m; sourceTree = "<group>"; };
 		545B38AA19D9062400C9F0D1 /* WeSelectSelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelectSelViewController.h; sourceTree = "<group>"; };
 		545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelectSelViewController.m; sourceTree = "<group>"; };
+		545B38AE19D93BB000C9F0D1 /* WePecMyaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecMyaViewController.h; sourceTree = "<group>"; };
+		545B38AF19D93BB000C9F0D1 /* WePecMyaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecMyaViewController.m; sourceTree = "<group>"; };
+		545B38B019D93BB000C9F0D1 /* WePecRechViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecRechViewController.h; sourceTree = "<group>"; };
+		545B38B119D93BB000C9F0D1 /* WePecRechViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WePecRechViewController.m; sourceTree = "<group>"; };
+		545B38B519D93C2300C9F0D1 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		545B38B619D93C2300C9F0D1 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		545B38B719D93C2300C9F0D1 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		545B38B819D93C2300C9F0D1 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		545B38B919D93C2300C9F0D1 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		545B38BA19D93C2300C9F0D1 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		545B38BB19D93C2300C9F0D1 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		545B38BC19D93C2300C9F0D1 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -381,6 +399,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		545B38AD19D93B9B00C9F0D1 /* 我的余额 */ = {
+			isa = PBXGroup;
+			children = (
+				545B38AE19D93BB000C9F0D1 /* WePecMyaViewController.h */,
+				545B38AF19D93BB000C9F0D1 /* WePecMyaViewController.m */,
+				545B38B019D93BB000C9F0D1 /* WePecRechViewController.h */,
+				545B38B119D93BB000C9F0D1 /* WePecRechViewController.m */,
+			);
+			name = "我的余额";
+			sourceTree = "<group>";
+		};
+		545B38B419D93C2300C9F0D1 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				545B38B519D93C2300C9F0D1 /* MJRefresh.bundle */,
+				545B38B619D93C2300C9F0D1 /* MJRefresh.h */,
+				545B38B719D93C2300C9F0D1 /* MJRefreshBaseView.h */,
+				545B38B819D93C2300C9F0D1 /* MJRefreshBaseView.m */,
+				545B38B919D93C2300C9F0D1 /* MJRefreshFooterView.h */,
+				545B38BA19D93C2300C9F0D1 /* MJRefreshFooterView.m */,
+				545B38BB19D93C2300C9F0D1 /* MJRefreshHeaderView.h */,
+				545B38BC19D93C2300C9F0D1 /* MJRefreshHeaderView.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
 		900E28DE19292C42008BF61C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +713,7 @@
 		9054807A18FA68D600CE8172 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				545B38AD19D93B9B00C9F0D1 /* 我的余额 */,
 				902AF5211992181F00357B54 /* 我的众筹 */,
 				909E3C6E1901AF4300ADC2E9 /* 工作经历 */,
 				9026EDFC19044B7100CE4A7A /* 个人账户 */,
@@ -733,6 +778,7 @@
 		906F4DF619761FC3007807FE /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				545B38B419D93C2300C9F0D1 /* MJRefresh */,
 				9026EFB6191471C400CE4A7A /* PAImageView */,
 				9026EE0C1904A61300CE4A7A /* VPImageCropper */,
 				900E291D1929AFBB008BF61C /* VoiceConvert */,
@@ -937,6 +983,7 @@
 			files = (
 				904F7A4B18F0F146000CB41B /* Images.xcassets in Resources */,
 				904F7A3D18F0F146000CB41B /* InfoPlist.strings in Resources */,
+				545B38BD19D93C2300C9F0D1 /* MJRefresh.bundle in Resources */,
 				904F7A4618F0F146000CB41B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1025,6 +1072,7 @@
 				9054807D18FA6A2900CE8172 /* WePecIdxViewController.m in Sources */,
 				904F7A3F18F0F146000CB41B /* main.m in Sources */,
 				90B4AC65196D1D6A006E60CE /* WeViewController.m in Sources */,
+				545B38C019D93C2300C9F0D1 /* MJRefreshHeaderView.m in Sources */,
 				900E28EA19292C55008BF61C /* WeMessage.m in Sources */,
 				9026EFBF1914AC1900CE4A7A /* WeInpSkiViewController.m in Sources */,
 				9026EDEC1903EE9400CE4A7A /* WePecWkpAddViewController.m in Sources */,
@@ -1037,7 +1085,9 @@
 				9026EE0819049E7400CE4A7A /* WePecCaiWkpViewController.m in Sources */,
 				909E3C661901662F00ADC2E9 /* WePecVctfViewController.m in Sources */,
 				90B4AC3D196D1CF4006E60CE /* WeFunDetViewController.m in Sources */,
+				545B38B319D93BB000C9F0D1 /* WePecRechViewController.m in Sources */,
 				902AF5481994E50A00357B54 /* WeCahExaViewController.m in Sources */,
+				545B38B219D93BB000C9F0D1 /* WePecMyaViewController.m in Sources */,
 				906F4D9C19738D20007807FE /* WeConsult.m in Sources */,
 				90B4AC77196D1DA0006E60CE /* WeRegWlcViewController.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
@@ -1080,11 +1130,13 @@
 				90B4AC7A196D1DA0006E60CE /* WeRegIrpViewController.m in Sources */,
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,
 				902AF52D1994AE7E00357B54 /* WeMyFundingSupportsViewController.m in Sources */,
+				545B38BF19D93C2300C9F0D1 /* MJRefreshFooterView.m in Sources */,
 				902AF5581994E75000357B54 /* WeRecordDrug.m in Sources */,
 				900E28ED19294070008BF61C /* WePatient.m in Sources */,
 				906F4D93197376CC007807FE /* WeCsrIdxViewController.m in Sources */,
 				90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */,
 				900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */,
+				545B38BE19D93C2300C9F0D1 /* MJRefreshBaseView.m in Sources */,
 				90B4AC48196D1D39006E60CE /* WeFunding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
