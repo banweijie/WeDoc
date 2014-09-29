@@ -19,6 +19,7 @@
 		545B38BE19D93C2300C9F0D1 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38B819D93C2300C9F0D1 /* MJRefreshBaseView.m */; };
 		545B38BF19D93C2300C9F0D1 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38BA19D93C2300C9F0D1 /* MJRefreshFooterView.m */; };
 		545B38C019D93C2300C9F0D1 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38BC19D93C2300C9F0D1 /* MJRefreshHeaderView.m */; };
+		545B38C319D951BF00C9F0D1 /* WeUserAgreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38C219D951BF00C9F0D1 /* WeUserAgreeViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -162,6 +163,8 @@
 		545B38BA19D93C2300C9F0D1 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		545B38BB19D93C2300C9F0D1 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		545B38BC19D93C2300C9F0D1 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		545B38C119D951BE00C9F0D1 /* WeUserAgreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUserAgreeViewController.h; sourceTree = "<group>"; };
+		545B38C219D951BF00C9F0D1 /* WeUserAgreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUserAgreeViewController.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -706,6 +709,8 @@
 				5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */,
 				5412EBD719D7B15C00CA6C7C /* WeFgtSetPaswdViewController.h */,
 				5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */,
+				545B38C119D951BE00C9F0D1 /* WeUserAgreeViewController.h */,
+				545B38C219D951BF00C9F0D1 /* WeUserAgreeViewController.m */,
 			);
 			name = "注册登录";
 			sourceTree = "<group>";
@@ -1112,6 +1117,7 @@
 				902AF5491994E50A00357B54 /* WeCahExaAddIteViewController.m in Sources */,
 				900E28F0192940E6008BF61C /* WeFavorPatient.m in Sources */,
 				902AF5591994E75000357B54 /* WeTextCoding.m in Sources */,
+				545B38C319D951BF00C9F0D1 /* WeUserAgreeViewController.m in Sources */,
 				9026EDF21903EEC800CE4A7A /* WePecWkpAddNavController.m in Sources */,
 				900E292F1929AFBB008BF61C /* wav.mm in Sources */,
 				902AF55A1994E75000357B54 /* WeExamination.m in Sources */,
