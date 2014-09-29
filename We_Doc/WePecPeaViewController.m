@@ -10,6 +10,7 @@
 #import "WeAppDelegate.h"
 #import <UIImageView+AFNetworking.h>
 #import "PAImageView.h"
+#import "WeRegIvcViewController.h"
 
 @interface WePecPeaViewController () {
     UITableView * sys_tableView;
@@ -18,6 +19,9 @@
     UILabel * user_gender_label;
     UILabel * user_phone_label;
     UIImageView * user_avatar_imageView;
+    
+    UIAlertView * alter;
+
 }
 
 @end
@@ -135,10 +139,18 @@
     }
     if (path.section == 1) {
         if (path.row == 1) {
-            if ([self changePassword]) {
-                we_vericode_type = @"ModifyPassword";
-                //[self performSegueWithIdentifier:@"PecPea_pushto_RegIvc" sender:self];
-            }
+//            [self performSegueWithIdentifier:@"PecPea_pushto_RegIvcq" sender:self];
+           
+            
+            NSMutableString *phone=[NSMutableString stringWithString:currentUser.userPhone];
+            NSRange a={3,4};
+            [phone replaceCharactersInRange:a withString:@"****"];
+            NSString *content=[NSString stringWithFormat:@"此操作将向您的手机（%@）发送短信验证码",phone];
+            
+            UIAlertView *ate=[[UIAlertView alloc]initWithTitle:@"确定要修改密码吗？" message:content delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            alter=ate;
+            [alter show];
+
         }
     }
     if (path.section == 2) {
@@ -154,6 +166,18 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView==alter && buttonIndex==1) {
+            if ([self changePassword]) {
+                we_vericode_type = @"ModifyPassword";
+                WeRegIvcViewController *ccc=[[WeRegIvcViewController alloc]init];
+                ccc.user_phone_value=currentUser.userPhone;
+                [self.navigationController pushViewController:ccc animated:YES];
+            }
+    }
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -302,14 +326,7 @@
     return cell;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 // 点击键盘上的return后调用的方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

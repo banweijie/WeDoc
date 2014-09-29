@@ -152,13 +152,13 @@
                     <navigationItem key="navigationItem" title="个人账号" id="QO4-lE-gN8"/>
                     <connections>
                         <segue destination="QcZ-h7-BrQ" kind="push" identifier="PecPea_pushto_SelGen" id="o1D-ln-kHi"/>
-                        <segue destination="djG-Ww-epg" kind="push" identifier="PecPea_pushto_RegIvc" id="gWA-BA-tfi"/>
                         <segue destination="1zb-Bm-qE3" kind="push" identifier="inputOfNameInPersonalAccount" id="IFR-hT-Nle"/>
+                        <segue destination="djG-Ww-epg" kind="push" identifier="PecPea_pushto_RegIvcq" id="vtb-IN-PQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbQ-1r-c28" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4105" y="-956"/>
+            <point key="canvasLocation" x="4125" y="-961"/>
         </scene>
         <!--We Pec Cai View Controller - 职业信息-->
         <scene sceneID="d25-MW-h1J">
@@ -857,6 +857,6 @@
         <segue reference="p97-ix-W3p"/>
         <segue reference="hf8-zt-DF2"/>
         <segue reference="PNH-k3-thk"/>
-        <segue reference="gWA-BA-tfi"/>
+        <segue reference="vtb-IN-PQl"/>
     </inferredMetricsTieBreakers>
 </document>
