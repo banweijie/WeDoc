@@ -139,14 +139,6 @@
     return NO;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -160,7 +152,7 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 568) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-49) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
@@ -179,11 +171,6 @@
              result = [NSString stringWithFormat:@"%@", result];
              if ([result isEqualToString:@"1"]) {
                  [we_hospitalList setObject:[HTTPResponse objectForKey:@"response"] forKey:@"100"];
-                 /*
-                 NSLog(@"%@", [HTTPResponse objectForKey:@"response"]);
-                 NSLog(@"%@", NSStringFromClass([[HTTPResponse objectForKey:@"response"] class]));
-                 NSLog(@"%@", we_hospitalList);
-                 NSLog(@"%@", [we_hospitalList objectForKey:@"100"]);*/
                  return;
              }
              if ([result isEqualToString:@"2"]) {

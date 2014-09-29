@@ -41,6 +41,10 @@
 {
     if (indexPath.section == 0) {
         categorySelected = indexPath.row;
+        
+        
+        titleKeyArray = [we_codings[@"doctorCategory"][categoryKeyArray[indexPath.row]][@"title"] allKeys];
+        
     }
     if (indexPath.section == 1) {
         titleSelected = indexPath.row;
@@ -154,14 +158,7 @@
     [notPermitted show];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {

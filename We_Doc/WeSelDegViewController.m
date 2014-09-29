@@ -13,6 +13,7 @@
     UITableView * sys_tableView;
     NSArray * degreeKeyArray;
     NSInteger degreeSelected;
+    NSMutableString *myLaunges;
 }
 
 @end
@@ -36,7 +37,33 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self save:indexPath.row];
+//    [self save:indexPath.row];
+    NSString * la = degreeKeyArray[indexPath.row];
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    BOOL flag=YES;
+//    if ([la isEqualToString:@"A"]) {
+//        
+//        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        UIAlertView *alt= [[UIAlertView alloc]initWithTitle:@"提示" message:@"汉语为基本语言，不可取消" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+//        [alt show];
+//        return;
+//    }
+    for (int i=0; i<myLaunges.length; i++) {
+        NSRange a={i,1};
+        if ([la isEqualToString:[myLaunges substringWithRange:a]]) {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [myLaunges deleteCharactersInRange:a];
+            flag=NO;
+            break;
+        }
+        flag=YES;
+    }
+    if (flag) {
+        [myLaunges insertString:la atIndex:0];
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,7 +101,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return [we_codings[@"doctorDegree"] count];
+            return [degreeKeyArray count];
             break;
         default:
             return 0;
@@ -87,13 +114,19 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
+    NSString * la = degreeKeyArray[indexPath.row];
     switch (indexPath.section) {
         case 0:
             cell.backgroundColor = We_background_cell_general;
             cell.textLabel.font = We_font_textfield_zh_cn;
             cell.textLabel.textColor = We_foreground_black_general;
-            cell.textLabel.text = we_codings[@"doctorDegree"][degreeKeyArray[indexPath.row]];
-            if (indexPath.row == degreeSelected) [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            cell.textLabel.text = we_codings[@"doctorLanguages"][degreeKeyArray[indexPath.row]];
+            for (int i=0; i<myLaunges.length; i++) {
+                NSRange a={i,1};
+                if ([la isEqualToString:[myLaunges substringWithRange:a]]) {
+                    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
+            }
             break;
         default:
             break;
@@ -101,9 +134,25 @@
     return cell;
 }
 
-- (void)save:(NSInteger)selected {
+- (void)saveButton:(UIBarButtonItem *)button
+{
+    BOOL flag=YES;
+    for (int i=0; i<myLaunges.length; i++) {
+        NSRange a={i,1};
+        if ([@"A" isEqualToString:[myLaunges substringWithRange:a]]) {
+            flag=NO;
+            break;
+        }
+    }
+    if (flag) {
+        UIAlertView *alt= [[UIAlertView alloc]initWithTitle:@"提示" message:@"汉语为基本语言，不可取消" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil];
+        [alt show];
+        return;
+    }
+   
+    
     NSString * urlString = yijiarenUrl(@"doctor", @"updateInfo");
-    NSString * paraString = [NSString stringWithFormat:@"degree=%@", degreeKeyArray[selected]];
+    NSString * paraString = [NSString stringWithFormat:@"languages=%@", myLaunges];
     NSData * DataResponse = [WeAppDelegate postToServer:urlString withParas:paraString];
     
     NSString * errorMessage = @"连接服务器失败";
@@ -113,7 +162,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            currentUser.degree = degreeKeyArray[selected];
+            currentUser.languages=myLaunges;
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -134,21 +183,12 @@
         }
     }
     UIAlertView *notPermitted = [[UIAlertView alloc]
-                                 initWithTitle:@"更新性别信息失败"
+                                 initWithTitle:@"更新语言信息失败"
                                  message:errorMessage
                                  delegate:nil
                                  cancelButtonTitle:@"OK"
                                  otherButtonTitles:nil];
     [notPermitted show];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -163,36 +203,21 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-49) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
     
-    degreeKeyArray = [we_codings[@"doctorDegree"] allKeys];
-    degreeSelected = -1;
+    degreeKeyArray = [we_codings[@"doctorLanguages"] allKeys];//获取所有语言的  编码id
     
-    for (int i = 0; i < [degreeKeyArray count]; i++) {
-        if ([currentUser.degree isEqualToString:degreeKeyArray[i]]) degreeSelected = i;
-    }
-}
+    myLaunges=[NSMutableString stringWithString:currentUser.languages];//获取当前的语言编码id串
+    
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    UIBarButtonItem *save=[[UIBarButtonItem alloc]initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveButton:)];
+    self.navigationItem.rightBarButtonItem=save;
+    
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

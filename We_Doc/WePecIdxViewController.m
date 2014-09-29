@@ -98,7 +98,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 5;
+    return 4;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -113,9 +113,6 @@
             return 1;
             break;
         case 3:
-            return 1;
-            break;
-        case 4:
             return 1;
             break;
         default:
@@ -229,21 +226,8 @@
                     break;
             }
             break;
+
         case 3:
-            switch (indexPath.row) {
-                case 0:
-                    cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"设置";
-                    cell.textLabel.font = We_font_textfield_zh_cn;
-                    cell.textLabel.textColor = We_foreground_black_general;
-                    cell.imageView.image = [UIImage imageNamed:@"me-setting"];
-                    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 4:
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
@@ -300,12 +284,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [sys_tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

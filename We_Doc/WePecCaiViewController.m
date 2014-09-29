@@ -199,7 +199,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"资格证书";
+                    cell.textLabel.text = @"医生资格证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     if ([currentUser.qcPath isEqualToString:@""]) {
@@ -216,7 +216,7 @@
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"职业证书";
+                    cell.textLabel.text = @"医生执业证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     if ([currentUser.pcPath isEqualToString:@""]) {
@@ -367,7 +367,7 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 550) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-49) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
