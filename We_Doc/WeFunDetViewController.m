@@ -159,7 +159,7 @@
         avatarView.clipsToBounds = YES;
         [cell.contentView addSubview:avatarView];
         
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
         if ([currentFunding.type isEqualToString:@"D"]) {
@@ -458,7 +458,7 @@
     [supportButton setBackgroundColor:We_background_red_general];
     [supportButton setFrame:CGRectMake(0, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - 50, 320, 50)];
     [supportButton setImage:[UIImage imageNamed:@"crowdfunding-detail-support"] forState:UIControlStateNormal];
-    [supportButton setTitle:@"支持众筹项目" forState:UIControlStateNormal];
+    [supportButton setTitle:@"查看支持分档信息" forState:UIControlStateNormal];
     [supportButton setTintColor:We_foreground_white_general];
     [supportButton addTarget:self action:@selector(supportButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
     [supportButton.titleLabel setFont:We_font_textfield_large_zh_cn];

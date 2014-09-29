@@ -63,7 +63,7 @@
 // 询问每个段落的尾部高度
 - (CGFloat)tableView:(UITableView *)tv heightForFooterInSection:(NSInteger)section {
     //if (section == 1) return 30;
-    if (section == [self numberOfSectionsInTableView:tv] - 1) return 300;
+    if (section == [self numberOfSectionsInTableView:tv] - 1) return 200;
     return 10;
 }
 // 询问每个段落的尾部标题

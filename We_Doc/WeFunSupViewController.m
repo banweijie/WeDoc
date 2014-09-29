@@ -73,6 +73,7 @@
     }
     cell.opaque = NO;
     cell.backgroundColor = We_background_cell_general;
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     // 当前处理的支持方案
     WeFundingLevel * currentLevel = levels[indexPath.section];
@@ -82,7 +83,7 @@
         l1.text = currentLevel.way;
     }
     else {
-        l1.text = [NSString stringWithFormat:@"支持 ￥%@", currentLevel.money];
+        l1.text = [NSString stringWithFormat:@"￥%@ 档", currentLevel.money];
     }
     l1.font = We_font_textfield_large_zh_cn;
     l1.textColor = We_foreground_red_general;
@@ -91,10 +92,10 @@
     WeInfoedButton * supportButton = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
     [supportButton setFrame:CGRectMake(220, 15, 80, 30)];
     if ([currentLevel.limit isEqualToString:@"0"]) {
-        [supportButton setTitle:[NSString stringWithFormat:@"支持(%@)", currentLevel.supportCount] forState:UIControlStateNormal];
+        [supportButton setTitle:[NSString stringWithFormat:@"已支持(%@)", currentLevel.supportCount] forState:UIControlStateNormal];
     }
     else {
-        [supportButton setTitle:[NSString stringWithFormat:@"支持(%@/%@)", currentLevel.supportCount, currentLevel.limit] forState:UIControlStateNormal];
+        [supportButton setTitle:[NSString stringWithFormat:@"已支持(%@/%@)", currentLevel.supportCount, currentLevel.limit] forState:UIControlStateNormal];
     }
     [supportButton setBackgroundColor:We_foreground_red_general];
     [supportButton setTintColor:We_foreground_white_general];
@@ -138,10 +139,10 @@
     [self.view addSubview:bg];
     
     // 标题
-    [self.navigationItem setTitle:@"选择支持方案"];
+    [self.navigationItem setTitle:@"支持档次"];
     
     // 取消按钮
-    UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton_onPress:)];
+    UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton_onPress:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
     // 取出需要显示的级别
