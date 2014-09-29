@@ -747,10 +747,10 @@
             </objects>
             <point key="canvasLocation" x="626" y="1504"/>
         </scene>
-        <!--We Pec Exp Add Nav Controller-->
+        <!--We Nav View Controller-->
         <scene sceneID="IeS-G0-bjm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mph-Ay-TkF" customClass="WePecExpAddNavController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mph-Ay-TkF" customClass="WeNavViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M3i-Vv-kLM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

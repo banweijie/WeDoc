@@ -12,6 +12,7 @@
 		5412EBDA19D7B15C00CA6C7C /* WeFgtInpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */; };
 		5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */; };
 		5412EBDE19D7BA3900CA6C7C /* WeFunMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */; };
+		545B38AC19D9062400C9F0D1 /* WeSelectSelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -141,6 +142,8 @@
 		5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtSetPaswdViewController.m; sourceTree = "<group>"; };
 		5412EBDC19D7BA3900CA6C7C /* WeFunMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunMovieViewController.h; sourceTree = "<group>"; };
 		5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunMovieViewController.m; sourceTree = "<group>"; };
+		545B38AA19D9062400C9F0D1 /* WeSelectSelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelectSelViewController.h; sourceTree = "<group>"; };
+		545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelectSelViewController.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -831,6 +834,8 @@
 				909E3C701901B05E00ADC2E9 /* WePecExpAddViewController.m */,
 				909E3C761901B0B800ADC2E9 /* WePecExpModViewController.h */,
 				909E3C771901B0B800ADC2E9 /* WePecExpModViewController.m */,
+				545B38AA19D9062400C9F0D1 /* WeSelectSelViewController.h */,
+				545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */,
 			);
 			name = "工作经历";
 			sourceTree = "<group>";
@@ -1070,6 +1075,7 @@
 				90B4AC4A196D1D39006E60CE /* WeFundingSupport.m in Sources */,
 				902AF5431994E50A00357B54 /* WeCahIdxViewController.m in Sources */,
 				906F4D94197376CC007807FE /* WeCsrCtrViewController.m in Sources */,
+				545B38AC19D9062400C9F0D1 /* WeSelectSelViewController.m in Sources */,
 				906F4DE11973F194007807FE /* WeOrder.m in Sources */,
 				90B4AC7A196D1DA0006E60CE /* WeRegIrpViewController.m in Sources */,
 				9026EFB9191471C400CE4A7A /* PAImageView.m in Sources */,

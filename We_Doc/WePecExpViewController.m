@@ -106,7 +106,7 @@
             cell.contentView.backgroundColor = We_background_cell_general;
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             l1 = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 240, 25)];
-            l1.text = [NSString stringWithFormat:@"%@ %@ %@", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"hospital"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"section"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"title"]];
+            l1.text = [NSString stringWithFormat:@"%@ %@ %@", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"hospital"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"section"], we_codings[@"doctorCategory"][currentUser.category][@"title"][user_exps[indexPath.row][@"title"]]];
             l1.font = We_font_textfield_zh_cn;
             l1.textColor = We_foreground_black_general;
             [cell.contentView addSubview:l1];

@@ -8,8 +8,9 @@
 
 #import "WePecExpModViewController.h"
 #import "WeAppDelegate.h"
+#import "WeSelectSelViewController.h"
 
-@interface WePecExpModViewController () {
+@interface WePecExpModViewController () <SelectSelDelegrate>{
     UITableView * sys_tableView;
     UITextField * user_exp_startyear;
     UITextField * user_exp_startmonth;
@@ -18,6 +19,9 @@
     UITextField * user_exp_hospital;
     UITextField * user_exp_department;
     UITextField * user_exp_minister;
+    
+    NSString *minss;
+
 }
 
 @end
@@ -41,12 +45,26 @@
     if (path.section == 0 && path.row == 3) [user_exp_endmonth becomeFirstResponder];
     if (path.section == 1 && path.row == 0) [user_exp_hospital becomeFirstResponder];
     if (path.section == 1 && path.row == 1) [user_exp_department becomeFirstResponder];
-    if (path.section == 1 && path.row == 2) [user_exp_minister becomeFirstResponder];
+    if (path.section == 1 && path.row == 2)
+    {
+        WeSelectSelViewController * wesel=[[WeSelectSelViewController alloc]init];
+        wesel.delegrate=self;
+        
+        [self.navigationController pushViewController:wesel animated:YES];
+     
+    }
+    
     return nil;
 }
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    
+}
+-(void)selectInTableView:(NSString *)str sele:(NSString *)sel
+{
+    user_exp_minister.text=str;
+    minss=sel;
     
 }
 // 询问每个cell的高度
@@ -180,7 +198,7 @@
 - (void) user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString =yijiarenUrl(@"doctor", @"updateExperience");
-    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
+    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, minss, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {
@@ -188,7 +206,7 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            [user_exps setObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", user_exp_minister.text, @"title", user_exp_department.text, @"section", [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]], @"id", nil] atIndexedSubscript:we_expToModify_id];
+            [user_exps setObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", minss, @"title", user_exp_department.text, @"section", [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]], @"id", nil] atIndexedSubscript:we_expToModify_id];
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -269,8 +287,8 @@
     We_init_textFieldInCell_general(user_exp_endmonth, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endMonth"]], We_font_textfield_zh_cn)
     We_init_textFieldInCell_general(user_exp_hospital, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"hospital"]], We_font_textfield_zh_cn)
     We_init_textFieldInCell_general(user_exp_department, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"section"]], We_font_textfield_zh_cn)
-    We_init_textFieldInCell_general(user_exp_minister, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"title"]], We_font_textfield_zh_cn)
-    
+    We_init_textFieldInCell_general(user_exp_minister, [WeAppDelegate toString:we_codings[@"doctorCategory"][currentUser.category][@"title"][user_exps[we_expToModify_id][@"title"]]], We_font_textfield_zh_cn)
+    user_exp_minister.userInteractionEnabled=NO;
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];
@@ -286,21 +304,6 @@
     [self.view addSubview:sys_tableView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

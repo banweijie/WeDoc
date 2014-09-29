@@ -9,8 +9,9 @@
 #import "WePecExpAddViewController.h"
 #import "WeAppDelegate.h"
 #import "SRMonthPicker.h"
+#import "WeSelectSelViewController.h"
 
-@interface WePecExpAddViewController () {
+@interface WePecExpAddViewController ()<SelectSelDelegrate> {
     UITableView * sys_tableView;
     UITextField * user_exp_startyear;
     UITextField * user_exp_startmonth;
@@ -19,6 +20,8 @@
     UITextField * user_exp_hospital;
     UITextField * user_exp_department;
     UITextField * user_exp_minister;
+    
+    NSString *minss;
 }
 @end
 
@@ -41,12 +44,25 @@
     if (path.section == 0 && path.row == 3) [user_exp_endmonth becomeFirstResponder];
     if (path.section == 1 && path.row == 0) [user_exp_hospital becomeFirstResponder];
     if (path.section == 1 && path.row == 1) [user_exp_department becomeFirstResponder];
-    if (path.section == 1 && path.row == 2) [user_exp_minister becomeFirstResponder];
+    if (path.section == 1 && path.row == 2)
+    {
+        WeSelectSelViewController * wesel=[[WeSelectSelViewController alloc]init];
+        wesel.delegrate=self;
+        
+        [self.navigationController pushViewController:wesel animated:YES];
+        
+    }
     return nil;
 }
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
+    
+}
+-(void)selectInTableView:(NSString *)str sele:(NSString *)sel
+{
+    user_exp_minister.text=str;
+    minss=sel;
     
 }
 // 询问每个cell的高度
@@ -178,9 +194,12 @@
     
 }
 - (void) user_save_onpress:(id)sender {
+//    we_codings[@"doctorCategory"];//职称字典
+    
+    
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = yijiarenUrl(@"doctor", @"addExperience");
-    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, user_exp_minister.text, user_exp_department.text];
+    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, minss, user_exp_department.text];
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {
@@ -274,6 +293,7 @@
     We_init_textFieldInCell_pholder(user_exp_hospital, @"如：北京三医", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_department, @"如：皮肤科", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_minister, @"如：主任", We_font_textfield_zh_cn)
+    user_exp_minister.userInteractionEnabled=NO;
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
