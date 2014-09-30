@@ -108,7 +108,6 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            NSLog(@"we_workPeriod_save.length    %@",we_workPeriod_save);
             return [we_workPeriod_save length] / 4;
             break;
         case 1:
@@ -325,9 +324,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    we_workPeriod_save=[NSMutableString stringWithString:currentUser.workPeriod];
-    
-    NSLog(@"we_workPeriod_save===%@",currentUser.workPeriod);
+    we_workPeriod_save=[NSMutableString stringWithString:[WeAppDelegate toString:currentUser.workPeriod]];
     // save button
     user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];
     self.navigationItem.rightBarButtonItem = user_save;

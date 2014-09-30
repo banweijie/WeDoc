@@ -52,7 +52,7 @@
 }
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section==2) {
+    if (indexPath.section==1) {
         return 60;
     }
     return tv.rowHeight;
