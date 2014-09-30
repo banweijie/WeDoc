@@ -196,7 +196,6 @@
 - (void) user_save_onpress:(id)sender {
 //    we_codings[@"doctorCategory"];//职称字典
     
-    
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = yijiarenUrl(@"doctor", @"addExperience");
     NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, minss, user_exp_department.text];
@@ -207,7 +206,8 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            [user_exps addObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", user_exp_minister.text, @"title", user_exp_department.text, @"section", [NSString stringWithFormat:@"%@", [[HTTPResponse objectForKey:@"response"] objectForKey:@"id"]], @"id", nil]];
+            [user_exps addObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", minss, @"title", user_exp_department.text, @"section", [NSString stringWithFormat:@"%@", [[HTTPResponse objectForKey:@"response"] objectForKey:@"id"]], @"id", nil]];
+
             [self dismissViewControllerAnimated:YES completion:nil];
             return;
         }

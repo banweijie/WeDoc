@@ -43,11 +43,11 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (path.section==1 && path.row==0) {
-        WePecRechViewController *rech=[[WePecRechViewController alloc]init];
-        
-        [self.navigationController pushViewController:rech animated:YES];
-    }
+//    if (path.section==1 && path.row==0) {
+//        WePecRechViewController *rech=[[WePecRechViewController alloc]init];
+//        
+//        [self.navigationController pushViewController:rech animated:YES];
+//    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -85,7 +85,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 3;
+    return 2;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -93,10 +93,10 @@
         case 0:
             return 1;
             break;
+//        case 1:
+//            return 1;
+//            break;
         case 1:
-            return 1;
-            break;
-        case 2:
             return acountListArr.count;
             break;
     }
@@ -119,12 +119,12 @@
         cell.textLabel.textColor = We_foreground_black_general;
         cell.detailTextLabel.textColor = We_foreground_gray_general;
     }
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        cell.textLabel.text = @"充值";
-        cell.textLabel.textColor = We_foreground_white_general;
-        cell.backgroundColor = We_background_red_tableviewcell;
-    }
-    if (indexPath.section == 2 ) {
+//    if (indexPath.section == 1 && indexPath.row == 0) {
+//        cell.textLabel.text = @"充值";
+//        cell.textLabel.textColor = We_foreground_white_general;
+//        cell.backgroundColor = We_background_red_tableviewcell;
+//    }
+    if (indexPath.section == 1) {
         
 //        cell.textLabel.text = acountListArr[indexPath.row][@"description"];
         UILabel *desc=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 200, 20)];

@@ -7,6 +7,8 @@
 //
 
 #import "WeAppDelegate.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 
 @implementation WeAppDelegate {
     NSTimer * timer0;
@@ -46,6 +48,15 @@
     globalHelper = [LKDBHelper getUsingLKDBHelper];
     
     [globalHelper createTableWithModelClass:[WeMessage class]];
+    
+    [ShareSDK registerApp:@"325060b8e624"];
+    
+    //TODO: 1. 先初始化微信Connection
+    NSString *appId = @"wxb7822ca6110186dd";
+    [ShareSDK connectWeChatSessionWithAppId: appId wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatTimelineWithAppId:appId wechatCls:[WXApi class]];
+    
+    //TODO: 2. 在info.plist文件里面配置微信的url scheme，以便系统能将微信的回调信息传给程序
     
     return YES;
 }

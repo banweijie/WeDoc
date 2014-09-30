@@ -9,6 +9,11 @@
 #import "WeFunDetViewController.h"
 #import "WeFunMovieViewController.h"
 
+#import <ShareSDK/ShareSDK.h>
+#import <AGCommon/UIDevice+Common.h>
+
+#import "WXApi.h"
+
 @interface WeFunDetViewController () {
     WeFunding * currentFunding;
     UIActivityIndicatorView * sys_pendingView;
@@ -352,9 +357,9 @@
     self.navigationItem.title = @"读取中...";
     
     // 分享按钮
-    /*
+    
     UIBarButtonItem * shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"crowdfunding-detail-share"] style:UIBarButtonItemStylePlain target:self action:@selector(shareButton_onPress:)];
-    //self.navigationItem.rightBarButtonItem = shareButton;*/
+    self.navigationItem.rightBarButtonItem = shareButton;
     
     /*
     // 所有内容
@@ -550,6 +555,114 @@
     [self presentMoviePlayerViewControllerAnimated:vv];
     
 }
+-(void)shareButton_onPress:(UIBarButtonItem *)sender
+{
+    //    MyLog(@"点击分享---图片：%@  标题：%@-%@  地址:http://test.ejren.com/crowdfunding.jsp?fundingId=%@ 描述:%@",yijiarenImageUrl(self.currentFunding.poster2),self.currentFunding.title ,self.currentFunding.subTitle,self.currentFunding.fundingId,self.currentFunding.introduction);
+    
+    
+    
+    id<ISSContainer> container = [ShareSDK container];
+    
+    [container setIPhoneContainerWithViewController:self];
+    
+    //分享的平台类型数组
+    NSArray *shareList = [ShareSDK getShareListWithType:
+                          
+                          ShareTypeWeixiSession ,
+                          ShareTypeWeixiTimeline,
+                          nil];
+    
+    
+    id<ISSContent> publishContent = nil;
+    
+    NSString *contentString = currentFunding.introduction;
+    NSString *titleString   = [NSString stringWithFormat:@"%@:%@", currentFunding.title ,currentFunding.subTitle];
+    NSString *urlString     = yijiarenShareURL(currentFunding.fundingId);
+    NSString *description   = @"Sample";
+    
+    // 4. 正确选择分享内容的 mediaType 以及填写参数，就能分享到微信
+    publishContent = [ShareSDK content:contentString
+                        defaultContent:@""
+                                 image:[ShareSDK imageWithUrl:yijiarenImageUrl(currentFunding.poster2)]
+                                 title:titleString
+                                   url:urlString
+                           description:description
+                             mediaType:SSPublishContentMediaTypeNews];
+    [ShareSDK setInterfaceOrientationMask:SSInterfaceOrientationMaskPortrait];
+    
+    id<ISSShareOptions> shareOptions =
+    [ShareSDK defaultShareOptionsWithTitle:@""
+                           oneKeyShareList:shareList
+                        cameraButtonHidden:YES
+                       mentionButtonHidden:NO
+                         topicButtonHidden:NO
+                            qqButtonHidden:YES
+                     wxSessionButtonHidden:YES
+                    wxTimelineButtonHidden:YES
+                      showKeyboardOnAppear:NO
+                         shareViewDelegate:nil
+                       friendsViewDelegate:nil
+                     picViewerViewDelegate:nil];
+    
+    
+    
+    [ShareSDK showShareActionSheet:container
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:NO
+                       authOptions:nil
+                      shareOptions:shareOptions
+                            result:^(ShareType type,
+                                     SSResponseState state,
+                                     id<ISSPlatformShareInfo> statusInfo,
+                                     id<ICMErrorInfo> error, BOOL end)
+     {
+         NSString *name = nil;
+         switch (type)
+         {
+             case ShareTypeWeixiSession:
+                 name = @"微信好友";
+                 break;
+                 
+             case ShareTypeWeixiTimeline:
+                 name = @"微信朋友圈";
+                 break;
+             default:
+                 name = @"某个平台";
+                 break;
+         }
+         
+         NSString *notice = nil;
+         if (state == SSPublishContentStateSuccess)
+         {
+             notice = [NSString stringWithFormat:@"分享到%@成功！", name];
+             NSLog(@"%@",notice);
+             
+             UIAlertView *view =
+             [[UIAlertView alloc] initWithTitle:@"提示"
+                                        message:notice
+                                       delegate:nil
+                              cancelButtonTitle:@"知道了"
+                              otherButtonTitles: nil];
+             [view show];
+         }
+         else if (state == SSPublishContentStateFail)
+         {
+             notice = [NSString stringWithFormat:@"分享到%@失败,错误码:%ld,错误描述:%@", name, [error errorCode], [error errorDescription]];
+             NSLog(@"%@",notice);
+             
+             UIAlertView *view =
+             [[UIAlertView alloc] initWithTitle:@"提示"
+                                        message:notice
+                                       delegate:nil
+                              cancelButtonTitle:@"知道了"
+                              otherButtonTitles: nil];
+             [view show];
+         }
+     }];
+    
+}
+
 /*
 #pragma mark - Navigation
 

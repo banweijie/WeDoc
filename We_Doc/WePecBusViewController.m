@@ -208,6 +208,47 @@
     [textField resignFirstResponder];
     return true;
 }
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+   
+    NSMutableString * text=[NSMutableString stringWithString:textField.text];
+    if([string isEqualToString:@""])
+    {
+        [text deleteCharactersInRange:range];
+    }
+    else
+    {
+        [text insertString:string atIndex:range.location];
+    }
+     int min = 0;
+    if (textField == user_consultPrice_input) {
+        min=9999;
+    }
+    if (textField == user_plusPrice_input) {
+        min=9999;
+    }
+    if (textField == user_maxResponseGap_input) {
+        min=48;
+    }
+    NSString * regex = @"^(([1-9]{1}\\d*)|([0]{1}))$";
+    //正则表达式，谓词判断
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:text];
+    if (!(isMatch || [text isEqualToString:@""])) {
+        return false;
+    }
+    int now= [text intValue];//当前输入的金额
+    
+    if (now>=0 && now <= min) {
+        
+    }
+    else
+    {
+        return false;
+    }
+    
+    return YES;
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
