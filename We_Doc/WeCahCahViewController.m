@@ -38,38 +38,38 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (tv == sys_tableView) {
-        if (path.section == 0 && path.row == 0) {
-            [user_date_input becomeFirstResponder];
-        }
-        if (path.section == 0 && path.row == 1) {
-            [user_hospitalName_input becomeFirstResponder];
-        }
-        if (path.section == 0 && path.row == 2) {
-            [user_diseaseName_input becomeFirstResponder];
-        }
-        if (path.section == 4 && path.row < [caseRecordChanging.recordDrugs count]) {
-            recordDrugChanging = caseRecordChanging.recordDrugs[path.row];
-            
-            WeCahCahAddDruViewController * vc = [[WeCahCahAddDruViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        if (path.section == 5 && path.row == 0) {
-            recordDrugChanging = nil;
-            
-            WeNavViewController * nav = [[WeNavViewController alloc] init];
-            WeCahCahAddDruViewController * vc = [[WeCahCahAddDruViewController alloc] init];
-            
-            [nav pushViewController:vc animated:NO];
-            [self presentViewController:nav animated:YES completion:nil];
-        }
-        if (path.section == 6 && path.row == 0) {
-            [self removeCaseHistory:self];
-        }
-        if (path.section == 1) {
-            [user_treatment_input becomeFirstResponder];
-        }
-    }
+//    if (tv == sys_tableView) {
+//        if (path.section == 0 && path.row == 0) {
+//            [user_date_input becomeFirstResponder];
+//        }
+//        if (path.section == 0 && path.row == 1) {
+//            [user_hospitalName_input becomeFirstResponder];
+//        }
+//        if (path.section == 0 && path.row == 2) {
+//            [user_diseaseName_input becomeFirstResponder];
+//        }
+//        if (path.section == 4 && path.row < [caseRecordChanging.recordDrugs count]) {
+//            recordDrugChanging = caseRecordChanging.recordDrugs[path.row];
+//            
+//            WeCahCahAddDruViewController * vc = [[WeCahCahAddDruViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//        if (path.section == 5 && path.row == 0) {
+//            recordDrugChanging = nil;
+//            
+//            WeNavViewController * nav = [[WeNavViewController alloc] init];
+//            WeCahCahAddDruViewController * vc = [[WeCahCahAddDruViewController alloc] init];
+//            
+//            [nav pushViewController:vc animated:NO];
+//            [self presentViewController:nav animated:YES completion:nil];
+//        }
+//        if (path.section == 6 && path.row == 0) {
+//            [self removeCaseHistory:self];
+//        }
+//        if (path.section == 1) {
+//            [user_treatment_input becomeFirstResponder];
+//        }
+//    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -112,7 +112,7 @@
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
     if (tv == sys_tableView) {
-        return 7;
+        return 6;
     }
     return 0;
 }
@@ -137,7 +137,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     [[cell imageView] setContentMode:UIViewContentModeCenter];
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     if (tv == sys_tableView) {
         if (indexPath.section == 0 && indexPath.row == 0) {
             cell.backgroundColor = We_foreground_white_general;
@@ -254,8 +254,8 @@
     [self.view addSubview:sys_pendingView];
     
     // 保存按键
-    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onPress:)];
-    self.navigationItem.rightBarButtonItem = user_save;
+//    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onPress:)];
+//    self.navigationItem.rightBarButtonItem = user_save;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

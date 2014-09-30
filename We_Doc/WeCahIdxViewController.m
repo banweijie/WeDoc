@@ -480,6 +480,7 @@
               result = [NSString stringWithFormat:@"%@", result];
               if ([result isEqualToString:@"1"]) {
                   //NSLog(@"response : %@", HTTPResponse[@"response"]);
+                  caseRecords=[NSMutableArray array];
                   for (int i = 0; i < [HTTPResponse[@"response"] count]; i++) {
                       WeCaseRecord * newCaseRecord = [[WeCaseRecord alloc] initWithNSDictionary:HTTPResponse[@"response"][i]];
                       [caseRecords addObject:newCaseRecord];
@@ -541,6 +542,7 @@
               result = [NSString stringWithFormat:@"%@", result];
               if ([result isEqualToString:@"1"]) {
                   //NSLog(@"response : %@", HTTPResponse[@"response"]);
+                  examinations=[NSMutableArray array];
                   for (int i = 0; i < [HTTPResponse[@"response"] count]; i++) {
                       WeExamination * newExamination = [[WeExamination alloc] initWithNSDictionary:HTTPResponse[@"response"][i]];
                       [examinations addObject:newExamination];
@@ -640,14 +642,16 @@
                                            @"rmId":self.rmId
                                            }
                                  success:^(id response) {
+                                     caseRecords=[NSMutableArray array];
                                      for (int i = 0; i < [response[@"records"] count]; i++) {
                                          WeCaseRecord * newCaseRecord = [[WeCaseRecord alloc] initWithNSDictionary:response[@"records"][i]];
                                          [caseRecords addObject:newCaseRecord];
                                      }
                                      [self preworkOnCaseRecords:self];
                                      [tableView_view0 reloadData];
-                                     
+                                      examinations=[NSMutableArray array];
                                      for (int i = 0; i < [response[@"examinations"] count]; i++) {
+                                        
                                          WeExamination * newExamination = [[WeExamination alloc] initWithNSDictionary:response[@"examinations"][i]];
                                          [examinations addObject:newExamination];
                                      }

@@ -103,7 +103,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 4;
+    return 3;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {

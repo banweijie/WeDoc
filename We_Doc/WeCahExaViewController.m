@@ -163,56 +163,56 @@
 // 选中某个Cell触发的事件
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    if (tv == sys_tableView) {
-        if (path.section == 0 && path.row == 0) {
-            [user_date_input becomeFirstResponder];
-        }
-        if (path.section == 0 && path.row == 1) {
-            [user_hospital_input becomeFirstResponder];
-        }
-        if (path.section == 1 && [examinationChanging.typeParent isEqualToString:@"P"]) {
-            if ([examinationChanging.items count] > 0) {
-                itemChanging = examinationChanging.items[path.row];
-                WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-        }
-        
-        if (path.section == 2 && [examinationChanging.typeParent isEqualToString:@"C"]) {
-            if ([examinationChanging.items count] > 0) {
-                itemChanging = examinationChanging.items[path.row];
-                WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-        }
-        if (path.section == 2 && [examinationChanging.typeParent isEqualToString:@"P"]) {
-            itemChanging = nil;
-            
-            WeNavViewController * nav = [[WeNavViewController alloc] init];
-            WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
-            
-            [nav pushViewController:vc animated:NO];
-            [self presentViewController:nav animated:YES completion:nil];
-        }
-        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"C"]) {
-            itemChanging = nil;
-            
-            WeNavViewController * nav = [[WeNavViewController alloc] init];
-            WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
-            
-            [nav pushViewController:vc animated:NO];
-            [self presentViewController:nav animated:YES completion:nil];
-        }
-        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"P"]) {
-            [self removeExamination:self];
-        }
-        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"I"]) {
-            [self removeExamination:self];
-        }
-        if (path.section == 4) {
-            [self removeExamination:self];
-        }
-    }
+//    if (tv == sys_tableView) {
+//        if (path.section == 0 && path.row == 0) {
+//            [user_date_input becomeFirstResponder];
+//        }
+//        if (path.section == 0 && path.row == 1) {
+//            [user_hospital_input becomeFirstResponder];
+//        }
+//        if (path.section == 1 && [examinationChanging.typeParent isEqualToString:@"P"]) {
+//            if ([examinationChanging.items count] > 0) {
+//                itemChanging = examinationChanging.items[path.row];
+//                WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//        }
+//        
+//        if (path.section == 2 && [examinationChanging.typeParent isEqualToString:@"C"]) {
+//            if ([examinationChanging.items count] > 0) {
+//                itemChanging = examinationChanging.items[path.row];
+//                WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//        }
+//        if (path.section == 2 && [examinationChanging.typeParent isEqualToString:@"P"]) {
+//            itemChanging = nil;
+//            
+//            WeNavViewController * nav = [[WeNavViewController alloc] init];
+//            WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
+//            
+//            [nav pushViewController:vc animated:NO];
+//            [self presentViewController:nav animated:YES completion:nil];
+//        }
+//        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"C"]) {
+//            itemChanging = nil;
+//            
+//            WeNavViewController * nav = [[WeNavViewController alloc] init];
+//            WeCahExaAddIteViewController * vc = [[WeCahExaAddIteViewController alloc] init];
+//            
+//            [nav pushViewController:vc animated:NO];
+//            [self presentViewController:nav animated:YES completion:nil];
+//        }
+//        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"P"]) {
+//            [self removeExamination:self];
+//        }
+//        if (path.section == 3 && [examinationChanging.typeParent isEqualToString:@"I"]) {
+//            [self removeExamination:self];
+//        }
+//        if (path.section == 4) {
+//            [self removeExamination:self];
+//        }
+//    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -260,9 +260,9 @@
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
     if (tv == sys_tableView) {
-        if ([examinationChanging.typeParent isEqualToString:@"P"]) return 4;
-        if ([examinationChanging.typeParent isEqualToString:@"C"]) return 5;
-        if ([examinationChanging.typeParent isEqualToString:@"I"]) return 4;
+        if ([examinationChanging.typeParent isEqualToString:@"P"]) return 3;
+        if ([examinationChanging.typeParent isEqualToString:@"C"]) return 4;
+        if ([examinationChanging.typeParent isEqualToString:@"I"]) return 3;
     }
     return 0;
 }
@@ -290,7 +290,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"CellIdentifier"];
     }
     [[cell imageView] setContentMode:UIViewContentModeCenter];
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+
     if (tv == sys_tableView) {
         if (indexPath.section == 0 && indexPath.row == 0) {
             cell.backgroundColor = We_foreground_white_general;
@@ -434,8 +435,8 @@
     [self.view addSubview:sys_pendingView];
     
     // 保存按键
-    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onPress:)];
-    self.navigationItem.rightBarButtonItem = user_save;
+//    UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onPress:)];
+//    self.navigationItem.rightBarButtonItem = user_save;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
