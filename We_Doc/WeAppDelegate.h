@@ -198,6 +198,7 @@ weTargetView we_targetView;
 #define yijiarenAvatarUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"avatarPath"], fileName]
 #define yijiarenCertUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"certPath"], fileName]
 #define yijiarenImageUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"imagePath"], fileName]
+#define yijiarenAudioUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"audioPath"], fileName]
 #define yijiarenShareURL(field) [NSString stringWithFormat:@"%@/crowdfunding.jsp?fundingId=%@", yijiarenServer, field]
 #define yijiarenVideoUrl(fileName) [NSString stringWithFormat:@"%@%@%@", yijiarenImageServer, we_imagePaths[@"videoPath"], fileName]
 

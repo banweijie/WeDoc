@@ -402,7 +402,7 @@
                                                  // 语音消息
                                                  else if ([message.messageType isEqualToString:@"A"]) {
                                                      [globalHelper insertToDB:message];
-                                                     [WeAppDelegate DownloadFileWithURL:yijiarenImageUrl(message.content)
+                                                     [WeAppDelegate DownloadFileWithURL:yijiarenAudioUrl(message.content)
                                                                       successCompletion:^(NSURL * filePath) {
                                                                           [VoiceConverter amrToWav:filePath.path wavSavePath:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
                                                                           message.audioContent = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@.wav", NSTemporaryDirectory(), message.messageId]];
