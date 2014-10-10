@@ -54,9 +54,9 @@
 // 询问每个cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) return 235;
-    if (indexPath.section == 0 && indexPath.row == 1) return [tableView rowHeight] * 1.5;
-    if (indexPath.section == 0 && indexPath.row == 2) return [tableView rowHeight] * 2;
-    if (indexPath.section == 1 && indexPath.row == 0) return [tableView rowHeight] * 1.5;
+    if (indexPath.section == 0 && indexPath.row == 1) return 64;//[tableView rowHeight] * 1.5;
+    if (indexPath.section == 0 && indexPath.row == 2) return 90;//[tableView rowHeight] * 2;
+    if (indexPath.section == 1 && indexPath.row == 0) return 64;//[tableView rowHeight] * 1.5;
     if (indexPath.section == 2 && indexPath.row == 0) {
         return [WeAppDelegate calcSizeForString:currentFunding.introduction Font:We_font_textfield_zh_cn expectWidth:280].height + 60;
     }

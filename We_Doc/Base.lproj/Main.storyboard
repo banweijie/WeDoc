@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mjn-6U-QSO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mjn-6U-QSO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--We Reg Wlc View Controller - 欢迎使用-->
+        <!--欢迎使用-->
         <scene sceneID="53c-5s-x4b">
             <objects>
                 <viewController id="hMN-Hz-55v" customClass="WeRegWlcViewController" sceneMemberID="viewController">
@@ -25,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="1073" y="73"/>
         </scene>
-        <!--We Reg Ipn View Controller - 输入手机号-->
+        <!--输入手机号-->
         <scene sceneID="lC5-zv-JwL">
             <objects>
                 <viewController id="sgm-FN-ZO0" customClass="WeRegIpnViewController" sceneMemberID="viewController">
@@ -48,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="1533" y="73"/>
         </scene>
-        <!--We Reg Ivc View Controller - 输入验证码-->
+        <!--输入验证码-->
         <scene sceneID="Oho-73-3q7">
             <objects>
                 <viewController id="djG-Ww-epg" customClass="WeRegIvcViewController" sceneMemberID="viewController">
@@ -70,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="1999" y="73"/>
         </scene>
-        <!--We Reg Irp View Controller - 填写信息-->
+        <!--填写信息-->
         <scene sceneID="0kG-a1-oj5">
             <objects>
                 <viewController id="u8p-13-Gi8" customClass="WeRegIrpViewController" sceneMemberID="viewController">
@@ -89,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="2463" y="73"/>
         </scene>
-        <!--We Reg Nav View Controller - 个人中心-->
+        <!--个人中心-->
         <scene sceneID="yJP-YU-QJC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZGO-u0-7yk" customClass="WeRegNavViewController" sceneMemberID="viewController">
@@ -109,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="623" y="73"/>
         </scene>
-        <!--We Pec Idx View Controller - 个人中心-->
+        <!--个人中心-->
         <scene sceneID="SIs-AE-DWJ">
             <objects>
                 <viewController id="7aO-pA-Dc3" customClass="WePecIdxViewController" sceneMemberID="viewController">
@@ -136,7 +137,7 @@
             </objects>
             <point key="canvasLocation" x="3441" y="784"/>
         </scene>
-        <!--We Pec Pea View Controller - 个人账号-->
+        <!--个人账号-->
         <scene sceneID="5D6-1D-sUe">
             <objects>
                 <viewController id="h4F-uG-5Ot" customClass="WePecPeaViewController" sceneMemberID="viewController">
@@ -160,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="4125" y="-961"/>
         </scene>
-        <!--We Pec Cai View Controller - 职业信息-->
+        <!--职业信息-->
         <scene sceneID="d25-MW-h1J">
             <objects>
                 <viewController title="职业信息" id="2wj-qs-N0e" customClass="WePecCaiViewController" sceneMemberID="viewController">
@@ -191,7 +192,7 @@
             </objects>
             <point key="canvasLocation" x="4105" y="784"/>
         </scene>
-        <!--We Pec Ctf View Controller - 资格证书-->
+        <!--资格证书-->
         <scene sceneID="SWj-sp-XbZ">
             <objects>
                 <viewController id="urX-Ao-7ha" customClass="WePecCtfViewController" sceneMemberID="viewController">
@@ -210,7 +211,7 @@
             </objects>
             <point key="canvasLocation" x="4880" y="784"/>
         </scene>
-        <!--We Inp Ski View Controller - 专业特长-->
+        <!--专业特长-->
         <scene sceneID="3Yt-sd-SYr">
             <objects>
                 <viewController id="Aw2-Aa-Vwm" customClass="WeInpSkiViewController" sceneMemberID="viewController">
@@ -229,7 +230,7 @@
             </objects>
             <point key="canvasLocation" x="5685" y="1041"/>
         </scene>
-        <!--We Sel Deg View Controller - 工作语言-->
+        <!--工作语言-->
         <scene sceneID="GvF-dv-BrC">
             <objects>
                 <viewController id="2Cn-mG-NdZ" customClass="WeSelDegViewController" sceneMemberID="viewController">
@@ -248,7 +249,7 @@
             </objects>
             <point key="canvasLocation" x="6397" y="1033"/>
         </scene>
-        <!--We Inp Ema View Controller - 邮箱-->
+        <!--邮箱-->
         <scene sceneID="TvS-6N-8ay">
             <objects>
                 <viewController id="4gu-gQ-U91" customClass="WeInpEmaViewController" sceneMemberID="viewController">
@@ -267,7 +268,7 @@
             </objects>
             <point key="canvasLocation" x="7093" y="1033"/>
         </scene>
-        <!--We Pec Cai Gri View Controller - 团队信息-->
+        <!--团队信息-->
         <scene sceneID="MZe-sV-Gzj">
             <objects>
                 <viewController id="SIO-co-FmI" customClass="WePecCaiGriViewController" sceneMemberID="viewController">
@@ -286,7 +287,7 @@
             </objects>
             <point key="canvasLocation" x="4880" y="47"/>
         </scene>
-        <!--We Pec Cai Wkp View Controller - 工作证照片-->
+        <!--工作证照片-->
         <scene sceneID="UOt-OE-DaW">
             <objects>
                 <viewController id="EA4-MQ-Z1S" customClass="WePecCaiWkpViewController" sceneMemberID="viewController">
@@ -305,7 +306,7 @@
             </objects>
             <point key="canvasLocation" x="5669" y="47"/>
         </scene>
-        <!--We Sel Til View Controller - 选择职称-->
+        <!--选择职称-->
         <scene sceneID="MfN-e4-nOr">
             <objects>
                 <viewController id="k5F-VR-Y9F" customClass="WeSelTilViewController" sceneMemberID="viewController">
@@ -324,7 +325,7 @@
             </objects>
             <point key="canvasLocation" x="6669" y="-958"/>
         </scene>
-        <!--We Inp Nam View Controller - 姓名-->
+        <!--姓名-->
         <scene sceneID="eiF-3K-Acd">
             <objects>
                 <viewController id="1zb-Bm-qE3" customClass="WeInpNamViewController" sceneMemberID="viewController">
@@ -343,7 +344,7 @@
             </objects>
             <point key="canvasLocation" x="4880" y="-1754"/>
         </scene>
-        <!--We Sel Gen View Controller - 性别-->
+        <!--性别-->
         <scene sceneID="JKg-z8-5Nn">
             <objects>
                 <viewController id="QcZ-h7-BrQ" customClass="WeSelGenViewController" sceneMemberID="viewController">
@@ -362,7 +363,7 @@
             </objects>
             <point key="canvasLocation" x="4880" y="-956"/>
         </scene>
-        <!--We Sel Hos View Controller - 选择医院-->
+        <!--选择医院-->
         <scene sceneID="Tra-7R-rlj">
             <objects>
                 <viewController id="lVL-rt-H5n" customClass="WeSelHosViewController" sceneMemberID="viewController">
@@ -381,7 +382,7 @@
             </objects>
             <point key="canvasLocation" x="5637" y="-961"/>
         </scene>
-        <!--We Sel Sec View Controller - 选择科室-->
+        <!--选择科室-->
         <scene sceneID="o0A-c1-Efr">
             <objects>
                 <viewController id="YPs-Ct-69b" customClass="WeSelSecViewController" sceneMemberID="viewController">
@@ -400,7 +401,7 @@
             </objects>
             <point key="canvasLocation" x="6149" y="-958"/>
         </scene>
-        <!--We Pec Exp View Controller - 从医经历-->
+        <!--从医经历-->
         <scene sceneID="1wZ-3y-BJj">
             <objects>
                 <viewController id="Z5F-6t-W6C" customClass="WePecExpViewController" sceneMemberID="viewController">
@@ -423,7 +424,7 @@
             </objects>
             <point key="canvasLocation" x="3961" y="2332"/>
         </scene>
-        <!--We Pec Exp Add View Controller - 添加从医经历-->
+        <!--添加从医经历-->
         <scene sceneID="DkB-06-nZx">
             <objects>
                 <viewController id="sIk-ey-OTS" customClass="WePecExpAddViewController" sceneMemberID="viewController">
@@ -442,7 +443,7 @@
             </objects>
             <point key="canvasLocation" x="5003" y="2332"/>
         </scene>
-        <!--We Pec Bus View Controller - 业务设置-->
+        <!--业务设置-->
         <scene sceneID="Zfp-cU-Bci">
             <objects>
                 <viewController id="tZe-xt-drw" customClass="WePecBusViewController" sceneMemberID="viewController">
@@ -465,7 +466,7 @@
             </objects>
             <point key="canvasLocation" x="5011" y="3897"/>
         </scene>
-        <!--We Pec Wkp Add View Controller - 添加出诊时间-->
+        <!--添加出诊时间-->
         <scene sceneID="CoQ-qJ-KKS">
             <objects>
                 <viewController id="szK-w4-xRR" customClass="WePecWkpAddViewController" sceneMemberID="viewController">
@@ -489,7 +490,7 @@
             </objects>
             <point key="canvasLocation" x="6057" y="3894"/>
         </scene>
-        <!--We Sel Day View Controller - 选择日期-->
+        <!--选择日期-->
         <scene sceneID="Y0D-sQ-Pjr">
             <objects>
                 <viewController id="zrT-MJ-mcW" customClass="WeSelDayViewController" sceneMemberID="viewController">
@@ -508,7 +509,7 @@
             </objects>
             <point key="canvasLocation" x="6643" y="3897"/>
         </scene>
-        <!--We Sel Per View Controller - 选择时间段-->
+        <!--选择时间段-->
         <scene sceneID="a4O-TS-hR0">
             <objects>
                 <viewController id="iPk-9L-tYZ" customClass="WeSelPerViewController" sceneMemberID="viewController">
@@ -546,7 +547,7 @@
             </objects>
             <point key="canvasLocation" x="6117" y="5500"/>
         </scene>
-        <!--We Pec Wkp Mod View Controller - 修改出诊时间-->
+        <!--修改出诊时间-->
         <scene sceneID="8Up-bm-oSN">
             <objects>
                 <viewController id="FKE-3L-8uZ" customClass="WePecWkpModViewController" sceneMemberID="viewController">
@@ -570,7 +571,7 @@
             </objects>
             <point key="canvasLocation" x="4997" y="4662"/>
         </scene>
-        <!--We Pec Not View Controller - 公告-->
+        <!--公告-->
         <scene sceneID="eg7-uF-KPI">
             <objects>
                 <viewController id="chG-4K-OsA" customClass="WePecNotViewController" sceneMemberID="viewController">
@@ -589,7 +590,7 @@
             </objects>
             <point key="canvasLocation" x="4487" y="3897"/>
         </scene>
-        <!--We Pec Exp Mod View Controller - 修改从医经历-->
+        <!--修改从医经历-->
         <scene sceneID="50c-Tl-o7h">
             <objects>
                 <viewController id="S9u-8T-ec5" customClass="WePecExpModViewController" sceneMemberID="viewController">
@@ -608,7 +609,7 @@
             </objects>
             <point key="canvasLocation" x="5537" y="3124"/>
         </scene>
-        <!--We Pec Vctf View Controller - 执业证书-->
+        <!--执业证书-->
         <scene sceneID="ybT-oe-khw">
             <objects>
                 <viewController id="UaX-Dt-IEk" customClass="WePecVctfViewController" sceneMemberID="viewController">
@@ -649,7 +650,7 @@
             </objects>
             <point key="canvasLocation" x="-168" y="1496"/>
         </scene>
-        <!--We Nav View Controller - 个人中心-->
+        <!--个人中心-->
         <scene sceneID="ZFO-BM-93v">
             <objects>
                 <navigationController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" id="bHV-1f-jWO" customClass="WeNavViewController" sceneMemberID="viewController">
@@ -668,7 +669,7 @@
             </objects>
             <point key="canvasLocation" x="623" y="784"/>
         </scene>
-        <!--We Fun Idx View Controller - 众筹项目-->
+        <!--众筹项目-->
         <scene sceneID="nyi-4h-rrD">
             <objects>
                 <viewController title="众筹项目" id="yKF-Kn-GeX" customClass="WeFunIdxViewController" sceneMemberID="viewController">
@@ -687,7 +688,7 @@
             </objects>
             <point key="canvasLocation" x="1152" y="1504"/>
         </scene>
-        <!--We Csr Idx View Controller - 咨询室-->
+        <!--咨询室-->
         <scene sceneID="0Sn-tC-NUq">
             <objects>
                 <viewController id="jlN-QD-fTq" customClass="WeCsrIdxViewController" sceneMemberID="viewController">
@@ -728,7 +729,7 @@
             </objects>
             <point key="canvasLocation" x="1781" y="2976"/>
         </scene>
-        <!--We Nav View Controller - 众筹项目-->
+        <!--众筹项目-->
         <scene sceneID="grl-Bt-DYQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FbH-Go-jOX" customClass="WeNavViewController" sceneMemberID="viewController">
@@ -765,7 +766,7 @@
             </objects>
             <point key="canvasLocation" x="4477" y="2332"/>
         </scene>
-        <!--We Nav View Controller - 咨询室-->
+        <!--咨询室-->
         <scene sceneID="vRA-4K-jvF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G9f-X1-J9c" customClass="WeNavViewController" sceneMemberID="viewController">
@@ -821,7 +822,7 @@
             </objects>
             <point key="canvasLocation" x="5531" y="3894"/>
         </scene>
-        <!--We Nav View Controller - 加号管理-->
+        <!--加号管理-->
         <scene sceneID="7E6-YR-j0r">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gaa-5b-ld7" customClass="WeNavViewController" sceneMemberID="viewController">
@@ -853,10 +854,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="NZg-3l-cVs"/>
+        <segue reference="pov-aw-V1X"/>
+        <segue reference="PNH-k3-thk"/>
         <segue reference="p97-ix-W3p"/>
         <segue reference="hf8-zt-DF2"/>
-        <segue reference="PNH-k3-thk"/>
         <segue reference="vtb-IN-PQl"/>
     </inferredMetricsTieBreakers>
 </document>

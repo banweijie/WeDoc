@@ -222,7 +222,7 @@
             return 40 + 2 * gasp;
         }
     }
-    return [tableView rowHeight] * 2;
+    return 90;//[tableView rowHeight] * 2;
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
