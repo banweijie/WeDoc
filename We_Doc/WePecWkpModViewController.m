@@ -45,7 +45,7 @@
         if (path.row == 2) [self performSegueWithIdentifier:@"PecWkpMod_pushto_SelTyp" sender:self];
     }
     if (path.section == 1 && path.row == 0) {
-        we_workPeriod_save = [NSString stringWithFormat:@"%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4],  [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
+        we_workPeriod_save = [NSMutableString stringWithFormat:@"%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4],  [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
 //        NSLog(@"%@", we_workPeriod_save);
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -154,7 +154,7 @@
 }
 
 - (void)user_save_onpress:(id)sender {
-    we_workPeriod_save = [NSString stringWithFormat:@"%@-%@%@%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4], we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod, [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
+    we_workPeriod_save = [NSMutableString stringWithFormat:@"%@-%@%@%@%@", [we_workPeriod_save substringToIndex:we_wkpTOModify_id * 4], we_wkp_dayOfWeek, we_wkp_periodOfDay, we_wkp_typeOfPeriod, [we_workPeriod_save substringFromIndex:we_wkpTOModify_id * 4 + 4]];
 //    NSLog(@"%@", we_workPeriod_save);
     [self.navigationController popViewControllerAnimated:YES];
 }

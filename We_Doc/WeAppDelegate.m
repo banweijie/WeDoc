@@ -656,7 +656,10 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 }
 
 + (CGSize)calcSizeForString:(NSString *)text Font:(UIFont *)font expectWidth:(int)width {
-    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attribute = @{NSFontAttributeName: font};
+    CGSize size = [text boundingRectWithSize:CGSizeMake(width, 9999) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    
+//    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     return size;
 }
 

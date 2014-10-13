@@ -106,7 +106,10 @@
     //[supportButton addTarget:self action:@selector(supportButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
     [cell.contentView addSubview:supportButton];
     
-    CGSize sizezz = [currentLevel.repay sizeWithFont:We_font_textfield_zh_cn constrainedToSize:CGSizeMake(280, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attribute = @{NSFontAttributeName: We_font_textfield_zh_cn};
+    CGSize sizezz = [currentLevel.repay boundingRectWithSize:CGSizeMake(280, 9999) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    
+//    CGSize sizezz = [currentLevel.repay sizeWithFont:We_font_textfield_zh_cn constrainedToSize:CGSizeMake(280, 9999) lineBreakMode:NSLineBreakByWordWrapping];
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(16, 60, sizezz.width, sizezz.height)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
