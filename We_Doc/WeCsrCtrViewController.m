@@ -313,25 +313,34 @@
     }
     else if ([currentMessage.messageType isEqualToString:@"R"]) {
         NSString * title = @"该病人发送了一个病例";
+        // 头像
+        UIImageView * avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(gasp, gasp, avatarWidth, avatarWidth)];
+        [avatarView setImageWithURL:[NSURL URLWithString:yijiarenAvatarUrl(self.patientChating.avatarPath)]];
+        [avatarView.layer setCornerRadius:avatarView.frame.size.height / 2];
+        [avatarView.layer setMasksToBounds:YES];
+        [cell.contentView addSubview:avatarView];
         
-        CGSize titleSize = [WeAppDelegate calcSizeForString:title Font:We_font_textfield_small_zh_cn expectWidth:260];
+        // 计算文字大小
+        CGSize textSize = [WeAppDelegate calcSizeForString:currentMessage.content Font:We_font_textfield_zh_cn expectWidth:maxTextWidth];
         
-        WeInfoedButton * button = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
-        [button setBackgroundColor:We_foreground_gray_general];
-        [button setFrame:CGRectMake((320 - titleSize.width - 20) / 2, 5, titleSize.width + 20, titleSize.height + 20)];
+        // 泡泡
+        UIImageView * bubbleView = [[UIImageView alloc] initWithFrame:CGRectMake(2 * gasp + avatarWidth, gasp, textSize.width + bubbleGaspShort + bubbleGaspLong, textSize.height + bubbleGaspVertical * 2)];
+        [bubbleView setImage:[[UIImage imageNamed:@"chatbubble-left"] stretchableImageWithLeftCapWidth:10 topCapHeight:30]];
+        [cell.contentView addSubview:bubbleView];
+        
+        WeInfoedButton * button = [WeInfoedButton buttonWithType:UIButtonTypeCustom];
+        [button setBackgroundColor:[UIColor clearColor]];
+        [button setFrame:CGRectMake(2 * gasp + avatarWidth, gasp, textSize.width + bubbleGaspShort + bubbleGaspLong, textSize.height + bubbleGaspVertical * 2)];
         [button setUserData:currentMessage.content];
         [button addTarget:self action:@selector(caseRecordDetailButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
         [button.layer setCornerRadius:4];
         [button.layer setMasksToBounds:YES];
+        [button setTitleColor:We_foreground_black_general forState:UIControlStateNormal];
+        [button setTitle:title forState:UIControlStateNormal];
+        [button setFont:We_font_textfield_small_zh_cn];
+        [button setImage:[UIImage imageNamed:@"me-crowdfunding"] forState:UIControlStateNormal];
         [cell.contentView addSubview:button];
         
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake((320 - titleSize.width) / 2, 15, titleSize.width, titleSize.height)];
-        [label setText:title];
-        [label setTextColor:We_foreground_white_general];
-        [label setTextAlignment:NSTextAlignmentCenter];
-        [label setNumberOfLines:0];
-        [label setFont:We_font_textfield_small_zh_cn];
-        [cell.contentView addSubview:label];
     }
     // 判断是谁发出的信息
     else if ([currentMessage.senderId isEqualToString:currentUser.userId]) {
