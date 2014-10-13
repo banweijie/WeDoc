@@ -335,7 +335,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) success(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"DownloadImageWithURL error: %@", error);
+//        NSLog(@"DownloadImageWithURL error: %@", error);
     }];
     [requestOperation start];
 }

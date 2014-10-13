@@ -679,7 +679,7 @@
                                      [self refreshView:YES];
                                  }
                                  failure:^(NSString * errorMessage) {
-                                     NSLog(@"\n%@", errorMessage);
+//                                     NSLog(@"\n%@", errorMessage);
                                      [message setSending:NO];
                                      [message setFailed:YES];
                                      [globalHelper updateToDB:message where:nil];
@@ -716,7 +716,7 @@
                                      [self refreshView:YES];
                                  }
                                  failure:^(NSString * errorMessage) {
-                                     NSLog(@"\n%@", errorMessage);
+//                                     NSLog(@"\n%@", errorMessage);
                                      [message setSending:NO];
                                      [message setFailed:YES];
                                      [globalHelper updateToDB:message where:nil];
@@ -736,7 +736,7 @@
 	[audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];
     
 	if(err){
-        NSLog(@"audioSession: %@ %d %@", [err domain], (int)[err code], [[err userInfo] description]);
+//        NSLog(@"audioSession: %@ %d %@", [err domain], (int)[err code], [[err userInfo] description]);
         return;
 	}
     
@@ -744,7 +744,7 @@
     
 	err = nil;
 	if(err){
-        NSLog(@"audioSession: %@ %d %@", [err domain], (int)[err code], [[err userInfo] description]);
+//        NSLog(@"audioSession: %@ %d %@", [err domain], (int)[err code], [[err userInfo] description]);
         return;
 	}
 	

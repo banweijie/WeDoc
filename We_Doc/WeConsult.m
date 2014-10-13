@@ -9,7 +9,7 @@
 #import "WeConsult.h"
 
 @implementation WeConsult
-
+@synthesize description;
 - (WeConsult *)initWithNSDictionary:(NSDictionary *)info {
     [self setWithNSDictionary:info];
     return self;
