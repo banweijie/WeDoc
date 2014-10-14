@@ -52,6 +52,8 @@
 		545B390F19D9607A00C9F0D1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B390E19D9607A00C9F0D1 /* libz.dylib */; };
 		545B391119D9608900C9F0D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B391019D9608900C9F0D1 /* SystemConfiguration.framework */; };
 		545B391319D9609900C9F0D1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B391219D9609900C9F0D1 /* MediaPlayer.framework */; };
+		54F1962119ECCFE500C81F46 /* WeSupConnectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */; };
+		54F1962419ECD2AC00C81F46 /* WeDetailImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1962319ECD2AC00C81F46 /* WeDetailImageViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
 		900E28E819292C55008BF61C /* WeDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E219292C55008BF61C /* WeDoctor.m */; };
 		900E28E919292C55008BF61C /* WeFavorDoctor.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E419292C55008BF61C /* WeFavorDoctor.m */; };
@@ -234,6 +236,10 @@
 		545B390E19D9607A00C9F0D1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		545B391019D9608900C9F0D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		545B391219D9609900C9F0D1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		54F1961F19ECCFE500C81F46 /* WeSupConnectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSupConnectImageView.h; sourceTree = "<group>"; };
+		54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSupConnectImageView.m; sourceTree = "<group>"; };
+		54F1962219ECD2AC00C81F46 /* WeDetailImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeDetailImageViewController.h; sourceTree = "<group>"; };
+		54F1962319ECD2AC00C81F46 /* WeDetailImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeDetailImageViewController.m; sourceTree = "<group>"; };
 		5C83D077ED634B6A9726A5B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		900E28DF19292C55008BF61C /* WeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeUser.h; sourceTree = "<group>"; };
 		900E28E019292C55008BF61C /* WeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeUser.m; sourceTree = "<group>"; };
@@ -810,6 +816,8 @@
 				906F4E0F1976B553007807FE /* WeGenderPickerViewController.m */,
 				902AF52519921B5F00357B54 /* WeFundingCard.h */,
 				902AF52619921B5F00357B54 /* WeFundingCard.m */,
+				54F1961F19ECCFE500C81F46 /* WeSupConnectImageView.h */,
+				54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -968,6 +976,8 @@
 				906F4D92197376CC007807FE /* WeCsrCtrViewController.m */,
 				906F4D9519738AB2007807FE /* WeConsultDetailViewController.h */,
 				906F4D9619738AB2007807FE /* WeConsultDetailViewController.m */,
+				54F1962219ECD2AC00C81F46 /* WeDetailImageViewController.h */,
+				54F1962319ECD2AC00C81F46 /* WeDetailImageViewController.m */,
 			);
 			name = "咨询室";
 			sourceTree = "<group>";
@@ -1281,6 +1291,7 @@
 				900E28E719292C55008BF61C /* WeUser.m in Sources */,
 				90B4AC67196D1D6A006E60CE /* WeTabBarViewController.m in Sources */,
 				9026EFB219143BA500CE4A7A /* WeSelSecViewController.m in Sources */,
+				54F1962119ECCFE500C81F46 /* WeSupConnectImageView.m in Sources */,
 				904F7A4318F0F146000CB41B /* WeAppDelegate.m in Sources */,
 				90C908DC198BAA880068EE4C /* WeInputPcNumberViewController.m in Sources */,
 				906F4E0A19764675007807FE /* WeCsrJiaChooseTimeViewController.m in Sources */,
@@ -1357,6 +1368,7 @@
 				545B38BF19D93C2300C9F0D1 /* MJRefreshFooterView.m in Sources */,
 				902AF5581994E75000357B54 /* WeRecordDrug.m in Sources */,
 				900E28ED19294070008BF61C /* WePatient.m in Sources */,
+				54F1962419ECD2AC00C81F46 /* WeDetailImageViewController.m in Sources */,
 				906F4D93197376CC007807FE /* WeCsrIdxViewController.m in Sources */,
 				90B4AC79196D1DA0006E60CE /* WeRegIvcViewController.m in Sources */,
 				900E292E1929AFBB008BF61C /* amrFileCodec.mm in Sources */,

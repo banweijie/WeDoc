@@ -159,7 +159,7 @@
                                                  // 图片消息
                                                  else if ([message.messageType isEqualToString:@"I"]) {
                                                      [globalHelper insertToDB:message];
-                                                     [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
+                                                     [WeAppDelegate DownloadImageWithURL:yijiarenImageThumbUrl(message.content)
                                                                        successCompletion:^(id image) {
 //                                                                           NSLog(@"!!!");
                                                                            message.imageContent = (UIImage *)image;
@@ -546,7 +546,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                  success:^(NSArray * response) {
                                      for (int i = 0; i < [response count]; i++) {
                                          WeMessage * message = [[WeMessage alloc] initWithNSDictionary:response[i]];
-                                         if ([message.messageType isEqualToString:@"X"]) NSLog(@"XXXXXXXXXX");
+                                         if ([message.messageType isEqualToString:@"X"]){} //NSLog(@"XXXXXXXXXX");
                                          if ([message.messageId longLongValue] > lastMessageId) {
                                              lastMessageId = [message.messageId longLongValue];
                                          }
@@ -562,7 +562,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                                              // 图片消息
                                              else if ([message.messageType isEqualToString:@"I"]) {
                                                  [globalHelper insertToDB:message];
-                                                 [WeAppDelegate DownloadImageWithURL:yijiarenImageUrl(message.content)
+                                                 [WeAppDelegate DownloadImageWithURL:yijiarenImageThumbUrl(message.content)
                                                                    successCompletion:^(id image) {
                                                                        //NSLog(@"!!!");
                                                                        message.imageContent = (UIImage *)image;

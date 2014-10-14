@@ -409,11 +409,16 @@
             [cell.contentView addSubview:bubbleView];
             
             // 图片
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(320 - 2 * gasp - avatarWidth - bubbleImageGaspShort - imageSize.width, gasp + bubbleImageGaspVertical, imageSize.width, imageSize.height)];
+            WeSupConnectImageView * imageView = [[WeSupConnectImageView alloc] initWithFrame:CGRectMake(320 - 2 * gasp - avatarWidth - bubbleImageGaspShort - imageSize.width, gasp + bubbleImageGaspVertical, imageSize.width, imageSize.height)];
+            imageView.message=currentMessage;
             [imageView setImage:currentMessage.imageContent];
             [imageView.layer setCornerRadius:5];
             [imageView.layer setMasksToBounds:YES];
             [cell.contentView addSubview:imageView];
+            imageView.userInteractionEnabled=YES;
+            //添加手势
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(seeDetailImage:)];
+            [imageView addGestureRecognizer:tap];
             
             // 发送失败图标
             if (currentMessage.failed) {
@@ -523,11 +528,17 @@
             [cell.contentView addSubview:bubbleView];
             
             // 图片
-            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(2 * gasp + avatarWidth + bubbleImageGaspShort, gasp + bubbleImageGaspVertical, imageSize.width, imageSize.height)];
+            WeSupConnectImageView * imageView = [[WeSupConnectImageView alloc] initWithFrame:CGRectMake(2 * gasp + avatarWidth + bubbleImageGaspShort, gasp + bubbleImageGaspVertical, imageSize.width, imageSize.height)];
+            imageView.message=currentMessage;
             [imageView setImage:currentMessage.imageContent];
             [imageView.layer setCornerRadius:5];
             [imageView.layer setMasksToBounds:YES];
             [cell.contentView addSubview:imageView];
+            
+            imageView.userInteractionEnabled=YES;
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(seeDetailImage:)];
+            [imageView addGestureRecognizer:tap];
+
         }
         if ([currentMessage.messageType isEqualToString:@"A"]) {
             // 头像
@@ -575,7 +586,16 @@
     
     return cell;
 }
-
+-(void)seeDetailImage:(UITapGestureRecognizer *)tap
+{
+    WeSupConnectImageView *ima=(WeSupConnectImageView *)tap.view;
+    WeDetailImageViewController *vimage=[[WeDetailImageViewController alloc]init];
+    vimage.message=ima.message;
+    
+    WeNavViewController *nav=[[WeNavViewController alloc]initWithRootViewController:vimage];
+    
+    [self.navigationController presentViewController:nav animated:YES completion:^{}];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -661,6 +681,7 @@
 
 // 发送图片
 - (void)sendImage:(UIImage *)image {
+//    NSLog(@"image.size  %f    %f  ",image.size.height,image.size.width);
     WeMessage * message = [[WeMessage alloc] init];
     message.messageType = @"I";
     message.senderId = currentUser.userId;

@@ -24,6 +24,7 @@
 @property(nonatomic) BOOL failed;
 
 @property(strong, nonatomic) UIImage * imageContent;
+@property(strong, nonatomic) UIImage * detImageContent;
 @property(strong, nonatomic) NSData * audioContent;
 
 - (WeMessage *)initWithNSDictionary:(NSDictionary *)info;
