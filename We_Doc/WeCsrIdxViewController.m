@@ -290,6 +290,7 @@
 
 - (void)refreshData {
     favorPatients = [[NSMutableArray alloc] init];
+    int b=0;
     for (WeFavorPatient * patient in [favorPatientList objectEnumerator]) {
         // 申请中
         if (currentPage == 0 && [patient.consultStatus isEqualToString:@"A"]) [favorPatients addObject:patient];
@@ -297,7 +298,17 @@
         if (currentPage == 1 && [patient.consultStatus isEqualToString:@"C"]) [favorPatients addObject:patient];
         // 已结束
         if (currentPage == 2 && ([patient.consultStatus isEqualToString:@"N"] || [patient.consultStatus isEqualToString:@"W"])) [favorPatients addObject:patient];
+        
+        NSMutableArray * unviewedMessageList = [globalHelper search:[WeMessage class]
+                                                              where:[NSString stringWithFormat:@"((senderId = %@ or receiverId = %@) and viewed = 0)", patient.userId, patient.userId]
+                                                            orderBy:@"time desc"
+                                                             offset:0
+                                                              count:101];
+        int a=[unviewedMessageList count];
+        b+=a;
     }
+    numOfIcon=b;
+    
     
     
     [favorPatients sortUsingComparator:^NSComparisonResult(id rA, id rB) {

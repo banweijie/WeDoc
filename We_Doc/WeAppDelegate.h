@@ -69,6 +69,8 @@ NSMutableDictionary * favorPatientList;
 NSMutableArray * caseRecords;
 NSMutableArray * examinations;
 
+int numOfIcon;//图标徽章
+
 
 WeCaseRecord * caseRecordChanging;
 WeRecordDrug * recordDrugChanging;
