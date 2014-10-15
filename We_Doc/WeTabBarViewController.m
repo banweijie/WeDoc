@@ -59,6 +59,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    messageFlag=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-25, 4, 8, 8)];
+    messageFlag.layer.cornerRadius=4;
+    messageFlag.backgroundColor=We_foreground_red_general;
+    [self.tabBar insertSubview:messageFlag atIndex:1];
+    messageFlag.alpha=0;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

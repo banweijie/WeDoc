@@ -309,7 +309,13 @@
     }
     numOfIcon=b;
     
-    
+    if (numOfIcon>0) {
+        messageFlag.alpha=0.8;
+    }
+    else
+    {
+        messageFlag.alpha=0;
+    }
     
     [favorPatients sortUsingComparator:^NSComparisonResult(id rA, id rB) {
         WeFavorPatient * patientA = rA, * patientB = rB;
