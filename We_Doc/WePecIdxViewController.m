@@ -68,6 +68,11 @@
         WePecMyaViewController * vc = [[WePecMyaViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (path.section==3 &&path.row==0) {
+        WeAboutUsViewController * vc = [[WeAboutUsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
 // 询问每个cell的高度
@@ -103,7 +108,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 3;
+    return 4;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {

@@ -175,6 +175,7 @@
 {
     WeUserAgreeViewController *user=[[WeUserAgreeViewController alloc]init];
     user.aggreeUrl=@"http://www.ejren.com/docs/user_agreement.txt";
+    user.title=@"用户协议";
     WeNavViewController *nav=[[WeNavViewController alloc]initWithRootViewController:user];
     [self presentViewController:nav animated:YES completion:nil];
 }

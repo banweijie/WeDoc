@@ -138,6 +138,7 @@ NSMutableDictionary * we_doctors;
 NSMutableDictionary * we_messagesWithDoctor;
 
 // app data
+NSString *we_appVersion;
 NSDictionary * we_codings;
 NSArray * we_examinationTypeKeys;
 NSMutableDictionary * we_secondaryTypeKeyToValue;

@@ -52,6 +52,8 @@
 		545B390F19D9607A00C9F0D1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B390E19D9607A00C9F0D1 /* libz.dylib */; };
 		545B391119D9608900C9F0D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B391019D9608900C9F0D1 /* SystemConfiguration.framework */; };
 		545B391319D9609900C9F0D1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B391219D9609900C9F0D1 /* MediaPlayer.framework */; };
+		54A13FE519F0FDBE0001C0E7 /* WeAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A13FE219F0FDBE0001C0E7 /* WeAboutUsViewController.m */; };
+		54A13FE619F0FDBE0001C0E7 /* WeAboutDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54A13FE419F0FDBE0001C0E7 /* WeAboutDownViewController.m */; };
 		54F1962119ECCFE500C81F46 /* WeSupConnectImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */; };
 		54F1962419ECD2AC00C81F46 /* WeDetailImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F1962319ECD2AC00C81F46 /* WeDetailImageViewController.m */; };
 		900E28E719292C55008BF61C /* WeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 900E28E019292C55008BF61C /* WeUser.m */; };
@@ -236,6 +238,10 @@
 		545B390E19D9607A00C9F0D1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		545B391019D9608900C9F0D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		545B391219D9609900C9F0D1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		54A13FE119F0FDBE0001C0E7 /* WeAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeAboutUsViewController.h; sourceTree = "<group>"; };
+		54A13FE219F0FDBE0001C0E7 /* WeAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeAboutUsViewController.m; sourceTree = "<group>"; };
+		54A13FE319F0FDBE0001C0E7 /* WeAboutDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeAboutDownViewController.h; sourceTree = "<group>"; };
+		54A13FE419F0FDBE0001C0E7 /* WeAboutDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeAboutDownViewController.m; sourceTree = "<group>"; };
 		54F1961F19ECCFE500C81F46 /* WeSupConnectImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSupConnectImageView.h; sourceTree = "<group>"; };
 		54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSupConnectImageView.m; sourceTree = "<group>"; };
 		54F1962219ECD2AC00C81F46 /* WeDetailImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeDetailImageViewController.h; sourceTree = "<group>"; };
@@ -635,6 +641,17 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		54A13FE019F0FDAC0001C0E7 /* 关于我们 */ = {
+			isa = PBXGroup;
+			children = (
+				54A13FE119F0FDBE0001C0E7 /* WeAboutUsViewController.h */,
+				54A13FE219F0FDBE0001C0E7 /* WeAboutUsViewController.m */,
+				54A13FE319F0FDBE0001C0E7 /* WeAboutDownViewController.h */,
+				54A13FE419F0FDBE0001C0E7 /* WeAboutDownViewController.m */,
+			);
+			name = "关于我们";
+			sourceTree = "<group>";
+		};
 		900E28DE19292C42008BF61C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,6 +952,7 @@
 		9054807A18FA68D600CE8172 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				54A13FE019F0FDAC0001C0E7 /* 关于我们 */,
 				545B38AD19D93B9B00C9F0D1 /* 我的余额 */,
 				902AF5211992181F00357B54 /* 我的众筹 */,
 				909E3C6E1901AF4300ADC2E9 /* 工作经历 */,
@@ -1269,6 +1287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A13FE519F0FDBE0001C0E7 /* WeAboutUsViewController.m in Sources */,
 				9054808918FAC28700CE8172 /* WePecCaiViewController.m in Sources */,
 				90B4AC64196D1D6A006E60CE /* WeSPViewController.m in Sources */,
 				90C908D9198BA7910068EE4C /* WeInputQcNumberViewController.m in Sources */,
@@ -1326,6 +1345,7 @@
 				90B4AC77196D1DA0006E60CE /* WeRegWlcViewController.m in Sources */,
 				9026EFAF1912E3BA00CE4A7A /* WeSelHosViewController.m in Sources */,
 				9026EDF51904051600CE4A7A /* WeSelDayViewController.m in Sources */,
+				54A13FE619F0FDBE0001C0E7 /* WeAboutDownViewController.m in Sources */,
 				9026EDF81904052D00CE4A7A /* WeSelPerViewController.m in Sources */,
 				907FE5A219023E7D0070DB3E /* WePecNotViewController.m in Sources */,
 				90B4AC6B196D1D6A006E60CE /* WeInfoedTextField.m in Sources */,

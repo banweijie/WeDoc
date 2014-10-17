@@ -10,6 +10,7 @@
 #import "WeAppDelegate.h"
 #import "WePecPeaViewController.h"
 #import "WeMyFundingViewController.h"
+#import "WeAboutUsViewController.h"
 
 @interface WePecIdxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

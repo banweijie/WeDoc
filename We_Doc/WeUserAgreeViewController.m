@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
     self.edgesForExtendedLayout=UIRectEdgeNone;
-    self.title=@"用户协议";
+//    self.title=@"用户协议";
     
     UIBarButtonItem *but=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backButton)];
     self.navigationItem.leftBarButtonItem=but;
