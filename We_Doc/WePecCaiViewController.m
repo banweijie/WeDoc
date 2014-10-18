@@ -88,8 +88,8 @@
 }
 // 询问每个段落的头部高度
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) return 100 + 64;
-    if (section == 2) return 80;
+    if (section == 0) return 40;
+    if (section == 2) return 40;
     return 20;
 }
 // 询问每个段落的头部标题
@@ -199,7 +199,7 @@
             switch (indexPath.row) {
                 case 0:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"医生资格证书";
+                    cell.textLabel.text = @"医师资格证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     if ([currentUser.qcPath isEqualToString:@""]) {
@@ -216,7 +216,7 @@
                     break;
                 case 1:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"医生执业证书";
+                    cell.textLabel.text = @"医师执业证书";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     if ([currentUser.pcPath isEqualToString:@""]) {
@@ -233,7 +233,7 @@
                     break;
                 case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"工作证照片";
+                    cell.textLabel.text = @"胸卡";
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     if ([currentUser.wcPath isEqualToString:@""]) {
@@ -367,12 +367,13 @@
     [self.view addSubview:bg];
     
     // sys_tableView
-    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-49) style:UITableViewStyleGrouped];
+    sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
     sys_tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     sys_tableView.delegate = self;
     sys_tableView.dataSource = self;
     sys_tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:sys_tableView];
+    self.edgesForExtendedLayout=0;
     
     // save button
     UIBarButtonItem * user_save = [[UIBarButtonItem alloc] initWithTitle:[WeAppDelegate transition:currentUser.status asin:@"doctorStatus"] style:UIBarButtonItemStylePlain target:self action:@selector(user_save_onpress:)];

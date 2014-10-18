@@ -912,6 +912,8 @@
 
 - (void)playAudio:(WeInfoedButton *)sender {
     NSError * error;
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
     self.audioPlayer = [[AVAudioPlayer alloc] initWithData:[(WeMessage *)sender.userData audioContent] error:&error];
     self.audioPlayer.delegate = self;
     self.audioPlayer.volume = 10.0f;
