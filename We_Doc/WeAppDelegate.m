@@ -35,6 +35,7 @@
     
     [self refreshInitialData];
     
+    
     userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:@"1" forKey:@"lastMessageId"];
     
@@ -65,7 +66,13 @@
     return YES;
 }
 
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        NSString *str = @"itms-apps://itunes.apple.com/cn/app/yi-jia-ren-yi-sheng-ban/id909355061";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+}
 
 #pragma mark - Apis
 
@@ -519,6 +526,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         we_codings = HTTPResponse[@"response"][@"codings"];
         we_imagePaths = HTTPResponse[@"response"][@"imagePaths"];
 //        NSLog(@"%@", HTTPResponse);
+        we_appVersion=HTTPResponse[@"response"][@"appVersion"];
         we_examinationTypeKeys = [we_codings[@"examinationType"] allKeys];
         we_examinationTypes = HTTPResponse[@"response"][@"examinationTypes"];
         we_secondaryTypeKeyToValue = [[NSMutableDictionary alloc] init];
@@ -528,6 +536,12 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                 we_secondaryTypeKeyToValue[[WeAppDelegate toString:secondaryTypeId(i, j)]] = secondaryTypeName(i, j);
                 we_secondaryTypeKeyToData[[WeAppDelegate toString:secondaryTypeId(i, j)]] = secondaryTypeData(i, j);
             }
+        }
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        NSString *appVersion = [infoDic objectForKey:@"CFBundleVersion"];
+        if (![we_appVersion isEqualToString:appVersion]) {
+            UIAlertView *alter=[[UIAlertView alloc]initWithTitle:@"发现新版本" message:@"有新版本，是否现在更新？" delegate:self cancelButtonTitle:@"以后" otherButtonTitles:@"现在更新", nil];
+            [alter show];
         }
         //NSLog(@"%@", we_secondaryTypeKeyToData);
         return;
