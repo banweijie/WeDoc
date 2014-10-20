@@ -21,6 +21,8 @@
     
     UIBarButtonItem * cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton_onPress:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
+    UIBarButtonItem * saveButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveImageToAlbum)];
+    self.navigationItem.rightBarButtonItem=saveButton;
     self.edgesForExtendedLayout=UIRectEdgeAll;
     UIView *vo=[[UIView alloc]initWithFrame:CGRectMake(-1, -1, 1, 1)];
     [self.view addSubview:vo];
@@ -127,4 +129,22 @@
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
+-(void)saveImageToAlbum
+{
+    [sys_pendingView startAnimating];
+    UIImageWriteToSavedPhotosAlbum(_imgView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);//保存图片到本地相册
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error != NULL) {
+        UIAlertView *photoSave = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@",error] delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [photoSave show];
+    }else {
+        UIAlertView *photoSave = [[UIAlertView alloc] initWithTitle:@"保存成功" message:nil delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+        [photoSave show];
+    }
+    [sys_pendingView stopAnimating];
+    
+}
 @end
