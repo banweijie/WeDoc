@@ -71,6 +71,8 @@ NSMutableArray * examinations;
 
 int numOfIcon;//图标徽章数量
 UIImageView *messageFlag;//咨询室的消息提示
+UIImageView *jiahaoFlag;//加号的消息提示
+
 
 WeCaseRecord * caseRecordChanging;
 WeRecordDrug * recordDrugChanging;

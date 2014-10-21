@@ -64,6 +64,12 @@
     messageFlag.backgroundColor=We_foreground_red_general;
     [self.tabBar insertSubview:messageFlag atIndex:1];
     messageFlag.alpha=0;
+    
+    jiahaoFlag=[[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/4*3-25, 4, 8, 8)];
+    jiahaoFlag.layer.cornerRadius=4;
+    jiahaoFlag.backgroundColor=We_foreground_red_general;
+    [self.tabBar insertSubview:jiahaoFlag atIndex:1];
+    jiahaoFlag.alpha=0;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

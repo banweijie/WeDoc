@@ -259,13 +259,25 @@
 
 - (void)refreshData {
     NSMutableArray * jiahaos_tmp = [[NSMutableArray alloc] init];
+    int f=0;
     for (WeJiahao * jiahao in jiahaoList) {
         // 申请中
-        if (currentPage == 0 && [jiahao.status isEqualToString:@"A"]) [jiahaos_tmp addObject:jiahao];
+        if (currentPage == 0 && [jiahao.status isEqualToString:@"A"]){
+           
+            f=1;
+            [jiahaos_tmp addObject:jiahao];
+        }
         // 咨询中
         if (currentPage == 1 && [jiahao.status isEqualToString:@"J"]) [jiahaos_tmp addObject:jiahao];
         // 已结束
         if (currentPage == 2 && ([jiahao.status isEqualToString:@"Y"] || [jiahao.status isEqualToString:@"N"])) [jiahaos_tmp addObject:jiahao];
+    }
+    if (f==1) {
+         jiahaoFlag.alpha=0.8;
+    }
+    else
+    {
+         jiahaoFlag.alpha=0;
     }
     
     if (currentPage == 0) {
