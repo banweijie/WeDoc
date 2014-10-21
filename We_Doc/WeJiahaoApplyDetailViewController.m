@@ -41,7 +41,10 @@
         [self api_doctor_updateJiahaoStatus_accept];
     }
     if (path.section == 4 && path.row == 0) {
-        [self api_doctor_updateJiahaoStatus_reject];
+        [self api_doctor_updateJiahaoStatus_reject:@"true"];
+    }
+    if (path.section == 5 && path.row == 0) {
+        [self api_doctor_updateJiahaoStatus_reject:@"false"];
     }
     [tv deselectRowAtIndexPath:path animated:YES];
 }
@@ -57,6 +60,7 @@
     if (section == 1) return 50;
     if (section == 2) return 50;
     if (section == 4) return 10;
+    if (section == 5) return 10;
     return 30;
 }
 // 询问每个段落的头部标题
@@ -87,7 +91,7 @@
 }
 // 询问共有多少个段落
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tv {
-    return 5;
+    return 6;
 }
 // 询问每个段落有多少条目
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
@@ -191,8 +195,15 @@
         [cell setBackgroundColor:We_background_cell_general];
         [cell.textLabel setFont:We_font_textfield_zh_cn];
         [cell.textLabel setTextColor:We_foreground_red_general];
-        [cell.textLabel setText:@"拒绝加号"];
+        [cell.textLabel setText:@"拒绝加号(并退款)"];
     }
+    if (indexPath.section == 5 && indexPath.row == 0) {
+        [cell setBackgroundColor:We_background_cell_general];
+        [cell.textLabel setFont:We_font_textfield_zh_cn];
+        [cell.textLabel setTextColor:We_foreground_red_general];
+        [cell.textLabel setText:@"拒绝加号(不退款)"];
+    }
+
     return cell;
 }
 
@@ -272,13 +283,14 @@
                                      [sys_pendingView stopAnimating];
                                  }];
 }
-- (void)api_doctor_updateJiahaoStatus_reject {
+- (void)api_doctor_updateJiahaoStatus_reject:(NSString *)flag {
     [sys_pendingView startAnimating];
     
     [WeAppDelegate postToServerWithField:@"doctor" action:@"updateJiahaoStatus"
                               parameters:@{
                                            @"jiahaoId":self.currentJiahao.jiahaoId,
                                            @"status":@"N",
+                                           @"refund":flag
                                            }
                                  success:^(id response) {
                                      [self.navigationController popViewControllerAnimated:YES];
