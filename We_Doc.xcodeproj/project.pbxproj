@@ -12,6 +12,7 @@
 		5412EBDA19D7B15C00CA6C7C /* WeFgtInpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD619D7B15C00CA6C7C /* WeFgtInpViewController.m */; };
 		5412EBDB19D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */; };
 		5412EBDE19D7BA3900CA6C7C /* WeFunMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */; };
+		54480FAE19F5EE6D00309628 /* WeFunTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 54480FAD19F5EE6D00309628 /* WeFunTitle.m */; };
 		545B38AC19D9062400C9F0D1 /* WeSelectSelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */; };
 		545B38B219D93BB000C9F0D1 /* WePecMyaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38AF19D93BB000C9F0D1 /* WePecMyaViewController.m */; };
 		545B38B319D93BB000C9F0D1 /* WePecRechViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 545B38B119D93BB000C9F0D1 /* WePecRechViewController.m */; };
@@ -185,6 +186,8 @@
 		5412EBD819D7B15C00CA6C7C /* WeFgtSetPaswdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFgtSetPaswdViewController.m; sourceTree = "<group>"; };
 		5412EBDC19D7BA3900CA6C7C /* WeFunMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunMovieViewController.h; sourceTree = "<group>"; };
 		5412EBDD19D7BA3900CA6C7C /* WeFunMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunMovieViewController.m; sourceTree = "<group>"; };
+		54480FAC19F5EE6D00309628 /* WeFunTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeFunTitle.h; sourceTree = "<group>"; };
+		54480FAD19F5EE6D00309628 /* WeFunTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeFunTitle.m; sourceTree = "<group>"; };
 		545B38AA19D9062400C9F0D1 /* WeSelectSelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeSelectSelViewController.h; sourceTree = "<group>"; };
 		545B38AB19D9062400C9F0D1 /* WeSelectSelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeSelectSelViewController.m; sourceTree = "<group>"; };
 		545B38AE19D93BB000C9F0D1 /* WePecMyaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WePecMyaViewController.h; sourceTree = "<group>"; };
@@ -835,6 +838,8 @@
 				902AF52619921B5F00357B54 /* WeFundingCard.m */,
 				54F1961F19ECCFE500C81F46 /* WeSupConnectImageView.h */,
 				54F1962019ECCFE500C81F46 /* WeSupConnectImageView.m */,
+				54480FAC19F5EE6D00309628 /* WeFunTitle.h */,
+				54480FAD19F5EE6D00309628 /* WeFunTitle.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1357,6 +1362,7 @@
 				902AF55B1994E75000357B54 /* WeExaminationItem.m in Sources */,
 				90B4AC3C196D1CF4006E60CE /* WeFunIdxViewController.m in Sources */,
 				907FE5A6190252580070DB3E /* WePecBusViewController.m in Sources */,
+				54480FAE19F5EE6D00309628 /* WeFunTitle.m in Sources */,
 				5412EBD919D7B15C00CA6C7C /* WeFgtPaswdViewController.m in Sources */,
 				90B4AC66196D1D6A006E60CE /* WeNavViewController.m in Sources */,
 				90B4AC3E196D1CF4006E60CE /* WeFunDesViewController.m in Sources */,

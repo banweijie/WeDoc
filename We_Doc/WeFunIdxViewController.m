@@ -7,7 +7,7 @@
 //
 
 #import "WeFunIdxViewController.h"
-
+#import "WeFunTitle.h"
 @interface WeFunIdxViewController () {
     UIActivityIndicatorView * sys_pendingView;
     UITableView * sys_tableView;
@@ -30,7 +30,7 @@
     
     UIToolbar * selectView;
     UIToolbar * searchView;
-    UIButton * titleButton;
+    WeFunTitle * titleButton;
 }
 
 @end
@@ -127,14 +127,14 @@
     
     //self.navigationItem.title = @"众筹项目";
     
-    titleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    titleButton = [WeFunTitle buttonWithType:UIButtonTypeCustom];
     [titleButton setFrame:CGRectMake(30, 0, 120, 64)];
-    [titleButton setTitle:@"医家仁推荐 v" forState:UIControlStateNormal];
+    [titleButton setImage:[UIImage imageNamed:@"fav_down"] forState:UIControlStateNormal];
+    [titleButton setTitle:@"医家仁推荐" forState:UIControlStateNormal];
     [titleButton addTarget:self action:@selector(titleButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
     [titleButton.titleLabel setFont:We_font_textfield_huge_zh_cn];
     
     self.navigationItem.titleView = titleButton;
-    
     /*
      // 我的众筹按钮
      UIBarButtonItem * myFundingButton = [[UIBarButtonItem alloc] initWithTitle:@"我的参与" style:UIBarButtonItemStylePlain target:self action:@selector(myFundingButton_onPress:)];
@@ -164,8 +164,8 @@
     
     
     // 筛选
-    selectView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 280)];
-    for (int i = 0; i < 7; i++) {
+    selectView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 64, 320, 200)];
+    for (int i = 0; i < 5; i++) {
         WeInfoedButton * optionButton = [WeInfoedButton buttonWithType:UIButtonTypeRoundedRect];
         [optionButton setFrame:CGRectMake(0, 40 * i, 320, 40)];
         [optionButton setTintColor:We_foreground_black_general];
@@ -176,12 +176,12 @@
             lastPressedButton = optionButton;
         }
         if (i == 0) [optionButton setTitle:@"医家仁推荐" forState:UIControlStateNormal];
-        if (i == 1) [optionButton setTitle:@"全部" forState:UIControlStateNormal];
-        if (i == 2) [optionButton setTitle:@"科研类" forState:UIControlStateNormal];
-        if (i == 3) [optionButton setTitle:@"公益类" forState:UIControlStateNormal];
-        if (i == 4) [optionButton setTitle:@"招募类" forState:UIControlStateNormal];
-        if (i == 5) [optionButton setTitle:@"进行中" forState:UIControlStateNormal];
-        if (i == 6) [optionButton setTitle:@"已结束" forState:UIControlStateNormal];
+        //        if (i == 1) [optionButton setTitle:@"全部" forState:UIControlStateNormal];
+        if (i == 1) [optionButton setTitle:@"科研类" forState:UIControlStateNormal];
+        if (i == 2) [optionButton setTitle:@"公益类" forState:UIControlStateNormal];
+        if (i == 3) [optionButton setTitle:@"招募类" forState:UIControlStateNormal];
+        //        if (i == 5) [optionButton setTitle:@"进行中" forState:UIControlStateNormal];
+        if (i == 4) [optionButton setTitle:@"已结束" forState:UIControlStateNormal];
         [selectView addSubview:optionButton];
     }
     [selectView setHidden:YES];
@@ -260,10 +260,10 @@
     [searchView setHidden:YES];
     [self api_data_listFunding:@{@"f.words":searchBar.text}];
     if ([searchBar.text isEqualToString:@""]) {
-        [titleButton setTitle:@"全部 v" forState:UIControlStateNormal];
+        [titleButton setTitle:@"医家仁推荐" forState:UIControlStateNormal];
     }
     else {
-        [titleButton setTitle:[NSString stringWithFormat:@"搜索：%@ v", searchBar.text] forState:UIControlStateNormal];
+        [titleButton setTitle:[NSString stringWithFormat:@"搜索：%@", searchBar.text] forState:UIControlStateNormal];
     }
 }
 
@@ -271,10 +271,10 @@
     [self searchButton_onPress];
     [sel_keyword setString:searchBar.text];
     [self api_data_listFunding:@{@"f.words":searchBar.text}];if ([searchBar.text isEqualToString:@""]) {
-        [titleButton setTitle:@"全部 v" forState:UIControlStateNormal];
+        [titleButton setTitle:@"医家仁推荐" forState:UIControlStateNormal];
     }
     else {
-        [titleButton setTitle:[NSString stringWithFormat:@"搜索：%@ v", searchBar.text] forState:UIControlStateNormal];
+        [titleButton setTitle:[NSString stringWithFormat:@"搜索：%@", searchBar.text] forState:UIControlStateNormal];
     }
 }
 
@@ -284,7 +284,15 @@
     {
         [self searchButton_onPress];
     }
-    [selectView setHidden:!selectView.isHidden];}
+    [selectView setHidden:!selectView.isHidden];
+    if (selectView.hidden) {
+        [titleButton setImage:[UIImage imageNamed:@"fav_down"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [titleButton setImage:[UIImage imageNamed:@"fav_up"] forState:UIControlStateNormal];
+    }
+}
 
 - (void)optionButton_onPress:(WeInfoedButton *)sender {
     NSString * order = sender.userData;
@@ -295,38 +303,43 @@
     [sender setTitleColor:We_foreground_red_general forState:UIControlStateNormal];
     
     if ([order isEqualToString:@"0"]) {
-        [titleButton setTitle:@"医家仁推荐 v" forState:UIControlStateNormal];
+        [titleButton setTitle:@"医家仁推荐" forState:UIControlStateNormal];
         [self api_data_listHomeFundings];
     }
+    //    if ([order isEqualToString:@"1"]) {
+    //        [titleButton setTitle:@"全部" forState:UIControlStateNormal];
+    //        [self api_data_listFunding:@{}];
+    //    }
     if ([order isEqualToString:@"1"]) {
-        [titleButton setTitle:@"全部 v" forState:UIControlStateNormal];
-        [self api_data_listFunding:@{}];
-    }
-    if ([order isEqualToString:@"2"]) {
-        [titleButton setTitle:@"科研类 v" forState:UIControlStateNormal];
+        [titleButton setTitle:@"科研类" forState:UIControlStateNormal];
         [self api_data_listFunding:@{@"f.type":@"B"}];
     }
-    if ([order isEqualToString:@"3"]) {
-        [titleButton setTitle:@"公益类 v" forState:UIControlStateNormal];
+    if ([order isEqualToString:@"2"]) {
+        [titleButton setTitle:@"公益类" forState:UIControlStateNormal];
         [self api_data_listFunding:@{@"f.type":@"A"}];
+        
     }
-    if ([order isEqualToString:@"4"]) {
-        [titleButton setTitle:@"招募类 v" forState:UIControlStateNormal];
+    if ([order isEqualToString:@"3"]) {
+        [titleButton setTitle:@"招募类" forState:UIControlStateNormal];
         [self api_data_listFunding:@{@"f.type":@"D"}];
+        
     }
-    if ([order isEqualToString:@"5"]) {
-        [titleButton setTitle:@"进行中 v" forState:UIControlStateNormal];
-        [self api_data_listFunding:@{@"f.status":@"E"}];
-    }
-    if ([order isEqualToString:@"6"]) {
-        [titleButton setTitle:@"已结束 v" forState:UIControlStateNormal];
+    //    if ([order isEqualToString:@"5"]) {
+    //        [titleButton setTitle:@"进行中" forState:UIControlStateNormal];
+    //        [self api_data_listFunding:@{@"f.status":@"E"}];
+    //    }
+    if ([order isEqualToString:@"4"]) {
+        [titleButton setTitle:@"已结束" forState:UIControlStateNormal];
         [self api_data_listFunding:@{@"f.status":@"G"}];
+        
     }
     [selectView setHidden:YES];
+    [titleButton setImage:[UIImage imageNamed:@"fav_down"] forState:UIControlStateNormal];
 }
 
 - (void)searchButton_onPress {
     [selectView setHidden:YES];
+    [titleButton setImage:[UIImage imageNamed:@"fav_down"] forState:UIControlStateNormal];
     if (!searchView.isHidden) {
         searchView.hidden=YES;
         coverButton.hidden = YES;
