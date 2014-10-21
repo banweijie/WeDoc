@@ -7,7 +7,7 @@
 //
 
 #import "WeJiahaoApplyDetailViewController.h"
-
+#import "WeCahIdxViewController.h"
 @interface WeJiahaoApplyDetailViewController () {
     UIActivityIndicatorView * sys_pendingView;
     UITableView * sys_tableView;
@@ -36,6 +36,18 @@
         vc.datesToDemo = datesToDemo;
         
         [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (path.section == 2 && path.row == 2) {
+        if([self.currentJiahao.recordIds isEqualToString:@""])
+        {
+            return;
+        }
+        else
+        {
+            WeCahIdxViewController *cah=[[WeCahIdxViewController alloc]init];
+            cah.rmId=self.currentJiahao.recordIds;
+            [self.navigationController pushViewController:cah animated:YES];
+        }
     }
     if (path.section == 3 && path.row == 0) {
         [self api_doctor_updateJiahaoStatus_accept];
@@ -97,7 +109,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 3;
     if (section == 1) return 2;
-    if (section == 2) return 2;
+    if (section == 2) return 3;
     if (section == 3) return 1;
     if (section == 4) return 1;
     return 1;
@@ -185,6 +197,24 @@
         [cell.detailTextLabel setTextColor:We_foreground_gray_general];
         [cell.detailTextLabel setText:[WeAppDelegate transitionGenderFromChar:self.currentJiahao.gender]];
     }
+    if (indexPath.section == 2 && indexPath.row == 2) {
+        [cell.textLabel setFont:We_font_textfield_zh_cn];
+        [cell.textLabel setTextColor:We_foreground_black_general];
+        [cell.textLabel setText:@"查看病例"];
+        [cell.detailTextLabel setFont:We_font_textfield_zh_cn];
+        [cell.detailTextLabel setTextColor:We_foreground_gray_general];
+        if([self.currentJiahao.recordIds isEqualToString:@""])
+        {
+            [cell.detailTextLabel setText:@"未设置"];
+        }
+        else
+        {
+            [cell.detailTextLabel setText:@"查看"];
+        }
+        
+    }
+
+    
     if (indexPath.section == 3 && indexPath.row == 0) {
         [cell setBackgroundColor:We_background_red_general];
         [cell.textLabel setFont:We_font_textfield_zh_cn];

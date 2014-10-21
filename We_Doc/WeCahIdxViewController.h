@@ -13,7 +13,7 @@
 #import "WeNavViewController.h"
 #import "WeCahCahViewController.h"
 
-@interface WeCahIdxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface WeCahIdxViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong) NSString * rmId;
 

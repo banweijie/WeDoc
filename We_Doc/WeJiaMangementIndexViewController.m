@@ -193,7 +193,7 @@
     self.navigationItem.title = @"加号管理";
     
     // 变量初始化
-    currentPage = 1;
+    currentPage = 0;
     jiahaos = [[NSMutableArray alloc] init];
     
     // 背景图片
@@ -218,7 +218,7 @@
     UISegmentedControl * segControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"申请中", @"进行中", @"已结束", nil]];
     [segControl setFrame:CGRectMake(20, 7, 280, 30)];
     segControl.backgroundColor = [UIColor clearColor];
-    segControl.selectedSegmentIndex = 1;
+    segControl.selectedSegmentIndex = 0;
     segControl.tintColor = We_foreground_white_general;
     segControl.layer.cornerRadius = 5;
     [segControl addTarget:self action:@selector(selectedSegmentChanged:) forControlEvents:UIControlEventValueChanged];
@@ -239,9 +239,6 @@
     [sys_pendingView.layer setCornerRadius:10];
     [sys_pendingView setAlpha:1.0];
     [self.view addSubview:sys_pendingView];
-    
-    // 访问获取众筹详情列表
-    [self api_doctor_listJiahao];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

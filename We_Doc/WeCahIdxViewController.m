@@ -36,49 +36,6 @@
 
 /*
  [AREA]
- UIPickerView dataSource & delegate interfaces
- */
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    if (pickerView == ssview0_picker) {
-        return 2;
-    }
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (pickerView == ssview0_picker) {
-        if (component == 0) {
-            return [we_codings[@"examinationType"] count];
-        }
-        if (component == 1) {
-            return [we_examinationTypes[we_examinationTypeKeys[[pickerView selectedRowInComponent:0]]] count];
-        }
-    }
-    return 1;
-}
-
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-    UILabel * newView = (UILabel *)view;
-    if (!newView) {
-        newView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 32)];
-        newView.font = We_font_textfield_zh_cn;
-        if (component == 0) {
-            newView.text = we_codings[@"examinationType"][we_examinationTypeKeys[row]];
-        }
-        else if (component == 1) {
-            newView.text = we_examinationTypes[we_examinationTypeKeys[[pickerView selectedRowInComponent:0]]][row][@"text"];
-        }
-        newView.adjustsFontSizeToFitWidth = YES;
-    }
-    return newView;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    [pickerView reloadAllComponents];
-}
-
-/*
- [AREA]
  UITableView dataSource & delegate interfaces
  */
 // 将展示某个Cell触发的事件
@@ -264,13 +221,6 @@
     // 就诊历史页面
     view0 = [[UIView alloc] initWithFrame:CGRectMake(0, 64 + 44, 320, self.view.frame.size.height - 64 - 44)];
     
-    /*
-    // 就诊历史页面 - 添加按钮
-    view0AddButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [view0AddButton setFrame:CGRectMake(10, 95, 300, 50)];
-    [view0AddButton setBackgroundImage:[UIImage imageNamed:@"button-addcasehistory"] forState:UIControlStateNormal];
-    [view0AddButton addTarget:self action:@selector(view0AddButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
-    */
     
     // 就诊历史页面 - 目录
     tableView_view0 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, view0.frame.size.width, view0.frame.size.height) style:UITableViewStyleGrouped];
@@ -298,7 +248,7 @@
     view1AddButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [view1AddButton setFrame:CGRectMake(10, 95, 300, 50)];
     [view1AddButton setBackgroundImage:[UIImage imageNamed:@"button-addcasehistory"] forState:UIControlStateNormal];
-    [view1AddButton addTarget:self action:@selector(view1AddButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
+//    [view1AddButton addTarget:self action:@selector(view1AddButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
     
     // 检查结果页面 - 目录
     tableView_view1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, view1.frame.size.width, view1.frame.size.height) style:UITableViewStyleGrouped];
@@ -334,80 +284,12 @@
     [sys_pendingView setAlpha:1.0];
     [self.view addSubview:sys_pendingView];
     
-    /*
-    
-    // 添加检查结果产生的效应
-    ssview0 = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 300)];
-    
-    UIToolbar * toolBar0 = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-    [toolBar0 setTintColor:[UIColor whiteColor]];
-    toolBar0.alpha = 0.98;
-    [ssview0 addSubview:toolBar0];
-    
-    // 添加检查结果产生的效应 - 取消按钮
-    UIButton * ssview0_cancelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [ssview0_cancelButton setFrame:CGRectMake(0, 15, 80, 30)];
-    [ssview0_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-    [ssview0_cancelButton setTintColor:We_foreground_black_general];
-    [ssview0_cancelButton addTarget:self action:@selector(ssview0_shadowOrCancelButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
-    [ssview0 addSubview:ssview0_cancelButton];
-    
-    // 添加检查结果产生的效应 - 标题
-    UILabel * ssview0_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 15, 160, 30)];
-    [ssview0_titleLabel setText:@"选择检查类型"];
-    [ssview0_titleLabel setTextColor:We_foreground_gray_general];
-    [ssview0_titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [ssview0_titleLabel setFont:We_font_textfield_zh_cn];
-    [ssview0 addSubview:ssview0_titleLabel];
-    
-    // 添加检查结果产生的效应 - 第0条线
-    UIView * ssview0_line0 = [[UIView alloc] initWithFrame:CGRectMake(20, 60, 280, 1)];
-    [ssview0_line0 setBackgroundColor:[UIColor grayColor]];
-    [ssview0_line0 setAlpha:0.5];
-    [ssview0 addSubview:ssview0_line0];
-    
-    // 添加检查结果产生的效应 - 选择器
-    ssview0_picker = [[UIPickerView alloc] initWithFrame:CGRectMake(40, 60, 240, 60)];
-    ssview0_picker.dataSource = self;
-    ssview0_picker.delegate = self;
-    //secondaryTypeKeys = [we_examinationTypes[we_examinationTypeKeys[0]] allKeys];
-    [ssview0 addSubview:ssview0_picker];
-    
-    // 添加检查结果产生的效应 - 第1条线
-    UIView * ssview0_line1 = [[UIView alloc] initWithFrame:CGRectMake(20, 240, 280, 1)];
-    [ssview0_line1 setBackgroundColor:[UIColor grayColor]];
-    [ssview0_line1 setAlpha:0.5];
-    [ssview0 addSubview:ssview0_line1];
-    
-    // 添加检查结果产生的效应 - 确认按钮
-    UIButton * ssview0_submitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [ssview0_submitButton setFrame:CGRectMake(25, 250, 270, 40)];
-    [ssview0_submitButton setBackgroundColor:We_background_red_tableviewcell];
-    [ssview0_submitButton setTintColor:We_foreground_white_general];
-    [ssview0_submitButton setTitle:@"添加检查结果" forState:UIControlStateNormal];
-    [ssview0_submitButton addTarget:self action:@selector(ssview0_submitButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
-    [ssview0 addSubview:ssview0_submitButton];
-    
-    // 添加检查结果产生的效应 - 遮罩层
-    ssview0_shadowButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [ssview0_shadowButton setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [ssview0_shadowButton setBackgroundColor:[UIColor blackColor]];
-    [ssview0_shadowButton setAlpha:0.0];
-    [ssview0_shadowButton addTarget:self action:@selector(ssview0_shadowOrCancelButton_onPress:) forControlEvents:UIControlEventTouchUpInside];
-    [self.tabBarController.view addSubview:ssview0_shadowButton];
-    
-    [self.tabBarController.view addSubview:ssview0];*/
-    
-    
     
     // 获取就诊历史和检查结果
     [sys_pendingView startAnimating];
     restWork = 0;
     
     [self api_message_viewRecordMessage];
-     /*
-    [self getCaseRecords:self];
-    [self getExaminations:self];*/
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -416,13 +298,7 @@
     
     [self preworkOnExaminations:self];
     [tableView_view1 reloadData];
-    
-    /*
-    if (we_targetView == targetViewMainPage) [self.tabBarController setSelectedIndex:weTabBarIdMainPage];
-    if (we_targetView == targetViewConsultingRoom) [self.tabBarController setSelectedIndex:weTabBarIdConsultingRoom];
-    if (we_targetView == targetViewPersonalCenter) [self.tabBarController setSelectedIndex:weTabBarIdPersonalCenter];
-    if (we_targetView == targetViewCaseHistory) we_targetView = targetViewNone;
-    */
+
     [super viewWillAppear:animated];
 }
 
@@ -437,160 +313,6 @@
         [view0 setHidden:YES];
         [view1 setHidden:NO];
     }
-}
-
-// 取消添加就诊历史
-- (void)ssview0_shadowOrCancelButton_onPress:(id)sender {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    
-    [ssview0_shadowButton setAlpha:0.0];
-    [ssview0_shadowButton setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    
-    CGRect rect = ssview0.frame;
-    rect.origin.y = self.view.frame.size.height;
-    ssview0.frame = rect;
-    
-    [UIView commitAnimations];
-}
-
-// 添加检查结果
-- (void)view1AddButton_onPress:(id)sender {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    
-    [ssview0_shadowButton setAlpha:0.6];
-    [ssview0_shadowButton setFrame:CGRectMake(0, -300, self.view.frame.size.width, self.view.frame.size.height)];
-    
-    CGRect rect = ssview0.frame;
-    rect.origin.y = self.view.frame.size.height - ssview0.frame.size.height;
-    ssview0.frame = rect;
-    
-    [UIView commitAnimations];
-}
-
-- (void)getCaseRecords:(id)sender {
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:yijiarenUrl(@"patient", @"listRecords") parameters:nil
-          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
-              NSString * errorMessage;
-              
-              NSString *result = [HTTPResponse objectForKey:@"result"];
-              result = [NSString stringWithFormat:@"%@", result];
-              if ([result isEqualToString:@"1"]) {
-                  //NSLog(@"response : %@", HTTPResponse[@"response"]);
-                  caseRecords=[NSMutableArray array];
-                  for (int i = 0; i < [HTTPResponse[@"response"] count]; i++) {
-                      WeCaseRecord * newCaseRecord = [[WeCaseRecord alloc] initWithNSDictionary:HTTPResponse[@"response"][i]];
-                      [caseRecords addObject:newCaseRecord];
-                  }
-                  [self preworkOnCaseRecords:self];
-                  [tableView_view0 reloadData];
-                  
-                  if (--restWork == 0) {
-                      [sys_pendingView stopAnimating];
-                  }
-                  return;
-              }
-              if ([result isEqualToString:@"2"]) {
-                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-                  NSEnumerator *enumerator = [fields keyEnumerator];
-                  id key;
-                  while ((key = [enumerator nextObject])) {
-                      NSString * tmp1 = [fields objectForKey:key];
-                      if (tmp1 != NULL) errorMessage = tmp1;
-                  }
-              }
-              if ([result isEqualToString:@"3"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              if ([result isEqualToString:@"4"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              [sys_pendingView stopAnimating];
-              UIAlertView *notPermitted = [[UIAlertView alloc]
-                                           initWithTitle:@"获取就诊记录"
-                                           message:errorMessage
-                                           delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
-              [notPermitted show];
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
-              [sys_pendingView stopAnimating];
-              UIAlertView *notPermitted = [[UIAlertView alloc]
-                                           initWithTitle:@"获取就诊记录"
-                                           message:@"未能连接服务器，请重试"
-                                           delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
-              [notPermitted show];
-          }
-     ];
-}
-
-- (void)getExaminations:(id)sender {
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    [manager POST:yijiarenUrl(@"patient", @"listExaminations") parameters:nil
-          success:^(AFHTTPRequestOperation *operation, id HTTPResponse) {
-              NSString * errorMessage;
-              
-              NSString *result = [HTTPResponse objectForKey:@"result"];
-              result = [NSString stringWithFormat:@"%@", result];
-              if ([result isEqualToString:@"1"]) {
-                  //NSLog(@"response : %@", HTTPResponse[@"response"]);
-                  examinations=[NSMutableArray array];
-                  for (int i = 0; i < [HTTPResponse[@"response"] count]; i++) {
-                      WeExamination * newExamination = [[WeExamination alloc] initWithNSDictionary:HTTPResponse[@"response"][i]];
-                      [examinations addObject:newExamination];
-                  }
-                  [self preworkOnExaminations:self];
-                  [tableView_view1 reloadData];
-                  
-                  if (--restWork == 0) {
-                      [sys_pendingView stopAnimating];
-                  }
-                  return;
-              }
-              if ([result isEqualToString:@"2"]) {
-                  NSDictionary *fields = [HTTPResponse objectForKey:@"fields"];
-                  NSEnumerator *enumerator = [fields keyEnumerator];
-                  id key;
-                  while ((key = [enumerator nextObject])) {
-                      NSString * tmp1 = [fields objectForKey:key];
-                      if (tmp1 != NULL) errorMessage = tmp1;
-                  }
-              }
-              if ([result isEqualToString:@"3"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              if ([result isEqualToString:@"4"]) {
-                  errorMessage = [HTTPResponse objectForKey:@"info"];
-              }
-              [sys_pendingView stopAnimating];
-              UIAlertView *notPermitted = [[UIAlertView alloc]
-                                           initWithTitle:@"获取检查结果信息失败"
-                                           message:errorMessage
-                                           delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
-              [notPermitted show];
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              NSLog(@"Error: %@", error);
-              [sys_pendingView stopAnimating];
-              UIAlertView *notPermitted = [[UIAlertView alloc]
-                                           initWithTitle:@"获取检查结果信息失败"
-                                           message:@"未能连接服务器，请重试"
-                                           delegate:nil
-                                           cancelButtonTitle:@"确定"
-                                           otherButtonTitles:nil];
-              [notPermitted show];
-          }
-     ];
 }
 
 - (NSString *)getYearAndMonth:(NSString *)date {
@@ -627,19 +349,13 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - APIs
 
 - (void)api_message_viewRecordMessage {
     [sys_pendingView startAnimating];
     [WeAppDelegate postToServerWithField:@"message" action:@"viewRecordMessage"
                               parameters:@{
-                                           @"rmId":self.rmId
+                                           @"rmId":_rmId
                                            }
                                  success:^(id response) {
                                      caseRecords=[NSMutableArray array];
