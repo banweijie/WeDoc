@@ -296,7 +296,8 @@
     [WeAppDelegate postToServerWithField:@"user" action:@"login"
                               parameters:@{
                                            @"phone":phone,
-                                           @"password":[password md5]
+                                           @"password":[password md5],
+                                           @"type":@"D"
                                            }
                                  success:^(NSDictionary * response) {
                                      [ILUserDefaults setObject:phone forKey:USERNAME];
