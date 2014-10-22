@@ -13,5 +13,5 @@
 
 @property(nonatomic, strong) NSMutableString * dates;
 @property(nonatomic, strong) NSMutableString * datesToDemo;
-
+@property(nonatomic,strong) NSString *paintTime;
 @end

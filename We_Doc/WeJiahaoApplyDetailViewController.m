@@ -34,7 +34,8 @@
         WeCsrJiaChooseTimeViewController * vc = [[WeCsrJiaChooseTimeViewController alloc] init];
         vc.dates = dates;
         vc.datesToDemo = datesToDemo;
-        
+        vc.paintTime=self.currentJiahao.dates;
+        NSLog(@"%@",_currentJiahao.dates);
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (path.section == 2 && path.row == 2) {

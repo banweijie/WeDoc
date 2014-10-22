@@ -133,6 +133,7 @@
     typeList = [[NSMutableArray alloc] init];
     selectList = [[NSMutableArray alloc] init];
     selectCount = 0;
+    NSLog(@"%@",currentUser.workPeriod);
     for (int i = 1; i < 30; i++) {
         NSDate * date = [NSDate dateWithTimeIntervalSince1970:([[NSDate date] timeIntervalSince1970] + 86400 * i)];
         NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -140,6 +141,7 @@
         NSDateComponents * the = [calendar components:unitFlags fromDate:date];
         
         long long k;
+        NSLog(@"%@",[NSString stringWithFormat:@"%dB", (int)([the weekday] + 5) % 7 + 1]);
         if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dA", (int)([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
             [yearList addObject:[NSString stringWithFormat:@"%d", (int)[the year]]];
             [monthList addObject:[NSString stringWithFormat:@"%02d", (int)[the month]]];
@@ -171,6 +173,18 @@
             }
         }
     }
+    for (int i=yearList.count-1; i>=0; i--) {
+        
+        NSString *data=[NSString stringWithFormat:@"%@-%@-%@%@",yearList[i],monthList[i],dayList[i],periodList[i]];
+        if (([self.paintTime rangeOfString:data].location) == NSNotFound) {
+            [yearList removeObjectAtIndex:i];
+            [monthList removeObjectAtIndex:i];
+            [dayList removeObjectAtIndex:i];
+            [weekdayList removeObjectAtIndex:i];
+            [periodList removeObjectAtIndex:i];
+            [typeList removeObjectAtIndex:i];
+        }
+    }
     
     // sys_tableView
     sys_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height) style:UITableViewStyleGrouped];
@@ -193,6 +207,7 @@
         [self.datesToDemo setString:[NSString stringWithFormat:@"%@%@年%@月%@日 %@%@ - %@\n", self.datesToDemo, yearList[i], monthList[i], dayList[i], [WeAppDelegate transitionDayOfWeekFromChar:weekdayList[i]], [WeAppDelegate transitionPeriodOfDayFromChar:periodList[i]], [WeAppDelegate transitionTypeOfPeriodFromChar:typeList[i]]]];
     }
     
+    NSLog(@"%@   %@",self.dates,self.datesToDemo);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
