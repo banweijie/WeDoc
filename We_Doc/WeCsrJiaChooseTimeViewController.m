@@ -116,7 +116,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = @"选择加号时间";
+    self.navigationItem.title = @"选择加号日期";
     
     // 背景图片
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
@@ -133,7 +133,6 @@
     typeList = [[NSMutableArray alloc] init];
     selectList = [[NSMutableArray alloc] init];
     selectCount = 0;
-    NSLog(@"%@",currentUser.workPeriod);
     for (int i = 1; i < 30; i++) {
         NSDate * date = [NSDate dateWithTimeIntervalSince1970:([[NSDate date] timeIntervalSince1970] + 86400 * i)];
         NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -141,7 +140,6 @@
         NSDateComponents * the = [calendar components:unitFlags fromDate:date];
         
         long long k;
-        NSLog(@"%@",[NSString stringWithFormat:@"%dB", (int)([the weekday] + 5) % 7 + 1]);
         if ((k = [currentUser.workPeriod rangeOfString:[NSString stringWithFormat:@"%dA", (int)([the weekday] + 5) % 7 + 1]].location) != NSNotFound) {
             [yearList addObject:[NSString stringWithFormat:@"%d", (int)[the year]]];
             [monthList addObject:[NSString stringWithFormat:@"%02d", (int)[the month]]];

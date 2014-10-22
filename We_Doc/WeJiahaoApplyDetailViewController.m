@@ -35,7 +35,6 @@
         vc.dates = dates;
         vc.datesToDemo = datesToDemo;
         vc.paintTime=self.currentJiahao.dates;
-        NSLog(@"%@",_currentJiahao.dates);
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (path.section == 2 && path.row == 2) {
@@ -160,7 +159,7 @@
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
         [cell.textLabel setFont:We_font_textfield_zh_cn];
-        [cell.textLabel setText:@"参考加号时间"];
+        [cell.textLabel setText:@"病人申请加号日期"];
         [cell.detailTextLabel setNumberOfLines:0];
         [cell.detailTextLabel setFont:We_font_textfield_zh_cn];
         [cell.detailTextLabel setTextColor:We_foreground_gray_general];
@@ -175,7 +174,7 @@
         [cell.textLabel setNumberOfLines:0];
         [cell.textLabel setFont:We_font_textfield_zh_cn];
         if ([datesToDemo isEqualToString:@""]) {
-            [cell.textLabel setText:@"尚未选择加号时间"];
+            [cell.textLabel setText:@"请确认加号日期"];
         }
         else {
             [cell.textLabel setText:datesToDemo];
