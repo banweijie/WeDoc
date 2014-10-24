@@ -58,7 +58,13 @@
     if (indexPath.section == 0 && indexPath.row == 2) return 90;//[tableView rowHeight] * 2;
     if (indexPath.section == 1 && indexPath.row == 0) return 64;//[tableView rowHeight] * 1.5;
     if (indexPath.section == 2 && indexPath.row == 0) {
-        return [WeAppDelegate calcSizeForString:currentFunding.introduction Font:We_font_textfield_zh_cn expectWidth:280].height + 60;
+        NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle1 setLineSpacing:5];
+        
+        NSDictionary *attribute = @{NSFontAttributeName: We_font_textfield_zh_cn,
+                                    NSParagraphStyleAttributeName:paragraphStyle1};
+        CGSize sizezz = [currentFunding.introduction boundingRectWithSize:CGSizeMake(280, 9999) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+        return sizezz.height + 60;
     }
     return [tableView rowHeight];
 }
@@ -278,13 +284,25 @@
         l1.font = We_font_textfield_zh_cn;
         l1.textColor = We_foreground_black_general;
         [cell.contentView addSubview:l1];
-        CGSize sizezz = [currentFunding.introduction sizeWithFont:We_font_textfield_zh_cn constrainedToSize:CGSizeMake(280, 9999) lineBreakMode:NSLineBreakByWordWrapping];
-        UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(16, 40, sizezz.width, sizezz.height)];
+        UILabel * label = [[UILabel alloc] init];
         label.numberOfLines = 0;
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.text = currentFunding.introduction;
         label.font = We_font_textfield_zh_cn;
         label.textColor = We_foreground_gray_general;
+        
+        NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString: currentFunding.introduction];
+        NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle1 setLineSpacing:5];
+        [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [currentFunding.introduction length])];
+        [label setAttributedText:attributedString1];
+        
+        NSDictionary *attribute = @{NSFontAttributeName: We_font_textfield_zh_cn,
+                                    NSParagraphStyleAttributeName:paragraphStyle1};
+        CGSize sizezz = [currentFunding.introduction boundingRectWithSize:CGSizeMake(280, 9999) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+        
+        label.frame=CGRectMake(16, 40, sizezz.width, sizezz.height);
+
         [cell.contentView addSubview:label];
     }
     if (indexPath.section == 2 && indexPath.row == 1) {
