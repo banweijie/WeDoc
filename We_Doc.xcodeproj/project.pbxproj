@@ -1539,9 +1539,9 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos8.0]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos8.0]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Connection",
@@ -1565,7 +1565,7 @@
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c59d908f-27b7-449e-a8da-116b01220c47";
+				PROVISIONING_PROFILE = "a08c26ef-c310-4384-b1d2-b76573d601b2";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1579,8 +1579,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Connection",
@@ -1604,7 +1604,7 @@
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c59d908f-27b7-449e-a8da-116b01220c47";
+				PROVISIONING_PROFILE = "a08c26ef-c310-4384-b1d2-b76573d601b2";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
