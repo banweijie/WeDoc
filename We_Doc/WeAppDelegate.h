@@ -194,9 +194,9 @@ weTargetView we_targetView;
 #define USERNAME @"USERNAME"
 #define USERPASSWD @"USERPASSWD"
 
-#define yijiarenServer @"http://test.ejren.com"    //测试服务器
+//#define yijiarenServer @"http://test.ejren.com"    //测试服务器
 
-//#define yijiarenServer @"http://www.ejren.com"      //发布服务器
+#define yijiarenServer @"http://www.ejren.com"      //发布服务器
 
 #define yijiarenUrl(field, action) [NSString stringWithFormat:@"%@/%@/%@.action", yijiarenServer, field, action]
 #define yijiarenImageServer we_imagePaths[@"imgServer"]

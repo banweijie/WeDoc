@@ -26,8 +26,8 @@
 @property(nonatomic, strong) NSString * date;
 @property(nonatomic, strong) NSString * dateToDemo;
 @property(nonatomic, strong) NSString * status;
-@property(nonatomic,strong)NSString *recordIds;
-
+@property(nonatomic, strong)NSString *recordIds;
+@property(nonatomic, strong)NSString *descriptions;
 - (WeJiahao *)initWithNSDictionary:(NSDictionary *)info;
 - (void)setWithNSDictionary:(NSDictionary *)info;
 

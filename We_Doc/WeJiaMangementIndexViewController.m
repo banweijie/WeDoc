@@ -163,7 +163,15 @@
             [l3 setText:[NSString stringWithFormat:@"%@ 已完成", currentJiahao.dateToDemo]];
         }
         else {
-            [l3 setText:[NSString stringWithFormat:@"%@ 已取消", currentJiahao.dateToDemo]];
+            if(currentJiahao.dateToDemo ==nil)
+            {
+                [l3 setText:@"已取消"];
+
+            }
+            else
+            {
+                [l3 setText:[NSString stringWithFormat:@"%@ 已取消", currentJiahao.dateToDemo]];
+            }
         }
     }
     else {

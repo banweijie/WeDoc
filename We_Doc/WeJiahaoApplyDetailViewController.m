@@ -64,6 +64,15 @@
 - (CGFloat)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) return 90;//tv.rowHeight * 2;
     if (indexPath.section == 1 && indexPath.row == 0) return 64;//tv.rowHeight * 1.5;
+    if (indexPath.section==2 &&indexPath.row==3) {
+        if ([self.currentJiahao.descriptions isEqualToString:@""]) {
+            return [WeAppDelegate calcSizeForString:@"无" Font:We_font_textfield_zh_cn expectWidth:280].height + 60;
+        }
+        else {
+            return [WeAppDelegate calcSizeForString:self.currentJiahao.descriptions Font:We_font_textfield_zh_cn expectWidth:280].height + 60;
+        }
+    }
+
     return tv.rowHeight;
 }
 // 询问每个段落的头部高度
@@ -109,7 +118,7 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     if (section == 0) return 3;
     if (section == 1) return 2;
-    if (section == 2) return 3;
+    if (section == 2) return 4;
     if (section == 3) return 1;
     if (section == 4) return 1;
     return 1;
@@ -213,7 +222,34 @@
         }
         
     }
-
+    if (indexPath.section==2&&indexPath.row==3) {
+        UILabel * l1 = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 280, 40)];
+        l1.text = @"更多描述";
+        l1.font = We_font_textfield_zh_cn;
+        l1.textColor = We_foreground_black_general;
+        [cell.contentView addSubview:l1];
+        
+        if ([self.currentJiahao.descriptions isEqualToString:@""]) {
+            CGSize sizezz = [WeAppDelegate calcSizeForString:@"无" Font:We_font_textfield_zh_cn expectWidth:280];
+            UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(16, 40, sizezz.width, sizezz.height)];
+            label.numberOfLines = 0;
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.text = @"无";
+            label.font = We_font_textfield_zh_cn;
+            label.textColor = We_foreground_gray_general;
+            [cell.contentView addSubview:label];
+        }
+        else {
+            CGSize sizezz = [WeAppDelegate calcSizeForString:self.currentJiahao.descriptions Font:We_font_textfield_zh_cn expectWidth:280];
+            UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(16, 40, sizezz.width, sizezz.height)];
+            label.numberOfLines = 0;
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.text = self.currentJiahao.descriptions;
+            label.font = We_font_textfield_zh_cn;
+            label.textColor = We_foreground_gray_general;
+            [cell.contentView addSubview:label];
+        }
+    }
     
     if (indexPath.section == 3 && indexPath.row == 0) {
         [cell setBackgroundColor:We_background_red_general];

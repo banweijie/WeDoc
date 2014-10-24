@@ -9,7 +9,7 @@
 #import "WeJiahao.h"
 
 @implementation WeJiahao
-
+@synthesize descriptions;
 
 - (WeJiahao *)initWithNSDictionary:(NSDictionary *)info {
     [self setWithNSDictionary:info];
@@ -49,6 +49,8 @@
     if (info[@"recordMessage"] !=[NSNull null] ) {
         self.recordIds=[NSString stringWithFormat:@"%@",info[@"recordMessage"][@"id"]];
     }
+    self.descriptions=[NSString stringWithFormat:@"%@", info[@"description"]];
+
 }
 
 - (NSString *)transitionPeriodOfDayFromChar:(NSString *)PeriodOfDay {

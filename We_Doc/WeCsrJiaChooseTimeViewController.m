@@ -172,7 +172,9 @@
         }
     }
     for (int i=yearList.count-1; i>=0; i--) {
-        
+        if ([_paintTime isEqualToString:@""]) {
+            break;
+        }
         NSString *data=[NSString stringWithFormat:@"%@-%@-%@%@",yearList[i],monthList[i],dayList[i],periodList[i]];
         if (([self.paintTime rangeOfString:data].location) == NSNotFound) {
             [yearList removeObjectAtIndex:i];
@@ -205,7 +207,6 @@
         [self.datesToDemo setString:[NSString stringWithFormat:@"%@%@年%@月%@日 %@%@ - %@\n", self.datesToDemo, yearList[i], monthList[i], dayList[i], [WeAppDelegate transitionDayOfWeekFromChar:weekdayList[i]], [WeAppDelegate transitionPeriodOfDayFromChar:periodList[i]], [WeAppDelegate transitionTypeOfPeriodFromChar:typeList[i]]]];
     }
     
-    NSLog(@"%@   %@",self.dates,self.datesToDemo);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
