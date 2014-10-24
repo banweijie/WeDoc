@@ -136,13 +136,13 @@
     
     // sys_userAgreement_demo init
     sys_userAgreement_demo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    UILabel * sys_userAgreement_demo_text = [[UILabel alloc] initWithFrame:CGRectMake(0, 172, 320, 30)];
+    UILabel * sys_userAgreement_demo_text = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 172, 30)];
     sys_userAgreement_demo_text.text = @"注册即视为同意";
     sys_userAgreement_demo_text.font = We_font_textfield_zh_cn;
     sys_userAgreement_demo_text.textColor = We_foreground_gray_general;
     sys_userAgreement_demo_text.textAlignment = NSTextAlignmentRight;
     [sys_userAgreement_demo addSubview:sys_userAgreement_demo_text];
-    UIButton * sys_userAgreement_demo_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton * sys_userAgreement_demo_button = [UIButton buttonWithType:UIButtonTypeSystem];
     sys_userAgreement_demo_button.frame = CGRectMake(172, 0, 60, 30);
     [sys_userAgreement_demo_button setTitle:@"用户协议" forState:UIControlStateNormal];
     [sys_userAgreement_demo_button.titleLabel setFont:We_font_button_zh_cn];
