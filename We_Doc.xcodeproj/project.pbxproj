@@ -1539,7 +1539,7 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos8.0]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1554,7 +1554,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/We_Doc/VoiceConvert/lib",
@@ -1565,7 +1565,7 @@
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a08c26ef-c310-4384-b1d2-b76573d601b2";
+				PROVISIONING_PROFILE = "8210fc8a-1dc7-49f8-8d2e-176bac5a111f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -1579,7 +1579,7 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Ruiyihuizhong Information Consultation Co., Ltd. (8S6MY9YM27)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1593,7 +1593,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "We_Doc/We_Doc-Prefix.pch";
 				INFOPLIST_FILE = "We_Doc/We_Doc-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/We_Doc/VoiceConvert/lib",
@@ -1604,7 +1604,7 @@
 					"$(PROJECT_DIR)/We_Doc/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a08c26ef-c310-4384-b1d2-b76573d601b2";
+				PROVISIONING_PROFILE = "8210fc8a-1dc7-49f8-8d2e-176bac5a111f";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

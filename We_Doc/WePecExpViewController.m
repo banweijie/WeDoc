@@ -111,7 +111,15 @@
             l1.textColor = We_foreground_black_general;
             [cell.contentView addSubview:l1];
             l2 = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 240, 25)];
-            l2.text = [NSString stringWithFormat:@"%@年%@月 - %@年%@月", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromMonth"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endMonth"]];
+            if([ [NSString stringWithFormat:@"%@",[[user_exps objectAtIndex:indexPath.row] objectForKey:@"endYear"]]  isEqualToString:@"9999"])
+            {
+                l2.text = [NSString stringWithFormat:@"%@年%@月 - 至今", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromMonth"]];
+            }
+            else
+            {
+                l2.text = [NSString stringWithFormat:@"%@年%@月 - %@年%@月", [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"fromMonth"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endYear"], [[user_exps objectAtIndex:indexPath.row] objectForKey:@"endMonth"]];
+            }
+            
             l2.font = We_font_textfield_zh_cn;
             l2.textColor = We_foreground_gray_general;
             [cell.contentView addSubview:l2];
@@ -146,6 +154,10 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
+        return NO;
+    }
+    if([ [NSString stringWithFormat:@"%@",[[user_exps objectAtIndex:indexPath.row] objectForKey:@"endYear"]]  isEqualToString:@"9999"])
+    {
         return NO;
     }
     return YES;

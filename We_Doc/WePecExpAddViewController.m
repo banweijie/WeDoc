@@ -294,6 +294,11 @@
     We_init_textFieldInCell_pholder(user_exp_department, @"如：皮肤科", We_font_textfield_zh_cn)
     We_init_textFieldInCell_pholder(user_exp_minister, @"如：主任", We_font_textfield_zh_cn)
     user_exp_minister.userInteractionEnabled=NO;
+    user_exp_startyear.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_startmonth.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_endyear.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_endmonth.keyboardType=UIKeyboardTypeNumberPad;
+
     
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];

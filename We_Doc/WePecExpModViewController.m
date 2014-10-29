@@ -198,7 +198,16 @@
 - (void) user_save_onpress:(id)sender {
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString =yijiarenUrl(@"doctor", @"updateExperience");
-    NSString *parasString = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, minss, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
+    NSString *parasString;
+    if([[WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]] isEqualToString:@"9999"])
+    {
+        parasString  = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, @"1", @"9999", user_exp_hospital.text, minss, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
+    }
+    else
+    {
+       parasString  = [NSString stringWithFormat:@"fromMonth=%@&fromYear=%@&endMonth=%@&endYear=%@&hospital=%@&title=%@&section=%@&deId=%@", user_exp_startmonth.text, user_exp_startyear.text, user_exp_endmonth.text, user_exp_endyear.text, user_exp_hospital.text, minss, user_exp_department.text, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]]];
+    }
+    
     NSData * DataResponse = [WeAppDelegate sendPhoneNumberToServer:urlString paras:parasString];
     
     if (DataResponse != NULL) {
@@ -206,7 +215,14 @@
         NSString *result = [HTTPResponse objectForKey:@"result"];
         result = [NSString stringWithFormat:@"%@", result];
         if ([result isEqualToString:@"1"]) {
-            [user_exps setObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", minss, @"title", user_exp_department.text, @"section", [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]], @"id", nil] atIndexedSubscript:we_expToModify_id];
+            if([[WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]] isEqualToString:@"9999"])
+            {
+                [user_exps setObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", @"1", @"endMonth", @"9999",  @"endYear", user_exp_hospital.text, @"hospital", minss, @"title", user_exp_department.text, @"section", [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]], @"id", nil] atIndexedSubscript:we_expToModify_id];
+            }
+            else
+            {
+                [user_exps setObject:[NSDictionary dictionaryWithObjectsAndKeys:user_exp_startmonth.text, @"fromMonth", user_exp_startyear.text, @"fromYear", user_exp_endmonth.text, @"endMonth", user_exp_endyear.text,  @"endYear", user_exp_hospital.text, @"hospital", minss, @"title", user_exp_department.text, @"section", [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"id"]], @"id", nil] atIndexedSubscript:we_expToModify_id];
+            }
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
@@ -284,12 +300,28 @@
     // textFields
     We_init_textFieldInCell_general(user_exp_startyear, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"fromYear"]], We_font_textfield_zh_cn)
     We_init_textFieldInCell_general(user_exp_startmonth, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"fromMonth"]], We_font_textfield_zh_cn)
-    We_init_textFieldInCell_general(user_exp_endyear, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]], We_font_textfield_zh_cn)
-    We_init_textFieldInCell_general(user_exp_endmonth, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endMonth"]], We_font_textfield_zh_cn)
+    
+    if([[WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]] isEqualToString:@"9999"])
+    {
+        We_init_textFieldInCell_general(user_exp_endyear, @"至今", We_font_textfield_zh_cn)
+        We_init_textFieldInCell_general(user_exp_endmonth, @"至今", We_font_textfield_zh_cn)
+        user_exp_endyear.userInteractionEnabled=NO;
+        user_exp_endmonth.userInteractionEnabled=NO;
+    }
+    else
+    {
+        We_init_textFieldInCell_general(user_exp_endyear, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]], We_font_textfield_zh_cn)
+        We_init_textFieldInCell_general(user_exp_endmonth, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endMonth"]], We_font_textfield_zh_cn)
+    }
     We_init_textFieldInCell_general(user_exp_hospital, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"hospital"]], We_font_textfield_zh_cn)
     We_init_textFieldInCell_general(user_exp_department, [WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"section"]], We_font_textfield_zh_cn)
     We_init_textFieldInCell_general(user_exp_minister, [WeAppDelegate toString:we_codings[@"doctorCategory"][currentUser.category][@"title"][user_exps[we_expToModify_id][@"title"]]], We_font_textfield_zh_cn)
     user_exp_minister.userInteractionEnabled=NO;
+    
+    user_exp_startyear.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_startmonth.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_endyear.keyboardType=UIKeyboardTypeNumberPad;
+    user_exp_endmonth.keyboardType=UIKeyboardTypeNumberPad;
     // Background
     UIImageView * bg = [[UIImageView alloc] initWithFrame:self.view.frame];
     bg.image = [UIImage imageNamed:@"Background-2"];

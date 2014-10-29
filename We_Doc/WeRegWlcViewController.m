@@ -216,7 +216,7 @@
     [user_phone_input setTextColor:We_foreground_black_general];
     [user_phone_input setDelegate:self];
     [user_phone_input setReturnKeyType:UIReturnKeyNext];
-    
+    user_phone_input.keyboardType=UIKeyboardTypePhonePad;
     // 用于输入登录密码的文本框
     user_password_input = [[WeInfoedTextField alloc] initWithFrame:We_frame_textFieldInCell_general];
     [user_password_input setTextAlignment:NSTextAlignmentRight];
