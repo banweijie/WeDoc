@@ -103,7 +103,10 @@
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return 4;
+            if([[WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]] isEqualToString:@"9999"])
+                return 3;
+            else
+                return 4;
             break;
         case 1:
             return 3;
@@ -138,7 +141,11 @@
                     break;
                 case 2:
                     cell.contentView.backgroundColor = We_background_cell_general;
-                    cell.textLabel.text = @"结束年份";
+                    if([[WeAppDelegate toString:[[user_exps objectAtIndex:we_expToModify_id] objectForKey:@"endYear"]] isEqualToString:@"9999"])
+                        cell.textLabel.text = @"结束年月";
+                    else
+                        cell.textLabel.text = @"结束年份";
+
                     cell.textLabel.font = We_font_textfield_zh_cn;
                     cell.textLabel.textColor = We_foreground_black_general;
                     [cell addSubview:user_exp_endyear];
@@ -196,6 +203,36 @@
     
 }
 - (void) user_save_onpress:(id)sender {
+    NSDate *now = [NSDate date];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit;
+    NSDateComponents *dd = [cal components:unitFlags fromDate:now];
+    int y = [dd year];
+    int m = [dd month];
+    if ([user_exp_startyear.text intValue]>y || ([user_exp_startyear.text intValue]==y && [user_exp_startmonth.text intValue]>m)) {
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"保存失败"
+                                     message:@"起始时间不能大于当前时间"
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        [notPermitted show];
+        return;
+    }
+    if ([user_exp_endyear.text intValue]>y || ([user_exp_endyear.text intValue]==y && [user_exp_endmonth.text intValue]>m)) {
+        if (![user_exp_endyear.text intValue]==9999) {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"保存失败"
+                                         message:@"结束时间不能大于当前时间"
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            [notPermitted show];
+            return;
+        }
+    }
+    
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString =yijiarenUrl(@"doctor", @"updateExperience");
     NSString *parasString;

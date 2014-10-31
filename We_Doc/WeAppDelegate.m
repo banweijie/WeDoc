@@ -18,10 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >=8.0) {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >=8.0) {
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    }
     currentUser = nil;
     
     // 设置TabBar的delegate
@@ -41,7 +41,6 @@
     
     NSString *username=[ILUserDefaults objectForKey:USERNAME];
     NSString *passwd=[ILUserDefaults objectForKey:USERPASSWD];
-    //    MyLog(@"user---%@  pwd---%@",username,passwd);
     if (username!=nil) {
         [self api_user_login:username password:passwd];
     }

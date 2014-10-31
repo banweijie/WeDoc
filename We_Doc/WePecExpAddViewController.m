@@ -195,6 +195,36 @@
 }
 - (void) user_save_onpress:(id)sender {
 //    we_codings[@"doctorCategory"];//职称字典
+    NSDate *now = [NSDate date];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit;
+    NSDateComponents *dd = [cal components:unitFlags fromDate:now];
+    int y = [dd year];
+    int m = [dd month];
+    if ([user_exp_startyear.text intValue]>y || ([user_exp_startyear.text intValue]==y && [user_exp_startmonth.text intValue]>m)) {
+        UIAlertView *notPermitted = [[UIAlertView alloc]
+                                     initWithTitle:@"保存失败"
+                                     message:@"起始时间不能大于当前时间"
+                                     delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+        [notPermitted show];
+        return;
+    }
+    if ([user_exp_endyear.text intValue]>y || ([user_exp_endyear.text intValue]==y && [user_exp_endmonth.text intValue]>m)) {
+        if (![user_exp_endyear.text intValue]==9999) {
+            UIAlertView *notPermitted = [[UIAlertView alloc]
+                                         initWithTitle:@"保存失败"
+                                         message:@"结束时间不能大于当前时间"
+                                         delegate:nil
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+            [notPermitted show];
+            return;
+        }
+    }
+
     
     NSString *errorMessage = @"发送失败，请检查网络";
     NSString *urlString = yijiarenUrl(@"doctor", @"addExperience");
@@ -315,21 +345,5 @@
     [self.view addSubview:sys_tableView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
